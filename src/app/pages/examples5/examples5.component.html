@@ -1,0 +1,22 @@
+<h2>Examples part 5</h2>
+<h3>(concat,startWith,endWith, combineLatest, withTheLatestFrom)</h3>
+<hr />
+
+<h4>concat Observables</h4>
+<p *ngFor="let number of concatObs | async">{{ number }}</p>
+
+<h4>startWith & endWith</h4>
+<p *ngFor="let number of concatObs2 | async">{{ number }}</p>
+
+<h4>Combine Latest</h4>
+<h6>
+  Last observable (height) combine all their values with the last value of the
+  other observable
+</h6>
+<p *ngFor="let area of obsArea | async">{{ area }}</p>
+
+<h4>area withTheLatestFrom</h4>
+<p *ngFor="let area of obsArea2 | async">{{ area }}</p>
+
+<h4>All areas with zip</h4>
+<p *ngFor="let area of obsArea3 | async">{{ area }}</p>

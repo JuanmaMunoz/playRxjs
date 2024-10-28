@@ -1,0 +1,10 @@
+.logo {
+  & > img {
+    border-radius: 50%;
+    border: solid;
+    border-color: var(--primary-color) var(--primary-color)
+      var(--secondary-color) var(--secondary-color);
+    opacity: 1;
+    z-index: 1;
+  }
+}

@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Jhon",
+    "firstName": "Trump",
+    "age": 40,
+    "job": "Front end developer",
+    "salary": 30000
+  },
+  {
+    "name": "Patricia",
+    "firstName": "Biden",
+    "age": 36,
+    "job": "Quality Manager",
+    "salary": 40000
+  },
+  {
+    "name": "Benito",
+    "firstName": "Aznar",
+    "age": 12,
+    "job": "Youtuber",
+    "salary": 50000
+  }
+]

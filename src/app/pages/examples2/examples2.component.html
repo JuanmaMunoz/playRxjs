@@ -1,0 +1,17 @@
+<h2>Examples part 2</h2>
+<h3>(from, of, toArray)</h3>
+<hr />
+<h4>string to array with of</h4>
+<p *ngFor="let str of obsString1 | async">
+  {{ str }}
+</p>
+
+<h4>number[] to string[] with from & toArray</h4>
+<p *ngFor="let str of obsString2 | async">
+  {{ str }}
+</p>
+
+<h4>filter number[] with operator filter & toArray</h4>
+<p *ngFor="let num of obsNumber1 | async">
+  {{ num }}
+</p>

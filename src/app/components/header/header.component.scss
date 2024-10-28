@@ -1,0 +1,43 @@
+.header {
+  background: linear-gradient(70deg, var(--dark-color), #2c242e);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
+  display: flex;
+  height: 9.5rem;
+  &__logo {
+    margin-top: 1rem;
+    margin-left: 30%;
+  }
+  &__title {
+    margin-top: 3rem;
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    &__main {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+    }
+    &__secondary {
+      font-size: 1.2rem;
+      color: var(--secondary-color);
+    }
+  }
+  &__info {
+    margin-top: 1rem;
+    margin-left: 1rem;
+    color: var(--secondary-color);
+    font-weight: bold;
+    font-size: 1.2rem;
+    &__operators {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      & > div {
+        margin-left: 1rem;
+      }
+    }
+  }
+}
