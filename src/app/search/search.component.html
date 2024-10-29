@@ -1,0 +1,22 @@
+<div class="search">
+  <input
+    id="search-text"
+    class="search__text"
+    type="text"
+    placeholder="Search..."
+  />
+
+  @if (obsResult | async; as result) {
+    @if (result.length > 0 && visibleResult) {
+      <div class="search__result">
+        @for (i of result; track $index) {
+          <div class="search__result__item">
+            <a (click)="navigate(i.category, i.id)"
+              >- {{ i.title }} <i class="bi bi-rocket-takeoff"></i
+            ></a>
+          </div>
+        }
+      </div>
+    }
+  }
+</div>

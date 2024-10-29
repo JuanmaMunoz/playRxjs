@@ -9,7 +9,7 @@
   height: 9.5rem;
   &__logo {
     margin-top: 1rem;
-    margin-left: 30%;
+    margin-left: 10%;
   }
   &__title {
     margin-top: 3rem;
@@ -39,5 +39,9 @@
         margin-left: 1rem;
       }
     }
+  }
+  &__search {
+    margin-top: 3.5rem;
+    margin-left: 1rem;
   }
 }

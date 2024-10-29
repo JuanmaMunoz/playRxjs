@@ -8,6 +8,7 @@ export interface IUser {
 }
 
 export interface IInfo {
+  category: string;
   id: string;
   title: string;
   description: string;

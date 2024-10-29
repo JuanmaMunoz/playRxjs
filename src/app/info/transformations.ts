@@ -2,6 +2,7 @@ import { IInfo } from '../models/interfaces';
 
 export const transformations: IInfo[] = [
   {
+    category: 'operators/transformation',
     id: 'map',
     title: 'Operator map',
     description:
@@ -19,6 +20,7 @@ export const transformations: IInfo[] = [
   },
 
   {
+    category: 'operators/transformation',
     id: 'mapTo',
     title: 'Operator mapTo',
     description:
@@ -30,6 +32,7 @@ export const transformations: IInfo[] = [
   },
 
   {
+    category: 'operators/transformation',
     id: 'mergeMap',
     title: 'Operator mergeMap',
     description:
@@ -51,6 +54,7 @@ export const transformations: IInfo[] = [
       .subscribe((data: string) => console.log(data));`,
   },
   {
+    category: 'operators/transformation',
     id: 'mergeMapTo',
     title: 'Operator mergeMapTo',
     description:
@@ -69,6 +73,7 @@ export const transformations: IInfo[] = [
       .subscribe((data: string) => console.log(data));`,
   },
   {
+    category: 'operators/transformation',
     id: 'switchMap',
     title: 'Operator switchMap',
     description:
@@ -90,6 +95,7 @@ export const transformations: IInfo[] = [
       .subscribe((data: string) => console.log(data))`,
   },
   {
+    category: 'operators/transformation',
     id: 'concatMap',
     title: 'Operator concatMap',
     description:
