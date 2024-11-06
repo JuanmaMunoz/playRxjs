@@ -1,7 +1,43 @@
-ul {
-  text-align: center;
+.menu {
+  position: fixed;
+  height: 100vh;
+  right: 0px;
+  top: 0;
+  border: solid 2px var(--secondary-color);
+  border-radius: var(--radius) 0 0 var(--radius);
+  border-right: none;
+  background-color: var(--dark-color);
+  width: 25rem;
+  z-index: 9999999;
+  &--hidden {
+    display: none;
+    animation: hide 0.2s linear;
+  }
+  &--show {
+    display: block;
+    animation: show 0.2s linear;
+  }
 }
-li {
-  display: inline;
-  margin-left: 2rem;
+
+@keyframes hide {
+  from {
+    right: -15rem;
+    display: block;
+    opacity: 0.5;
+  }
+  to {
+    right: -30rem;
+    display: none;
+  }
+}
+
+@keyframes show {
+  from {
+    right: -15rem;
+    opacity: 0.5;
+  }
+  to {
+    right: 0rem;
+    display: block;
+  }
 }

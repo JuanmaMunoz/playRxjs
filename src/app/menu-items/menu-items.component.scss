@@ -1,0 +1,46 @@
+.menu-items {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  margin: 1rem;
+  &__title {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    color: var(--clear-color);
+    font-weight: bold;
+    cursor: pointer;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    &--hidden {
+      display: none;
+      animation: hide 0.2s;
+    }
+    &--show {
+      display: flex;
+      animation: show 0.2s;
+    }
+  }
+}
+
+@keyframes hide {
+  from {
+    opacity: 0.5;
+    display: flex;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes show {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+    display: flex;
+  }
+}

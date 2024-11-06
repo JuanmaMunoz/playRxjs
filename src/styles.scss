@@ -80,6 +80,9 @@ a {
   &--secondary {
     background-color: var(--secondary-color);
   }
+  &--menu {
+    padding: 0.8rem !important;
+  }
 }
 
 @media screen and (max-width: 992px) {

@@ -43,7 +43,10 @@ export class SearchComponent implements OnInit, AfterViewInit {
           map((a: IInfo[]) =>
             a.filter(
               (i: IInfo) =>
-                e.target!.value.length > 1 && i.title.includes(e.target.value),
+                e.target!.value.length > 1 &&
+                i.title
+                  .toLocaleLowerCase()
+                  .includes(e.target.value.toLocaleLowerCase()),
             ),
           ),
           tap((e) => (this.visibleResult = true)),
@@ -53,6 +56,8 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   public navigate(category: string, id: string): void {
+    const element = document.getElementById('search-text');
+    this.render.setProperty(element, 'value', id);
     this.visibleResult = false;
     this.router.navigate([`/${category}/${id}`]);
   }

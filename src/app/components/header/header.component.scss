@@ -6,10 +6,10 @@
   width: 100%;
   z-index: 10000;
   display: flex;
+  justify-content: center;
   height: 9.5rem;
   &__logo {
     margin-top: 1rem;
-    margin-left: 10%;
   }
   &__title {
     margin-top: 3rem;
@@ -25,23 +25,13 @@
       color: var(--secondary-color);
     }
   }
-  &__info {
-    margin-top: 1rem;
-    margin-left: 1rem;
-    color: var(--secondary-color);
-    font-weight: bold;
-    font-size: 1.2rem;
-    &__operators {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      & > div {
-        margin-left: 1rem;
-      }
-    }
-  }
   &__search {
     margin-top: 3.5rem;
     margin-left: 1rem;
+  }
+  &__btn {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
   }
 }

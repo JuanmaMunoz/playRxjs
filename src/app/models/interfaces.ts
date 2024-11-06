@@ -16,6 +16,10 @@ export interface IInfo {
   output: string;
 }
 
+export interface IMenuItems {
+  items: IInfo[];
+  title: string;
+}
 export interface IHobby {
   name: string;
   hobbies: string[];
