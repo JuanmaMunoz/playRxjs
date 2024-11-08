@@ -1,4 +1,8 @@
 <div class="header">
+  @if (introductionService.info | async; as info) {
+    <div [class]="showPage" class="header__page">{{ info.title }}</div>
+  }
+
   <div class="header__logo">
     <app-logo [width]="115" [borderWidth]="2" />
   </div>
@@ -6,6 +10,7 @@
     <div class="header__title__main">Play Rxjs</div>
     <div class="header__title__secondary">Unlock New way to learn</div>
   </div>
+
   <div class="header__search">
     <app-search />
   </div>

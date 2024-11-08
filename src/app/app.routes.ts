@@ -11,7 +11,7 @@ export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'operators/transformation', component: TransformationComponent },
   {
-    path: 'operators/transformation/:operator',
+    path: 'operators/transformation/:id',
     component: TransformationComponent,
   },
   { path: '', component: Examples1Component },

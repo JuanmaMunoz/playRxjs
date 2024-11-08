@@ -1,17 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import {
-  concatMap,
-  fromEvent,
-  map,
-  Observable,
-  of,
-  Subscription,
-  tap,
-} from 'rxjs';
+import { concatMap, fromEvent, map, Observable, of, tap } from 'rxjs';
 import { transformations } from '../info/transformations';
 import { IInfo } from '../models/interfaces';
+import { MenuService } from '../services/menu.service';
 
 @Component({
   selector: 'app-search',
@@ -21,15 +14,14 @@ import { IInfo } from '../models/interfaces';
   styleUrl: './search.component.scss',
 })
 export class SearchComponent implements OnInit, AfterViewInit {
-  private subscription = new Subscription();
-  //public obsInfo: Observable<IInfo> = concat(transformations);
   public obsResult!: Observable<IInfo[]>;
   public search: string = '';
   public visibleResult: boolean = false;
 
   constructor(
-    private router: Router,
     private render: Renderer2,
+    private router: Router,
+    private menuService: MenuService,
   ) {}
   ngOnInit(): void {}
 
@@ -59,6 +51,7 @@ export class SearchComponent implements OnInit, AfterViewInit {
     const element = document.getElementById('search-text');
     this.render.setProperty(element, 'value', id);
     this.visibleResult = false;
-    this.router.navigate([`/${category}/${id}`]);
+    //this.router.navigate([`/${category}/${id}`]);
+    this.menuService.navigate(category, id);
   }
 }

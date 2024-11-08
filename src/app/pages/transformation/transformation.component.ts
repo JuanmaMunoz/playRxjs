@@ -19,27 +19,35 @@ import {
 } from 'rxjs';
 import { ExampleComponent } from '../../components/example/example.component';
 import { transformations } from '../../info/transformations';
+import { IntroductionComponent } from '../../introduction/introduction.component';
 import { IInfo, IUser } from '../../models/interfaces';
+import { IntroductionService } from '../../services/introduction.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-transformation',
   standalone: true,
-  imports: [CommonModule, ExampleComponent],
+  imports: [CommonModule, ExampleComponent, IntroductionComponent],
   templateUrl: './transformation.component.html',
   styleUrl: './transformation.component.scss',
 })
 export class TransformationComponent implements OnInit, AfterViewInit {
   public info!: Observable<IInfo[]>;
   public subscription = new Subscription();
+
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute,
     private renderer: Renderer2,
+    private route: ActivatedRoute,
+    private introductionService: IntroductionService,
   ) {}
 
   ngOnInit(): void {
     this.info = of(transformations);
+    const url =
+      '/' + this.route.snapshot.url.map((segment) => segment.path).join('/');
+    console.log(url);
+    this.introductionService.setIntroduction(url);
   }
 
   ngOnDestroy(): void {
@@ -53,14 +61,6 @@ export class TransformationComponent implements OnInit, AfterViewInit {
     this.operatorSwitchMap();
     this.operatorMergeMapTo();
     this.operatorConcatMap();
-    this.subscription.add(
-      this.route.params.subscribe((params: any) => {
-        const { operator } = params;
-        document
-          .getElementById(`operator-${operator}`)
-          ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }),
-    );
   }
 
   private operatorMap(): void {

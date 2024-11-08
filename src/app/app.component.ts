@@ -4,21 +4,28 @@ import { RouterOutlet } from '@angular/router';
 import { filter, fromEvent, Subscription } from 'rxjs';
 import { HeaderComponent } from './components/header/header.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { IntroductionComponent } from './introduction/introduction.component';
 import { MenuService } from './services/menu.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, MenuComponent, HeaderComponent],
+  imports: [
+    RouterOutlet,
+    CommonModule,
+    MenuComponent,
+    HeaderComponent,
+    IntroductionComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'playRxjs';
-  private subscrition = new Subscription();
+  private subscription = new Subscription();
   constructor(private menuService: MenuService) {}
   ngOnInit(): void {
-    this.subscrition.add(
+    this.subscription.add(
       fromEvent(document, 'click')
         .pipe(
           filter(
@@ -29,12 +36,11 @@ export class AppComponent implements OnInit, OnDestroy {
         )
         .subscribe((e) => {
           this.menuService.openMenu.next(false);
-          console.log(e);
         }),
     );
   }
 
   ngOnDestroy(): void {
-    this.subscrition.unsubscribe();
+    this.subscription.unsubscribe();
   }
 }

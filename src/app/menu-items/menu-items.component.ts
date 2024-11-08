@@ -30,6 +30,6 @@ export class MenuItemsComponent {
 
   public navigate(category: string, id: string): void {
     this.menuService.openMenu.next(false);
-    this.router.navigate([`/${category}/${id}`]);
+    this.menuService.navigate(category, id);
   }
 }

@@ -1,0 +1,6 @@
+@if (introductionService.info | async; as info) {
+  <div class="introduction">
+    <h1 [innerHTML]="info.title"></h1>
+    <p [innerHTML]="info.description"></p>
+  </div>
+}

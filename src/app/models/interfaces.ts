@@ -20,7 +20,14 @@ export interface IMenuItems {
   items: IInfo[];
   title: string;
 }
+
 export interface IHobby {
   name: string;
   hobbies: string[];
+}
+
+export interface IIntroduction {
+  category: string;
+  title: string;
+  description: string;
 }

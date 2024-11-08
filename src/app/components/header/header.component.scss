@@ -8,6 +8,20 @@
   display: flex;
   justify-content: center;
   height: 9.5rem;
+  &__page {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin: 3.5rem 2rem 0 0;
+    font-weight: bold;
+    &--hidden {
+      display: none;
+      animation: hide 0.3s;
+    }
+    &--show {
+      display: flex;
+      animation: show 0.3s;
+    }
+  }
   &__logo {
     margin-top: 1rem;
   }
@@ -16,6 +30,12 @@
     margin-left: 1rem;
     display: flex;
     flex-direction: column;
+    &--hidden {
+      animation: hide 0.3s;
+    }
+    &--show {
+      animation: show 0.3s;
+    }
     &__main {
       font-size: 2.5rem;
       color: var(--primary-color);
@@ -33,5 +53,26 @@
     position: absolute;
     right: 1rem;
     top: 1rem;
+  }
+}
+
+@keyframes hide {
+  from {
+    opacity: 0.5;
+    display: flex;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes show {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+    display: flex;
   }
 }

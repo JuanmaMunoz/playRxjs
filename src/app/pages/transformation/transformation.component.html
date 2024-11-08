@@ -1,4 +1,5 @@
 <div class="transformations">
+  <app-introduction></app-introduction>
   @for (i of info | async; track $index) {
     @switch (i.title) {
       @case ("Operator switchMap") {

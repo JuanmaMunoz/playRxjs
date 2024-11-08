@@ -11,11 +11,11 @@
   z-index: 9999999;
   &--hidden {
     display: none;
-    animation: hide 0.2s linear;
+    animation: hide 0.2s ease;
   }
   &--show {
     display: block;
-    animation: show 0.2s linear;
+    animation: show 0.2s ease;
   }
 }
 
