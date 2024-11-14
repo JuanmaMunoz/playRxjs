@@ -8,3 +8,11 @@
     z-index: 1;
   }
 }
+
+@media screen and (max-width: 668px) {
+  .logo {
+    & > img {
+      width: 90px !important;
+    }
+  }
+}

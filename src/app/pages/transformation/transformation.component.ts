@@ -46,7 +46,6 @@ export class TransformationComponent implements OnInit, AfterViewInit {
     this.info = of(transformations);
     const url =
       '/' + this.route.snapshot.url.map((segment) => segment.path).join('/');
-    console.log(url);
     this.introductionService.setIntroduction(url);
   }
 

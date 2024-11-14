@@ -5,9 +5,16 @@
   top: 0;
   width: 100%;
   z-index: 10000;
+  height: 9.5rem;
   display: flex;
   justify-content: center;
-  height: 9.5rem;
+  &__container {
+    display: flex;
+    justify-content: center;
+    &--opacity {
+      animation: opacity 1s;
+    }
+  }
   &__page {
     font-size: 2.5rem;
     color: var(--primary-color);
@@ -15,11 +22,11 @@
     font-weight: bold;
     &--hidden {
       display: none;
-      animation: hide 0.3s;
+      animation: hidden 1s;
     }
     &--show {
       display: flex;
-      animation: show 0.3s;
+      animation: show 1s;
     }
   }
   &__logo {
@@ -30,12 +37,6 @@
     margin-left: 1rem;
     display: flex;
     flex-direction: column;
-    &--hidden {
-      animation: hide 0.3s;
-    }
-    &--show {
-      animation: show 0.3s;
-    }
     &__main {
       font-size: 2.5rem;
       color: var(--primary-color);
@@ -49,6 +50,7 @@
     margin-top: 3.5rem;
     margin-left: 1rem;
   }
+
   &__btn {
     position: absolute;
     right: 1rem;
@@ -56,14 +58,42 @@
   }
 }
 
-@keyframes hide {
-  from {
-    opacity: 0.5;
-    display: flex;
+@media screen and (max-width: 1350px) {
+  .header {
+    &__page {
+      display: none;
+    }
+    &__container {
+      &--opacity {
+        animation: none;
+      }
+    }
   }
-  to {
-    opacity: 0;
-    display: none;
+}
+
+@media screen and (max-width: 992px) {
+  .header {
+    justify-content: left;
+    margin-left: 1rem;
+    &__title {
+      &__main {
+        font-size: 2rem;
+      }
+      &__secondary {
+        font-size: 1rem;
+      }
+    }
+    &__btn {
+      right: 2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 668px) {
+  .header {
+    &__search {
+      display: none;
+    }
   }
 }
 
@@ -74,5 +104,24 @@
   to {
     opacity: 1;
     display: flex;
+  }
+}
+
+@keyframes hidden {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+    display: none;
+  }
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
   }
 }

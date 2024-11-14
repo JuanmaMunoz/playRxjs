@@ -31,7 +31,6 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.subscription.add(
       this.menuService.openMenu.subscribe((open: boolean) => {
-        console.log('open->', open);
         this.menu.nativeElement.classList.toggle('menu--show');
         this.menu.nativeElement.classList.toggle('menu--hidden');
       }),

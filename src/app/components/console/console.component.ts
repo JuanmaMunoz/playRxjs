@@ -13,7 +13,6 @@ export class ConsoleComponent {
   constructor(private render: Renderer2) {}
 
   public clearConsole(): void {
-    console.log('console-' + this.id);
     const container = document.getElementById('console-' + this.id);
     this.render.setProperty(container, 'innerHTML', '');
   }

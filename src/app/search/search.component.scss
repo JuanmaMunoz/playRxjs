@@ -34,3 +34,14 @@
     }
   }
 }
+
+@media screen and (max-width: 800px) {
+  .search {
+    &__text {
+      width: 20rem;
+    }
+    &__result {
+      width: 19rem;
+    }
+  }
+}
