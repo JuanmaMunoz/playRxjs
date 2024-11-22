@@ -8,6 +8,10 @@
   height: 9.5rem;
   display: flex;
   justify-content: center;
+  &--border {
+    border-bottom: 1px solid var(--primary-color);
+    box-shadow: 0 0.1rem 0.5rem var(--secondary-color);
+  }
   &__container {
     display: flex;
     justify-content: center;
@@ -30,10 +34,10 @@
     }
   }
   &__logo {
-    margin-top: 1rem;
+    margin-top: 0.4rem;
   }
   &__title {
-    margin-top: 3rem;
+    margin-top: 2.5rem;
     margin-left: 1rem;
     display: flex;
     flex-direction: column;
@@ -47,7 +51,7 @@
     }
   }
   &__search {
-    margin-top: 3.5rem;
+    margin-top: 3rem;
     margin-left: 1rem;
   }
 
@@ -60,6 +64,7 @@
 
 @media screen and (max-width: 1350px) {
   .header {
+    height: 8.5rem;
     &__page {
       display: none;
     }
@@ -119,7 +124,7 @@
 
 @keyframes opacity {
   from {
-    opacity: 0.5;
+    opacity: 0.2;
   }
   to {
     opacity: 1;

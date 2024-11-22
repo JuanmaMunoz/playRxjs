@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { LogoComponent } from '../../components/logo/logo.component';
+import { SectionComponent } from '../../components/section/section.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [LogoComponent],
+  imports: [LogoComponent, SectionComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

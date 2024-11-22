@@ -1,29 +1,25 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { filter, fromEvent, Subscription } from 'rxjs';
 import { HeaderComponent } from './components/header/header.component';
 import { MenuComponent } from './components/menu/menu.component';
-import { IntroductionComponent } from './introduction/introduction.component';
 import { MenuService } from './services/menu.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [
-    RouterOutlet,
-    CommonModule,
-    MenuComponent,
-    HeaderComponent,
-    IntroductionComponent,
-  ],
+  imports: [CommonModule, MenuComponent, HeaderComponent, RouterModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit, OnDestroy {
-  title = 'playRxjs';
+  public currentUrl = '/';
   private subscription = new Subscription();
-  constructor(private menuService: MenuService) {}
+  constructor(
+    private menuService: MenuService,
+    private router: Router,
+  ) {}
   ngOnInit(): void {
     this.subscription.add(
       fromEvent(document, 'click')

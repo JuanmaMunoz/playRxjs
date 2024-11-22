@@ -1,7 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { fromEvent, interval, map, scan, Subscription, take, tap } from 'rxjs';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
+import {
+  filter,
+  fromEvent,
+  interval,
+  map,
+  scan,
+  Subscription,
+  take,
+} from 'rxjs';
 import { IIntroduction } from '../../models/interfaces';
 import { SearchComponent } from '../../search/search.component';
 import { IntroductionService } from '../../services/introduction.service';
@@ -18,15 +26,30 @@ import { LogoComponent } from '../logo/logo.component';
 export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   private subscription = new Subscription();
   public showPage: string = 'header__page--hidden';
+  public headerBorder: string = '';
   public opacity: string = '';
   public title!: any;
   public showTitle: boolean = false;
+  public currentUrl: string = '/';
   constructor(
     private menuService: MenuService,
+    private router: Router,
     public introductionService: IntroductionService,
   ) {}
 
   ngOnInit(): void {
+    this.subscription.add(
+      this.router.events
+        .pipe(
+          filter(
+            (event): event is NavigationEnd => event instanceof NavigationEnd,
+          ),
+        )
+        .subscribe((event: NavigationEnd) => {
+          this.currentUrl = event.urlAfterRedirects;
+        }),
+    );
+
     this.subscription.add(
       this.introductionService.info.subscribe((intro: IIntroduction) => {
         this.setTitle(intro.title);
@@ -46,8 +69,9 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       fromEvent(document, 'scroll')
         .pipe(map(() => window.scrollY))
         .subscribe((e: number) => {
-          if (e >= 250) {
+          if (e >= 200) {
             this.showPage = 'header__page--show';
+            this.headerBorder = 'header--border';
             this.opacity = '';
             if (!this.showTitle)
               this.setTitle(this.introductionService.info.getValue().title);
@@ -55,6 +79,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
           } else {
             this.showTitle = false;
             this.showPage = 'header__page--hidden';
+            this.headerBorder = '';
             this.opacity = 'header__container--opacity';
           }
         }),
@@ -62,11 +87,10 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private setTitle(title: string): void {
-    this.title = interval(50).pipe(
+    this.title = interval(25).pipe(
       take(title.length),
       map((index) => title[index]),
-      tap((e) => console.log(e)),
-      scan((text, character) => text + character),
+      scan((state, c) => state + c),
     );
   }
 

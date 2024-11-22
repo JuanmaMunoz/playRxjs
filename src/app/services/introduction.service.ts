@@ -9,9 +9,10 @@ import { IIntroduction } from '../models/interfaces';
 })
 export class IntroductionService {
   constructor(private route: ActivatedRoute) {}
-  public info: BehaviorSubject<IIntroduction> = new BehaviorSubject(
-    {} as IIntroduction,
-  );
+  public info: BehaviorSubject<IIntroduction> = new BehaviorSubject({
+    title: '',
+    description: '',
+  } as IIntroduction);
 
   setIntroduction(url: string): void {
     const { title, description, category } = introductions.filter(
