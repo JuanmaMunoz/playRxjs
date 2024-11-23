@@ -1,17 +1,14 @@
 .header {
   background: linear-gradient(70deg, var(--dark-color), #2c242e);
-  position: fixed;
+  box-shadow: 0 0.1rem 0.5rem var(--dark2-color);
+  display: flex;
+  height: 9.5rem;
+  justify-content: center;
   left: 0;
+  position: fixed;
   top: 0;
   width: 100%;
   z-index: 10000;
-  height: 9.5rem;
-  display: flex;
-  justify-content: center;
-  &--border {
-    border-bottom: 1px solid var(--primary-color);
-    box-shadow: 0 0.1rem 0.5rem var(--secondary-color);
-  }
   &__container {
     display: flex;
     justify-content: center;
@@ -20,39 +17,40 @@
     }
   }
   &__page {
-    font-size: 2.5rem;
     color: var(--primary-color);
-    margin: 3.5rem 2rem 0 0;
+    font-size: 2.5rem;
     font-weight: bold;
+    margin: 3.5rem 2rem 0 0;
     &--hidden {
-      display: none;
       animation: hidden 1s;
+      display: none;
     }
     &--show {
-      display: flex;
       animation: show 1s;
+      display: flex;
     }
   }
   &__logo {
     margin-top: 0.4rem;
   }
   &__title {
-    margin-top: 2.5rem;
-    margin-left: 1rem;
     display: flex;
     flex-direction: column;
+    margin-left: 1rem;
+    margin-top: 2.5rem;
+    text-align: center;
     &__main {
-      font-size: 2.5rem;
       color: var(--primary-color);
+      font-size: 2.5rem;
     }
     &__secondary {
-      font-size: 1.2rem;
       color: var(--secondary-color);
+      font-size: 1.2rem;
     }
   }
   &__search {
-    margin-top: 3rem;
     margin-left: 1rem;
+    margin-top: 3rem;
   }
 
   &__btn {
@@ -64,7 +62,6 @@
 
 @media screen and (max-width: 1350px) {
   .header {
-    height: 8.5rem;
     &__page {
       display: none;
     }
@@ -79,7 +76,7 @@
 @media screen and (max-width: 992px) {
   .header {
     justify-content: left;
-    margin-left: 1rem;
+    padding-left: 0.5rem;
     &__title {
       &__main {
         font-size: 2rem;
@@ -96,6 +93,7 @@
 
 @media screen and (max-width: 668px) {
   .header {
+    height: 8rem;
     &__search {
       display: none;
     }
@@ -107,8 +105,8 @@
     opacity: 0.5;
   }
   to {
-    opacity: 1;
     display: flex;
+    opacity: 1;
   }
 }
 
@@ -117,8 +115,8 @@
     opacity: 0.5;
   }
   to {
-    opacity: 1;
     display: none;
+    opacity: 1;
   }
 }
 

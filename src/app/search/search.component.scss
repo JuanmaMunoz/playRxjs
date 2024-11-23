@@ -1,37 +1,37 @@
 .search {
   position: relative;
   &__text {
-    padding: 0 0 0 1rem;
-    color: var(--clear-color);
     background-color: var(--dark-color);
+    border: 2px solid var(--primary-color);
+    border-radius: 3rem;
+    color: var(--clear-color);
     font-size: 1.2rem;
     font-weight: bold;
     height: 3.5rem;
-    width: 30rem;
-    border-radius: 3rem;
-    border: 2px solid var(--primary-color);
+    padding: 0 0 0 1rem;
     transition: border-color 0.3s ease;
+    width: 30rem;
 
     &:focus {
-      border-color: var(--secondary-color);
+      //border-color: var(--secondary-color);
       box-shadow: 0 0 1rem var(--secondary-color);
       outline: none;
     }
   }
   &__result {
+    background-color: var(--dark-color);
+    border: 1px solid var(--primary-color);
+    border-radius: var(--radius);
+    box-shadow: 0 0 1rem var(--secondary-color);
+    left: 0px;
+    max-height: 30rem;
+    padding: 1rem;
     position: relative;
     top: 1rem;
-    left: 0px;
-    padding: 1rem;
     width: 29rem;
-    max-height: 30rem;
-    border-radius: var(--radius);
-    background-color: var(--dark-color);
-    border: 2px solid var(--secondary-color);
-    box-shadow: 0 0 1rem var(--secondary-color);
     &__item {
-      cursor: pointer;
       color: var(--primary-color);
+      cursor: pointer;
       margin-bottom: 1rem;
     }
   }

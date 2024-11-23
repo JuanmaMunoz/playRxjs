@@ -12,11 +12,12 @@ import { transformations } from '../../info/transformations';
 import { MenuItemsComponent } from '../../menu-items/menu-items.component';
 import { IMenuItems } from '../../models/interfaces';
 import { MenuService } from '../../services/menu.service';
+import { LogoComponent } from '../logo/logo.component';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule, RouterModule, MenuItemsComponent],
+  imports: [CommonModule, RouterModule, MenuItemsComponent, LogoComponent],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
 })

@@ -26,7 +26,6 @@ import { LogoComponent } from '../logo/logo.component';
 export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   private subscription = new Subscription();
   public showPage: string = 'header__page--hidden';
-  public headerBorder: string = '';
   public opacity: string = '';
   public title!: any;
   public showTitle: boolean = false;
@@ -71,7 +70,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         .subscribe((e: number) => {
           if (e >= 200) {
             this.showPage = 'header__page--show';
-            this.headerBorder = 'header--border';
             this.opacity = '';
             if (!this.showTitle)
               this.setTitle(this.introductionService.info.getValue().title);
@@ -79,7 +77,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
           } else {
             this.showTitle = false;
             this.showPage = 'header__page--hidden';
-            this.headerBorder = '';
             this.opacity = 'header__container--opacity';
           }
         }),

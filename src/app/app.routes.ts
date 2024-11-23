@@ -20,4 +20,5 @@ export const routes: Routes = [
   { path: 'examples3', component: Examples3Component },
   { path: 'examples4', component: Examples4Component },
   { path: 'examples5', component: Examples5Component },
+  { path: '**', component: HomeComponent },
 ];

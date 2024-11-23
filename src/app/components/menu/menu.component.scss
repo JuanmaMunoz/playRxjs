@@ -1,42 +1,66 @@
 .menu {
-  position: fixed;
-  height: 100vh;
-  right: 0px;
-  top: 0;
+  background-color: var(--dark-color);
   border-left: solid 1px var(--primary-color);
   box-shadow: -0.1rem 0 1rem var(--secondary-color);
-  background-color: var(--dark-color);
+  height: 100vh;
+  position: fixed;
+  right: 0px;
+  top: 0;
   width: 25rem;
   z-index: 9999999;
   &--hidden {
-    display: none;
     animation: hide 0.2s ease;
+    display: none;
   }
   &--show {
-    display: block;
     animation: show 0.2s ease;
+    display: block;
+  }
+  &__header {
+    margin-top: 1rem;
+    padding: 1rem;
+    &__main {
+      color: var(--primary-color);
+      font-size: 2.5rem;
+    }
+    &__secondary {
+      color: var(--secondary-color);
+      font-size: 1rem;
+    }
+  }
+}
+
+.close {
+  color: var(--primary-color);
+  cursor: pointer;
+  font-size: 2rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  :hover {
+    color: var(--secondary-color);
   }
 }
 
 @keyframes hide {
   from {
-    right: -15rem;
     display: block;
     opacity: 0.5;
+    right: -15rem;
   }
   to {
-    right: -30rem;
     display: none;
+    right: -30rem;
   }
 }
 
 @keyframes show {
   from {
-    right: -15rem;
     opacity: 0.5;
+    right: -15rem;
   }
   to {
-    right: 0rem;
     display: block;
+    right: 0rem;
   }
 }
