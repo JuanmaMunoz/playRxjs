@@ -26,8 +26,8 @@
     left: 0px;
     max-height: 30rem;
     padding: 1rem;
-    position: relative;
-    top: 1rem;
+    position: absolute;
+    top: 4.5rem;
     width: 29rem;
     &__item {
       color: var(--primary-color);
@@ -37,7 +37,7 @@
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 825px) {
   .search {
     &__text {
       width: 20rem;

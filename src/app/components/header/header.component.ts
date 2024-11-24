@@ -30,6 +30,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   public title!: any;
   public showTitle: boolean = false;
   public currentUrl: string = '/';
+  public windowWidth: number = window.innerWidth;
+  public logoWidth!: number;
   constructor(
     private menuService: MenuService,
     private router: Router,
@@ -37,6 +39,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.setLogoWidth(window.innerWidth);
+    this.listenResizeWindow();
     this.subscription.add(
       this.router.events
         .pipe(
@@ -61,6 +65,18 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  private listenResizeWindow(): void {
+    this.subscription.add(
+      fromEvent(window, 'resize')
+        .pipe(map(() => window.innerWidth))
+        .subscribe((width: number) => this.setLogoWidth(width)),
+    );
+  }
+
+  private setLogoWidth(width: number): void {
+    this.logoWidth = width > 690 ? 110 : 90;
   }
 
   private showHidePage(): void {

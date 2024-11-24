@@ -1,21 +1,25 @@
 .home {
   text-align: center;
   &__front {
-    display: inline-flex;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     padding: 2rem;
     &__text {
-      margin-top: 3rem;
-      margin-left: 2rem;
       color: var(--clear-color);
+      display: flex;
+      flex-direction: column;
+      margin-left: 2rem;
       width: 500px;
       & > h1 {
+        color: var(--primary-color);
         font-size: 4.2rem;
         margin: 1rem;
-        color: var(--primary-color);
       }
       & > h2 {
-        font-size: 3rem;
         color: var(--secondary-color);
+        font-size: 3rem;
         margin: 1rem;
       }
       & > h6 {
@@ -24,9 +28,53 @@
       }
     }
     &__technologies {
-      display: inline;
-      & > img {
-        margin-left: 2rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+    }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .home {
+    &__front {
+      &__text {
+        width: auto;
+        & > h1 {
+          font-size: 3rem;
+        }
+        & > h2 {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 668px) {
+  .home {
+    &__front {
+      flex-direction: column;
+      padding-top: 1rem;
+      &__text {
+        width: auto;
+        & > h1 {
+          font-size: 3rem;
+        }
+        & > h2 {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .home {
+    &__front {
+      &__technologies {
+        align-items: center;
+        flex-direction: column;
       }
     }
   }

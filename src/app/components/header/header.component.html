@@ -4,7 +4,7 @@
       <div [class]="showPage" class="header__page">{{ title | async }}</div>
     }
     <div *ngIf="currentUrl !== '/'" class="header__logo">
-      <app-logo [width]="110" [borderWidth]="2" />
+      <app-logo [width]="logoWidth" [borderWidth]="2" />
     </div>
     <div class="header__title">
       <div class="header__title__main">Play Rxjs</div>

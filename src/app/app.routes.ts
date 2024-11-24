@@ -14,11 +14,10 @@ export const routes: Routes = [
     path: 'operators/transformation/:id',
     component: TransformationComponent,
   },
-  { path: '', component: Examples1Component },
   { path: 'examples1', component: Examples1Component },
   { path: 'examples2', component: Examples2Component },
   { path: 'examples3', component: Examples3Component },
   { path: 'examples4', component: Examples4Component },
   { path: 'examples5', component: Examples5Component },
-  { path: '**', component: HomeComponent },
+  { path: '**', redirectTo: '' },
 ];

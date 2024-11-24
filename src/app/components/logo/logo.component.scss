@@ -1,21 +1,21 @@
 .logo {
   & > img {
-    border-radius: 50%;
-    border: solid;
     //border-color: var(--primary-color);
     animation: spin 2s infinite linear;
+    border: solid;
+    border-radius: 50%;
     opacity: 1;
     z-index: 1;
   }
 }
 
-@media screen and (max-width: 668px) {
+/*@media screen and (max-width: 668px) {
   .logo {
     & > img {
       width: 90px !important;
     }
   }
-}
+}*/
 
 @keyframes spin {
   from {

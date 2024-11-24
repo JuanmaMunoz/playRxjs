@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { fromEvent, map, Subscription } from 'rxjs';
 import { LogoComponent } from '../../components/logo/logo.component';
 import { SectionComponent } from '../../components/section/section.component';
 
@@ -9,8 +10,35 @@ import { SectionComponent } from '../../components/section/section.component';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit, OnDestroy {
   public image: string = 'assets/images/rxjs.jpg';
   public angular: string = 'assets/images/angular.png';
   public rxjs: string = 'assets/images/rxjs-logo.svg';
+  public logoWidth!: number;
+  private subscription = new Subscription();
+
+  ngOnInit(): void {
+    this.setLogoWidth(window.innerWidth);
+    this.listenResizeWindow();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  private listenResizeWindow(): void {
+    this.subscription.add(
+      fromEvent(window, 'resize')
+        .pipe(map(() => window.innerWidth))
+        .subscribe((width: number) => this.setLogoWidth(width)),
+    );
+  }
+
+  private setLogoWidth(width: number): void {
+    if (width > 668) {
+      this.logoWidth = width < 992 ? width / 3 : 350;
+    } else {
+      this.logoWidth = width / 1.5;
+    }
+  }
 }
