@@ -11,13 +11,20 @@ import { Observable, of, Subscription } from 'rxjs';
 import { transformations } from '../../info/transformations';
 import { MenuItemsComponent } from '../../menu-items/menu-items.component';
 import { IMenuItems } from '../../models/interfaces';
+import { SearchComponent } from '../../search/search.component';
 import { MenuService } from '../../services/menu.service';
 import { LogoComponent } from '../logo/logo.component';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule, RouterModule, MenuItemsComponent, LogoComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    MenuItemsComponent,
+    LogoComponent,
+    SearchComponent,
+  ],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
 })

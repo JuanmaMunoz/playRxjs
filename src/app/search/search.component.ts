@@ -1,7 +1,22 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { concatMap, fromEvent, map, Observable, of, tap } from 'rxjs';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import {
+  concatMap,
+  fromEvent,
+  map,
+  Observable,
+  of,
+  Subscription,
+  tap,
+} from 'rxjs';
 import { transformations } from '../info/transformations';
 import { IInfo } from '../models/interfaces';
 import { MenuService } from '../services/menu.service';
@@ -9,25 +24,31 @@ import { MenuService } from '../services/menu.service';
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss',
 })
-export class SearchComponent implements OnInit, AfterViewInit {
+export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
+  @Input() modeMenu: string = '';
   public obsResult!: Observable<IInfo[]>;
   public search: string = '';
   public visibleResult: boolean = false;
+  private subscrption = new Subscription();
+  constructor(private menuService: MenuService) {}
 
-  constructor(
-    private render: Renderer2,
-    private router: Router,
-    private menuService: MenuService,
-  ) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.subscrption.add(
+      this.menuService.openMenu.subscribe(() => (this.visibleResult = false)),
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.subscrption.unsubscribe();
+  }
 
   ngAfterViewInit(): void {
     this.obsResult = fromEvent(
-      document.getElementById('search-text')!,
+      document.getElementsByClassName('search__text')!,
       'input',
     ).pipe(
       concatMap((e: any) =>
@@ -48,10 +69,13 @@ export class SearchComponent implements OnInit, AfterViewInit {
   }
 
   public navigate(category: string, id: string): void {
-    const element = document.getElementById('search-text');
-    this.render.setProperty(element, 'value', id);
+    this.search = id;
     this.visibleResult = false;
-    //this.router.navigate([`/${category}/${id}`]);
     this.menuService.navigate(category, id);
+  }
+
+  public clearText(): void {
+    this.search = '';
+    this.visibleResult = false;
   }
 }

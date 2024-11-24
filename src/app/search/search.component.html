@@ -1,11 +1,20 @@
-<div class="search">
-  <input
-    id="search-text"
-    class="search__text"
-    type="text"
-    placeholder="Search..."
-    autocomplete="off"
-  />
+<div [class]="modeMenu" class="search">
+  <div class="search__text">
+    <input
+      [class]="modeMenu"
+      class="search__text__input"
+      type="text"
+      [(ngModel)]="search"
+      placeholder="Search..."
+      autocomplete="off"
+    />
+    <i
+      *ngIf="search"
+      (click)="clearText()"
+      class="search__text__clean bi bi-x-circle"
+      [class]="modeMenu"
+    ></i>
+  </div>
 
   @if (obsResult | async; as result) {
     @if (result.length > 0 && visibleResult) {

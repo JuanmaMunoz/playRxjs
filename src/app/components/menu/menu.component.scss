@@ -28,6 +28,10 @@
       font-size: 1rem;
     }
   }
+  &__search {
+    display: none;
+    padding: 1rem;
+  }
 }
 
 .close {
@@ -39,6 +43,14 @@
   top: 1rem;
   :hover {
     color: var(--secondary-color);
+  }
+}
+
+@media screen and (max-width: 690px) {
+  .menu {
+    &__search {
+      display: block;
+    }
   }
 }
 

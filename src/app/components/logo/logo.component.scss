@@ -1,6 +1,5 @@
 .logo {
   & > img {
-    //border-color: var(--primary-color);
     animation: spin 2s infinite linear;
     border: solid;
     border-radius: 50%;
@@ -8,14 +7,6 @@
     z-index: 1;
   }
 }
-
-/*@media screen and (max-width: 668px) {
-  .logo {
-    & > img {
-      width: 90px !important;
-    }
-  }
-}*/
 
 @keyframes spin {
   from {

@@ -3,7 +3,7 @@
     @if (introductionService.info | async; as info) {
       <div [class]="showPage" class="header__page">{{ title | async }}</div>
     }
-    <div *ngIf="currentUrl !== '/'" class="header__logo">
+    <div *ngIf="currentUrl !== '/'" [routerLink]="'/'" class="header__logo">
       <app-logo [width]="logoWidth" [borderWidth]="2" />
     </div>
     <div class="header__title">
