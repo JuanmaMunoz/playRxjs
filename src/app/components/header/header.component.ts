@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import {
   filter,
   fromEvent,
@@ -10,11 +11,9 @@ import {
   Subscription,
   take,
 } from 'rxjs';
-import { IIntroduction } from '../../models/interfaces';
 import { SearchComponent } from '../../search/search.component';
 import { IntroductionService } from '../../services/introduction.service';
 import { MenuService } from '../../services/menu.service';
-import { LanguageComponent } from '../language/language.component';
 import { LogoComponent } from '../logo/logo.component';
 
 @Component({
@@ -25,7 +24,7 @@ import { LogoComponent } from '../logo/logo.component';
     CommonModule,
     RouterModule,
     SearchComponent,
-    LanguageComponent,
+    TranslateModule,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -43,6 +42,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     private menuService: MenuService,
     private router: Router,
     public introductionService: IntroductionService,
+    private translate: TranslateService,
   ) {}
 
   ngOnInit(): void {
@@ -61,8 +61,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     );
 
     this.subscription.add(
-      this.introductionService.info.subscribe((intro: IIntroduction) => {
-        this.setTitle(intro.title);
+      this.introductionService.info.subscribe((title: string) => {
+        this.setTitle(title);
       }),
     );
   }
@@ -95,7 +95,11 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
             this.showPage = 'header__page--show';
             this.opacity = '';
             if (!this.showTitle)
-              this.setTitle(this.introductionService.info.getValue().title);
+              this.setTitle(
+                this.translate.instant(
+                  this.introductionService.info.getValue() + '.title',
+                ),
+              );
             this.showTitle = true;
           } else {
             this.showTitle = false;

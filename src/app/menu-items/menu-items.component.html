@@ -1,6 +1,8 @@
 <div class="menu-items">
   <div class="menu-items__title">
-    <span (click)="navigate(info.url)">{{ info.title }} </span>
+    <span (click)="navigate(info.url)"
+      >{{ info.category + ".title" | translate }}
+    </span>
     @if (show) {
       <i
         (click)="showHideList()"

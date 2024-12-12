@@ -1,8 +1,32 @@
 {
+  "english": "Inglés",
+  "spanish": "Español",
   "transformation": {
+    "title": "Operadores de transformación",
+    "description": "<b>Los operadores de transformación de RxJS</b> son herramientas que te permiten cambiar (o 'transformar') los datos que fluyen a través de un flujo observable. Imagina que tienes un flujo de valores, como números u objetos, y quieres modificar, filtrar o reestructurar estos valores antes de que lleguen al observador final.",
     "map": {
       "title": "Operador map",
-      "description": "<p>The map operator in RxJS applies a function to each value emitted by an observable and returns an observable that emits the transformed values.<p><p>In this example, we transform the user's name using the map operator and use the array's map method to update the name of each item within it.</p>"
+      "description": "<p>El operador map en RxJS aplica una función a cada valor emitido por un observable y devuelve un observable que emite los valores transformados.</p><p>En este ejemplo, transformamos el nombre del usuario utilizando el operador map y usamos el método map del arreglo para actualizar el nombre de cada elemento dentro de él.</p>"
+    },
+    "mapTo": {
+      "title": "Operador mapTo",
+      "description": "<p>El operador mapTo en RxJS reemplaza cada valor emitido por un observable con un valor específico que proporcionas.</p><p>En este ejemplo, con el operador mapTo, reemplazamos todos los valores del observable con el valor <b>fresa</b>.</p>"
+    },
+    "mergeMap": {
+      "title": "Operador mergeMap",
+      "description": "<p>El operador mergeMap en RxJS se utiliza para transformar los valores emitidos por un observable en otros observables y luego <b>'aplana'</b> o combina todas esas emisiones en un único flujo de datos. Esto es útil cuando deseas realizar múltiples operaciones asíncronas en secuencia y combinar sus resultados.</p><p>En este ejemplo, combinamos un observable compuesto por una lista de letras con un observable que contiene un rango numérico del 1 al 2.</p>"
+    },
+    "mergeMapTo": {
+      "title": "Operador mergeMapTo",
+      "description": "<p>El operador mergeMapTo en RxJS se utiliza para reemplazar cada valor emitido por un observable con un observable diferente que especifiques, y luego 'aplana' todos los resultados en un único flujo de salida.</p><p>En este ejemplo, combinamos un observable compuesto por una lista de letras con un observable que contiene un rango numérico del 1 al 2. <b>A diferencia de mergeMap</b>, no tomamos en cuenta la salida del primer observable, emitiendo el <b>mismo valor</b> para cada letra.</p>"
+    },
+    "switchMap": {
+      "title": "Operador switchMap",
+      "description": "<p>El operador switchMap en RxJS se utiliza para cambiar de un observable a uno nuevo cada vez que el observable original emite un nuevo valor. Cuando esto ocurre, switchMap <b>cancela (o 'se desuscribe de')</b> el observable anterior y solo escucha al más reciente.</p><p>En este ejemplo, combinamos el observable de un evento de clic en un botón con un observable creado usando un intervalo. Cancelamos el observable resultante cuando se hace clic en el botón de detener utilizando el operador takeUntil. Cada vez que hacemos clic en el botón de inicio, podemos ver en la consola cómo se cancela el observable anterior.</p>"
+    },
+    "concatMap": {
+      "title": "Operador concatMap",
+      "description": "<p>El operador concatMap en RxJS se utiliza para encadenar observables uno tras otro, asegurándose de que se ejecuten en secuencia. Cuando concatMap recibe un valor, lo mapea a un nuevo observable (como una solicitud de red o un temporizador) y espera a que este se complete antes de pasar al siguiente.</p><p>En este ejemplo, combinamos el observable de un evento de clic en un botón con el observable creado usando un intervalo. Cancelamos el observable resultante cuando hacemos clic en el botón de detener utilizando el operador takeUntil. Cada vez que hacemos clic en el botón de inicio, podemos ver en la consola cómo los observables se concatenan de manera ordenada, respetando su secuencia.</p>"
     }
   }
 }

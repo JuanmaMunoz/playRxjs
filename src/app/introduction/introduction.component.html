@@ -1,4 +1,4 @@
 <div class="introduction">
-  <h1 [innerHTML]="info.title"></h1>
-  <p [innerHTML]="info.description"></p>
+  <h1 [innerHTML]="info.category + '.title' | translate"></h1>
+  <p [innerHTML]="info.category + '.description' | translate"></p>
 </div>

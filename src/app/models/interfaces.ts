@@ -10,8 +10,6 @@ export interface IUser {
 export interface IInfo {
   url: string;
   category: string;
-  title: string;
-  description: string;
   items: IInfoItem[];
 }
 
@@ -29,10 +27,4 @@ export interface IInfoItem {
 export interface IHobby {
   name: string;
   hobbies: string[];
-}
-
-export interface IIntroduction {
-  category: string;
-  title: string;
-  description: string;
 }

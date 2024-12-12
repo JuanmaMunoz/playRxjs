@@ -3,17 +3,17 @@ import { IInfo } from '../models/interfaces';
 export const transformations: IInfo = {
   url: 'operators/transformation',
   category: 'transformation',
-  title: 'Transformation operators',
-  description:
-    '<b>RxJS transformation operators</b> are tools that let you change (or "transform") the data that flows through an observable stream. Imagine you have a stream of values, like numbers or objects, and you want to modify, filter, or reshape these values before they reach the final observer.',
-
   items: [
     {
       id: 'map',
-      code: `this.userService
-    .getUsers()
-    .pipe(
-      map((e: IUser[]) =>
+      code: `public getUsers(): Observable<IUser[]> {
+      const url = 'assets/data/data2.json';
+      return this.http.get<IUser[]>(url);
+}
+
+this.userService.getUsers()
+      .pipe(
+        map((e: IUser[]) =>
         e.map((u: IUser) => ({ ...u, name: u.name + ' de todos los santos' }))
       )
     )
