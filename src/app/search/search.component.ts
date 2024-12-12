@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import {
   concatMap,
   fromEvent,
@@ -18,19 +19,19 @@ import {
   tap,
 } from 'rxjs';
 import { transformations } from '../info/transformations';
-import { IInfo } from '../models/interfaces';
+import { IInfo, IInfoItem, ISearch } from '../models/interfaces';
 import { MenuService } from '../services/menu.service';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, TranslateModule],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss',
 })
 export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() modeMenu: string = '';
-  public obsResult!: Observable<IInfo[]>;
+  public obsResult!: Observable<ISearch[]>;
   public search: string = '';
   public visibleResult: boolean = false;
   private subscrption = new Subscription();
@@ -47,25 +48,33 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
+    const allInfo: ISearch[] = this.setSearchList([transformations]);
     this.obsResult = fromEvent(
       document.getElementsByClassName('search__text')!,
       'input',
     ).pipe(
       concatMap((e: any) =>
-        of(transformations).pipe(
-          map((a: IInfo[]) =>
+        of(allInfo).pipe(
+          map((a: ISearch[]) =>
             a.filter(
-              (i: IInfo) =>
-                e.target!.value.length > 1 &&
-                i.title
-                  .toLocaleLowerCase()
-                  .includes(e.target.value.toLocaleLowerCase()),
+              (i: ISearch) =>
+                e.target!.value.length > 1 && i.id.includes(e.target.value),
             ),
           ),
           tap((e) => (this.visibleResult = true)),
         ),
       ),
     );
+  }
+
+  private setSearchList(info: IInfo[]): ISearch[] {
+    let searchList: ISearch[] = [];
+    info.forEach((e: IInfo) => {
+      e.items.forEach((i: IInfoItem) =>
+        searchList.push({ id: i.id, category: e.category, url: e.url }),
+      );
+    });
+    return searchList;
   }
 
   public navigate(category: string, id: string): void {

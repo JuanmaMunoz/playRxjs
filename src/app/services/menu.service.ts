@@ -10,7 +10,7 @@ export class MenuService {
   public openMenu: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   public navigate(category: string, id?: string): void {
-    const url = `/${category}/${id}`;
+    const url = id ? `/${category}/${id}` : `/${category}`;
     if (url === this.router.url) {
       this.router.navigate([`/${category}/`]);
     }

@@ -1,9 +1,9 @@
 <div class="transformations">
-  <app-introduction></app-introduction>
-  @for (i of info | async; track $index) {
-    @switch (i.title) {
-      @case ("Operator switchMap") {
-        <app-example [info]="i">
+  <app-introduction [info]="info"></app-introduction>
+  @for (i of info.items; track $index) {
+    @switch (i.id) {
+      @case ("switchMap") {
+        <app-example [infoItem]="i" [category]="info.category">
           <div class="transformations__buttons">
             <button id="btn-start-sw-map" class="btn btn--primary">
               Start
@@ -14,8 +14,8 @@
           </div>
         </app-example>
       }
-      @case ("Operator concatMap") {
-        <app-example [info]="i">
+      @case ("concatMap") {
+        <app-example [infoItem]="i" [category]="info.category">
           <div class="transformations__buttons">
             <button id="btn-start-cc-map" class="btn btn--primary">
               Start
@@ -27,7 +27,7 @@
         </app-example>
       }
       @default {
-        <app-example [info]="i"></app-example>
+        <app-example [infoItem]="i" [category]="info.category"></app-example>
       }
     }
   }

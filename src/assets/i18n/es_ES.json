@@ -1,0 +1,8 @@
+{
+  "transformation": {
+    "map": {
+      "title": "Operador map",
+      "description": "<p>The map operator in RxJS applies a function to each value emitted by an observable and returns an observable that emits the transformed values.<p><p>In this example, we transform the user's name using the map operator and use the array's map method to update the name of each item within it.</p>"
+    }
+  }
+}

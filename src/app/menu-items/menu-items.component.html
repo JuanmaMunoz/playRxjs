@@ -1,19 +1,23 @@
-@if (menuItems | async; as menu) {
-  <div class="menu-items">
-    <div (click)="showHideList()" class="menu-items__title">
-      {{ menu.title }}
-      @if (show) {
-        <i class="menu-items__icons bi bi-caret-up-fill"></i>
-      } @else {
-        <i class="menu-items__icons bi bi-caret-down-fill"></i>
-      }
-    </div>
-    <div #list class="menu-items__list menu-items__list--hidden">
-      @for (i of menu.items; track $index) {
-        <a class="menu-items__list__link" (click)="navigate(i.category, i.id)"
-          >- {{ i.title }}</a
-        >
-      }
-    </div>
+<div class="menu-items">
+  <div class="menu-items__title">
+    <span (click)="navigate(info.url)">{{ info.title }} </span>
+    @if (show) {
+      <i
+        (click)="showHideList()"
+        class="menu-items__icons bi bi-caret-up-fill"
+      ></i>
+    } @else {
+      <i
+        (click)="showHideList()"
+        class="menu-items__icons bi bi-caret-down-fill"
+      ></i>
+    }
   </div>
-}
+  <div #list class="menu-items__list menu-items__list--hidden">
+    @for (i of info.items; track $index) {
+      <a class="menu-items__list__link" (click)="navigate(info.url, i.id)"
+        >- {{ info.category + "." + i.id + ".title" | translate }}</a
+      >
+    }
+  </div>
+</div>

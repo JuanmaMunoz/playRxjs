@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { filter, fromEvent, Subscription } from 'rxjs';
 import { HeaderComponent } from './components/header/header.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { Language } from './models/enums';
 import { MenuService } from './services/menu.service';
 
 @Component({
@@ -18,9 +20,18 @@ export class AppComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
   constructor(
     private menuService: MenuService,
-    private router: Router,
+    private translate: TranslateService,
   ) {}
   ngOnInit(): void {
+    const lang = localStorage.getItem('language') || Language.ENGLISH;
+    this.translate.use(lang);
+    this.subscription.add(
+      this.translate.onLangChange.subscribe((data) => {
+        console.log(data.lang);
+        localStorage.setItem('language', data.lang);
+      }),
+    );
+
     this.subscription.add(
       fromEvent(document, 'click')
         .pipe(

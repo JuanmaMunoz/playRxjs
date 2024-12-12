@@ -10,8 +10,6 @@ import {
   mapTo,
   mergeMap,
   mergeMapTo,
-  Observable,
-  of,
   range,
   Subscription,
   switchMap,
@@ -32,7 +30,7 @@ import { UserService } from '../../services/user.service';
   styleUrl: './transformation.component.scss',
 })
 export class TransformationComponent implements OnInit, AfterViewInit {
-  public info!: Observable<IInfo[]>;
+  public info!: IInfo;
   public subscription = new Subscription();
 
   constructor(
@@ -43,7 +41,7 @@ export class TransformationComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.info = of(transformations);
+    this.info = transformations;
     const url =
       '/' + this.route.snapshot.url.map((segment) => segment.path).join('/');
     this.introductionService.setIntroduction(url);

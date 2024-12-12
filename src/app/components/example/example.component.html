@@ -1,11 +1,11 @@
-<div [id]="'operator-' + info.id" class="example">
+<div [id]="'operator-' + infoItem.id" class="example">
   <div class="row row--2">
     <div class="col example__info">
       <div class="example__info__title">
-        <span>/*</span> {{ info.title }} <span>*/</span>
+        <span>/*</span> {{ title | translate }} <span>*/</span>
       </div>
       <div
-        [innerHTML]="info.description"
+        [innerHTML]="description | translate"
         class="example__info__description"
       ></div>
       <div class="example__info__content">
@@ -13,8 +13,8 @@
       </div>
     </div>
     <div class="col example__code">
-      <pre><code class="language-js line-numbers">{{ info.code }}</code></pre>
-      <app-console [id]="info.id"></app-console>
+      <pre><code class="language-js line-numbers">{{ infoItem.code }}</code></pre>
+      <app-console [id]="infoItem.id"></app-console>
     </div>
   </div>
 </div>

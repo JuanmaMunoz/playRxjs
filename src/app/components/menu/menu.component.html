@@ -1,5 +1,6 @@
 <div #menu class="menu menu--show">
   <div class="close"><i class="bi bi-x-circle-fill"></i></div>
+  <app-language></app-language>
   <div class="menu__header">
     <div class="menu__header__main">Play Rxjs</div>
     <div class="menu__header__secondary">Unlock new way to learn</div>
@@ -8,6 +9,6 @@
     <app-search [modeMenu]="'menu'"></app-search>
   </div>
   <div class="menu__list">
-    <app-menu-items [menuItems]="menuItems"></app-menu-items>
+    <app-menu-items [info]="infoTransformation"></app-menu-items>
   </div>
 </div>

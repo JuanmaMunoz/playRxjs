@@ -14,12 +14,19 @@ import { IIntroduction } from '../../models/interfaces';
 import { SearchComponent } from '../../search/search.component';
 import { IntroductionService } from '../../services/introduction.service';
 import { MenuService } from '../../services/menu.service';
+import { LanguageComponent } from '../language/language.component';
 import { LogoComponent } from '../logo/logo.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [LogoComponent, CommonModule, RouterModule, SearchComponent],
+  imports: [
+    LogoComponent,
+    CommonModule,
+    RouterModule,
+    SearchComponent,
+    LanguageComponent,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })

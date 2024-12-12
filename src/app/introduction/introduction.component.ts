@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { IntroductionService } from '../services/introduction.service';
+import { IInfo } from '../models/interfaces';
 
 @Component({
   selector: 'app-introduction',
@@ -12,11 +12,9 @@ import { IntroductionService } from '../services/introduction.service';
   styleUrl: './introduction.component.scss',
 })
 export class IntroductionComponent implements AfterViewInit, OnDestroy {
+  @Input() info!: IInfo;
   private subscription = new Subscription();
-  constructor(
-    public introductionService: IntroductionService,
-    private route: ActivatedRoute,
-  ) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngAfterViewInit(): void {
     this.subscription.add(

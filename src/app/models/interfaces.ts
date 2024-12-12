@@ -8,17 +8,22 @@ export interface IUser {
 }
 
 export interface IInfo {
+  url: string;
   category: string;
-  id: string;
   title: string;
   description: string;
-  code: string;
-  output: string;
+  items: IInfoItem[];
 }
 
-export interface IMenuItems {
-  items: IInfo[];
-  title: string;
+export interface ISearch {
+  url: string;
+  category: string;
+  id: string;
+}
+
+export interface IInfoItem {
+  id: string;
+  code: string;
 }
 
 export interface IHobby {

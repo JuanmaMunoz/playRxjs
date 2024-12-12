@@ -7,13 +7,13 @@ import {
   ViewChild,
 } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Observable, of, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { transformations } from '../../info/transformations';
 import { MenuItemsComponent } from '../../menu-items/menu-items.component';
-import { IMenuItems } from '../../models/interfaces';
+import { IInfo } from '../../models/interfaces';
 import { SearchComponent } from '../../search/search.component';
 import { MenuService } from '../../services/menu.service';
-import { LogoComponent } from '../logo/logo.component';
+import { LanguageComponent } from '../language/language.component';
 
 @Component({
   selector: 'app-menu',
@@ -22,18 +22,15 @@ import { LogoComponent } from '../logo/logo.component';
     CommonModule,
     RouterModule,
     MenuItemsComponent,
-    LogoComponent,
     SearchComponent,
+    LanguageComponent,
   ],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent implements AfterViewInit, OnDestroy {
   @ViewChild('menu') menu!: ElementRef;
-  public menuItems: Observable<IMenuItems> = of({
-    title: 'Transformation operators',
-    items: transformations,
-  });
+  public infoTransformation: IInfo = transformations;
   private subscription = new Subscription();
   constructor(private menuService: MenuService) {}
   ngAfterViewInit(): void {

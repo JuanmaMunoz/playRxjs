@@ -21,8 +21,9 @@
       <div class="search__result">
         @for (i of result; track $index) {
           <div class="search__result__item">
-            <a (click)="navigate(i.category, i.id)"
-              >- {{ i.title }} <i class="bi bi-rocket-takeoff"></i
+            <a (click)="navigate(i.url, i.id)"
+              >- {{ i.category + "." + i.id + ".title" | translate }}
+              <i class="bi bi-rocket-takeoff"></i
             ></a>
           </div>
         }
