@@ -4,6 +4,11 @@
   "transformation": {
     "title": "Operadores de transformación",
     "description": "<b>Los operadores de transformación de RxJS</b> son herramientas que te permiten cambiar (o 'transformar') los datos que fluyen a través de un flujo observable. Imagina que tienes un flujo de valores, como números u objetos, y quieres modificar, filtrar o reestructurar estos valores antes de que lleguen al observador final.",
+    "shortDescription": "Los operadores de transformación de RxJS son herramientas para modificar los datos que fluyen por un observable.",
+    "buffer": {
+      "title": "Operador buffer",
+      "description": "<p>El operador buffer de RxJS recopila las emisiones de un observable fuente en un array y las entrega juntas cuando otro observable, conocido como <b>disparador</b> (trigger), emite un valor. Es útil para agrupar valores durante intervalos de tiempo o en respuesta a eventos.<p><p>En este ejemplo contabilizamos los clicks que se hace en un botón cada 3 segundos.</p> "
+    },
     "map": {
       "title": "Operador map",
       "description": "<p>El operador map en RxJS aplica una función a cada valor emitido por un observable y devuelve un observable que emite los valores transformados.</p><p>En este ejemplo, transformamos el nombre del usuario utilizando el operador map y usamos el método map del arreglo para actualizar el nombre de cada elemento dentro de él.</p>"

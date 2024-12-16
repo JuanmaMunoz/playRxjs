@@ -1,37 +1,38 @@
 .menu-items {
+  margin: 1rem;
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
-  margin: 1rem;
   &__title {
-    font-size: 1.3rem;
-    margin-bottom: 0.5rem;
     color: var(--clear-color);
-    font-weight: bold;
     cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
   }
   &__list {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     &--hidden {
-      display: none;
       animation: hide 0.2s;
+      display: none;
     }
     &--show {
-      display: flex;
       animation: show 0.2s;
+      display: flex;
     }
   }
 }
 
 @keyframes hide {
   from {
-    opacity: 0.5;
     display: flex;
+    opacity: 0.5;
   }
   to {
-    opacity: 0;
     display: none;
+    opacity: 0;
   }
 }
 
@@ -40,7 +41,7 @@
     opacity: 0.5;
   }
   to {
-    opacity: 1;
     display: flex;
+    opacity: 1;
   }
 }

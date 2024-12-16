@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
+  buffer,
   concatMap,
   from,
   fromEvent,
@@ -52,12 +53,28 @@ export class TransformationComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.operatorBuffer();
     this.operatorMap();
     this.operatorMapTo();
     this.operatorMergeMap();
     this.operatorSwitchMap();
     this.operatorMergeMapTo();
     this.operatorConcatMap();
+  }
+
+  private operatorBuffer(): void {
+    const click$ = fromEvent(
+      document.getElementById('btn-click-buffer')!,
+      'click',
+    );
+    const triger$ = interval(3000);
+    this.subscription.add(
+      click$
+        .pipe(buffer(triger$))
+        .subscribe((clicks: Event[]) =>
+          this.addConsole('buffer', clicks.length.toString()),
+        ),
+    );
   }
 
   private operatorMap(): void {

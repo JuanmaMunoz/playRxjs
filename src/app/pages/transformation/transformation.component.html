@@ -2,6 +2,16 @@
   <app-introduction [info]="info"></app-introduction>
   @for (i of info.items; track $index) {
     @switch (i.id) {
+      @case ("buffer") {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="transformations__buttons">
+            <button id="btn-click-buffer" class="btn btn--primary">
+              Count clicks
+            </button>
+          </div>
+        </app-example>
+      }
+
       @case ("switchMap") {
         <app-example [infoItem]="i" [category]="info.category">
           <div class="transformations__buttons">
