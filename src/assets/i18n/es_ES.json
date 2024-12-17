@@ -15,7 +15,15 @@
     },
     "bufferTime": {
       "title": "Operador bufferTime",
-      "description": "<p>El operador bufferTime de RxJS agrupa las emisiones de un observable durante un período de tiempo fijo y las emite juntas como un array.</p><p>En este ejemplo, mostramos el array que se genera con la emisión del intervalo cada 3 segundos.</p>"
+      "description": "<p>El operador bufferTime de RxJS agrupa las emisiones de un observable durante un período de <b>tiempo fijo</b> y las emite juntas como un array.</p><p>En este ejemplo, mostramos el array que se genera con la emisión del intervalo cada 3 segundos.</p>"
+    },
+    "bufferToogle": {
+      "title": "Operador bufferToogle",
+      "description": "<p>El operador bufferToggle de RxJS te permite recolectar valores emitidos por un observable en buffers (arreglos) y emitir esos buffers en función de señales provenientes de otros observables. Funciona abriendo y cerrando buffers basados en eventos disparados por observables de <b>apertura y cierre</b>.</p><p>En este ejemplo capturaremos los valores emitidos en un intervalo de 1 segundo desde que presionemos 'Start' hasta que presionemos 'Stop'.</p>"
+    },
+    "bufferWhen": {
+      "title": "Operador bufferWhen",
+      "description": "<p>El operador bufferWhen de RxJS permite recolectar valores emitidos por un observable fuente en 'buffers' (arreglos) y emitir esos buffers cuando <b>se cumple una condición</b>. La condición para cerrar cada buffer se define a través de una función que devuelve un observable. Cuando este observable emite un valor, el buffer se cierra y se inicia uno nuevo.</p><p>En este ejemplo capturaremos los valores emitidos por un intervalo de 1 segundo, cada vez que hagamos click en el botón.</p>"
     },
     "map": {
       "title": "Operador map",

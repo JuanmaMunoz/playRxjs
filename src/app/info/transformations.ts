@@ -6,31 +6,38 @@ export const transformations: IInfo = {
   items: [
     {
       id: 'buffer',
-      code: `const click$ = fromEvent(
-    document.getElementById('btn-click-buffer')!,
-    'click',
-);
+      code: `const click$ = fromEvent(document.getElementById('btn-click-buffer')!,'click');
 const triger$ = interval(3000);
-click$
-    .pipe(buffer(triger$))
-    .subscribe((clicks: Event[]) => console.log(clicks.length));`,
+click$.pipe(buffer(triger$))
+      .subscribe((clicks: Event[]) => console.log(clicks.length));`,
     },
     {
       id: 'bufferCount',
-      code: `const click$ = fromEvent(
-      document.getElementById('btn-click-buffer-count')!,
-      'click',
-);
-click$
-    .pipe(bufferCount(5))
-    .subscribe((clicks: Event[]) => console.log('5 clicks'));`,
+      code: `const click$ = fromEvent(document.getElementById('btn-click-buffer-count')!,'click');
+click$.pipe(bufferCount(5))
+      .subscribe((clicks: Event[]) => console.log('5 clicks'));`,
     },
     {
       id: 'bufferTime',
       code: `const interval$ = interval(1000);
-interval$
-    .pipe(bufferTime(3000))
-    .subscribe((n: number[]) => console.log(n));`,
+interval$.pipe(bufferTime(3000))
+         .subscribe((n: number[]) => console.log(n));`,
+    },
+    {
+      id: 'bufferToogle',
+      code: `const start$ = fromEvent(document.getElementById('btn-click-buffer-toogle-start')!,'click');
+const stop$ = () =>
+    fromEvent(document.getElementById('btn-click-buffer-toogle-stop')!,'click');
+const interval$ = interval(1000);
+interval$.pipe(bufferToggle(start$, stop$))
+         .subscribe((n: number[]) => console.log(n));`,
+    },
+    {
+      id: 'bufferWhen',
+      code: `const interval$ = interval(1000);
+const click$ = fromEvent(document.getElementById('btn-click-buffer-when')!,'click');  
+interval$.pipe(bufferWhen(() => click$))
+         .subscribe((n: number[]) => console.log(n));`,
     },
     {
       id: 'map',

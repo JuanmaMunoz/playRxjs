@@ -22,6 +22,32 @@
         </app-example>
       }
 
+      @case ("bufferToogle") {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="transformations__buttons">
+            <button id="btn-click-buffer-toogle-start" class="btn btn--primary">
+              Start
+            </button>
+            <button
+              id="btn-click-buffer-toogle-stop"
+              class="btn btn--secondary"
+            >
+              Stop
+            </button>
+          </div>
+        </app-example>
+      }
+
+      @case ("bufferWhen") {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="transformations__buttons">
+            <button id="btn-click-buffer-when" class="btn btn--primary">
+              Make click
+            </button>
+          </div>
+        </app-example>
+      }
+
       @case ("switchMap") {
         <app-example [infoItem]="i" [category]="info.category">
           <div class="transformations__buttons">

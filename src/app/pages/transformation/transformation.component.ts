@@ -5,6 +5,8 @@ import {
   buffer,
   bufferCount,
   bufferTime,
+  bufferToggle,
+  bufferWhen,
   concatMap,
   from,
   fromEvent,
@@ -58,6 +60,8 @@ export class TransformationComponent implements OnInit, AfterViewInit {
     this.operatorBuffer();
     this.operatorBufferCount();
     this.operatorBufferTime();
+    this.operatorBufferToogle();
+    this.operatorBufferWhen();
     this.operatorMap();
     this.operatorMapTo();
     this.operatorMergeMap();
@@ -102,6 +106,41 @@ export class TransformationComponent implements OnInit, AfterViewInit {
         .pipe(bufferTime(3000))
         .subscribe((n: number[]) =>
           this.addConsole('bufferTime', `[${n.toString()}]`),
+        ),
+    );
+  }
+
+  private operatorBufferToogle(): void {
+    const start$ = fromEvent(
+      document.getElementById('btn-click-buffer-toogle-start')!,
+      'click',
+    );
+    const stop$ = () =>
+      fromEvent(
+        document.getElementById('btn-click-buffer-toogle-stop')!,
+        'click',
+      );
+    const interval$ = interval(1000);
+    this.subscription.add(
+      interval$
+        .pipe(bufferToggle(start$, stop$))
+        .subscribe((n: number[]) =>
+          this.addConsole('bufferToogle', `[${n.toString()}]`),
+        ),
+    );
+  }
+
+  private operatorBufferWhen(): void {
+    const interval$ = interval(1000);
+    const click$ = fromEvent(
+      document.getElementById('btn-click-buffer-when')!,
+      'click',
+    );
+    this.subscription.add(
+      interval$
+        .pipe(bufferWhen(() => click$))
+        .subscribe((n: number[]) =>
+          this.addConsole('bufferWhen', `[${n.toString()}]`),
         ),
     );
   }
