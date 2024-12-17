@@ -12,6 +12,16 @@
         </app-example>
       }
 
+      @case ("bufferCount") {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="transformations__buttons">
+            <button id="btn-click-buffer-count" class="btn btn--primary">
+              Make 5 clicks
+            </button>
+          </div>
+        </app-example>
+      }
+
       @case ("switchMap") {
         <app-example [infoItem]="i" [category]="info.category">
           <div class="transformations__buttons">

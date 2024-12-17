@@ -9,6 +9,14 @@
       "title": "Operador buffer",
       "description": "<p>El operador buffer de RxJS recopila las emisiones de un observable fuente en un array y las entrega juntas cuando otro observable, conocido como <b>disparador</b> (trigger), emite un valor. Es útil para agrupar valores durante intervalos de tiempo o en respuesta a eventos.<p><p>En este ejemplo contabilizamos los clicks que se hace en un botón cada 3 segundos.</p> "
     },
+    "bufferCount": {
+      "title": "Operador bufferCount",
+      "description": "<p>El operador bufferCount de RxJS se utiliza para agrupar emisiones de un observable en 'buffers' o lotes de tamaño <b>fijo</b> y emitirlos como un array.</p><p>En este ejemplo emitiremos el array al hacer 5 clicks.</p>"
+    },
+    "bufferTime": {
+      "title": "Operador bufferTime",
+      "description": "<p>El operador bufferTime de RxJS agrupa las emisiones de un observable durante un período de tiempo fijo y las emite juntas como un array.</p><p>En este ejemplo, mostramos el array que se genera con la emisión del intervalo cada 3 segundos.</p>"
+    },
     "map": {
       "title": "Operador map",
       "description": "<p>El operador map en RxJS aplica una función a cada valor emitido por un observable y devuelve un observable que emite los valores transformados.</p><p>En este ejemplo, transformamos el nombre del usuario utilizando el operador map y usamos el método map del arreglo para actualizar el nombre de cada elemento dentro de él.</p>"

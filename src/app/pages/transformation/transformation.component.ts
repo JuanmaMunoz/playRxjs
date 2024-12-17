@@ -3,6 +3,8 @@ import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
   buffer,
+  bufferCount,
+  bufferTime,
   concatMap,
   from,
   fromEvent,
@@ -54,6 +56,8 @@ export class TransformationComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.operatorBuffer();
+    this.operatorBufferCount();
+    this.operatorBufferTime();
     this.operatorMap();
     this.operatorMapTo();
     this.operatorMergeMap();
@@ -73,6 +77,31 @@ export class TransformationComponent implements OnInit, AfterViewInit {
         .pipe(buffer(triger$))
         .subscribe((clicks: Event[]) =>
           this.addConsole('buffer', clicks.length.toString()),
+        ),
+    );
+  }
+
+  private operatorBufferCount(): void {
+    const click$ = fromEvent(
+      document.getElementById('btn-click-buffer-count')!,
+      'click',
+    );
+    this.subscription.add(
+      click$
+        .pipe(bufferCount(5))
+        .subscribe((clicks: Event[]) =>
+          this.addConsole('bufferCount', '5 clicks'),
+        ),
+    );
+  }
+
+  private operatorBufferTime(): void {
+    const interval$ = interval(1000);
+    this.subscription.add(
+      interval$
+        .pipe(bufferTime(3000))
+        .subscribe((n: number[]) =>
+          this.addConsole('bufferTime', `[${n.toString()}]`),
         ),
     );
   }

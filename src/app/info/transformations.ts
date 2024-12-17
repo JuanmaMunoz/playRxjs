@@ -16,6 +16,23 @@ click$
     .subscribe((clicks: Event[]) => console.log(clicks.length));`,
     },
     {
+      id: 'bufferCount',
+      code: `const click$ = fromEvent(
+      document.getElementById('btn-click-buffer-count')!,
+      'click',
+);
+click$
+    .pipe(bufferCount(5))
+    .subscribe((clicks: Event[]) => console.log('5 clicks'));`,
+    },
+    {
+      id: 'bufferTime',
+      code: `const interval$ = interval(1000);
+interval$
+    .pipe(bufferTime(3000))
+    .subscribe((n: number[]) => console.log(n));`,
+    },
+    {
       id: 'map',
       code: `public getUsers(): Observable<IUser[]> {
     const url = 'assets/data/data2.json';
