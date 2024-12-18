@@ -49,10 +49,19 @@ interval$.pipe(bufferWhen(() => click$))
 this.userService.getUsers()
     .pipe(
       map((e: IUser[]) =>
-      e.map((u: IUser) => ({ ...u, name: u.name + ' de todos los santos' }))
+      e.map((u: IUser) => ({ ...u, name: u.name + ' ****--****' })))
     )
-  )
-  .subscribe((data: IUser[]) => console.log(data));`,
+    .subscribe((data: IUser[]) => console.log(data));`,
+    },
+    {
+      id: 'concatMap',
+      code: `fromEvent(document.getElementById('btn-start-cc-map')!, 'click')
+    .pipe(
+      concatMap((e) =>
+        interval(1000).pipe(map((n: number) => e.target.id + ' ' + n))
+      )
+    )
+    .subscribe((data: string) => console.log(data))`,
     },
     {
       id: 'mapTo',
@@ -74,7 +83,8 @@ this.userService.getUsers()
       id: 'mergeMapTo',
       code: `from(['a', 'b', 'c'])
     .pipe(
-      mergeMapTo(range(1, 2).pipe(map((n: number) => 'the same output' + ' + ' + n + ' = ?'))))
+      mergeMapTo(range(1, 2).pipe(map((n: number) => 'the same output' + ' + ' + n + ' = ?')))
+    )
     .subscribe((data: string) => console.log(data));`,
     },
     {
@@ -82,23 +92,7 @@ this.userService.getUsers()
       code: `fromEvent(document.getElementById('btn-start-sw-map')!, 'click')
     .pipe(
       switchMap((e) =>
-        interval(1000).pipe(map((n: number) => e.target.className + ' ' + n))
-      ),
-      takeUntil(
-        fromEvent(document.getElementById('btn-stop-sw-map')!, 'click')
-      )
-    )
-    .subscribe((data: string) => console.log(data))`,
-    },
-    {
-      id: 'concatMap',
-      code: `fromEvent(document.getElementById('btn-start-sw-map')!, 'click')
-    .pipe(
-      concatMap((e) =>
-        interval(1000).pipe(map((n: number) => e.target.className + ' ' + n))
-      ),
-      takeUntil(
-        fromEvent(document.getElementById('btn-stop-sw-map')!, 'click')
+        interval(1000).pipe(map((n: number) => e.target.id + ' ' + n))
       )
     )
     .subscribe((data: string) => console.log(data))`,

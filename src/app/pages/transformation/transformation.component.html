@@ -48,30 +48,26 @@
         </app-example>
       }
 
-      @case ("switchMap") {
-        <app-example [infoItem]="i" [category]="info.category">
-          <div class="transformations__buttons">
-            <button id="btn-start-sw-map" class="btn btn--primary">
-              Start
-            </button>
-            <button id="btn-stop-sw-map" class="btn btn--secondary">
-              Stop
-            </button>
-          </div>
-        </app-example>
-      }
       @case ("concatMap") {
         <app-example [infoItem]="i" [category]="info.category">
           <div class="transformations__buttons">
             <button id="btn-start-cc-map" class="btn btn--primary">
-              Start
-            </button>
-            <button id="btn-stop-cc-map" class="btn btn--secondary">
-              Stop
+              Make several clicks
             </button>
           </div>
         </app-example>
       }
+
+      @case ("switchMap") {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="transformations__buttons">
+            <button id="btn-start-sw-map" class="btn btn--primary">
+              Make several clicks
+            </button>
+          </div>
+        </app-example>
+      }
+
       @default {
         <app-example [infoItem]="i" [category]="info.category"></app-example>
       }

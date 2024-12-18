@@ -18,7 +18,6 @@ import {
   range,
   Subscription,
   switchMap,
-  takeUntil,
 } from 'rxjs';
 import { ExampleComponent } from '../../components/example/example.component';
 import { transformations } from '../../info/transformations';
@@ -62,12 +61,12 @@ export class TransformationComponent implements OnInit, AfterViewInit {
     this.operatorBufferTime();
     this.operatorBufferToogle();
     this.operatorBufferWhen();
+    this.operatorConcatMap();
     this.operatorMap();
     this.operatorMapTo();
     this.operatorMergeMap();
-    this.operatorSwitchMap();
     this.operatorMergeMapTo();
-    this.operatorConcatMap();
+    this.operatorSwitchMap();
   }
 
   private operatorBuffer(): void {
@@ -145,6 +144,18 @@ export class TransformationComponent implements OnInit, AfterViewInit {
     );
   }
 
+  private operatorConcatMap(): void {
+    this.subscription.add(
+      fromEvent(document.getElementById('btn-start-cc-map')!, 'click')
+        .pipe(
+          concatMap((e: any) =>
+            interval(1000).pipe(map((n: number) => e.target.id + ' ' + n)),
+          ),
+        )
+        .subscribe((data: string) => this.addConsole('concatMap', data)),
+    );
+  }
+
   private operatorMap(): void {
     this.subscription.add(
       this.userService
@@ -153,7 +164,7 @@ export class TransformationComponent implements OnInit, AfterViewInit {
           map((e: IUser[]) =>
             e.map((u: IUser) => ({
               ...u,
-              name: u.name + ' de todos los santos',
+              name: u.name + ' ****--****',
             })),
           ),
         )
@@ -202,32 +213,10 @@ export class TransformationComponent implements OnInit, AfterViewInit {
       fromEvent(document.getElementById('btn-start-sw-map')!, 'click')
         .pipe(
           switchMap((e: any) =>
-            interval(1000).pipe(
-              map((n: number) => e.target.className + ' ' + n),
-            ),
-          ),
-          takeUntil(
-            fromEvent(document.getElementById('btn-stop-sw-map')!, 'click'),
+            interval(1000).pipe(map((n: number) => e.target.id + ' ' + n)),
           ),
         )
         .subscribe((data: string) => this.addConsole('switchMap', data)),
-    );
-  }
-
-  private operatorConcatMap(): void {
-    this.subscription.add(
-      fromEvent(document.getElementById('btn-start-cc-map')!, 'click')
-        .pipe(
-          concatMap((e: any) =>
-            interval(1000).pipe(
-              map((n: number) => e.target.className + ' ' + n),
-            ),
-          ),
-          takeUntil(
-            fromEvent(document.getElementById('btn-stop-cc-map')!, 'click'),
-          ),
-        )
-        .subscribe((data: string) => this.addConsole('concatMap', data)),
     );
   }
 

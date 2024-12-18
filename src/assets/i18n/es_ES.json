@@ -25,6 +25,10 @@
       "title": "Operador bufferWhen",
       "description": "<p>El operador bufferWhen de RxJS permite recolectar valores emitidos por un observable fuente en 'buffers' (arreglos) y emitir esos buffers cuando <b>se cumple una condición</b>. La condición para cerrar cada buffer se define a través de una función que devuelve un observable. Cuando este observable emite un valor, el buffer se cierra y se inicia uno nuevo.</p><p>En este ejemplo capturaremos los valores emitidos por un intervalo de 1 segundo, cada vez que hagamos click en el botón.</p>"
     },
+    "concatMap": {
+      "title": "Operador concatMap",
+      "description": "<p>El operador concatMap en RxJS se utiliza para encadenar observables uno tras otro, asegurándose de que se ejecuten en secuencia. Cuando concatMap recibe un valor, lo mapea a un nuevo observable (como una solicitud de red o un temporizador) y espera a que este se complete antes de pasar al siguiente.</p><p>En este ejemplo, combinamos el observable de un evento clic con el observable de un intervalo. Cada vez que hacemos clic, podemos ver en la consola cómo los observables se concatenan de manera ordenada, respetando su secuencia.</p>"
+    },
     "map": {
       "title": "Operador map",
       "description": "<p>El operador map en RxJS aplica una función a cada valor emitido por un observable y devuelve un observable que emite los valores transformados.</p><p>En este ejemplo, transformamos el nombre del usuario utilizando el operador map y usamos el método map del arreglo para actualizar el nombre de cada elemento dentro de él.</p>"
@@ -43,11 +47,7 @@
     },
     "switchMap": {
       "title": "Operador switchMap",
-      "description": "<p>El operador switchMap en RxJS se utiliza para cambiar de un observable a uno nuevo cada vez que el observable original emite un nuevo valor. Cuando esto ocurre, switchMap <b>cancela (o 'se desuscribe de')</b> el observable anterior y solo escucha al más reciente.</p><p>En este ejemplo, combinamos el observable de un evento de clic en un botón con un observable creado usando un intervalo. Cancelamos el observable resultante cuando se hace clic en el botón de detener utilizando el operador takeUntil. Cada vez que hacemos clic en el botón de inicio, podemos ver en la consola cómo se cancela el observable anterior.</p>"
-    },
-    "concatMap": {
-      "title": "Operador concatMap",
-      "description": "<p>El operador concatMap en RxJS se utiliza para encadenar observables uno tras otro, asegurándose de que se ejecuten en secuencia. Cuando concatMap recibe un valor, lo mapea a un nuevo observable (como una solicitud de red o un temporizador) y espera a que este se complete antes de pasar al siguiente.</p><p>En este ejemplo, combinamos el observable de un evento de clic en un botón con el observable creado usando un intervalo. Cancelamos el observable resultante cuando hacemos clic en el botón de detener utilizando el operador takeUntil. Cada vez que hacemos clic en el botón de inicio, podemos ver en la consola cómo los observables se concatenan de manera ordenada, respetando su secuencia.</p>"
+      "description": "<p>El operador switchMap en RxJS se utiliza para cambiar de un observable a uno nuevo cada vez que el observable original emite un nuevo valor. Cuando esto ocurre, switchMap <b>cancela (o 'se desuscribe de')</b> el observable anterior y solo escucha al más reciente.</p><p>En este ejemplo, combinamos el observable de un evento clic con el observable de un intervalo. Cada vez que hacemos clic en el botón, podemos ver en la consola cómo se cancela el observable anterior.</p>"
     }
   }
 }
