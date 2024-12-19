@@ -8,16 +8,28 @@ import {
   bufferToggle,
   bufferWhen,
   concatMap,
+  delay,
+  exhaustMap,
+  expand,
   from,
   fromEvent,
+  groupBy,
   interval,
   map,
   mapTo,
   mergeMap,
   mergeMapTo,
+  mergeScan,
+  of,
+  pairwise,
+  partition,
+  pluck,
   range,
+  scan,
   Subscription,
   switchMap,
+  take,
+  toArray,
 } from 'rxjs';
 import { ExampleComponent } from '../../components/example/example.component';
 import { transformations } from '../../info/transformations';
@@ -46,8 +58,7 @@ export class TransformationComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.info = transformations;
-    const url =
-      '/' + this.route.snapshot.url.map((segment) => segment.path).join('/');
+    const url = '/' + this.route.snapshot.url.map((segment) => segment.path).join('/');
     this.introductionService.setIntroduction(url);
   }
 
@@ -62,39 +73,37 @@ export class TransformationComponent implements OnInit, AfterViewInit {
     this.operatorBufferToogle();
     this.operatorBufferWhen();
     this.operatorConcatMap();
+    this.operatorExhaustMap();
+    this.operatorExpand();
+    this.operatorGroupBy();
     this.operatorMap();
     this.operatorMapTo();
     this.operatorMergeMap();
     this.operatorMergeMapTo();
+    this.operatorMergeScan();
+    this.operatorPairWise();
+    this.operatorPartition();
+    this.operatorPluck();
+    this.operatorScan();
     this.operatorSwitchMap();
   }
 
   private operatorBuffer(): void {
-    const click$ = fromEvent(
-      document.getElementById('btn-click-buffer')!,
-      'click',
-    );
+    const click$ = fromEvent(document.getElementById('btn-click-buffer')!, 'click');
     const triger$ = interval(3000);
     this.subscription.add(
       click$
         .pipe(buffer(triger$))
-        .subscribe((clicks: Event[]) =>
-          this.addConsole('buffer', clicks.length.toString()),
-        ),
+        .subscribe((clicks: Event[]) => this.addConsole('buffer', clicks.length.toString())),
     );
   }
 
   private operatorBufferCount(): void {
-    const click$ = fromEvent(
-      document.getElementById('btn-click-buffer-count')!,
-      'click',
-    );
+    const click$ = fromEvent(document.getElementById('btn-click-buffer-count')!, 'click');
     this.subscription.add(
       click$
         .pipe(bufferCount(5))
-        .subscribe((clicks: Event[]) =>
-          this.addConsole('bufferCount', '5 clicks'),
-        ),
+        .subscribe((clicks: Event[]) => this.addConsole('bufferCount', '5 clicks')),
     );
   }
 
@@ -103,56 +112,130 @@ export class TransformationComponent implements OnInit, AfterViewInit {
     this.subscription.add(
       interval$
         .pipe(bufferTime(3000))
-        .subscribe((n: number[]) =>
-          this.addConsole('bufferTime', `[${n.toString()}]`),
-        ),
+        .subscribe((n: number[]) => this.addConsole('bufferTime', `[${n.toString()}]`)),
     );
   }
 
   private operatorBufferToogle(): void {
-    const start$ = fromEvent(
-      document.getElementById('btn-click-buffer-toogle-start')!,
-      'click',
-    );
+    const start$ = fromEvent(document.getElementById('btn-click-buffer-toogle-start')!, 'click');
     const stop$ = () =>
-      fromEvent(
-        document.getElementById('btn-click-buffer-toogle-stop')!,
-        'click',
-      );
+      fromEvent(document.getElementById('btn-click-buffer-toogle-stop')!, 'click');
     const interval$ = interval(1000);
     this.subscription.add(
       interval$
         .pipe(bufferToggle(start$, stop$))
-        .subscribe((n: number[]) =>
-          this.addConsole('bufferToogle', `[${n.toString()}]`),
-        ),
+        .subscribe((n: number[]) => this.addConsole('bufferToogle', `[${n.toString()}]`)),
     );
   }
 
   private operatorBufferWhen(): void {
     const interval$ = interval(1000);
-    const click$ = fromEvent(
-      document.getElementById('btn-click-buffer-when')!,
-      'click',
-    );
+    const click$ = fromEvent(document.getElementById('btn-click-buffer-when')!, 'click');
     this.subscription.add(
       interval$
         .pipe(bufferWhen(() => click$))
-        .subscribe((n: number[]) =>
-          this.addConsole('bufferWhen', `[${n.toString()}]`),
-        ),
+        .subscribe((n: number[]) => this.addConsole('bufferWhen', `[${n.toString()}]`)),
     );
   }
 
   private operatorConcatMap(): void {
     this.subscription.add(
       fromEvent(document.getElementById('btn-start-cc-map')!, 'click')
-        .pipe(
-          concatMap((e: any) =>
-            interval(1000).pipe(map((n: number) => e.target.id + ' ' + n)),
-          ),
-        )
+        .pipe(concatMap((e: any) => interval(1000).pipe(map((n: number) => e.target.id + ' ' + n))))
         .subscribe((data: string) => this.addConsole('concatMap', data)),
+    );
+  }
+
+  private operatorExhaustMap(): void {
+    this.subscription.add(
+      fromEvent(document.getElementById('btn-start-exhaust-map')!, 'click')
+        .pipe(
+          delay(5000),
+          exhaustMap(() => this.userService.getUsers()),
+        )
+        .subscribe((data: IUser[]) => this.addConsole('exhaustMap', JSON.stringify(data))),
+    );
+  }
+
+  private operatorExpand(): void {
+    this.subscription.add(
+      of(1)
+        .pipe(
+          expand((x) => of(x + 10)),
+          take(5),
+        )
+        .subscribe((x: number) => this.addConsole('expand', x.toString())),
+    );
+  }
+
+  private operatorGroupBy(): void {
+    const animals$ = from([
+      { name: 'Rufy', species: 'cat' },
+      { name: 'Benito', species: 'dog' },
+      { name: 'Mini', species: 'cat' },
+      { name: 'Pedro', species: 'dog' },
+    ]);
+
+    const species$ = animals$.pipe(
+      groupBy(({ species }) => species),
+      mergeMap((species) => species.pipe(toArray())),
+    );
+    species$.subscribe((species) => this.addConsole('groupBy', JSON.stringify(species)));
+  }
+
+  private operatorMergeScan(): void {
+    this.subscription.add(
+      of(1, 10, 20)
+        .pipe(
+          mergeScan((acc: number, value: number) => {
+            return of(acc + value);
+          }, 0), // The accumulator starts at 0.
+        )
+        .subscribe((result: number) => this.addConsole('mergeScan', JSON.stringify(result))),
+    );
+  }
+
+  private operatorPairWise(): void {
+    this.subscription.add(
+      of(1, 10, 20)
+        .pipe(pairwise())
+        .subscribe((result: number[]) => this.addConsole('pairwise', JSON.stringify(result))),
+    );
+  }
+
+  private operatorPartition(): void {
+    const animals$ = from([
+      { name: 'Rufy', species: 'cat' },
+      { name: 'Benito', species: 'dog' },
+      { name: 'Mini', species: 'cat' },
+      { name: 'Pedro', species: 'dog' },
+      { name: 'Marc', species: 'monkey' },
+    ]);
+    const [cats$, others$] = partition(animals$, ({ species }) => species === 'cat');
+    this.subscription.add(
+      cats$.subscribe((cats) => this.addConsole('partition', JSON.stringify(cats))),
+    );
+  }
+
+  private operatorPluck(): void {
+    const animals$ = from([
+      { name: 'Rufy', species: 'cat' },
+      { name: 'Benito', species: 'dog' },
+      { name: 'Mini', species: 'cat' },
+      { name: 'Pedro', species: 'dog' },
+    ]);
+    this.subscription.add(
+      animals$
+        .pipe(pluck('name'))
+        .subscribe((name: string) => this.addConsole('pluck', JSON.stringify(name))),
+    );
+  }
+
+  private operatorScan(): void {
+    this.subscription.add(
+      of(1, 10, 20)
+        .pipe(scan((acc: number, value: number) => acc + value))
+        .subscribe((result: number) => this.addConsole('scan', JSON.stringify(result))),
     );
   }
 
@@ -168,9 +251,7 @@ export class TransformationComponent implements OnInit, AfterViewInit {
             })),
           ),
         )
-        .subscribe((data: IUser[]) =>
-          this.addConsole('map', JSON.stringify(data)),
-        ),
+        .subscribe((data: IUser[]) => this.addConsole('map', JSON.stringify(data))),
     );
   }
 
@@ -185,11 +266,7 @@ export class TransformationComponent implements OnInit, AfterViewInit {
   private operatorMergeMap(): void {
     this.subscription.add(
       from(['a', 'b', 'c'])
-        .pipe(
-          mergeMap((e: string) =>
-            range(1, 2).pipe(map((n: number) => e + ' + ' + n + ' = ?')),
-          ),
-        )
+        .pipe(mergeMap((e: string) => range(1, 2).pipe(map((n: number) => e + ' + ' + n + ' = ?'))))
         .subscribe((data: string) => this.addConsole('mergeMap', data)),
     );
   }
@@ -198,11 +275,7 @@ export class TransformationComponent implements OnInit, AfterViewInit {
     this.subscription.add(
       from(['a', 'b', 'c'])
         .pipe(
-          mergeMapTo(
-            range(1, 2).pipe(
-              map((n: number) => 'the same output' + ' + ' + n + ' = ?'),
-            ),
-          ),
+          mergeMapTo(range(1, 2).pipe(map((n: number) => 'the same output' + ' + ' + n + ' = ?'))),
         )
         .subscribe((data: string) => this.addConsole('mergeMapTo', data)),
     );
@@ -211,11 +284,7 @@ export class TransformationComponent implements OnInit, AfterViewInit {
   private operatorSwitchMap(): void {
     this.subscription.add(
       fromEvent(document.getElementById('btn-start-sw-map')!, 'click')
-        .pipe(
-          switchMap((e: any) =>
-            interval(1000).pipe(map((n: number) => e.target.id + ' ' + n)),
-          ),
-        )
+        .pipe(switchMap((e: any) => interval(1000).pipe(map((n: number) => e.target.id + ' ' + n))))
         .subscribe((data: string) => this.addConsole('switchMap', data)),
     );
   }

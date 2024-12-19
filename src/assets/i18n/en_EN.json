@@ -29,6 +29,18 @@
       "title": "Operator concatMap",
       "description": "<p>The concatMap operator in RxJS is used to queue up observables one after another, ensuring they run in sequence. When concatMap receives a value, it maps that value to a new observable (like a network request or a timer) and waits for it to complete before moving to the next one.<p><p>In this example, we merge the observable from a button click with the observable from an interval. Each time we click the button, we can see in the console how the observables are concatenated in an orderly manner, respecting their sequence.</p>"
     },
+    "exhaustMap": {
+      "title": "Operator exhaustMap",
+      "description": "<p>The exhaustMap operator in RxJS is used to handle <b>asynchronous data streams</b>, ensuring that <b>only one operation is processed at a time</b> and ignoring any new actions while the current operation is still in progress.</p><p>In this example, we load a list of users through a button click. You can observe how the list will not load until the previous call has finished.</p>"
+    },
+    "expand": {
+      "title": "Operator expand",
+      "description": "<p>The expand operator in RxJS is used to generate a stream of values <b>recursively</b>, meaning it allows each emitted value to <b>generate new values</b> based on a defined logic.</p><p>In this example, we add 10 to each emitted value and repeat the operation 5 times.</p>"
+    },
+    "groupBy": {
+      "title": "Operator groupBy",
+      "description": "<p>The groupBy operator in RxJS is used to group elements emitted by an observable <b>based on a key</b> that you define. Think of it as a way to separate a data stream into different 'boxes' based on certain characteristics.</p><p>In this example, we group the species into different arrays, through a mergeMap and a toArray.</p>"
+    },
     "map": {
       "title": "Operator map",
       "description": "<p>The map operator in RxJS applies a function to each value emitted by an observable and returns an observable that emits the transformed values.<p><p>In this example, we transform the user's name using the map operator and use the array's map method to update the name of each item within it.</p>"
@@ -44,6 +56,26 @@
     "mergeMapTo": {
       "title": "Operator mergeMapTo",
       "description": "<p>The mergeMapTo operator in RxJS is used to replace each value emitted by an observable with a different observable that you specify, and it then 'flattens' all the results into a single output stream.</p><p>In this example, we merge an observable made up of a list of letters with an observable containing a numeric range from 1 to 2. <b>Unlike mergeMap</b>, we don`t take into account the output of the first observable, emitting the <b>same value</b> for each letter.</p>"
+    },
+    "mergeScan": {
+      "title": "Operator mergeScan",
+      "description": "<p>The RxJS mergeScan operator is like a combination of a <b>reduce</b> and a <b>mergeMap</b>, but it is applied to a stream of data (an observable) instead of a static collection like an array. It is used when you want to maintain an accumulative state as values are emitted from an observable, while simultaneously generating new observables from each emitted value.</p><p>In this example, we cumulatively sum the numbers from the observable.</p>"
+    },
+    "pairwise": {
+      "title": "Operator pairwise",
+      "description": "<p>The RxJS pairwise operator is a simple operator that groups consecutive values emitted by an observable into <b>pairs</b>. Each time the observable emits a new value, this operator takes the <b>previous and the current</b> values and combines them into a two-element array.</p><p>In this example, we can see how the last two emitted values are concatenated into an array.</p>"
+    },
+    "partition": {
+      "title": "Operator partition",
+      "description": "<p>The RxJS partition operator is a simple way to split a stream of data (observable) into two parts based on a condition. Essentially, it separates the emitted values into two different observables:</p><p>- <b>One observable</b> for the values that meet the condition.</p><p>- <b>Another observable</b> for the values that do not meet the condition.</p><p>In this example, we group the animals into two categories, those that are cats and those that are not.</p>"
+    },
+    "pluck": {
+      "title": "Operator pluck",
+      "description": "<p>The RxJS pluck operator is a simple way to extract a specific value from an object emitted by an observable. Essentially, it works like directly accessing a property by its <b>name</b>, but within the context of a data stream.</p><p>In this example, we will log the names of the animals from our observable to the console.</p>"
+    },
+    "scan": {
+      "title": "Operator scan",
+      "description": "<p>The scan operator in RxJS is very similar to the <b>reduce function of arrays</b>, but it applies to data streams. Essentially, it accumulates a value over time as new values arrive in the stream.</p><p>In this example, we cumulatively sum the values of the observable.</p>"
     },
     "switchMap": {
       "title": "Operator switchMap",

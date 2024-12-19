@@ -40,6 +40,49 @@ interval$.pipe(bufferWhen(() => click$))
          .subscribe((n: number[]) => console.log(n));`,
     },
     {
+      id: 'concatMap',
+      code: `fromEvent(document.getElementById('btn-start-cc-map')!, 'click')
+    .pipe(
+      concatMap((e) =>
+        interval(1000).pipe(map((n: number) => e.target.id + ' ' + n))
+      )
+    )
+    .subscribe((data: string) => console.log(data))`,
+    },
+    {
+      id: 'exhaustMap',
+      code: `fromEvent(document.getElementById('btn-start-exhaust-map')!, 'click')
+    .pipe(
+      delay(5000),
+      exhaustMap(() => this.userService.getUsers())
+    )
+    .subscribe((data: IUser[]) => console.log(data));`,
+    },
+    {
+      id: 'expand',
+      code: `of(1)
+    .pipe(
+      expand((x) => of(x + 10)),
+      take(5)
+    )
+    .subscribe((x: number) => this.addConsole('expand', x.toString()));`,
+    },
+    {
+      id: 'groupBy',
+      code: `const animals$ = from([
+  { name: 'Rufy', species: 'cat' },
+  { name: 'Benito', species: 'dog' },
+  { name: 'Mini', species: 'cat' },
+  { name: 'Pedro', species: 'dog' },
+]);
+      
+const species$ = animals$.pipe(
+  groupBy(({ species }) => species),
+  mergeMap((species) => species.pipe(toArray()))
+);
+species$.subscribe((species) => console.log(species));`,
+    },
+    {
       id: 'map',
       code: `public getUsers(): Observable<IUser[]> {
     const url = 'assets/data/data2.json';
@@ -52,16 +95,6 @@ this.userService.getUsers()
       e.map((u: IUser) => ({ ...u, name: u.name + ' ****--****' })))
     )
     .subscribe((data: IUser[]) => console.log(data));`,
-    },
-    {
-      id: 'concatMap',
-      code: `fromEvent(document.getElementById('btn-start-cc-map')!, 'click')
-    .pipe(
-      concatMap((e) =>
-        interval(1000).pipe(map((n: number) => e.target.id + ' ' + n))
-      )
-    )
-    .subscribe((data: string) => console.log(data))`,
     },
     {
       id: 'mapTo',
@@ -86,6 +119,52 @@ this.userService.getUsers()
       mergeMapTo(range(1, 2).pipe(map((n: number) => 'the same output' + ' + ' + n + ' = ?')))
     )
     .subscribe((data: string) => console.log(data));`,
+    },
+    {
+      id: 'mergeScan',
+      code: `of(1, 10, 20)
+    .pipe(
+      mergeScan((acc: number, value: number) => {
+        return of(acc + value);
+      }, 0), // The accumulator starts at 0.
+    )
+    .subscribe((result: number) => console.log(result))`,
+    },
+    {
+      id: 'pairwise',
+      code: `of(1, 10, 20)
+    .pipe(pairwise())
+    .subscribe((result: number[]) => console.log(result))`,
+    },
+    {
+      id: 'partition',
+      code: `const animals$ = from([
+  { name: 'Rufy', species: 'cat' },
+  { name: 'Benito', species: 'dog' },
+  { name: 'Mini', species: 'cat' },
+  { name: 'Pedro', species: 'dog' },
+  { name: 'Marc', species: 'monkey' },
+]);
+const [cats$, others$] = partition(animals$, ({ species }) => species === 'cat');
+cats$.subscribe((cats) => console.log(cats))`,
+    },
+    {
+      id: 'pluck',
+      code: `const animals$ = from([
+  { name: 'Rufy', species: 'cat' },
+  { name: 'Benito', species: 'dog' },
+  { name: 'Mini', species: 'cat' },
+  { name: 'Pedro', species: 'dog' },
+]);    
+animals$
+  .pipe(pluck('name'))
+  .subscribe((name: string) => console.log(name))`,
+    },
+    {
+      id: 'scan',
+      code: `of(1, 10, 20)
+  .pipe(scan((acc: number, value: number) => acc + value))
+  .subscribe((result: number) => console.log(result))`,
     },
     {
       id: 'switchMap',
