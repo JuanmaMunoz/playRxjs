@@ -176,5 +176,59 @@ animals$
     )
     .subscribe((data: string) => console.log(data))`,
     },
+    {
+      id: 'window',
+      code: `const source$ = interval(1000);
+const closingNotifier$ = interval(3000);
+source$
+    .pipe(
+      window(closingNotifier$),
+      mergeMap((window$) => window$.pipe(toArray())),
+    )
+    .subscribe((data: number[]) => console.log(data))`,
+    },
+    {
+      id: 'windowCount',
+      code: `const source$ = of(1, 2, 3, 4, 5, 6);
+source$
+    .pipe(
+      windowCount(3, 2), // Windows of 3 elements, starting every 2 values
+      mergeMap((window$) => window$.pipe(toArray())),
+    )
+    .subscribe((data: number[]) => console.log(data))`,
+    },
+    {
+      id: 'windowTime',
+      code: `const source$ = interval(1000);
+source$
+    .pipe(
+      windowTime(3000),
+      mergeMap((window$) => window$.pipe(toArray())),
+    )
+    .subscribe((data: number[]) => console.log(data))`,
+    },
+    {
+      id: 'windowToogle',
+      code: `const source$ = interval(1000);
+const openings$ = interval(5000);
+const closings = () => interval(3000);
+this.subscription.add(
+  source$
+    .pipe(
+      windowToggle(openings$, closings),
+      mergeMap((window$) => window$.pipe(toArray())),
+    )
+    .subscribe((data: number[]) => console.log(data))`,
+    },
+    {
+      id: 'windowWhen',
+      code: `const source$ = interval(1000);
+source$
+    .pipe(
+      windowWhen(() => interval(3000)),
+      mergeMap((window$) => window$.pipe(toArray())),
+    )
+    .subscribe((data: number[]) => console.log(data))`,
+    },
   ],
 };

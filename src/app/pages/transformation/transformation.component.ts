@@ -30,6 +30,11 @@ import {
   switchMap,
   take,
   toArray,
+  window,
+  windowCount,
+  windowTime,
+  windowToggle,
+  windowWhen,
 } from 'rxjs';
 import { ExampleComponent } from '../../components/example/example.component';
 import { transformations } from '../../info/transformations';
@@ -86,6 +91,11 @@ export class TransformationComponent implements OnInit, AfterViewInit {
     this.operatorPluck();
     this.operatorScan();
     this.operatorSwitchMap();
+    this.operatorWindow();
+    this.operatorWindowCount();
+    this.operatorWindowTime();
+    this.operatorWindowToogle();
+    this.operatorWindowWhen();
   }
 
   private operatorBuffer(): void {
@@ -286,6 +296,69 @@ export class TransformationComponent implements OnInit, AfterViewInit {
       fromEvent(document.getElementById('btn-start-sw-map')!, 'click')
         .pipe(switchMap((e: any) => interval(1000).pipe(map((n: number) => e.target.id + ' ' + n))))
         .subscribe((data: string) => this.addConsole('switchMap', data)),
+    );
+  }
+
+  private operatorWindow(): void {
+    const source$ = interval(1000);
+    const closingNotifier$ = interval(3000);
+    this.subscription.add(
+      source$
+        .pipe(
+          window(closingNotifier$),
+          mergeMap((window$) => window$.pipe(toArray())),
+        )
+        .subscribe((data: number[]) => this.addConsole('window', JSON.stringify(data))),
+    );
+  }
+
+  private operatorWindowCount(): void {
+    const source$ = of(1, 2, 3, 4, 5, 6);
+    this.subscription.add(
+      source$
+        .pipe(
+          windowCount(3, 2), // Windows of 3 elements, starting every 2 values
+          mergeMap((window$) => window$.pipe(toArray())),
+        )
+        .subscribe((data: number[]) => this.addConsole('windowCount', JSON.stringify(data))),
+    );
+  }
+
+  private operatorWindowTime(): void {
+    const source$ = interval(1000);
+    this.subscription.add(
+      source$
+        .pipe(
+          windowTime(3000),
+          mergeMap((window$) => window$.pipe(toArray())),
+        )
+        .subscribe((data: number[]) => this.addConsole('windowTime', JSON.stringify(data))),
+    );
+  }
+
+  private operatorWindowToogle(): void {
+    const source$ = interval(1000);
+    const openings$ = interval(5000);
+    const closings = () => interval(3000);
+    this.subscription.add(
+      source$
+        .pipe(
+          windowToggle(openings$, closings),
+          mergeMap((window$) => window$.pipe(toArray())),
+        )
+        .subscribe((data: number[]) => this.addConsole('windowToogle', JSON.stringify(data))),
+    );
+  }
+
+  private operatorWindowWhen(): void {
+    const source$ = interval(1000);
+    this.subscription.add(
+      source$
+        .pipe(
+          windowWhen(() => interval(3000)),
+          mergeMap((window$) => window$.pipe(toArray())),
+        )
+        .subscribe((data: number[]) => this.addConsole('windowWhen', JSON.stringify(data))),
     );
   }
 

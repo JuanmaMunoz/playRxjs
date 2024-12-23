@@ -80,6 +80,26 @@
     "switchMap": {
       "title": "Operador switchMap",
       "description": "<p>El operador switchMap en RxJS se utiliza para cambiar de un observable a uno nuevo cada vez que el observable original emite un nuevo valor. Cuando esto ocurre, switchMap <b>cancela (o 'se desuscribe de')</b> el observable anterior y solo escucha al más reciente.</p><p>En este ejemplo, combinamos el observable de un evento clic con el observable de un intervalo. Cada vez que hacemos clic en el botón, podemos ver en la consola cómo se cancela el observable anterior.</p>"
+    },
+    "window": {
+      "title": "Operador window",
+      "description": "<p>El operador window de RxJS divide un flujo de datos (observable) en <b>sub-observables</b>, llamados <b>'ventanas'</b>. Cada ventana agrupa los elementos emitidos por el flujo original según un criterio definido, y se cierra cuando ocurre un evento determinado.</p><p>En este ejemplo agrupamos números en 'ventanas' de tres</p>"
+    },
+    "windowCount": {
+      "title": "Operador windowCount",
+      "description": "<p>El operador windowCount de RxJS divide un flujo de datos (observable) en sub-observables (ventanas) basados en un <b>número fijo</b> de emisiones. Es decir, cada 'ventana' agrupa una cantidad específica de valores emitidos.</p><p>En este ejemplo agrupamos números en 'ventanas' de tres comenzando cada 2 valores.</p>"
+    },
+    "windowTime": {
+      "title": "Operador windowTime",
+      "description": "<p>El operador windowTime de RxJS divide un flujo de datos (observable) en <b>'ventanas' de tiempo fijo</b>. Cada ventana es un sub-observable que agrupa los valores emitidos durante un intervalo de tiempo determinado.</p><p>En este ejemplo agrupamos los valores emitidos por el intervalo en ventanas de 3 segundos.</p>"
+    },
+    "windowToogle": {
+      "title": "Operador windowToogle",
+      "description": "<p>El operador windowToggle de RxJS divide un flujo de datos (observable) en ventanas que se abren y cierran según dos observables:</p><p><b>- Abridor (openings)</b>: Un observable que indica cuándo abrir una nueva ventana.</p><p>- <b>Cierre (closings)</b>: Una función que genera un observable para decidir cuándo cerrar esa ventana.</p><p>En este ejemplo emitimos los valores del intervalo abriendo una nueva ventana cada 5 segundos y cerrándola cada 3 segundos.</p>"
+    },
+    "windowWhen": {
+      "title": "Operador windowWhen",
+      "description": "<p>El operador windowWhen de RxJS divide un flujo de datos (observable) en ventanas que se <b>cierran y abren</b> según un criterio personalizado. Tú decides cuándo una ventana debe cerrarse y una nueva debe abrirse usando una función que genera observables.</p><p>En este ejemplo emitimos valores de un intervalo que se abre y cierra cada 3 segundos.</p>"
     }
   }
 }
