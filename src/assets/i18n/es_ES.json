@@ -7,7 +7,47 @@
     "shortDescription": "Los operadores de combinación son herramientas clave para gestionar flujos de datos en tiempo real o flujos asincrónicos.",
     "combineLatest": {
       "title": "Operador combineLatest",
-      "description": "<p>El operador combineLatest en RxJS es una forma de combinar múltiples observables en uno solo, de modo que cada vez que uno de ellos emite un valor, se emite un nuevo conjunto de valores que contiene:</p>- El valor <b>más reciente</b> de todos los observables involucrados.</p><p>- <b>Todos</b> los valores del último observable.</p>"
+      "description": "<p>El operador combineLatest en RxJS es una forma de combinar múltiples observables en uno solo, emitiendo el <b>último valor</b> de cada uno de ellos con la <b>secuencia de valores</b> del último observable.</p>"
+    },
+    "concat": {
+      "title": "Operador concat",
+      "description": "<p>El operador concat en RxJS combina varios observables de manera secuencial, emitiendo los valores de <b>uno hasta que se complete</b>, y luego pasa al <b>siguiente</b>.</p>"
+    },
+    "concatAll": {
+      "title": "Operador concatAll",
+      "description": "<p>El operador concatAll en RxJS se utiliza para <b>'aplanar'</b> un flujo de observables de manera secuencial. Esto significa que si tienes un observable que emite otros observables, concatAll toma esos observables y los emite <b>uno por uno</b>, en el orden en que fueron emitidos, esperando a que cada uno termine antes de pasar al siguiente.</p>"
+    },
+    "exhaust": {
+      "title": "Operador exhaust",
+      "description": "<p>El operador exhaust en RxJS se utiliza para manejar flujos de observables de manera que, cuando un observable fuente emite un nuevo observable, el operador <b>solo escuchará al primer</b> observable y se ignorarán los nuevos observables emitidos hasta que el <b>primero termine</b>. En otras palabras, si el observable fuente sigue emitiendo observables, pero ya está 'trabajando' con uno, esos nuevos observables no serán escuchados hasta que el anterior termine.</p><p>En este ejmplo podemos comprobar como el delay del segundo observable impide que se ejecute el tercer observable.</p>"
+    },
+    "forkJoin": {
+      "title": "Operador forkJoin",
+      "description": "<p>El operador forkJoin en RxJS se utiliza para esperar a que todos los observables que se le pasen como argumentos <b>terminen</b> y, cuando todos hayan emitido su último valor, emite un solo <b>array con los últimos valores</b> de cada uno de esos observables.</p>"
+    },
+    "merge": {
+      "title": "Operador merge",
+      "description": "<p>El operador merge en RxJS se utiliza para combinar múltiples observables y emitir sus valores de manera <b>intercalada</b> (sin esperar a que uno termine antes de escuchar el siguiente). Los valores se emiten en el <b>mismo orden</b> en que los observables los producen, y todos los observables se suscriben y se ejecutan <b>simultáneamente</b>.</p>"
+    },
+    "mergeAll": {
+      "title": "Operador mergeAll",
+      "description": "<p>El operador mergeAll en RxJS se utiliza para aplanar un flujo de observables, pero de manera <b>diferente</b> a otros operadores como <b>concatAll</b>. Con mergeAll, cuando un observable emite otros observables, <b>todos</b> los observables se suscriben y se ejecutan de manera <b>simultánea</b>.</p>"
+    },
+    "race": {
+      "title": "Operador race",
+      "description": "<p>El operador race en RxJS se utiliza para <b>competir</b> entre varios observables y emitir los valores del <b>primer observable que emita algo</b>. Es decir, de todos los observables que se le pasen, el operador se suscribe solo al que primero emita un valor, y <b>descarta</b> los demás observables.</p>"
+    },
+    "startWith": {
+      "title": "Operador startWith",
+      "description": "<p>El operador startWith en RxJS se utiliza para emitir un <b>valor inicial antes</b> de que cualquier otro valor sea emitido por el observable. Es decir, puedes especificar un valor que se emitirá al principio, antes de que el observable comience a emitir sus propios valores.</p>"
+    },
+    "switchAll": {
+      "title": "Operador switchAll",
+      "description": "<p>El operador switchAll en RxJS se utiliza para aplanar un flujo de observables, pero de una manera especial: cuando un observable emite un <b>nuevo observable</b>, switchAll <b>deja de escuchar</b> al observable anterior y comienza a escuchar al nuevo observable. Es decir, siempre se suscribe solo al <b>último observable(s) emitido(s)</b> y cancela la suscripción a los anteriores.</p>"
+    },
+    "withLatestFrom": {
+      "title": "Operador withLatestFrom",
+      "description": "<p>El operador withLatestFrom en RxJS se utiliza para combinar el valor <b>más reciente</b> de un observable con los valores de otro observable, <b>sin suscribirse al segundo observable</b>. Esto significa que cuando el primer observable emite un valor, withLatestFrom toma el valor más reciente del segundo observable y lo combina con el valor emitido por el primer observable.</p>"
     }
   },
 
