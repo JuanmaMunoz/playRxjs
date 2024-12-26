@@ -1,6 +1,16 @@
 {
   "english": "Inglés",
   "spanish": "Español",
+  "combination": {
+    "title": "Operadores de Combinación",
+    "description": "<b>Los operadores de combinación en RxJS</b> permiten trabajar con múltiples observables para <b>combinarlos</b> y <b>crear nuevos</b> flujos de datos de manera flexible. Cada operador tiene un propósito específico dependiendo de cómo deseas combinar los valores de los observables.",
+    "shortDescription": "Los operadores de combinación son herramientas clave para gestionar flujos de datos en tiempo real o flujos asincrónicos.",
+    "combineLatest": {
+      "title": "Operador combineLatest",
+      "description": "<p>El operador combineLatest en RxJS es una forma de combinar múltiples observables en uno solo, de modo que cada vez que uno de ellos emite un valor, se emite un nuevo conjunto de valores que contiene:</p>- El valor <b>más reciente</b> de todos los observables involucrados.</p><p>- <b>Todos</b> los valores del último observable.</p>"
+    }
+  },
+
   "transformation": {
     "title": "Operadores de transformación",
     "description": "<b>Los operadores de transformación de RxJS</b> son herramientas que te permiten cambiar (o 'transformar') los datos que fluyen a través de un flujo observable. Imagina que tienes un flujo de valores, como números u objetos, y quieres modificar, filtrar o reestructurar estos valores antes de que lleguen al observador final.",

@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { fromEvent, map, Subscription } from 'rxjs';
 import { LogoComponent } from '../../components/logo/logo.component';
 import { SectionComponent } from '../../components/section/section.component';
+import { combinations } from '../../info/combinations';
 import { transformations } from '../../info/transformations';
 import { IInfo } from '../../models/interfaces';
 
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public angular: string = 'assets/images/angular.png';
   public rxjs: string = 'assets/images/rxjs-logo.svg';
   public logoWidth!: number;
+  public combinationInfo: IInfo = combinations;
   public transformationInfo: IInfo = transformations;
   private subscription = new Subscription();
 

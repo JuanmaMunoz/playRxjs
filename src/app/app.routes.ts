@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { CombinationComponent } from './pages/combination/combination.component';
 import { Examples1Component } from './pages/examples1/examples1.component';
 import { Examples2Component } from './pages/examples2/examples2.component';
 import { Examples3Component } from './pages/examples3/examples3.component';
@@ -9,6 +10,11 @@ import { TransformationComponent } from './pages/transformation/transformation.c
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'operators/combination', component: CombinationComponent },
+  {
+    path: 'operators/combination/:id',
+    component: CombinationComponent,
+  },
   { path: 'operators/transformation', component: TransformationComponent },
   {
     path: 'operators/transformation/:id',
