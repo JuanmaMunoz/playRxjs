@@ -2,7 +2,7 @@
   "english": "Inglés",
   "spanish": "Español",
   "combination": {
-    "title": "Operadores de Combinación",
+    "title": "Operadores de combinación",
     "description": "<b>Los operadores de combinación en RxJS</b> permiten trabajar con múltiples observables para <b>combinarlos</b> y <b>crear nuevos</b> flujos de datos de manera flexible. Cada operador tiene un propósito específico dependiendo de cómo deseas combinar los valores de los observables.",
     "shortDescription": "Los operadores de combinación son herramientas clave para gestionar flujos de datos en tiempo real o flujos asincrónicos.",
     "combineLatest": {
@@ -62,6 +62,22 @@
     "every": {
       "title": "Operador every",
       "description": "<p>El operador <b>every</b> en RxJS se utiliza para comprobar si todos los valores emitidos por un observable <b>cumplen con una condición específica</b>. Devuelve un observable que <b>emite true</b> si todos los valores emitidos cumplen la condición, y <b>false</b> si al menos uno de los valores no la cumple.</p>"
+    },
+    "find": {
+      "title": "Operador find",
+      "description": "<p>El operador <b>find</b> en RxJS se utiliza para buscar el <b>primer valor</b> que cumpla con una condición específica en un observable. A diferencia de otros operadores como <b>filter</b>, que emite <b>todos</b> los valores que cumplen la condición, find devuelve solo el primer valor que cumple la condición o undefined si ningún valor lo cumple.</p>"
+    },
+    "findIndex": {
+      "title": "Operador findIndex",
+      "description": "<p>El operador <b>findIndex</b> en RxJS es muy parecido al operador find, pero en lugar de devolver el primer valor que cumple con una condición, <b>devuelve el índice</b> de ese valor. Si ningún valor cumple la condición, devuelve <b>-1</b>.</p>"
+    },
+    "isEmpty": {
+      "title": "Operador isEmpty",
+      "description": "<p>El operador <b>isEmpty</b> en RxJS se utiliza para verificar si un observable <b>no emite ningún valor</b>. Devuelve un observable que emite:</p><p>- <b>true</b> si el observable no emite ningún valor.</p><p>- <b>false</b> si el observable emite al menos un valor.<p>"
+    },
+    "sequenceEqual": {
+      "title": "Operador sequenceEqual",
+      "description": "<p>El operador <b>sequenceEqual</b> en RxJS se utiliza para comprobar si <b>dos observables</b> emiten exactamente <b>la misma secuencia de valores, en el mismo orden</b>.</p>"
     }
   },
 

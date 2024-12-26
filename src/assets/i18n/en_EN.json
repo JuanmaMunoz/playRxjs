@@ -51,7 +51,7 @@
     }
   },
   "conditional": {
-    "title": "Condicional operators",
+    "title": "Conditional operators",
     "description": "<b>Conditional operators in RxJS</b> are used to handle data streams in a <b>conditional</b> manner, meaning to execute logic based on whether or not a certain condition is met.",
     "shortDescription": "Conditional operators in RxJS are used to handle data streams in a <b>conditional</b> manner, meaning to execute logic based on whether or not a certain condition is met.",
     "defaultIfEmpty": {
@@ -61,6 +61,22 @@
     "every": {
       "title": "Operator every",
       "description": "<p>The <b>every</b> operator in RxJS is used to check if all the values emitted by an observable <b>satisfy a specific condition</b>. It returns an observable that <b>emits true</b> if all the emitted values satisfy the condition, and <b>false</b> if at least one of the values does not satisfy it.</p>"
+    },
+    "find": {
+      "title": "Operator find",
+      "description": "<p>The <b>find</b> operator in RxJS is used to search for the <b>first value</b> that satisfies a specific condition in an observable. Unlike other operators like <b>filter</b>, which emits <b>all</b> the values that satisfy the condition, find returns only the first value that satisfies the condition or undefined if no value does.</p>"
+    },
+    "findIndex": {
+      "title": "Operator findIndex",
+      "description": "<p>The <b>findIndex</b> operator in RxJS is very similar to the find operator, but instead of returning the first value that satisfies a condition, it <b>returns the index</b> of that value. If no value satisfies the condition, it returns <b>-1</b>.</p>"
+    },
+    "isEmpty": {
+      "title": "Operator isEmpty",
+      "description": "<p>The <b>isEmpty</b> operator in RxJS is used to check if an observable <b>does not emit any value</b>. It returns an observable that emits:</p><p>- <b>true</b> if the observable does not emit any value.</p><p>- <b>false</b> if the observable emits at least one value.</p>"
+    },
+    "sequenceEqual": {
+      "title": "Operator sequenceEqual",
+      "description": "<p><p>The <b>sequenceEqual</b> operator in RxJS is used to check if <b>two observables</b> emit exactly <b>the same sequence of values, in the same order</b>.</p>"
     }
   },
 

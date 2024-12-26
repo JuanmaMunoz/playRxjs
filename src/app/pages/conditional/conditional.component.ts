@@ -1,7 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { defaultIfEmpty, every, of, Subscription } from 'rxjs';
+import {
+  defaultIfEmpty,
+  every,
+  find,
+  findIndex,
+  isEmpty,
+  of,
+  sequenceEqual,
+  Subscription,
+} from 'rxjs';
 import { ExampleComponent } from '../../components/example/example.component';
 import { IntroductionComponent } from '../../components/introduction/introduction.component';
 import { conditionals } from '../../info/conditionals';
@@ -38,6 +47,10 @@ export class ConditionalComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.operatorDefaultIfEmpty();
     this.operatorEvery();
+    this.operatorFind();
+    this.operatorFindIndex();
+    this.operatorIsEmpty();
+    this.operatorSequenceEqual();
   }
 
   private operatorDefaultIfEmpty(): void {
@@ -55,6 +68,45 @@ export class ConditionalComponent implements OnInit, AfterViewInit {
       obs1$
         .pipe(every((n: number) => n >= 5))
         .subscribe((data: boolean) => this.addConsole('every', JSON.stringify(data))),
+    );
+  }
+
+  private operatorFind(): void {
+    const obs1$ = of(5, 10, 20, 4);
+    this.subscription.add(
+      obs1$
+        .pipe(find((n: number) => n >= 5))
+        .subscribe((data: number | undefined) => this.addConsole('find', JSON.stringify(data))),
+    );
+  }
+
+  private operatorFindIndex(): void {
+    const obs1$ = of(5, 10, 20, 4);
+    this.subscription.add(
+      obs1$
+        .pipe(findIndex((n: number) => n >= 5))
+        .subscribe((data: number | undefined) =>
+          this.addConsole('findIndex', JSON.stringify(data)),
+        ),
+    );
+  }
+
+  private operatorIsEmpty(): void {
+    const obs1$ = of();
+    this.subscription.add(
+      obs1$
+        .pipe(isEmpty())
+        .subscribe((data: boolean) => this.addConsole('isEmpty', JSON.stringify(data))),
+    );
+  }
+
+  private operatorSequenceEqual(): void {
+    const obs1$ = of(5, 10, 20, 4);
+    const obs2$ = of(5, 10, 20, 3);
+    this.subscription.add(
+      obs1$
+        .pipe(sequenceEqual(obs2$))
+        .subscribe((data: boolean) => this.addConsole('sequenceEqual', JSON.stringify(data))),
     );
   }
 

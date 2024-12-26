@@ -83,12 +83,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
             this.showPage = 'header__page--show';
             this.opacity = '';
             if (!this.showTitle) {
-              setTimeout(
-                () =>
-                  this.setTitle(
-                    this.translate.instant(this.introductionService.info.getValue() + '.title'),
-                  ),
-                100,
+              this.setTitle(
+                this.translate.instant(this.introductionService.info.getValue() + '.title'),
               );
             }
             this.showTitle = true;
