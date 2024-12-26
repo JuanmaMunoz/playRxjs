@@ -6,6 +6,7 @@ import { combinations } from '../../info/combinations';
 import { conditionals } from '../../info/conditionals';
 import { transformations } from '../../info/transformations';
 import { IInfo } from '../../models/interfaces';
+import { mathematicals } from './../../info/mathematicals';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public combinationInfo: IInfo = combinations;
   public conditionalInfo: IInfo = conditionals;
   public transformationInfo: IInfo = transformations;
+  public mathematicalInfo: IInfo = mathematicals;
   private subscription = new Subscription();
 
   ngOnInit(): void {

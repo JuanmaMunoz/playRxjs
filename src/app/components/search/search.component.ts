@@ -6,6 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { concatMap, fromEvent, map, Observable, of, Subscription, tap } from 'rxjs';
 import { combinations } from '../../info/combinations';
 import { conditionals } from '../../info/conditionals';
+import { mathematicals } from '../../info/mathematicals';
 import { transformations } from '../../info/transformations';
 import { IInfo, IInfoItem, ISearch } from '../../models/interfaces';
 import { MenuService } from '../../services/menu.service';
@@ -34,7 +35,12 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    const allInfo: ISearch[] = this.setSearchList([transformations, combinations, conditionals]);
+    const allInfo: ISearch[] = this.setSearchList([
+      transformations,
+      combinations,
+      conditionals,
+      mathematicals,
+    ]);
     this.obsResult = fromEvent(document.getElementsByClassName('search__text')!, 'input').pipe(
       concatMap((e: any) =>
         of(allInfo).pipe(

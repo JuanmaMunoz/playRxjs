@@ -63,27 +63,27 @@ export class ConditionalComponent implements OnInit, AfterViewInit {
   }
 
   private operatorEvery(): void {
-    const obs1$ = of(5, 10, 20, 4);
+    const obs$ = of(5, 10, 20, 4);
     this.subscription.add(
-      obs1$
+      obs$
         .pipe(every((n: number) => n >= 5))
         .subscribe((data: boolean) => this.addConsole('every', JSON.stringify(data))),
     );
   }
 
   private operatorFind(): void {
-    const obs1$ = of(5, 10, 20, 4);
+    const obs$ = of(5, 10, 20, 4);
     this.subscription.add(
-      obs1$
+      obs$
         .pipe(find((n: number) => n >= 5))
         .subscribe((data: number | undefined) => this.addConsole('find', JSON.stringify(data))),
     );
   }
 
   private operatorFindIndex(): void {
-    const obs1$ = of(5, 10, 20, 4);
+    const obs$ = of(5, 10, 20, 4);
     this.subscription.add(
-      obs1$
+      obs$
         .pipe(findIndex((n: number) => n >= 5))
         .subscribe((data: number | undefined) =>
           this.addConsole('findIndex', JSON.stringify(data)),
@@ -92,9 +92,9 @@ export class ConditionalComponent implements OnInit, AfterViewInit {
   }
 
   private operatorIsEmpty(): void {
-    const obs1$ = of();
+    const obs$ = of();
     this.subscription.add(
-      obs1$
+      obs$
         .pipe(isEmpty())
         .subscribe((data: boolean) => this.addConsole('isEmpty', JSON.stringify(data))),
     );

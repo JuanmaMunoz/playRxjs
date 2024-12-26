@@ -80,6 +80,27 @@
       "description": "<p>El operador <b>sequenceEqual</b> en RxJS se utiliza para comprobar si <b>dos observables</b> emiten exactamente <b>la misma secuencia de valores, en el mismo orden</b>.</p>"
     }
   },
+  "mathematical": {
+    "title": "Operadores matemáticos",
+    "description": "<b>Los operadores matemáticos en RxJS</b> se utilizan para realizar cálculos y <b>transformaciones matemáticas</b> en los valores emitidos por un observable. Estos operadores permiten sumar, promediar, o encontrar valores mínimos o máximos dentro de un flujo de datos.",
+    "shortDescription": "Los operadores matemáticos en RxJS se utilizan para realizar cálculos y transformaciones matemáticas en los valores emitidos por un observable.",
+    "count": {
+      "title": "Operador count",
+      "description": "<p>El operador <b>count</b> en RxJS se utiliza para contar la <b>cantidad de valores</b> emitidos por un observable <b>que cumplen con una condición específica</b>. Si no se proporciona una condición, cuenta todos los valores emitidos.</p>"
+    },
+    "max": {
+      "title": "Operador max",
+      "description": "<p>El operador <b>max</b> en RxJS se utiliza para encontrar el <b>valor máximo</b> emitido por un observable. Este operador compara todos los valores emitidos y devuelve el que sea el más alto.</p>"
+    },
+    "min": {
+      "title": "Operador min",
+      "description": "<p>El operador <b>min</b> en RxJS se utiliza para encontrar el <b>valor mínimo</b> emitido por un observable. Este operador compara todos los valores emitidos y devuelve el que sea el más bajo.</p>"
+    },
+    "reduce": {
+      "title": "Operador reduce",
+      "description": "<p>El operador <b>reduce</b> en RxJS se utiliza para <b>acumular los valores emitidos</b> por un observable, similar a cómo funciona reduce en los arrays de JavaScript. Toma todos los valores emitidos y los va combinando en un solo valor final.</p>"
+    }
+  },
 
   "transformation": {
     "title": "Operadores de transformación",
