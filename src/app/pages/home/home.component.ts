@@ -4,6 +4,7 @@ import { LogoComponent } from '../../components/logo/logo.component';
 import { SectionComponent } from '../../components/section/section.component';
 import { combinations } from '../../info/combinations';
 import { conditionals } from '../../info/conditionals';
+import { multicastings } from '../../info/multicastings';
 import { transformations } from '../../info/transformations';
 import { IInfo } from '../../models/interfaces';
 import { mathematicals } from './../../info/mathematicals';
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public conditionalInfo: IInfo = conditionals;
   public transformationInfo: IInfo = transformations;
   public mathematicalInfo: IInfo = mathematicals;
+  public multicastingInfo: IInfo = multicastings;
   private subscription = new Subscription();
 
   ngOnInit(): void {

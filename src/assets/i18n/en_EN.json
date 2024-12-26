@@ -100,6 +100,23 @@
       "description": "<p>The <b>reduce</b> operator in RxJS is used to <b>accumulate the values emitted</b> by an observable, similar to how reduce works in JavaScript arrays. It takes all the emitted values and combines them into a single final value.</p>"
     }
   },
+  "multicasting": {
+    "title": "Multicasting operators",
+    "description": "<b>Multicasting operators in RxJS</b> are used to share <b>a single stream of values</b> among multiple subscribers, so the values emitted by the observable are not repeated for each subscriber. This <b>optimizes performance</b> by preventing values from being emitted multiple times for each subscriber.",
+    "shortDescription": "Multicasting operators in RxJS are used to share a single stream of values among multiple subscribers, so the values emitted by the observable are not repeated for each subscriber.",
+    "connect": {
+      "title": "Operator connect",
+      "description": "<p>The <b>connect</b> operator in RxJS is used to <b>activate</b> an observable that is configured to be shared through a subject (usually with publish() or multicast()). This operator allows the observable to start emitting values only after <b>connect()</b> is called, meaning it controls when the observable starts emitting values.</p>"
+    },
+    "share": {
+      "title": "Operator share",
+      "description": "<p>The <b>share</b> operator in RxJS is a form of multicast that allows a <b>single data stream</b> emitted by an observable to be shared among multiple subscribers, without each subscriber <b>receiving its own emissions</b>. This prevents the observable from being executed <b>more than once</b>, optimizing performance.</p>"
+    },
+    "shareReplay": {
+      "title": "Operator shareReplay",
+      "description": "<p>The <b>shareReplay</b> operator in RxJS is similar to the <b>share</b> operator, but with a key difference: <b>it caches the last emitted values from the observable and replays (replays) them to new subscribers</b>. It is useful when you want new subscribers to receive the latest emitted values without re-executing the entire data flow.</p>"
+    }
+  },
 
   "transformation": {
     "title": "Transformation operators",

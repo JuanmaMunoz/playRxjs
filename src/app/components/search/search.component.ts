@@ -7,6 +7,7 @@ import { concatMap, fromEvent, map, Observable, of, Subscription, tap } from 'rx
 import { combinations } from '../../info/combinations';
 import { conditionals } from '../../info/conditionals';
 import { mathematicals } from '../../info/mathematicals';
+import { multicastings } from '../../info/multicastings';
 import { transformations } from '../../info/transformations';
 import { IInfo, IInfoItem, ISearch } from '../../models/interfaces';
 import { MenuService } from '../../services/menu.service';
@@ -40,6 +41,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
       combinations,
       conditionals,
       mathematicals,
+      multicastings,
     ]);
     this.obsResult = fromEvent(document.getElementsByClassName('search__text')!, 'input').pipe(
       concatMap((e: any) =>

@@ -101,6 +101,23 @@
       "description": "<p>El operador <b>reduce</b> en RxJS se utiliza para <b>acumular los valores emitidos</b> por un observable, similar a cómo funciona reduce en los arrays de JavaScript. Toma todos los valores emitidos y los va combinando en un solo valor final.</p>"
     }
   },
+  "multicasting": {
+    "title": "Operadores de multidifusión",
+    "description": "Los <b>operadores de multidifusión en RxJS</b> se utilizan para compartir <b>un solo flujo de valores</b> entre múltiples suscriptores, de modo que los valores emitidos por el observable no se repitan para cada suscriptor. Esto <b>optimiza el rendimiento</b> al evitar que los valores se emitan varias veces para cada suscriptor.",
+    "shortDescription": "Los operadores de multidifusión en RxJS se utilizan para compartir un solo flujo de valores entre múltiples suscriptores, de modo que los valores emitidos por el observable no se repitan para cada suscriptor.",
+    "connect": {
+      "title": "Operador connect",
+      "description": "<p>El operador <b>connect</b> en RxJS se utiliza para <b>ctivar</b> un observable que está configurado para ser compartido a través de un subject (usualmente con publish() o multicast()). Este operador permite que el observable comience a emitir valores solo después de que se llame a <b>connect()</b>, es decir, controla cuando el observable comienza a emitir valores.</p>"
+    },
+    "share": {
+      "title": "Operador share",
+      "description": "<p>El operador <b>share</b> en RxJS es una forma de multidifusión que permite que un <b>único flujo de datos</b> emitido por un observable sea compartido entre múltiples suscriptores, sin que cada suscriptor <b>reciba sus propias emisiones</b>. Esto evita que el observable sea ejecutado <b>más de una vez</b>, optimizando el rendimiento.</p>"
+    },
+    "shareReplay": {
+      "title": "Operador shareReplay",
+      "description": "<p>El operador <b>shareReplay</b> en RxJS es similar al operador share, pero con una diferencia clave: <b>mantiene en caché los últimos valores emitidos por el observable y los reproduce (replay) a nuevos suscriptores</b>. Es útil cuando quieres que los nuevos suscriptores reciban los últimos valores emitidos sin volver a ejecutar todo el flujo de datos.</p>"
+    }
+  },
 
   "transformation": {
     "title": "Operadores de transformación",
