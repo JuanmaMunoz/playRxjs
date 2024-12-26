@@ -37,8 +37,8 @@ import {
   windowWhen,
 } from 'rxjs';
 import { ExampleComponent } from '../../components/example/example.component';
+import { IntroductionComponent } from '../../components/introduction/introduction.component';
 import { transformations } from '../../info/transformations';
-import { IntroductionComponent } from '../../introduction/introduction.component';
 import { IInfo, IUser } from '../../models/interfaces';
 import { IntroductionService } from '../../services/introduction.service';
 import { UserService } from '../../services/user.service';

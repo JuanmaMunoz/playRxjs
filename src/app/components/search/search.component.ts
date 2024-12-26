@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { concatMap, fromEvent, map, Observable, of, Subscription, tap } from 'rxjs';
-import { combinations } from '../info/combinations';
-import { transformations } from '../info/transformations';
-import { IInfo, IInfoItem, ISearch } from '../models/interfaces';
-import { MenuService } from '../services/menu.service';
+import { combinations } from '../../info/combinations';
+import { conditionals } from '../../info/conditionals';
+import { transformations } from '../../info/transformations';
+import { IInfo, IInfoItem, ISearch } from '../../models/interfaces';
+import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'app-search',
@@ -33,7 +34,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    const allInfo: ISearch[] = this.setSearchList([transformations, combinations]);
+    const allInfo: ISearch[] = this.setSearchList([transformations, combinations, conditionals]);
     this.obsResult = fromEvent(document.getElementsByClassName('search__text')!, 'input').pipe(
       concatMap((e: any) =>
         of(allInfo).pipe(

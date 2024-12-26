@@ -3,6 +3,7 @@ import { fromEvent, map, Subscription } from 'rxjs';
 import { LogoComponent } from '../../components/logo/logo.component';
 import { SectionComponent } from '../../components/section/section.component';
 import { combinations } from '../../info/combinations';
+import { conditionals } from '../../info/conditionals';
 import { transformations } from '../../info/transformations';
 import { IInfo } from '../../models/interfaces';
 
@@ -19,6 +20,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public rxjs: string = 'assets/images/rxjs-logo.svg';
   public logoWidth!: number;
   public combinationInfo: IInfo = combinations;
+  public conditionalInfo: IInfo = conditionals;
   public transformationInfo: IInfo = transformations;
   private subscription = new Subscription();
 

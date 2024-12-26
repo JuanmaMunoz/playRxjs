@@ -7,35 +7,35 @@
     "shortDescription": "Combination operators are key tools for managing real-time or asynchronous data streams.",
     "combineLatest": {
       "title": "Operator combineLatest",
-      "description": "<p>The combineLatest operator in RxJS is a way to combine multiple observables into a single one, emitting the <b>latest value</b> from each of them along with the <b>sequence of values</b> from the latest observable.</p>"
+      "description": "<p>The <b>combineLatest</b> operator in RxJS is a way to combine multiple observables into a single one, emitting the <b>latest value</b> from each of them along with the <b>sequence of values</b> from the latest observable.</p>"
     },
     "concat": {
       "title": "Operator concat",
-      "description": "<p>The concat operator in RxJS combines multiple observables sequentially, emitting the values from <b>one until it completes</b>, and then moves on to the <b>next</b>.</p>"
+      "description": "<p>The <b>concat</b> operator in RxJS combines multiple observables sequentially, emitting the values from <b>one until it completes</b>, and then moves on to the <b>next</b>.</p>"
     },
     "concatAll": {
       "title": "Operator concatAll",
-      "description": "<p>The concatAll operator in RxJS is used to <b>'flatten'</b> a stream of observables sequentially. This means that if you have an observable that emits other observables, <b>concatAll</b> takes those observables and emits them <b>one by one</b>, in the order they were emitted, waiting for each one to complete before moving on to the next.</p>"
+      "description": "<p>The <b>concatAll</b> operator in RxJS is used to <b>'flatten'</b> a stream of observables sequentially. This means that if you have an observable that emits other observables, <b>concatAll</b> takes those observables and emits them <b>one by one</b>, in the order they were emitted, waiting for each one to complete before moving on to the next.</p>"
     },
     "exhaust": {
       "title": "Operator exhaust",
-      "description": "<p>The exhaust operator in RxJS is used to handle observable streams in such a way that, when a source observable emits a new observable, the operator <b>will only listen to the first</b> observable and any new observables emitted will be ignored until the <b>first one completes</b>. In other words, if the source observable continues emitting observables but is already 'working' with one, those new observables will not be listened to until the previous one completes.</p><p>In this example, we can observe how the delay of the second observable prevents the third observable from executing.</p>"
+      "description": "<p>The <b>exhaust</b> operator in RxJS is used to handle observable streams in such a way that, when a source observable emits a new observable, the operator <b>will only listen to the first</b> observable and any new observables emitted will be ignored until the <b>first one completes</b>. In other words, if the source observable continues emitting observables but is already 'working' with one, those new observables will not be listened to until the previous one completes.</p><p>In this example, we can observe how the delay of the second observable prevents the third observable from executing.</p>"
     },
     "forkJoin": {
       "title": "Operator forkJoin",
-      "description": "<p>The forkJoin operator in RxJS is used to wait for all the observables passed as arguments to <b>complete</b>, and when all of them have emitted their last value, it emits a single <b>array with the last values</b> from each of those observables.</p>"
+      "description": "<p>The <b>forkJoin</b> operator in RxJS is used to wait for all the observables passed as arguments to <b>complete</b>, and when all of them have emitted their last value, it emits a single <b>array with the last values</b> from each of those observables.</p>"
     },
     "merge": {
       "title": "Operator merge",
-      "description": "<p>The merge operator in RxJS is used to combine multiple observables and emit their values in an <b>interleaved</b> manner (without waiting for one to complete before listening to the next). The values are emitted in the <b>same order</b> in which the observables produce them, and all the observables are subscribed to and executed <b>simultaneously</b>.</p>"
+      "description": "<p>The <b>merge operator</b> in RxJS is used to combine multiple observables and emit their values in an <b>interleaved</b> manner (without waiting for one to complete before listening to the next). The values are emitted in the <b>same order</b> in which the observables produce them, and all the observables are subscribed to and executed <b>simultaneously</b>.</p>"
     },
     "mergeAll": {
       "title": "Operator mergeAll",
-      "description": "<p>The mergeAll operator in RxJS is used to flatten an observable stream, but in a <b>different</b> way compared to other operators like <b>concatAll</b>. With <b>mergeAll</b>, when an observable emits other observables, <b>all</b> the observables are subscribed to and executed <b>simultaneously</b>.</p>"
+      "description": "<p>The <b>mergeAll</b> operator in RxJS is used to flatten an observable stream, but in a <b>different</b> way compared to other operators like <b>concatAll</b>. With <b>mergeAll</b>, when an observable emits other observables, <b>all</b> the observables are subscribed to and executed <b>simultaneously</b>.</p>"
     },
     "race": {
       "title": "Operator race",
-      "description": "<p>The race operator in RxJS is used to <b>race</b> between multiple observables and emit the values of the <b>first observable that emits something</b>. In other words, of all the observables passed to it, the operator subscribes only to the one that emits a value first, and <b>ignores</b> the other observables.</p>"
+      "description": "<p>The <b>race</b> operator in RxJS is used to <b>race</b> between multiple observables and emit the values of the <b>first observable that emits something</b>. In other words, of all the observables passed to it, the operator subscribes only to the one that emits a value first, and <b>ignores</b> the other observables.</p>"
     },
     "startWith": {
       "title": "Operator startWith",
@@ -43,11 +43,24 @@
     },
     "switchAll": {
       "title": "Operator switchAll",
-      "description": "<p>The switchAll operator in RxJS is used to flatten an observable stream, but in a special way: when an observable emits a <b>new observable</b>, switchAll <b>stops listening</b> to the previous observable and starts listening to the new observable. In other words, it always subscribes only to the <b>last emitted observable(s)</b> and cancels the subscription to the previous ones.</p>"
+      "description": "<p>The <b>switchAll</b> operator in RxJS is used to flatten an observable stream, but in a special way: when an observable emits a <b>new observable</b>, switchAll <b>stops listening</b> to the previous observable and starts listening to the new observable. In other words, it always subscribes only to the <b>last emitted observable(s)</b> and cancels the subscription to the previous ones.</p>"
     },
     "withLatestFrom": {
-      "title": "Operador withLatestFrom",
-      "description": "<p>The withLatestFrom operator in RxJS is used to combine the <b>latest</b> value from one observable with the values of another observable, <b>without subscribing to the second observable</b>. This means that when the first observable emits a value, withLatestFrom takes the latest value from the second observable and combines it with the value emitted by the first observable.</p>"
+      "title": "Operator withLatestFrom",
+      "description": "<p>The <b>withLatestFrom</b> operator in RxJS is used to combine the <b>latest</b> value from one observable with the values of another observable, <b>without subscribing to the second observable</b>. This means that when the first observable emits a value, withLatestFrom takes the latest value from the second observable and combines it with the value emitted by the first observable.</p>"
+    }
+  },
+  "conditional": {
+    "title": "Condicional operators",
+    "description": "<b>Conditional operators in RxJS</b> are used to handle data streams in a <b>conditional</b> manner, meaning to execute logic based on whether or not a certain condition is met.",
+    "shortDescription": "Conditional operators in RxJS are used to handle data streams in a <b>conditional</b> manner, meaning to execute logic based on whether or not a certain condition is met.",
+    "defaultIfEmpty": {
+      "title": "Operator defaultIfEmpty",
+      "description": "<p>The <b>defaultIfEmpty</b> operator in RxJS is used to provide a <b>default value</b> when an observable <b>does not emit any value</b>. That is, if the observable is empty (does not emit anything), defaultIfEmpty emits the value you specify as the default.</p></p>"
+    },
+    "every": {
+      "title": "Operator every",
+      "description": "<p>The <b>every</b> operator in RxJS is used to check if all the values emitted by an observable <b>satisfy a specific condition</b>. It returns an observable that <b>emits true</b> if all the emitted values satisfy the condition, and <b>false</b> if at least one of the values does not satisfy it.</p>"
     }
   },
 
@@ -57,99 +70,99 @@
     "shortDescription": "RxJS transformation operators are tools for modifying the data flowing through an observable.",
     "buffer": {
       "title": "Operator buffer",
-      "description": "<p>The buffer operator in RxJS collects emissions from a source observable into an array and delivers them together when another observable, known as the <b>trigger</b>, emits a value. It is useful for grouping values over time intervals or in response to events.</p><p>In this example, we count the clicks made on a button every 3 seconds.</p>"
+      "description": "<p>The <b>buffer</b> operator in RxJS collects emissions from a source observable into an array and delivers them together when another observable, known as the <b>trigger</b>, emits a value. It is useful for grouping values over time intervals or in response to events.</p><p>In this example, we count the clicks made on a button every 3 seconds.</p>"
     },
     "bufferCount": {
       "title": "Operator bufferCount",
-      "description": "<p>The bufferCount operator in RxJS is used to group emissions from an observable into 'buffers' or <b>fixed-size</b> batches and emit them as an array.</p><p>In this example, we will emit the array after making 5 clicks.</p>"
+      "description": "<p>The <b>bufferCount</b> operator in RxJS is used to group emissions from an observable into 'buffers' or <b>fixed-size</b> batches and emit them as an array.</p><p>In this example, we will emit the array after making 5 clicks.</p>"
     },
     "bufferTime": {
       "title": "Operator bufferTime",
-      "description": "<p>The bufferTime operator in RxJS groups the emissions of an observable over a <b>fixed period of time</b> and emits them together as an array.</p><p>In this example, we display the array generated by the interval emission every 3 seconds.</p>"
+      "description": "<p>The <b>bufferTime</b> operator in RxJS groups the emissions of an observable over a <b>fixed period of time</b> and emits them together as an array.</p><p>In this example, we display the array generated by the interval emission every 3 seconds.</p>"
     },
     "bufferToogle": {
       "title": "Operator bufferToogle",
-      "description": "<p>The bufferToggle operator in RxJS allows you to collect values emitted by an observable into buffers (arrays) and emit those buffers based on signals from other observables. It works by opening and closing buffers based on events triggered by <b>opening and closing</b> observables.</p><p>In this example, we will capture the values emitted at 1-second intervals from the moment we press 'Start' until we press 'Stop'.</p>"
+      "description": "<p>The <b>bufferToggle</b> operator in RxJS allows you to collect values emitted by an observable into buffers (arrays) and emit those buffers based on signals from other observables. It works by opening and closing buffers based on events triggered by <b>opening and closing</b> observables.</p><p>In this example, we will capture the values emitted at 1-second intervals from the moment we press 'Start' until we press 'Stop'.</p>"
     },
     "bufferWhen": {
       "title": "Operator bufferWhen",
-      "description": "<p>The bufferWhen operator in RxJS allows you to collect values emitted by a source observable into 'buffers' (arrays) and emit those buffers when <b>a condition is met</b>. The condition for closing each buffer is defined by a function that returns an observable. When this observable emits a value, the buffer is closed, and a new one begins.</p><p>In this example, we will capture the values emitted by a 1-second interval each time we click the button.</p>"
+      "description": "<p>The <b>bufferWhen</b> operator in RxJS allows you to collect values emitted by a source observable into 'buffers' (arrays) and emit those buffers when <b>a condition is met</b>. The condition for closing each buffer is defined by a function that returns an observable. When this observable emits a value, the buffer is closed, and a new one begins.</p><p>In this example, we will capture the values emitted by a 1-second interval each time we click the button.</p>"
     },
     "concatMap": {
       "title": "Operator concatMap",
-      "description": "<p>The concatMap operator in RxJS is used to queue up observables one after another, ensuring they run in sequence. When concatMap receives a value, it maps that value to a new observable (like a network request or a timer) and waits for it to complete before moving to the next one.<p><p>In this example, we merge the observable from a button click with the observable from an interval. Each time we click the button, we can see in the console how the observables are concatenated in an orderly manner, respecting their sequence.</p>"
+      "description": "<p>The <b>concatMap</b> operator in RxJS is used to queue up observables one after another, ensuring they run in sequence. When concatMap receives a value, it maps that value to a new observable (like a network request or a timer) and waits for it to complete before moving to the next one.<p><p>In this example, we merge the observable from a button click with the observable from an interval. Each time we click the button, we can see in the console how the observables are concatenated in an orderly manner, respecting their sequence.</p>"
     },
     "exhaustMap": {
       "title": "Operator exhaustMap",
-      "description": "<p>The exhaustMap operator in RxJS is used to handle <b>asynchronous data streams</b>, ensuring that <b>only one operation is processed at a time</b> and ignoring any new actions while the current operation is still in progress.</p><p>In this example, we load a list of users through a button click. You can observe how the list will not load until the previous call has finished.</p>"
+      "description": "<p>The <b>exhaustMap</b> operator in RxJS is used to handle <b>asynchronous data streams</b>, ensuring that <b>only one operation is processed at a time</b> and ignoring any new actions while the current operation is still in progress.</p><p>In this example, we load a list of users through a button click. You can observe how the list will not load until the previous call has finished.</p>"
     },
     "expand": {
       "title": "Operator expand",
-      "description": "<p>The expand operator in RxJS is used to generate a stream of values <b>recursively</b>, meaning it allows each emitted value to <b>generate new values</b> based on a defined logic.</p><p>In this example, we add 10 to each emitted value and repeat the operation 5 times.</p>"
+      "description": "<p>The <b>expand</b> operator in RxJS is used to generate a stream of values <b>recursively</b>, meaning it allows each emitted value to <b>generate new values</b> based on a defined logic.</p><p>In this example, we add 10 to each emitted value and repeat the operation 5 times.</p>"
     },
     "groupBy": {
       "title": "Operator groupBy",
-      "description": "<p>The groupBy operator in RxJS is used to group elements emitted by an observable <b>based on a key</b> that you define. Think of it as a way to separate a data stream into different 'boxes' based on certain characteristics.</p><p>In this example, we group the species into different arrays, through a mergeMap and a toArray.</p>"
+      "description": "<p>The <b>groupBy</b> operator in RxJS is used to group elements emitted by an observable <b>based on a key</b> that you define. Think of it as a way to separate a data stream into different 'boxes' based on certain characteristics.</p><p>In this example, we group the species into different arrays, through a mergeMap and a toArray.</p>"
     },
     "map": {
       "title": "Operator map",
-      "description": "<p>The map operator in RxJS applies a function to each value emitted by an observable and returns an observable that emits the transformed values.<p><p>In this example, we transform the user's name using the map operator and use the array's map method to update the name of each item within it.</p>"
+      "description": "<p>The <b>map</b> operator in RxJS applies a function to each value emitted by an observable and returns an observable that emits the transformed values.<p><p>In this example, we transform the user's name using the map operator and use the array's map method to update the name of each item within it.</p>"
     },
     "mapTo": {
       "title": "Operator mapTo",
-      "description": "<p>The mapTo operator in RxJS replaces each value emitted by an observable with a specific value you provide.</p><p>In this example, with the mapTo operator, we replace all values from the observable with the value <b>strawberry</b>.</p>"
+      "description": "<p>The <b>mapTo</b> operator in RxJS replaces each value emitted by an observable with a specific value you provide.</p><p>In this example, with the mapTo operator, we replace all values from the observable with the value <b>strawberry</b>.</p>"
     },
     "mergeMap": {
       "title": "Operator mergeMap",
-      "description": "<p>The mergeMap operator in RxJS is used to transform the values emitted by an observable into other observables and then <b>'flattens'</b> or combines all those emissions into a single data stream. This is useful when you want to perform multiple asynchronous operations in sequence and combine their results.</p><p>In this example, we merge an observable made up of a list of letters with an observable containing a numeric range from 1 to 2.</p>"
+      "description": "<p>The <b>mergeMap</b> operator in RxJS is used to transform the values emitted by an observable into other observables and then <b>'flattens'</b> or combines all those emissions into a single data stream. This is useful when you want to perform multiple asynchronous operations in sequence and combine their results.</p><p>In this example, we merge an observable made up of a list of letters with an observable containing a numeric range from 1 to 2.</p>"
     },
     "mergeMapTo": {
       "title": "Operator mergeMapTo",
-      "description": "<p>The mergeMapTo operator in RxJS is used to replace each value emitted by an observable with a different observable that you specify, and it then 'flattens' all the results into a single output stream.</p><p>In this example, we merge an observable made up of a list of letters with an observable containing a numeric range from 1 to 2. <b>Unlike mergeMap</b>, we don`t take into account the output of the first observable, emitting the <b>same value</b> for each letter.</p>"
+      "description": "<p>The <b>mergeMapTo</b> operator in RxJS is used to replace each value emitted by an observable with a different observable that you specify, and it then 'flattens' all the results into a single output stream.</p><p>In this example, we merge an observable made up of a list of letters with an observable containing a numeric range from 1 to 2. <b>Unlike mergeMap</b>, we don`t take into account the output of the first observable, emitting the <b>same value</b> for each letter.</p>"
     },
     "mergeScan": {
       "title": "Operator mergeScan",
-      "description": "<p>The RxJS mergeScan operator is like a combination of a <b>reduce</b> and a <b>mergeMap</b>, but it is applied to a stream of data (an observable) instead of a static collection like an array. It is used when you want to maintain an accumulative state as values are emitted from an observable, while simultaneously generating new observables from each emitted value.</p><p>In this example, we cumulatively sum the numbers from the observable.</p>"
+      "description": "<p>The RxJS <b>mergeScan</b> operator is like a combination of a <b>reduce</b> and a <b>mergeMap</b>, but it is applied to a stream of data (an observable) instead of a static collection like an array. It is used when you want to maintain an accumulative state as values are emitted from an observable, while simultaneously generating new observables from each emitted value.</p><p>In this example, we cumulatively sum the numbers from the observable.</p>"
     },
     "pairwise": {
       "title": "Operator pairwise",
-      "description": "<p>The RxJS pairwise operator is a simple operator that groups consecutive values emitted by an observable into <b>pairs</b>. Each time the observable emits a new value, this operator takes the <b>previous and the current</b> values and combines them into a two-element array.</p><p>In this example, we can see how the last two emitted values are concatenated into an array.</p>"
+      "description": "<p>The RxJS <b>pairwise</b> operator is a simple operator that groups consecutive values emitted by an observable into <b>pairs</b>. Each time the observable emits a new value, this operator takes the <b>previous and the current</b> values and combines them into a two-element array.</p><p>In this example, we can see how the last two emitted values are concatenated into an array.</p>"
     },
     "partition": {
       "title": "Operator partition",
-      "description": "<p>The RxJS partition operator is a simple way to split a stream of data (observable) into two parts based on a condition. Essentially, it separates the emitted values into two different observables:</p><p>- <b>One observable</b> for the values that meet the condition.</p><p>- <b>Another observable</b> for the values that do not meet the condition.</p><p>In this example, we group the animals into two categories, those that are cats and those that are not.</p>"
+      "description": "<p>The RxJS <b>partition</b> operator is a simple way to split a stream of data (observable) into two parts based on a condition. Essentially, it separates the emitted values into two different observables:</p><p>- <b>One observable</b> for the values that meet the condition.</p><p>- <b>Another observable</b> for the values that do not meet the condition.</p><p>In this example, we group the animals into two categories, those that are cats and those that are not.</p>"
     },
     "pluck": {
       "title": "Operator pluck",
-      "description": "<p>The RxJS pluck operator is a simple way to extract a specific value from an object emitted by an observable. Essentially, it works like directly accessing a property by its <b>name</b>, but within the context of a data stream.</p><p>In this example, we will log the names of the animals from our observable to the console.</p>"
+      "description": "<p>The RxJS <b>pluck</b> operator is a simple way to extract a specific value from an object emitted by an observable. Essentially, it works like directly accessing a property by its <b>name</b>, but within the context of a data stream.</p><p>In this example, we will log the names of the animals from our observable to the console.</p>"
     },
     "scan": {
       "title": "Operator scan",
-      "description": "<p>The scan operator in RxJS is very similar to the <b>reduce function of arrays</b>, but it applies to data streams. Essentially, it accumulates a value over time as new values arrive in the stream.</p><p>In this example, we cumulatively sum the values of the observable.</p>"
+      "description": "<p>The <b>scan</b> operator in RxJS is very similar to the <b>reduce function of arrays</b>, but it applies to data streams. Essentially, it accumulates a value over time as new values arrive in the stream.</p><p>In this example, we cumulatively sum the values of the observable.</p>"
     },
     "switchMap": {
       "title": "Operator switchMap",
-      "description": "<p>The switchMap operator in RxJS is used to switch from one observable to a new one whenever a new value is emitted by the original observable. When this happens, switchMap <b>cancels (or 'unsubscribes' from)</b> the previous observable and only listens to the latest one.</p>In this example, we merge the observable from a button click with the observable from an interval. Each time we click the button, we can see in the console how the previous observable is canceled.<p>"
+      "description": "<p>The <b>switchMap</b> operator in RxJS is used to switch from one observable to a new one whenever a new value is emitted by the original observable. When this happens, switchMap <b>cancels (or 'unsubscribes' from)</b> the previous observable and only listens to the latest one.</p>In this example, we merge the observable from a button click with the observable from an interval. Each time we click the button, we can see in the console how the previous observable is canceled.<p>"
     },
     "window": {
       "title": "Operator window",
-      "description": "<p>The RxJS window operator divides a data stream (observable) into <b>sub-observables</b>, called <b>'windows'</b>. Each window groups the elements emitted by the original stream according to a defined criterion and closes when a specific event occurs.</p><p>In this example, we group numbers into 'windows' of three.</p>"
+      "description": "<p>The RxJS <b>window</b> operator divides a data stream (observable) into <b>sub-observables</b>, called <b>'windows'</b>. Each window groups the elements emitted by the original stream according to a defined criterion and closes when a specific event occurs.</p><p>In this example, we group numbers into 'windows' of three.</p>"
     },
     "windowCount": {
       "title": "Operator windowCount",
-      "description": "<p>The RxJS windowCount operator divides a data stream (observable) into sub-observables (windows) based on a <b>fixed number</b> of emissions. In other words, each 'window' groups a specific number of emitted values.</p><p>In this example, we group numbers into 'windows' of three starting every 2 values.</p>"
+      "description": "<p>The RxJS <b>windowCount</b> operator divides a data stream (observable) into sub-observables (windows) based on a <b>fixed number</b> of emissions. In other words, each 'window' groups a specific number of emitted values.</p><p>In this example, we group numbers into 'windows' of three starting every 2 values.</p>"
     },
     "windowTime": {
       "title": "Operator windowTime",
-      "description": "<p>The RxJS windowTime operator divides a data stream (observable) into <b>'fixed-time windows'</b>. Each window is a sub-observable that groups the values emitted during a specific time interval.</p><p>In this example, we group the values emitted by the interval into 3-second windows.</p>"
+      "description": "<p>The RxJS <b>windowTime</b> operator divides a data stream (observable) into <b>'fixed-time windows'</b>. Each window is a sub-observable that groups the values emitted during a specific time interval.</p><p>In this example, we group the values emitted by the interval into 3-second windows.</p>"
     },
     "windowToogle": {
       "title": "Operator windowToogle",
-      "description": "<p>The RxJS windowToggle operator divides a data stream (observable) into windows that open and close based on two observables:</p><p><b>- Opener (openings)</b>: An observable that indicates when to open a new window.</p><p><b>- Closer (closings)</b>: A function that generates an observable to decide when to close the window.</p><p>In this example, we emit the values from the interval, opening a new window every 5 seconds and closing it after 3 seconds.</p>"
+      "description": "<p>The RxJS <b>windowToggle</b> operator divides a data stream (observable) into windows that open and close based on two observables:</p><p><b>- Opener (openings)</b>: An observable that indicates when to open a new window.</p><p><b>- Closer (closings)</b>: A function that generates an observable to decide when to close the window.</p><p>In this example, we emit the values from the interval, opening a new window every 5 seconds and closing it after 3 seconds.</p>"
     },
     "windowWhen": {
       "title": "Operator windowWhen",
-      "description": "<p>The RxJS windowWhen operator divides a data stream (observable) into windows that <b>close and open</b> based on a custom criterion. You decide when a window should close and a new one should open using a function that generates observables.</p><p>In this example, we emit values from an interval that opens and closes every 3 seconds.</p>"
+      "description": "<p>The RxJS <b>windowWhen</b> operator divides a data stream (observable) into windows that <b>close and open</b> based on a custom criterion. You decide when a window should close and a new one should open using a function that generates observables.</p><p>In this example, we emit values from an interval that opens and closes every 3 seconds.</p>"
     }
   }
 }

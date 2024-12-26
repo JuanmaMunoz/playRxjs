@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { IInfo } from '../models/interfaces';
-import { MenuService } from '../services/menu.service';
+import { IInfo } from '../../models/interfaces';
+import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'app-menu-items',

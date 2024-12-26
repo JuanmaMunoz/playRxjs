@@ -27,7 +27,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.translate.use(lang);
     this.subscription.add(
       this.translate.onLangChange.subscribe((data) => {
-        console.log(data.lang);
         localStorage.setItem('language', data.lang);
       }),
     );
@@ -37,8 +36,7 @@ export class AppComponent implements OnInit, OnDestroy {
         .pipe(
           filter(
             (e: any) =>
-              !e.target.classList.value.includes('menu') &&
-              this.menuService.openMenu.getValue(),
+              !e.target.classList.value.includes('menu') && this.menuService.openMenu.getValue(),
           ),
         )
         .subscribe((e) => {

@@ -3,10 +3,10 @@ import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { filter, fromEvent, interval, map, scan, Subscription, take } from 'rxjs';
-import { SearchComponent } from '../../search/search.component';
 import { IntroductionService } from '../../services/introduction.service';
 import { MenuService } from '../../services/menu.service';
 import { LogoComponent } from '../logo/logo.component';
+import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'app-header',
@@ -47,6 +47,12 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         this.setTitle(this.translate.instant(this.introductionService.info.getValue() + '.title'));
       }),
     );
+
+    this.subscription.add(
+      this.translate.onLangChange.subscribe(() =>
+        this.setTitle(this.translate.instant(this.introductionService.info.getValue() + '.title')),
+      ),
+    );
   }
   ngAfterViewInit(): void {
     this.showHidePage();
@@ -76,10 +82,15 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
           if (e >= 200) {
             this.showPage = 'header__page--show';
             this.opacity = '';
-            if (!this.showTitle)
-              this.setTitle(
-                this.translate.instant(this.introductionService.info.getValue() + '.title'),
+            if (!this.showTitle) {
+              setTimeout(
+                () =>
+                  this.setTitle(
+                    this.translate.instant(this.introductionService.info.getValue() + '.title'),
+                  ),
+                100,
               );
+            }
             this.showTitle = true;
           } else {
             this.showTitle = false;

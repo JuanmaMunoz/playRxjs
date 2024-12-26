@@ -3,23 +3,25 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@ang
 import { RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { combinations } from '../../info/combinations';
+import { conditionals } from '../../info/conditionals';
 import { transformations } from '../../info/transformations';
-import { MenuItemsComponent } from '../../menu-items/menu-items.component';
 import { IInfo } from '../../models/interfaces';
-import { SearchComponent } from '../../search/search.component';
 import { MenuService } from '../../services/menu.service';
 import { LanguageComponent } from '../language/language.component';
+import { MenuItemsComponent } from '../menu-items/menu-items.component';
+import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule, RouterModule, MenuItemsComponent, SearchComponent, LanguageComponent],
+  imports: [CommonModule, RouterModule, SearchComponent, LanguageComponent, MenuItemsComponent],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent implements AfterViewInit, OnDestroy {
   @ViewChild('menu') menu!: ElementRef;
   public infoCombination: IInfo = combinations;
+  public infoConditional: IInfo = conditionals;
   public infoTransformation: IInfo = transformations;
   private subscription = new Subscription();
   constructor(private menuService: MenuService) {}

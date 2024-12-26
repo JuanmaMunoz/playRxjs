@@ -19,11 +19,10 @@ import {
   withLatestFrom,
 } from 'rxjs';
 import { ExampleComponent } from '../../components/example/example.component';
+import { IntroductionComponent } from '../../components/introduction/introduction.component';
 import { combinations } from '../../info/combinations';
-import { IntroductionComponent } from '../../introduction/introduction.component';
 import { IInfo } from '../../models/interfaces';
 import { IntroductionService } from '../../services/introduction.service';
-import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-combination',
@@ -37,7 +36,6 @@ export class CombinationComponent implements OnInit, AfterViewInit {
   public subscription = new Subscription();
 
   constructor(
-    private userService: UserService,
     private renderer: Renderer2,
     private route: ActivatedRoute,
     private introductionService: IntroductionService,

@@ -16,7 +16,6 @@ export class ExampleComponent implements OnInit, AfterViewInit {
   public title!: string;
   public description!: string;
   ngOnInit(): void {
-    console.log('this.category', this.category);
     this.title = `${this.category}.${this.infoItem.id}.title`;
     this.description = `${this.category}.${this.infoItem.id}.description`;
   }

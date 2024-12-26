@@ -3,7 +3,7 @@ import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
-import { IInfo } from '../models/interfaces';
+import { IInfo } from '../../models/interfaces';
 
 @Component({
   selector: 'app-introduction',
