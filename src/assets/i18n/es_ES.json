@@ -80,6 +80,57 @@
       "description": "<p>El operador <b>sequenceEqual</b> en RxJS se utiliza para comprobar si <b>dos observables</b> emiten exactamente <b>la misma secuencia de valores, en el mismo orden</b>.</p>"
     }
   },
+
+  "creation": {
+    "title": "Operadores de creación",
+    "description": "<b>En RxJS, los operadores de creación</b> son funciones que <b>generan observables</b> desde cero o a partir de otros valores o estructuras. Estos operadores permiten crear flujos de datos que luego pueden ser procesados.",
+    "shortDescription": "En RxJS, los operadores de creación son funciones que generan observables desde cero o a partir de otros valores o estructuras.",
+    "ajax": {
+      "title": "Operador ajax",
+      "description": "<p>El operador <b>ajax</b> de RxJS es una utilidad para <b>realizar solicitudes HTTP</b> (como GET, POST, PUT, DELETE) de manera sencilla y manejar las respuestas en forma de observables. Es ideal para trabajar con datos que provienen de APIs.</p>"
+    },
+    "defer": {
+      "title": "Operador defer",
+      "description": "<p>El operador <b>defer</b> en RxJS es como una <b>'fábrica de observables'</b>. Su propósito principal es crear un <b>nuevo observable</b> cuando alguien se <b>suscribe</b>, en lugar de hacerlo inmediatamente. Esto permite que el observable se genere bajo demanda, asegurándose de que siempre se ejecute con la lógica o datos más actualizados.</p>"
+    },
+    "from": {
+      "title": "Operador from",
+      "description": "<p>El operador <b>from</b> es como un puente entre estructuras comunes de JavaScript y el mundo reactivo de RxJS. Convierte cosas como <b>arrays y promesas en observables</b> que puedes usar en tus flujos reactivos.</p>"
+    },
+    "fromEvent": {
+      "title": "Operador fromEvent",
+      "description": "<p>El operador <b>fromEvent</b> de RxJS convierte un <b>evento en un observable</b>. Esto significa que puedes escuchar eventos, como clics del ratón, movimientos del cursor, teclas presionadas, y trabajar con ellos como flujos de datos.</p>"
+    },
+    "generate": {
+      "title": "Operador generate",
+      "description": "<p>El operador <b>generate</b> de RxJS es una forma avanzada de <b>crear observables</b> que emiten una secuencia de valores basada en una <b>función generadora</b>. Permite generar un flujo de datos personalizado mediante la especificación de condiciones de inicio, continuación y actualización de los valores que se emiten.</p>"
+    },
+    "iif": {
+      "title": "Operador iif",
+      "description": "<p>El operador <b>iif</b> en RxJS es una forma de crear un observable condicional. En otras palabras, iif te permite <b>decidir</b> qué observable emitir en función de una condición.</p>"
+    },
+    "interval": {
+      "title": "Operador interval",
+      "description": "<p>El operador <b>interval</b> de RxJS <b>crea</b> un observable que emite <b>valores numéricos</b> de manera continua, comenzando desde 0, y luego incrementando cada vez después de un intervalo de tiempo específico.</p>"
+    },
+    "of": {
+      "title": "Operador of",
+      "description": "<p>El operador <b>of</b> de RxJS crea un observable a partir de un conjunto de valores que le pases. Estos valores pueden ser <b>cualquier tipo de dato</b>, como números, cadenas, objetos, etc.</p>"
+    },
+    "range": {
+      "title": "Operador range",
+      "description": "<p>El operador <b>range</b> de RxJS crea un observable que emite una secuencia de números dentro de un rango especificado, comenzando desde un valor <b>inicial</b> y hasta un valor <b>final</b>.</p>"
+    },
+    "throwError": {
+      "title": "Operador throwError",
+      "description": "<p>El operador <b>throwError</b> de RxJS se utiliza para <b>emitir un error</b> en un observable de manera manual. Esto es útil cuando deseas que un flujo de datos se detenga debido a una condición específica y que se maneje un error.</p>"
+    },
+    "timer": {
+      "title": "Operador timer",
+      "description": "<p>El operador <b>timer</b> de RxJS crea un observable que emite un valor <b>después de un cierto período de tiempo</b> (en milisegundos) y luego puede seguir emitiendo valores a intervalos regulares si se le indica.</p>"
+    }
+  },
+
   "mathematical": {
     "title": "Operadores matemáticos",
     "description": "<b>Los operadores matemáticos en RxJS</b> se utilizan para realizar cálculos y <b>transformaciones matemáticas</b> en los valores emitidos por un observable. Estos operadores permiten sumar, promediar, o encontrar valores mínimos o máximos dentro de un flujo de datos.",

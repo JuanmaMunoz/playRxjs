@@ -79,6 +79,55 @@
       "description": "<p><p>The <b>sequenceEqual</b> operator in RxJS is used to check if <b>two observables</b> emit exactly <b>the same sequence of values, in the same order</b>.</p>"
     }
   },
+  "creation": {
+    "title": "Creation operators",
+    "description": "<b>In RxJS, creation operators</b> are functions that <b>generate observables</b> from scratch or from other values or structures. These operators allow creating data streams that can then be processed.",
+    "shortDescription": "In RxJS, creation operators are functions that generate observables from scratch or from other values or structures.",
+    "ajax": {
+      "title": "Operator ajax",
+      "description": "<p>The <b>ajax</b> operator in RxJS is a utility for <b>making HTTP requests</b> (such as GET, POST, PUT, DELETE) easily and handling responses as observables. It is ideal for working with data from APIs.</p>"
+    },
+    "defer": {
+      "title": "Operator defer",
+      "description": "<p>The <b>defer</b> operator in RxJS is like an <b>'observable factory'</b>. Its main purpose is to create a <b>new observable</b> when someone <b>subscribes</b>, instead of doing so immediately. This allows the observable to be generated on demand, ensuring it always runs with the most updated logic or data.</p>"
+    },
+    "from": {
+      "title": "Operator from",
+      "description": "<p>The <b>from</b> operator is like a bridge between common JavaScript structures and the reactive world of RxJS. It converts things like <b>arrays and promises into observables</b> that you can use in your reactive streams.</p>"
+    },
+    "fromEvent": {
+      "title": "Operator fromEvent",
+      "description": "<p>The <b>fromEvent</b> operator in RxJS converts an <b>event into an observable</b>. This means you can listen to events, such as mouse clicks, cursor movements, key presses, and work with them as data streams.</p>"
+    },
+    "generate": {
+      "title": "Operator generate",
+      "description": "<p>The <b>generate</b> operator in RxJS is an advanced way to <b>create observables</b> that emit a sequence of values based on a <b>generator function</b>. It allows you to generate a custom data stream by specifying conditions for starting, continuing, and updating the emitted values.</p>"
+    },
+    "iif": {
+      "title": "Operator iif",
+      "description": "<p>The <b>iif</b> operator in RxJS is a way to create a conditional observable. In other words, iif allows you to <b>decide</b> which observable to emit based on a condition.</p>"
+    },
+    "interval": {
+      "title": "Operator interval",
+      "description": "<p>The <b>interval</b> operator in RxJS <b>creates</b> an observable that emits <b>numeric values</b> continuously, starting from 0, and then incrementing each time after a specific time interval.</p>"
+    },
+    "of": {
+      "title": "Operator of",
+      "description": "<p>The <b>of</b> operator in RxJS creates an observable from a set of values you pass to it. These values can be <b>any type of data</b>, such as numbers, strings, objects, etc.</p>"
+    },
+    "range": {
+      "title": "Operator range",
+      "description": "<p><p>The <b>range</b> operator in RxJS creates an observable that emits a sequence of numbers within a specified range, starting from an <b>initial</b> value and up to a <b>final</b> value.</p>"
+    },
+    "throwError": {
+      "title": "Operator throwError",
+      "description": "<p>The <b>throwError</b> operator in RxJS is used to <b>emit an error</b> in an observable manually. This is useful when you want a data stream to stop due to a specific condition and handle an error.</p>"
+    },
+    "timer": {
+      "title": "Operator timer",
+      "description": "<p><p>The <b>timer</b> operator in RxJS creates an observable that emits a value <b>after a certain period of time</b> (in milliseconds) and can then continue emitting values at regular intervals if specified.</p>"
+    }
+  },
   "mathematical": {
     "title": "Mathematical operators",
     "description": "<b>Mathematical operators in RxJS</b> are used to perform calculations and <b>mathematical transformations</b> on the values emitted by an observable. These operators allow summing, averaging, or finding minimum or maximum values within a data stream.",

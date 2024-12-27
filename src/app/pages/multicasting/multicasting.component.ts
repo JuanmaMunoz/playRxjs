@@ -106,6 +106,3 @@ export class MulticastingComponent implements OnInit, AfterViewInit {
     this.renderer.appendChild(document.getElementById(`console-${id}`), div);
   }
 }
-function replay(): import('rxjs').OperatorFunction<number, unknown> {
-  throw new Error('Function not implemented.');
-}

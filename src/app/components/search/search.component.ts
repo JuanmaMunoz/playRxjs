@@ -6,6 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { concatMap, fromEvent, map, Observable, of, Subscription, tap } from 'rxjs';
 import { combinations } from '../../info/combinations';
 import { conditionals } from '../../info/conditionals';
+import { creations } from '../../info/creations';
 import { mathematicals } from '../../info/mathematicals';
 import { multicastings } from '../../info/multicastings';
 import { transformations } from '../../info/transformations';
@@ -42,6 +43,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
       conditionals,
       mathematicals,
       multicastings,
+      creations,
     ]);
     this.obsResult = fromEvent(document.getElementsByClassName('search__text')!, 'input').pipe(
       concatMap((e: any) =>

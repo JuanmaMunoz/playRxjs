@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { CombinationComponent } from './pages/combination/combination.component';
 import { ConditionalComponent } from './pages/conditional/conditional.component';
+import { CreationComponent } from './pages/creation/creation.component';
 import { Examples1Component } from './pages/examples1/examples1.component';
 import { Examples2Component } from './pages/examples2/examples2.component';
 import { Examples3Component } from './pages/examples3/examples3.component';
@@ -22,6 +23,11 @@ export const routes: Routes = [
   {
     path: 'operators/conditional/:id',
     component: ConditionalComponent,
+  },
+  { path: 'operators/creation', component: CreationComponent },
+  {
+    path: 'operators/creation/:id',
+    component: CreationComponent,
   },
   { path: 'operators/mathematical', component: MathematicalComponent },
   {
