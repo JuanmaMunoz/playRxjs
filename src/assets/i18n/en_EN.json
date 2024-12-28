@@ -128,6 +128,51 @@
       "description": "<p><p>The <b>timer</b> operator in RxJS creates an observable that emits a value <b>after a certain period of time</b> (in milliseconds) and can then continue emitting values at regular intervals if specified.</p>"
     }
   },
+  "filtering": {
+    "title": "Filtering operators",
+    "description": "In RxJS, <b>filtering operators</b> are used to <b>filter</b> the items emitted by an observable, allowing only those that meet a specific condition to pass through. These operators are useful for working with data streams, ensuring that only the relevant values are processed.",
+    "shortDescription": "In RxJS, filtering operators are used to filter the items emitted by an observable, allowing only those that meet a specific condition to pass through.",
+    "audit": {
+      "title": "Operator audit",
+      "description": "<p>The <b>audit</b> operator in RxJS is used to <b>control the emission</b> of values from an observable, based on another observable that acts as a <b>'time window'</b>.</p>"
+    },
+    "auditTime": {
+      "title": "Operator auditTime",
+      "description": "<p>The <b>auditTime</b> operator in RxJS is a simple way to control the frequency at which values are emitted by an observable. It works <b>similarly to audit</b>, but instead of relying on an external observable, it uses a <b>fixed time period</b> that you define.</p>"
+    },
+    "debounce": {
+      "title": "Operator debounce",
+      "description": "<p>The <b>debounce</b> operator in RxJS is useful for controlling <b>how many values</b> from an observable are processed, especially when the values arrive quickly (like key presses or clicks). This operator <b>waits for a period of time</b> after receiving a value, and only emits that value if no new values are received during that time.</p><p>In this example, we will log the last key pressed to the console.</p>"
+    },
+    "debounceTime": {
+      "title": "Operator debounceTime",
+      "description": "<p>The <b>debounceTime</b> operator in RxJS is very similar to debounce, but instead of using an observable to define the wait time, it simply uses <b>a fixed time period</b>.</p>"
+    },
+    "distinct": {
+      "title": "Operator distinct",
+      "description": "<p>The <b>distinct</b> operator in RxJS is used to <b>filter duplicate values</b> that an observable may emit. It only emits <b>unique values</b> (i.e., those that do not repeat) and discards the values that have already been emitted.</p>"
+    },
+    "distinctUntilChanged": {
+      "title": "Operator distinctUntilChanged",
+      "description": "<p>The <b>distinctUntilChanged</b> operator in RxJS is used to filter <b>consecutive repeated</b> values in a data stream. It emits a value only if it is different from the last emitted value.</p>"
+    },
+    "distinctUntilKeyChanged": {
+      "title": "Operator distinctUntilKeyChanged",
+      "description": "<p>The <b>distinctUntilKeyChanged</b> operator in RxJS is very similar to distinctUntilChanged, but it is used when the values emitted by the observable are <b>objects</b> or contain properties, and you want to filter out values that have not changed in <b>a specific property</b>.</p>"
+    },
+    "elementAt": {
+      "title": "Operator elementAt",
+      "description": "<p>The <b>elementAt</b> operator in RxJS is used to get a <b>specific value at a given position</b> from a data stream emitted by an observable.</p>"
+    },
+    "filter": {
+      "title": "Operator filter",
+      "description": "<p>The <b>filter</b> operator in RxJS is used to filter the values emitted by an observable, allowing only the values that <b>meet a specific condition</b> to pass through.</p><p>In this example, we filter for users who are older than 3 years and have different names.</p>"
+    },
+    "first": {
+      "title": "Operator first",
+      "description": "<p>The <b>first</b> operator in RxJS is used to emit only the <b>first value</b> of an observable that <b>meets a specific condition</b>, or simply the <b>first</b> value if <b>no</b> condition is defined.</p>"
+    }
+  },
   "mathematical": {
     "title": "Mathematical operators",
     "description": "<b>Mathematical operators in RxJS</b> are used to perform calculations and <b>mathematical transformations</b> on the values emitted by an observable. These operators allow summing, averaging, or finding minimum or maximum values within a data stream.",

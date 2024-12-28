@@ -130,6 +130,51 @@
       "description": "<p>El operador <b>timer</b> de RxJS crea un observable que emite un valor <b>después de un cierto período de tiempo</b> (en milisegundos) y luego puede seguir emitiendo valores a intervalos regulares si se le indica.</p>"
     }
   },
+  "filtering": {
+    "title": "Operadores de filtración",
+    "description": "En RxJS, <b>los operadores de filtración</b> se utilizan para <b>filtrar</b> los elementos emitidos por un observable, dejando pasar únicamente aquellos que cumplen con una condición específica. Estos operadores son útiles para trabajar con flujos de datos, asegurando que solo procesemos los valores relevantes.",
+    "shortDescription": "En RxJS, los operadores de filtración se utilizan para filtrar los elementos emitidos por un observable, dejando pasar únicamente aquellos que cumplen con una condición específica.",
+    "audit": {
+      "title": "Operador audit",
+      "description": "<p>El operador <b>audit</b> en RxJS se utiliza para <b>controlar la emisión</b> de valores de un observable, basándose en otro observable que actúa como una <b>'ventana de tiempo'</b>.</p>"
+    },
+    "auditTime": {
+      "title": "Operador auditTime",
+      "description": "<p>El operador <b>auditTime</b> en RxJS es una forma sencilla de controlar la frecuencia con la que se emiten valores de un observable. Funciona de manera <b>similar a audit</b>, pero en lugar de depender de un observable externo, usa un <b>período de tiempo fijo</b> que tú defines.</p>"
+    },
+    "debounce": {
+      "title": "Operador debounce",
+      "description": "<p>El operador <b>debounce</b> en RxJS es útil para controlar <b>cuántos valores</b> de un observable se procesan, especialmente cuando los valores llegan rápidamente (como pulsaciones de teclas o clics). Este operador <b>espera un período de tiempo</b> tras recibir un valor, y solo emite ese valor si no se han recibido nuevos valores durante ese tiempo.</p><p>En este ejemplo mostraremos por consola la última tecla presionada.</p>"
+    },
+    "debounceTime": {
+      "title": "Operador debounceTime",
+      "description": "<p>El operador <b>debounceTime</b> en RxJS es muy similar a debounce, pero en lugar de usar un observable para definir el tiempo de espera, simplemente se utiliza <b>un período de tiempo fijo</b>.</p>"
+    },
+    "distinct": {
+      "title": "Operador distinct",
+      "description": "<p>El operador <b>distinct</b> en RxJS se utiliza para <b>filtrar valores duplicados</b> que un observable pueda emitir. Emite solo los <b>valores únicos</b> (es decir, los que no se repiten) y descarta los valores que ya han sido emitidos previamente.</p>"
+    },
+    "distinctUntilChanged": {
+      "title": "Operador distinctUntilChanged",
+      "description": "<p>El operador <b>distinctUntilChanged</b> en RxJS se utiliza para filtrar valores <b>consecutivos repetidos</b> en un flujo de datos. Emite un valor solo si es diferente al último valor emitido.</p>"
+    },
+    "distinctUntilKeyChanged": {
+      "title": "Operador distinctUntilKeyChanged",
+      "description": "<p>El operador <b>distinctUntilKeyChanged</b> en RxJS es muy similar a distinctUntilChanged, pero se utiliza cuando los valores que emite el observable son <b>objetos</b> o contienen propiedades, y deseas filtrar los valores que no han cambiado en <b>una propiedad específica</b>.</p>"
+    },
+    "elementAt": {
+      "title": "Operador elementAt",
+      "description": "<p>El operador <b>elementAt</b> en RxJS se utiliza para obtener un <b>valor específico en una posición determinada</b> de un flujo de datos emitido por un observable.</p>"
+    },
+    "filter": {
+      "title": "Operador filter",
+      "description": "<p>El operador <b>filter</b> en RxJS se utiliza para filtrar los valores que un observable emite, permitiendo que solo pasen los valores que <b>cumplan con una condición específica</b>.</p><p>En este ejemplo filtramos por los usuarios que tengan más de 3 años y tengan nombres diferentes.</p>"
+    },
+    "first": {
+      "title": "Operador first",
+      "description": "<p>El operador <b>first</b> en RxJS se utiliza para emitir solo el <b>primer valor</b> de un observable que <b>cumpla con una condición específica</b>, o simplemente el <b>primer</b> valor si no se define <b>ninguna</b> condición.</p>"
+    }
+  },
 
   "mathematical": {
     "title": "Operadores matemáticos",

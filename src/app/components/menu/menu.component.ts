@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { combinations } from '../../info/combinations';
 import { conditionals } from '../../info/conditionals';
 import { creations } from '../../info/creations';
+import { filterings } from '../../info/filterings';
 import { mathematicals } from '../../info/mathematicals';
 import { multicastings } from '../../info/multicastings';
 import { transformations } from '../../info/transformations';
@@ -29,6 +30,7 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
   public infoTransformation: IInfo = transformations;
   public infoMulticasting: IInfo = multicastings;
   public infocreation: IInfo = creations;
+  public infoFiltering: IInfo = filterings;
   private subscription = new Subscription();
   constructor(private menuService: MenuService) {}
   ngAfterViewInit(): void {

@@ -5,6 +5,7 @@ import { SectionComponent } from '../../components/section/section.component';
 import { combinations } from '../../info/combinations';
 import { conditionals } from '../../info/conditionals';
 import { creations } from '../../info/creations';
+import { filterings } from '../../info/filterings';
 import { multicastings } from '../../info/multicastings';
 import { transformations } from '../../info/transformations';
 import { IInfo } from '../../models/interfaces';
@@ -28,6 +29,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public mathematicalInfo: IInfo = mathematicals;
   public multicastingInfo: IInfo = multicastings;
   public creationInfo: IInfo = creations;
+  public filteringInfo: IInfo = filterings;
   private subscription = new Subscription();
 
   ngOnInit(): void {

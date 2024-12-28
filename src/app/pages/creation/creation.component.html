@@ -1,17 +1,6 @@
 <div class="creation">
   <app-introduction [info]="info"></app-introduction>
   @for (i of info.items; track $index) {
-    @switch (i.id) {
-      @case ('connect') {
-        <app-example [infoItem]="i" [category]="info.category">
-          <div class="creation__buttons">
-            <button id="btn-click-connect" class="btn btn--primary">Connect</button>
-          </div>
-        </app-example>
-      }
-      @default {
-        <app-example [infoItem]="i" [category]="info.category"></app-example>
-      }
-    }
+    <app-example [infoItem]="i" [category]="info.category"></app-example>
   }
 </div>

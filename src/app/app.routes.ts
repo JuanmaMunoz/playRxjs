@@ -7,6 +7,7 @@ import { Examples2Component } from './pages/examples2/examples2.component';
 import { Examples3Component } from './pages/examples3/examples3.component';
 import { Examples4Component } from './pages/examples4/examples4.component';
 import { Examples5Component } from './pages/examples5/examples5.component';
+import { FilteringComponent } from './pages/filtering/filtering.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MathematicalComponent } from './pages/mathematical/mathematical.component';
 import { MulticastingComponent } from './pages/multicasting/multicasting.component';
@@ -28,6 +29,11 @@ export const routes: Routes = [
   {
     path: 'operators/creation/:id',
     component: CreationComponent,
+  },
+  { path: 'operators/filtering', component: FilteringComponent },
+  {
+    path: 'operators/filtering/:id',
+    component: FilteringComponent,
   },
   { path: 'operators/mathematical', component: MathematicalComponent },
   {
