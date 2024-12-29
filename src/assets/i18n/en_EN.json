@@ -170,7 +170,63 @@
     },
     "first": {
       "title": "Operator first",
-      "description": "<p>The <b>first</b> operator in RxJS is used to emit only the <b>first value</b> of an observable that <b>meets a specific condition</b>, or simply the <b>first</b> value if <b>no</b> condition is defined.</p>"
+      "description": "<p>The <b>first</b> operator in RxJS is used to emit only the <b>first value</b> from an observable that <b>meets a specific condition</b>, or simply the <b>first</b> value if <b>no</b> condition is defined. If the observable does not emit any value, it can throw an error or emit a default value if specified.</p>"
+    },
+    "ignoreElements": {
+      "title": "Operator ignoreElements",
+      "description": "<p>The <b>ignoreElements</b> operator in RxJS is used to ignore <b>all</b> values emitted by an observable. This operator <b>does not emit anything</b>, but it does pass errors or the <b>signal</b> that the observable has <b>completed</b>.</p>"
+    },
+    "last": {
+      "title": "Operator last",
+      "description": "<p>The <b>last</b> operator in RxJS is used to emit only the <b>last value</b> from an observable that <b>meets a specific condition</b>. If the observable does not emit any value, it can throw an error or emit a default value if specified.</p><p>In this example, we force it to not find any value in order to see the default error message.</p>"
+    },
+    "sample": {
+      "title": "Operator sample",
+      "description": "<p>The <b>sample</b> operator in RxJS is used to <b>take the last value</b> emitted by an observable at <b>specific moments</b> defined by another observable that acts as a 'time source'.</p><p>In this example, we only take the last value emitted from the interval every 5 seconds.</p>"
+    },
+    "sampleTime": {
+      "title": "Operator sampleTime",
+      "description": "<p>The <b>sampleTime</b> operator in RxJS is used to <b>take the last value</b> emitted by an observable at <b>fixed time intervals</b>. Each time the specified time period passes, the operator emits the last value produced up to that moment.</p>"
+    },
+    "skip": {
+      "title": "Operator skip",
+      "description": "<p>The <b>skip</b> operator in RxJS is a tool used to <b>ignore a certain number of initial values</b> emitted by an observable. After 'skipping' these values, it starts passing the subsequent values that are emitted.</p>"
+    },
+    "skipLast": {
+      "title": "Operator skipLast",
+      "description": "<p>The <b>skipLast</b> operator in RxJS is very similar to skip, but instead of ignoring values at the beginning, it <b>ignores the last values emitted</b> by an observable. This means it allows all values to pass except for the last <b>n</b>.</p>"
+    },
+    "skipUntil": {
+      "title": "Operator skipUntil",
+      "description": "<p>The <b>skipUntil</b> operator in RxJS is used to <b>ignore values emitted by an observable</b> until <b>another observable emits a value</b>. At that point, it starts allowing the values from the original observable to pass through.</p>"
+    },
+    "skipWhile": {
+      "title": "Operator skipWhile",
+      "description": "<p>The <b>skipWhile</b> operator in RxJS is used to <b>ignore values emitted by an observable while a condition is met</b>. As soon as the condition is no longer met, it starts passing the values emitted by the observable.</p>"
+    },
+    "take": {
+      "title": "Operator take",
+      "description": "<p>The <b>take</b> operator in RxJS is used to <b>limit the number of values</b> that an observable can emit. Once the observable has emitted the <b>specified</b> number of values, it completes automatically.</p>"
+    },
+    "takeLast": {
+      "title": "Operator takeLast",
+      "description": "<p>The <b>takeLast</b> operator in RxJS is used to take the <b>last n emitted values</b> from an observable, after the observable has completed.</p>"
+    },
+    "takeUntil": {
+      "title": "Operator takeUntil",
+      "description": "<p>The <b>takeUntil</b> operator in RxJS is used to take values emitted by an observable <b>until another observable emits a value</b>. When that <b>other observable emits</b>, the flow of the <b>original observable completes</b>, meaning it stops emitting more values.</p>"
+    },
+    "takeWhile": {
+      "title": "Operator takeWhile",
+      "description": "<p>The <b>takeWhile</b> operator in RxJS is used to take values emitted by an observable <b>while a condition is met</b>. When the condition <b>is no longer met</b>, the <b>observable completes</b> and stops emitting more values.</p>"
+    },
+    "throttle": {
+      "title": "Operator throttle",
+      "description": "<p>The <b>throttle</b> operator in RxJS is used to <b>limit the emission frequency</b> of an observable, ensuring that only <b>one value is emitted within a specified time interval</b>, and any values that arrive before the interval passes are ignored.</p><p>In this example, we are using the <b>throttle</b> operator to ignore emissions that occur within a 5-second interval. This causes only the values that occur at the end of each interval to be emitted, resulting in a 6-value increment between the emitted values.</p>"
+    },
+    "throttleTime": {
+      "title": "Operator throttleTime",
+      "description": "<p>The <b>throttleTime</b> operator in RxJS is used to <b>limit the emission frequency</b> of an observable, in a <b>similar way to throttle</b>, but in a more <b>simplified</b> manner. With throttleTime, <b>you can specify a time interval</b> during which only one emission will be allowed, ignoring all intermediate emissions.</p>"
     }
   },
   "mathematical": {

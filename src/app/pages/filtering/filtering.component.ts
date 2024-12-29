@@ -13,9 +13,24 @@ import {
   filter,
   first,
   fromEvent,
+  ignoreElements,
   interval,
+  last,
   of,
+  sample,
+  sampleTime,
+  single,
+  skip,
+  skipLast,
+  skipUntil,
+  skipWhile,
   Subscription,
+  take,
+  takeLast,
+  takeUntil,
+  takeWhile,
+  throttle,
+  throttleTime,
 } from 'rxjs';
 import { ExampleComponent } from '../../components/example/example.component';
 import { IntroductionComponent } from '../../components/introduction/introduction.component';
@@ -61,6 +76,21 @@ export class FilteringComponent implements OnInit, AfterViewInit {
     this.operatorElementAt();
     this.operatorFilter();
     this.operatorFirst();
+    this.operatorIgnoreElements();
+    this.operatorLast();
+    this.operatorSample();
+    this.operatorSampleTime();
+    this.operatorSingle();
+    this.operatorSkip();
+    this.operatorSkipLast();
+    this.operatorSkipUntil();
+    this.operatorSkipWhile();
+    this.operatorTake();
+    this.operatorTakeLast();
+    this.operatorTakeUntil();
+    this.operatorTakeWhile();
+    this.operatorThrottle();
+    this.operatorThrottleTime();
   }
 
   private operatorAudit(): void {
@@ -169,6 +199,142 @@ export class FilteringComponent implements OnInit, AfterViewInit {
 
     this.subscription.add(
       users$.subscribe((user) => this.addConsole('first', JSON.stringify(user))),
+    );
+  }
+
+  private operatorIgnoreElements(): void {
+    const users$ = of(1).pipe(ignoreElements());
+
+    this.subscription.add(
+      users$.subscribe({
+        next: (e: number) => this.addConsole('ignoreElements', 'success'), // It never runs.
+        error: () => this.addConsole('ignoreElements', 'error'), // It passes errors
+        complete: () => this.addConsole('ignoreElements', 'complete'), // It passes the completion signal
+      }),
+    );
+  }
+
+  private operatorLast(): void {
+    const users$ = of(
+      { name: 'Jhon', age: 2 },
+      { name: 'Jhon', age: 3 },
+      { name: 'Mari', age: 4 },
+      { name: 'Mari', age: 4 },
+      { name: 'Beni', age: 5 },
+    ).pipe(last((user) => user.age > 5, 'No user was found'));
+
+    this.subscription.add(
+      users$.subscribe((user) => this.addConsole('last', JSON.stringify(user))),
+    );
+  }
+
+  private operatorSample(): void {
+    const interval$ = interval(1000);
+    const obs$ = interval$.pipe(sample(interval(5000)));
+    this.subscription.add(
+      obs$.subscribe((n: number) => this.addConsole('sample', JSON.stringify(n))),
+    );
+  }
+
+  private operatorSampleTime(): void {
+    const interval$ = interval(1000);
+    const obs$ = interval$.pipe(sampleTime(3000));
+    this.subscription.add(
+      obs$.subscribe((n: number) => this.addConsole('sampleTime', JSON.stringify(n))),
+    );
+  }
+
+  private operatorSingle(): void {
+    const numbers$ = of(1, 2, 3, 4, 5);
+    const obs1$ = numbers$.pipe(single((n: number) => n >= 5));
+    const obs2$ = numbers$.pipe(single((n: number) => n >= 4));
+    this.subscription.add(
+      obs1$.subscribe((n: number) => this.addConsole('single', JSON.stringify(n))),
+    );
+    this.subscription.add(
+      obs2$.subscribe({
+        error: (e: Error) => this.addConsole('single', JSON.stringify(e.message)),
+      }),
+    );
+  }
+
+  private operatorSkip(): void {
+    const numbers$ = of(1, 2, 3, 4);
+    const obs$ = numbers$.pipe(skip(2));
+    this.subscription.add(
+      obs$.subscribe((n: number) => this.addConsole('skip', JSON.stringify(n))),
+    );
+  }
+
+  private operatorSkipLast(): void {
+    const numbers$ = of(1, 2, 3, 4);
+    const obs$ = numbers$.pipe(skipLast(2));
+    this.subscription.add(
+      obs$.subscribe((n: number) => this.addConsole('skipLast', JSON.stringify(n))),
+    );
+  }
+
+  private operatorSkipUntil(): void {
+    const interval$ = interval(1000);
+    const obs$ = interval$.pipe(skipUntil(interval(3000)));
+    this.subscription.add(
+      obs$.subscribe((n: number) => this.addConsole('skipUntil', JSON.stringify(n))),
+    );
+  }
+
+  private operatorSkipWhile(): void {
+    const interval$ = interval(1000);
+    const obs$ = interval$.pipe(skipWhile((n: number) => n < 5));
+    this.subscription.add(
+      obs$.subscribe((n: number) => this.addConsole('skipWhile', JSON.stringify(n))),
+    );
+  }
+
+  private operatorTake(): void {
+    const interval$ = interval(1000);
+    const obs$ = interval$.pipe(take(5));
+    this.subscription.add(
+      obs$.subscribe((n: number) => this.addConsole('take', JSON.stringify(n))),
+    );
+  }
+
+  private operatorTakeLast(): void {
+    const numbers$ = of(1, 2, 3, 4);
+    const obs$ = numbers$.pipe(takeLast(2));
+    this.subscription.add(
+      obs$.subscribe((n: number) => this.addConsole('takeLast', JSON.stringify(n))),
+    );
+  }
+
+  private operatorTakeUntil(): void {
+    const interval$ = interval(1000);
+    const obs$ = interval$.pipe(takeUntil(interval(3000)));
+    this.subscription.add(
+      obs$.subscribe((n: number) => this.addConsole('takeUntil', JSON.stringify(n))),
+    );
+  }
+
+  private operatorTakeWhile(): void {
+    const interval$ = interval(1000);
+    const obs$ = interval$.pipe(takeWhile((n: number) => n < 5));
+    this.subscription.add(
+      obs$.subscribe((n: number) => this.addConsole('takeWhile', JSON.stringify(n))),
+    );
+  }
+
+  private operatorThrottle(): void {
+    const interval$ = interval(1000);
+    const obs$ = interval$.pipe(throttle(() => interval(5000)));
+    this.subscription.add(
+      obs$.subscribe((n: number) => this.addConsole('throttle', JSON.stringify(n))),
+    );
+  }
+
+  private operatorThrottleTime(): void {
+    const interval$ = interval(1000);
+    const obs$ = interval$.pipe(throttleTime(5000));
+    this.subscription.add(
+      obs$.subscribe((n: number) => this.addConsole('throttleTime', JSON.stringify(n))),
     );
   }
 

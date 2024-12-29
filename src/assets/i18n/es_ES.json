@@ -172,7 +172,67 @@
     },
     "first": {
       "title": "Operador first",
-      "description": "<p>El operador <b>first</b> en RxJS se utiliza para emitir solo el <b>primer valor</b> de un observable que <b>cumpla con una condición específica</b>, o simplemente el <b>primer</b> valor si no se define <b>ninguna</b> condición.</p>"
+      "description": "<p>El operador <b>first</b> en RxJS se utiliza para emitir solo el <b>primer valor</b> de un observable que <b>cumpla con una condición específica</b>, o simplemente el <b>primer</b> valor si no se define <b>ninguna</b> condición.  Si el observable no emite ningún valor, puede lanzar un error o emitir un valor predeterminado si lo especificas.</p>"
+    },
+    "ignoreElements": {
+      "title": "Operador ignoreElements",
+      "description": "<p>El operador <b>ignoreElements</b> en RxJS se utiliza para ignorar <b>todos</b> los valores emitidos por un observable. Este operador <b>no emite nada</b>, pero sí pasa los errores o la <b>señal</b> de que el observable se <b>completó</b>.</p>"
+    },
+    "last": {
+      "title": "Operador last",
+      "description": "<p>El operador <b>last</b> en RxJS se utiliza para emitir solo el <b>último valor</b> de un observable que <b>cumpla con una condición específica</b>. Si el observable no emite ningún valor, puede lanzar un error o emitir un valor predeterminado si lo especificas.</p><p>En este ejemplo forzamos que no encuentre ningún valor, para ver el mensaje de error por defecto.<p>"
+    },
+    "sample": {
+      "title": "Operador sample",
+      "description": "<p>El operador <b>sample</b> en RxJS se utiliza para <b>tomar el último valor</b> emitido por un observable en <b>momentos específicos</b> definidos por otro observable que actúa como una 'fuente de tiempo'.<p><p>En este ejemplo solo cogemos del intervalo el valor último que emite cada 5 segundos.</p>"
+    },
+    "sampleTime": {
+      "title": "Operador sampleTime",
+      "description": "<p>El operador <b>sampleTime</b> en RxJS se utiliza para <b>tomar el último valor</b> emitido por un observable en <b>intervalos de tiempo fijos</b>. Cada vez que pasa el tiempo especificado, el operador emite el último valor que se ha producido hasta ese momento.</p>"
+    },
+    "single": {
+      "title": "Operador single",
+      "description": "<p>El operador <b>single</b> en RxJS se utiliza para <b>asegurarse</b> de que un observable emite <b>solo un valor</b>, y ese valor <b>debe cumplir con una condición específica</b> (si se define). Si el observable emite más de un valor o no emite ninguno, se <b>lanzará un error</b>.</p>"
+    },
+    "skip": {
+      "title": "Operador skip",
+      "description": "<p>El operador <b>skip</b> en RxJS es una herramienta que se utiliza para <b>ignorar un cierto número de valores iniciales</b> emitidos por un observable. Después de 'saltar' estos valores, comienza a pasar los siguientes valores que se emitan.</p>"
+    },
+    "skipLast": {
+      "title": "Operador skipLast",
+      "description": "<p>El operador <b>skipLast</b> en RxJS es muy parecido a skip, pero en lugar de ignorar valores al principio, <b>ignora los últimos valores emitidos</b> por un observable. Esto significa que deja pasar todos los valores, excepto los últimos <b>n</b>.</p>"
+    },
+    "skipUntil": {
+      "title": "Operador skipUntil",
+      "description": "<p>El operador <b>skipUntil</b> en RxJS se utiliza para <b>ignorar valores emitidos por un observable</b> hasta que <b>otro observable emita un valor</b>. En ese momento, empieza a dejar pasar los valores del observable original.</p>"
+    },
+    "skipWhile": {
+      "title": "Operador skipWhile",
+      "description": "<p>El operador <b>skipWhile</b> en RxJS se utiliza para <b>ignorar valores emitidos por un observable mientras se cumpla una condición</b>. Tan pronto como la condición deja de cumplirse, comienza a pasar los valores emitidos por el observable.</p>"
+    },
+    "take": {
+      "title": "Operador take",
+      "description": "<p>El operador <b>take</b> en RxJS se utiliza para <b>limitar la cantidad de valores</b> que un observable puede emitir. Una vez que el observable ha emitido la cantidad <b>especificada</b> de valores, se completa automáticamente.</p>"
+    },
+    "takeLast": {
+      "title": "Operador takeLast",
+      "description": "<p>El operador <b>takeLast</b> en RxJS se utiliza para tomar los <b>últimos n valores emitidos</b> por un observable, después de que el observable se haya completado.</p>"
+    },
+    "takeUntil": {
+      "title": "Operador takeUntil",
+      "description": "<p>El operador <b>takeUntil</b> en RxJS se utiliza para tomar valores emitidos por un observable <b>hasta que otro observable emita un valor</b>. Cuando ese <b>otro observable emite</b>, el flujo del <b>observable original se completa</b>, es decir, deja de emitir más valores.</p>"
+    },
+    "takeWhile": {
+      "title": "Operador takeWhile",
+      "description": "<p>El operador <b>takeWhile</b> en RxJS se utiliza para tomar valores emitidos por un observable <b>mientras se cumpla una condición</b>. En el momento en que la condición <b>deje de cumplirse</b>, el <b>observable se completa</b> y deja de emitir más valores.</p>"
+    },
+    "throttle": {
+      "title": "Operador throttle",
+      "description": "<p>El operador <b>throttle</b> en RxJS se utiliza para <b>limitar la frecuencia de emisiones</b> de un observable, asegurando que solo se emita <b>un valor en un intervalo de tiempo determinado</b>, y los valores que lleguen antes de que pase ese intervalo se ignoren.</p><p>En este ejemplo, estamos utilizando el operador <b>throttle</b> para ignorar las emisiones que ocurren dentro de un intervalo de 5 segundos. Esto provoca que solo se emitan los valores que ocurren al final de cada intervalo, lo que resulta en un incremento de 6 entre los valores emitidos.</p>"
+    },
+    "throttleTime": {
+      "title": "Operador throttleTime",
+      "description": "<p>El operador <b>throttleTime</b> en RxJS se utiliza para <b>limitar la frecuencia de emisiones</b> de un observable, de forma <b>similar a throttle</b>, pero de una manera más <b>sencilla</b>. Con throttleTime, <b>puedes especificar un intervalo de tiempo</b> durante el cual se permitirá solo una emisión, ignorando todas las emisiones intermedias.</p>"
     }
   },
 
