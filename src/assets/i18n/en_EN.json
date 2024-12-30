@@ -267,7 +267,6 @@
       "description": "<p>The <b>shareReplay</b> operator in RxJS is similar to the <b>share</b> operator, but with a key difference: <b>it caches the last emitted values from the observable and replays (replays) them to new subscribers</b>. It is useful when you want new subscribers to receive the latest emitted values without re-executing the entire data flow.</p>"
     }
   },
-
   "transformation": {
     "title": "Transformation operators",
     "description": "<b>RxJS transformation operators</b> are tools that let you change (or 'transform') the data that flows through an observable stream. Imagine you have a stream of values, like numbers or objects, and you want to modify, filter, or reshape these values before they reach the final observer.'",
@@ -367,6 +366,55 @@
     "windowWhen": {
       "title": "Operator windowWhen",
       "description": "<p>The RxJS <b>windowWhen</b> operator divides a data stream (observable) into windows that <b>close and open</b> based on a custom criterion. You decide when a window should close and a new one should open using a function that generates observables.</p><p>In this example, we emit values from an interval that opens and closes every 3 seconds.</p>"
+    }
+  },
+  "utility": {
+    "title": "Utility operators",
+    "description": "<b>The <b>utility operators in RxJS</b> are tools that <b>help control and manage data streams</b> (Observables) more efficiently, <b>without directly transforming</b> the values passing through them. They are like <b>'helpers'</b> for common tasks, such as debugging, subscription, or flow manipulation.</b>",
+    "shortDescription": "Utility operators in RxJS are tools that help control and manage data streams (Observables) more efficiently, without directly transforming the values that pass through them.",
+    "delay": {
+      "title": "Operator delay",
+      "description": "<p>The <b>delay</b> operator in RxJS is like a <b>'clock' that delays</b> the emissions of values from an Observable for a period of time that <b>you determine</b>.</p>"
+    },
+    "delayWhen": {
+      "title": "Operator delayWhen",
+      "description": "<p>The <b>delayWhen</b> operator in RxJS is like <b>delay</b>, but <b>more flexible</b>. Instead of delaying a value for a fixed time, it <b>allows delaying it using another Observable</b> to decide when it should be emitted.</p>"
+    },
+    "dematerialize": {
+      "title": "Operator dematerialize ",
+      "description": "<p>The <b>dematerialize</b> operator in RxJS converts the <b>'notifications'</b> of an Observable <b>(which are encapsulated as special objects)</b> <b>back into normal values or events</b>.</p>"
+    },
+    "finalize": {
+      "title": "Operator finalize",
+      "description": "<p>The <b>finalize</b> operator in RxJS is used to execute an <b>action when an Observable finishes (whether completing or encountering an error)</b>. It acts like a 'cleaner' that ensures something happens at the end of the data flow, regardless of whether everything was successful or there was an error.</p>"
+    },
+    "materialize": {
+      "title": "Operator materialize",
+      "description": "<p>The <b>materialize</b> operator in RxJS converts the emissions of an Observable into <b>notifications</b>. That is, instead of emitting just the values, the Observable emits <b>objects that represent flow events like next, error, or complete.</b></p>"
+    },
+    "repeat": {
+      "title": "Operator repeat",
+      "description": "<p>The <b>repeat</b> operator in RxJS is used to <b>re-emit</b> an Observable after it has completed, <b>repeating its flow</b> the number of times you specify.</p>"
+    },
+    "tap": {
+      "title": "Operator tap",
+      "description": "<p>The <b>tap</b> operator in RxJS is very useful for <b>intercepting and observing</b> the emissions of an Observable without modifying its values. It's like a 'spy' that allows you to perform secondary actions (such as logging to the console) in the data flow, but without affecting the data passing through the Observable.</p>"
+    },
+    "timeInterval": {
+      "title": "Operator timeInterval",
+      "description": "<p>The <b>timeInterval</b> operator in RxJS is used to <b>measure the time elapsed between the emissions</b> of an Observable. It's like a clock that tells you how much time has passed between each emission of a value.</p>"
+    },
+    "timeout": {
+      "title": "Operator timeout",
+      "description": "<p>The <b>timeout</b> operator in RxJS is used to <b>set a time limit on an Observable</b>. If the Observable <b>does not emit a value</b> within the specified time, it emits an <b>error or a default action</b>.</p><p>In this example, we create an observable using the <b>timer</b> operator, but since the <b>timeout</b> operator has a shorter time interval, we will force the error.</p>"
+    },
+    "timestamp": {
+      "title": "Operator timestamp",
+      "description": "<p>The <b>timestamp</b> operator in RxJS is used to <b>add a timestamp to each value emitted</b> by an Observable. This timestamp indicates the exact moment (in milliseconds since the Unix epoch) when the value was emitted.</p>"
+    },
+    "toArray": {
+      "title": "Operador toArray",
+      "description": "<p>The <b>toArray</b> operator in RxJS is used to <b>collect all the values emitted</b> by an Observable and <b>store them in an array</b>. Once the Observable <b>has completed its emission</b> of values, <b>toArray returns that array</b> with all the emitted values.</p><p>In this example, we take only 10 values emitted by an interval and group them into an array.</p>"
     }
   }
 }

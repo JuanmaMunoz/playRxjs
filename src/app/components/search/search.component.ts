@@ -11,6 +11,7 @@ import { filterings } from '../../info/filterings';
 import { mathematicals } from '../../info/mathematicals';
 import { multicastings } from '../../info/multicastings';
 import { transformations } from '../../info/transformations';
+import { utilitys } from '../../info/utilitys';
 import { IInfo, IInfoItem, ISearch } from '../../models/interfaces';
 import { MenuService } from '../../services/menu.service';
 
@@ -46,6 +47,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
       multicastings,
       creations,
       filterings,
+      utilitys,
     ]);
     this.obsResult = fromEvent(document.getElementsByClassName('search__text')!, 'input').pipe(
       concatMap((e: any) =>

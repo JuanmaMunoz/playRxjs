@@ -1,0 +1,24 @@
+<div class="filtering">
+  <app-introduction [info]="info"></app-introduction>
+  @for (i of info.items; track $index) {
+    @switch (i.id) {
+      @case ('audit') {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="filtering__buttons">
+            <button id="btn-click-audit" class="btn btn--primary">Make click</button>
+          </div>
+        </app-example>
+      }
+      @case ('auditTime') {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="filtering__buttons">
+            <button id="btn-click-audit-time" class="btn btn--primary">Make click</button>
+          </div>
+        </app-example>
+      }
+      @default {
+        <app-example [infoItem]="i" [category]="info.category"></app-example>
+      }
+    }
+  }
+</div>

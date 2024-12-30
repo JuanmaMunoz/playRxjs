@@ -12,6 +12,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { MathematicalComponent } from './pages/mathematical/mathematical.component';
 import { MulticastingComponent } from './pages/multicasting/multicasting.component';
 import { TransformationComponent } from './pages/transformation/transformation.component';
+import { UtilityComponent } from './pages/utility/utility.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -49,6 +50,11 @@ export const routes: Routes = [
   {
     path: 'operators/transformation/:id',
     component: TransformationComponent,
+  },
+  { path: 'operators/utility', component: UtilityComponent },
+  {
+    path: 'operators/utility/:id',
+    component: UtilityComponent,
   },
   { path: 'examples1', component: Examples1Component },
   { path: 'examples2', component: Examples2Component },

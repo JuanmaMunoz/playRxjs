@@ -8,6 +8,7 @@ import { filterings } from '../info/filterings';
 import { mathematicals } from '../info/mathematicals';
 import { multicastings } from '../info/multicastings';
 import { transformations } from '../info/transformations';
+import { utilitys } from '../info/utilitys';
 import { IInfo } from '../models/interfaces';
 
 @Injectable({
@@ -26,6 +27,7 @@ export class IntroductionService {
       multicastings,
       creations,
       filterings,
+      utilitys,
     ];
     const { category } = allInfo.filter((e: IInfo) => url.includes(e.url))[0];
     this.info.next(category);

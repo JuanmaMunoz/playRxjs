@@ -80,7 +80,6 @@
       "description": "<p>El operador <b>sequenceEqual</b> en RxJS se utiliza para comprobar si <b>dos observables</b> emiten exactamente <b>la misma secuencia de valores, en el mismo orden</b>.</p>"
     }
   },
-
   "creation": {
     "title": "Operadores de creación",
     "description": "<b>En RxJS, los operadores de creación</b> son funciones que <b>generan observables</b> desde cero o a partir de otros valores o estructuras. Estos operadores permiten crear flujos de datos que luego pueden ser procesados.",
@@ -235,7 +234,6 @@
       "description": "<p>El operador <b>throttleTime</b> en RxJS se utiliza para <b>limitar la frecuencia de emisiones</b> de un observable, de forma <b>similar a throttle</b>, pero de una manera más <b>sencilla</b>. Con throttleTime, <b>puedes especificar un intervalo de tiempo</b> durante el cual se permitirá solo una emisión, ignorando todas las emisiones intermedias.</p>"
     }
   },
-
   "mathematical": {
     "title": "Operadores matemáticos",
     "description": "<b>Los operadores matemáticos en RxJS</b> se utilizan para realizar cálculos y <b>transformaciones matemáticas</b> en los valores emitidos por un observable. Estos operadores permiten sumar, promediar, o encontrar valores mínimos o máximos dentro de un flujo de datos.",
@@ -374,6 +372,55 @@
     "windowWhen": {
       "title": "Operador windowWhen",
       "description": "<p>El operador <b>windowWhen</b> de RxJS divide un flujo de datos (observable) en ventanas que se <b>cierran y abren</b> según un criterio personalizado. Tú decides cuándo una ventana debe cerrarse y una nueva debe abrirse usando una función que genera observables.</p><p>En este ejemplo emitimos valores de un intervalo que se abre y cierra cada 3 segundos.</p>"
+    }
+  },
+  "utility": {
+    "title": "Operadores de utilidad",
+    "description": "<b>Los <b>operadores de utilidad en RxJS</b> son herramientas que <b>ayudan a controlar y manejar flujos de datos</b> (Observables) de manera más eficiente, <b>sin transformar</b> directamente los valores que pasan por ellos. Son como <b>'ayudantes'</b> para tareas comunes, como depuración, suscripción, o manipulación del flujo.",
+    "shortDescription": "Los operadores de utilidad en RxJS son herramientas que ayudan a controlar y manejar flujos de datos (Observables) de manera más eficiente, sin transformar directamente los valores que pasan por ellos.",
+    "delay": {
+      "title": "Operador delay",
+      "description": "<p>El operador <b>delay</b> de RxJS es como un <b>'reloj' que retrasa</b> las emisiones de valores de un Observable por un período de tiempo que <b>tú determines</b>.</p>"
+    },
+    "delayWhen": {
+      "title": "Operador delayWhen",
+      "description": "<p>El operador <b>delayWhen</b> de RxJS es como <b>delay</b>, pero <b>más flexible</b>. En lugar de retrasar un valor por un tiempo fijo, <b>permite retrasarlo usando otro Observable </b> para decidir cuándo se debe emitir.</p>"
+    },
+    "dematerialize": {
+      "title": "Operador dematerialize",
+      "description": "<p>El operador <b>dematerialize</b> en RxJS convierte las <b>'notificaciones'</b> de un Observable <b>(que están encapsuladas como objetos especiales)</b> <b>nuevamente en valores normales o eventos</b>.</p>"
+    },
+    "finalize": {
+      "title": "Operador finalize",
+      "description": "<p>El operador <b>finalize</b> en RxJS se usa para ejecutar una <b>acción cuando un Observable termina (ya sea completando o teniendo un error)</b>. Es como un 'limpiador' que asegura que algo ocurra al final del flujo de datos, sin importar si todo fue exitoso o hubo un error.</p>"
+    },
+    "materialize": {
+      "title": "Operador materialize",
+      "description": "<p>El operador <b>materialize</b> en RxJS convierte las emisiones de un Observable en <b>notificaciones</b>. Es decir, en lugar de emitir solo los valores, el Observable emite <b>objetos que representan los eventos de flujo como next, error o complete.</b></p>"
+    },
+    "repeat": {
+      "title": "Operador repeat",
+      "description": "<p>El operador <b>repeat</b> en RxJS se usa para <b>volver a emitir</b> un Observable después de que este haya completado, <b>repitiendo su flujo</b> el número de veces que le indiques.</p>"
+    },
+    "tap": {
+      "title": "Operador tap",
+      "description": "<p>El operador <b>tap</b> en RxJS es muy útil para <b>interceptar y observar</b> las emisiones de un Observable sin modificar sus valores. Es como un 'espía' que te permite realizar acciones secundarias (como hacer un registro en consola) en el flujo de datos, pero sin afectar los datos que pasan a través del Observable.</p>"
+    },
+    "timeInterval": {
+      "title": "Operador timeInterval",
+      "description": "<p>El operador <b>timeInterval</b> en RxJS se usa para <b>medir el tiempo transcurrido entre las emisiones</b> de un Observable. Es como un reloj que te dice cuánto tiempo ha pasado entre cada emisión de un valor.</p>"
+    },
+    "timeout": {
+      "title": "Operador timeout",
+      "description": "<p>El operador <b>timeout</b> en RxJS se utiliza para <b>establecer un límite de tiempo en un Observable</b>. Si el Observable <b>no emite un valor</b> dentro del tiempo especificado, se emite un <b>error o una acción predeterminada</b>.</p><p>En este ejemplo creamos un observable a través del <b>operador timer</b>, pero como el operador <b>timeout</b> tiene un intervalo de tiempo menor, forzaremos el error.</p>"
+    },
+    "timestamp": {
+      "title": "Operador timestamp",
+      "description": "<p>El operador <b>timestamp</b> en RxJS se utiliza para <b>añadir una marca de tiempo (timestamp) a cada valor emitido</b> por un Observable. Esta marca de tiempo indica el momento exacto (en milisegundos desde la época Unix) en que el valor fue emitido.</p>"
+    },
+    "toArray": {
+      "title": "Operador toArray",
+      "description": "<p>El operador <b>toArray</b> en RxJS se usa para <b>recoger todos los valores emitidos</b> por un Observable y <b>almacenarlos en un arreglo (array)</b>. Una vez que el Observable <b>ha completado su emisión</b> de valores, <b>toArray devuelve ese arreglo</b> con todos los valores emitidos.</p><p>En este ejemplo cogemos solo 10 valores emitidos por un intervalo y los agrupamos en un array.</p>"
     }
   }
 }
