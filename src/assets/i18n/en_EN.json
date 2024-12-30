@@ -128,6 +128,19 @@
       "description": "<p><p>The <b>timer</b> operator in RxJS creates an observable that emits a value <b>after a certain period of time</b> (in milliseconds) and can then continue emitting values at regular intervals if specified.</p>"
     }
   },
+  "error": {
+    "title": "Error handling operators",
+    "description": "The <b>error handling operators in RxJS</b> are used to <b>handle, recover, or react to errors</b> that may occur in the data flow of an Observable. These operators allow your application to continue running when an error occurs, giving you control over how to manage it.",
+    "shortDescription": "Error handling operators in RxJS are used to handle, recover, or react to errors that may occur in the data flow of an Observable.",
+    "catchError": {
+      "title": "Operator catchError",
+      "description": "<p>The <b>catchError</b> operator in RxJS is used to <b>capture an error</b> that occurs in an Observable and allow you to <b>handle it in a controlled way</b>, without interrupting the data flow.</p><p>When an Observable emits an error, catchError gives you the opportunity to recover from that error. You can return a new Observable to emit instead of the error, or simply perform an action when the error occurs.</p>"
+    },
+    "retry": {
+      "title": "Operator retry",
+      "description": "<p>The <b>retry</b> operator in RxJS is used to <b>reattempt the execution</b> of an Observable in case an error occurs. This operator allows you to automatically retry the data flow a <b>specified number of times</b> before it ultimately fails.</p><p>In this example, we will see in the browser console how the URL is retried once after the error.</p>"
+    }
+  },
   "filtering": {
     "title": "Filtering operators",
     "description": "In RxJS, <b>filtering operators</b> are used to <b>filter</b> the items emitted by an observable, allowing only those that meet a specific condition to pass through. These operators are useful for working with data streams, ensuring that only the relevant values are processed.",

@@ -4,6 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import { combinations } from '../info/combinations';
 import { conditionals } from '../info/conditionals';
 import { creations } from '../info/creations';
+import { errors } from '../info/errors';
 import { filterings } from '../info/filterings';
 import { mathematicals } from '../info/mathematicals';
 import { multicastings } from '../info/multicastings';
@@ -28,6 +29,7 @@ export class IntroductionService {
       creations,
       filterings,
       utilitys,
+      errors,
     ];
     const { category } = allInfo.filter((e: IInfo) => url.includes(e.url))[0];
     this.info.next(category);

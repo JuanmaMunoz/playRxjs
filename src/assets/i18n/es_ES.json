@@ -129,6 +129,20 @@
       "description": "<p>El operador <b>timer</b> de RxJS crea un observable que emite un valor <b>después de un cierto período de tiempo</b> (en milisegundos) y luego puede seguir emitiendo valores a intervalos regulares si se le indica.</p>"
     }
   },
+  "error": {
+    "title": "Operadores de error",
+    "description": "Los <b>operadores de gestión de error en RxJS</b> se utilizan para <b>manejar, recuperar o reaccionar ante errores</b> que pueden ocurrir en el flujo de datos de un Observable. Estos operadores permiten que tu aplicación no se detenga cuando ocurre un error, y te dan control sobre cómo manejarlo.",
+    "shortDescription": "Los operadores de gestión de error en RxJS se utilizan para manejar, recuperar o reaccionar ante errores que pueden ocurrir en el flujo de datos de un Observable.",
+    "catchError": {
+      "title": "Operador catchError",
+      "description": "<p>El operador <b>catchError</b> en RxJS se utiliza para <b>capturar un error</b> que ocurre en un Observable y permitir <b>manejarlo de una manera controlada</b>, sin que el flujo de datos se detenga.</p><p>Cuando un Observable emite un error, catchError te da la oportunidad de recuperarte de ese error. Puedes devolver un nuevo Observable que se emitirá en lugar del error, o simplemente realizar una acción cuando el error ocurra.</p>"
+    },
+    "retry": {
+      "title": "Operador retry",
+      "description": "<p>El operador <b>retry</b> en RxJS se utiliza para <b>volver a intentar ejecutar</b> un Observable en caso de que ocurra un error. Este operador te permite reintentar el flujo de datos automáticamente un <b>número específico de veces</b> antes de que finalmente falle.</p><p>En este ejemplo podremos comprobar en la consola del navegador como se reintenta llamar 1 vez a la url después del error.</p>"
+    }
+  },
+
   "filtering": {
     "title": "Operadores de filtración",
     "description": "En RxJS, <b>los operadores de filtración</b> se utilizan para <b>filtrar</b> los elementos emitidos por un observable, dejando pasar únicamente aquellos que cumplen con una condición específica. Estos operadores son útiles para trabajar con flujos de datos, asegurando que solo procesemos los valores relevantes.",

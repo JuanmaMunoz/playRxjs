@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { CombinationComponent } from './pages/combination/combination.component';
 import { ConditionalComponent } from './pages/conditional/conditional.component';
 import { CreationComponent } from './pages/creation/creation.component';
+import { ErrorComponent } from './pages/error/error.component';
 import { Examples1Component } from './pages/examples1/examples1.component';
 import { Examples2Component } from './pages/examples2/examples2.component';
 import { Examples3Component } from './pages/examples3/examples3.component';
@@ -30,6 +31,11 @@ export const routes: Routes = [
   {
     path: 'operators/creation/:id',
     component: CreationComponent,
+  },
+  { path: 'operators/error', component: ErrorComponent },
+  {
+    path: 'operators/error/:id',
+    component: ErrorComponent,
   },
   { path: 'operators/filtering', component: FilteringComponent },
   {
