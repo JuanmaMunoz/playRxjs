@@ -8,6 +8,7 @@ import { creations } from '../../info/creations';
 import { errors } from '../../info/errors';
 import { filterings } from '../../info/filterings';
 import { multicastings } from '../../info/multicastings';
+import { subjects } from '../../info/subjects';
 import { transformations } from '../../info/transformations';
 import { utilitys } from '../../info/utilitys';
 import { IInfo } from '../../models/interfaces';
@@ -34,6 +35,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public filteringInfo: IInfo = filterings;
   public utilityInfo: IInfo = utilitys;
   public errorInfo: IInfo = errors;
+  public subjectInfo: IInfo = subjects;
   private subscription = new Subscription();
 
   ngOnInit(): void {

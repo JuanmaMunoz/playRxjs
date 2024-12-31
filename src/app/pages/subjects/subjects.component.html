@@ -1,0 +1,24 @@
+<div class="subjects">
+  <app-introduction [info]="info"></app-introduction>
+  @for (i of info.items; track $index) {
+    @switch (i.id) {
+      @case ('behaviorSubject') {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="subjects__buttons">
+            <button id="btn-click-behavior" class="btn btn--primary">Increase age</button>
+          </div>
+        </app-example>
+      }
+      @case ('subject') {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="subjects__buttons">
+            <button id="btn-click-subject" class="btn btn--primary">Create or increase age</button>
+          </div>
+        </app-example>
+      }
+      @default {
+        <app-example [infoItem]="i" [category]="info.category"></app-example>
+      }
+    }
+  }
+</div>

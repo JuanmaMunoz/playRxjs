@@ -429,5 +429,22 @@
       "title": "Operador toArray",
       "description": "<p>The <b>toArray</b> operator in RxJS is used to <b>collect all the values emitted</b> by an Observable and <b>store them in an array</b>. Once the Observable <b>has completed its emission</b> of values, <b>toArray returns that array</b> with all the emitted values.</p><p>In this example, we take only 10 values emitted by an interval and group them into an array.</p>"
     }
+  },
+  "subjects": {
+    "title": "Subjects",
+    "description": "<b>In RxJS, Subjects are a key concept that combines two roles: that of an observable (something that emits values) and that of an observer (something that receives values). This means you can use them both to receive data and to emit it to other observers. They enable the multicast of values to many observers. While <b>simple Observables are unicast</b> (each subscribed Observer owns an independent execution of the Observable), subjects are <b>multicast</b>.",
+    "shortDescription": "In RxJS, Subjects are a key concept that combines two roles: that of an observable (something that emits values) and that of an observer (something that receives values).",
+    "behaviorSubject": {
+      "title": "BehaviorSubject",
+      "description": "<p>The <b>BehaviorSubject</b> is a special type of subject in RxJS that always has an <b>initial value</b> and also <b>remembers the last emitted value</b>. This means that any new subscriber automatically receives the most recent value, even if they subscribe after that value has been emitted.</p><p>We can access its content without needing to subscribe by using the <b>getValue</b> method.</p><p>In this example, we create a <b>BehaviorSubject</b>, and its content is immediately propagated to all subscriptions (initial value). We also log its content to the console using the <b>getValue</b> method and then update its age using the <b>next</b> method, which <b>propagates the change</b>, allowing us to see the <b>new value in the subscription</b>.</p>"
+    },
+    "replaySubject": {
+      "title": "ReplaySubject",
+      "description": "<p>The <b>ReplaySubject</b> in RxJS is a type of Subject that <b>stores a history of emitted values</b> and, when a new subscriber joins, it replays all the values that have been emitted up until that point. You can configure how many previous values you want the ReplaySubject to remember.</p><p>In this example, we give our ReplaySubject the values emitted by an <b>interval</b> and after 5 seconds, we subscribe to it, where we can visualize the <b>last 2 stored</b> values.</p>"
+    },
+    "subject": {
+      "title": "Subject",
+      "description": "<p>The <b>Subject</b> is a special type of Subject in RxJS that does not require an <b>initial value</b> and also <b>remembers the last emitted value</b>. This means that any new subscriber automatically receives the most recent value, even if they subscribe after that value has been emitted.</p><p>In this example, through a click event and based on the content of the variable user, we either create the user or increment their age, and through the <b>next</b> function, we propagate the change.</p>"
+    }
   }
 }

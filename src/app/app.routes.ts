@@ -12,6 +12,7 @@ import { FilteringComponent } from './pages/filtering/filtering.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MathematicalComponent } from './pages/mathematical/mathematical.component';
 import { MulticastingComponent } from './pages/multicasting/multicasting.component';
+import { SubjectsComponent } from './pages/subjects/subjects.component';
 import { TransformationComponent } from './pages/transformation/transformation.component';
 import { UtilityComponent } from './pages/utility/utility.component';
 
@@ -61,6 +62,11 @@ export const routes: Routes = [
   {
     path: 'operators/utility/:id',
     component: UtilityComponent,
+  },
+  { path: 'subjects', component: SubjectsComponent },
+  {
+    path: 'subjects/:id',
+    component: SubjectsComponent,
   },
   { path: 'examples1', component: Examples1Component },
   { path: 'examples2', component: Examples2Component },

@@ -9,6 +9,7 @@ import { errors } from '../../info/errors';
 import { filterings } from '../../info/filterings';
 import { mathematicals } from '../../info/mathematicals';
 import { multicastings } from '../../info/multicastings';
+import { subjects } from '../../info/subjects';
 import { transformations } from '../../info/transformations';
 import { utilitys } from '../../info/utilitys';
 import { IInfo } from '../../models/interfaces';
@@ -35,6 +36,7 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
   public infoFiltering: IInfo = filterings;
   public infoUtility: IInfo = utilitys;
   public infoError: IInfo = errors;
+  public infoSubject: IInfo = subjects;
   private subscription = new Subscription();
   constructor(private menuService: MenuService) {}
   ngAfterViewInit(): void {
