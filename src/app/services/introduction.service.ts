@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { basics } from '../info/basic';
 import { combinations } from '../info/combinations';
 import { conditionals } from '../info/conditionals';
 import { creations } from '../info/creations';
@@ -32,6 +33,7 @@ export class IntroductionService {
       utilitys,
       errors,
       subjects,
+      basics,
     ];
     const { category } = allInfo.filter((e: IInfo) => url.includes(e.url))[0];
     this.info.next(category);

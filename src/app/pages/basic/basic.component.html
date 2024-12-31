@@ -1,0 +1,25 @@
+<div class="basic">
+  <app-introduction [info]="info"></app-introduction>
+  @for (i of info.items; track $index) {
+    @switch (i.id) {
+      @case ('unsubscribe') {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="basic__buttons">
+            <button id="btn-click-subscribe" class="btn btn--primary">Subscribe</button>
+            <button id="btn-click-unsubscribe" class="btn btn--secondary">UnSubscribe</button>
+          </div>
+        </app-example>
+      }
+      @case ('unsubscribeSeveral') {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="basic__buttons">
+            <button id="btn-click-unsubscribe-all" class="btn btn--primary">UnSubscribe all</button>
+          </div>
+        </app-example>
+      }
+      @default {
+        <app-example [infoItem]="i" [category]="info.category"></app-example>
+      }
+    }
+  }
+</div>

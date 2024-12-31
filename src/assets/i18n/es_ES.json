@@ -1,6 +1,23 @@
 {
   "english": "Inglés",
   "spanish": "Español",
+  "basicConcepts": {
+    "title": "Conceptos básicos",
+    "description": "En esta sección, hablaremos de los conceptos básicos de RxJS, como son los observables, observadores y suscripciones. Conceptos que tendremos que comprender previamente antes de adentrarnos en el maravilloso mundo de RxJS.",
+    "shortDescription": "En esta sección, hablaremos de los conceptos básicos de RxJS, como son los observables, observadores y suscripciones. Conceptos que tendremos que comprender previamente antes de adentrarnos en el maravilloso mundo de RxJS.",
+    "observableObserverSubscription": {
+      "title": "Observable, Observer, Subscription",
+      "description": "<p>En RxJS, un <b>observable</b> es una <b>fuente de datos</b> que puede <b>emitir valores</b> a lo largo del tiempo. Es como un <b>'emisor'</b> de datos, y cualquier <b>'observador'</b> (un objeto o función) <b>puede suscribirse a él</b> para <b>recibir</b> esos <b>valores</b>. Los observables permiten gestionar flujos de datos asincrónicos, como eventos, peticiones HTTP, o cualquier tipo de secuencia de valores.</p><p>En RxJS, un <b>observer</b> (observador) es un objeto o una función que <b>'escucha'</b> los valores emitidos por un observable. El observer recibe esos valores y puede hacer algo con ellos, como mostrarlos en pantalla o procesarlos. Tiene <b>tres métodos</b> principales <b>next</b>, <b>error</b> y <b>complete</b></p><p>Una <b>Subscription</b> es el resultado de <b>suscribirse a un Observable</b> usando el método <b>subscribe</b>. Te permite recibir los valores emitidos por el observable, y también proporciona métodos para cancelar la suscripción <b>(unsubscribe)</b> cuando ya no necesitas recibir más valores.</p>"
+    },
+    "unsubscribe": {
+      "title": "Unsubscribe",
+      "description": "<p>En RxJS, <b>unsubscribe</b> es un método que se utiliza para <b>detener una suscripción</b> a un observable. Básicamente, sirve para decirle al observable que ya no quieres recibir más valores emitidos por él.</p><p>Si no usas <b>unsubscribe</b> cuando ya no necesitas los datos, el observable seguirá funcionando en segundo plano, lo que puede consumir recursos innecesariamente y provocar fugas de memoria</p><p><b>En los ejemplos de esta web no mostramos el código utilizado para desuscribirnos de los observables, con el fin de hacer más sencilla la lectura de los apartados. Sin embargo, internamente, todos los observables son desuscritos</b>.</p><p>En este ejemplo a través de los eventos <b>clic</b>, creamos o eliminamos la suscripción. Usamos al propiedad <b>closed</b> para comprobar que la suscripción no esté abierta antes de crear otra.</p>"
+    },
+    "unsubscribeSeveral": {
+      "title": "Unsubscribe (varios al mismo tiempo)",
+      "description": "<p>La <b>desubscripción</b> de <b>varios observables al mismo tiempo</b> en RxJS se hace de manera sencilla utilizando una herramienta llamada Subscription. Esta permite agrupar varias subscripciones a través del metodo <b>add</b> y desuscribirse de todas al mismo tiempo.</p><p>Esto es muy útil cuando en cierto momento del ciclo de vida de un componente <b>(ngOnDestroy Angular)</b> quieres eliminar todas las subscripciones.</p>"
+    }
+  },
   "combination": {
     "title": "Operadores de combinación",
     "description": "<b>Los operadores de combinación en RxJS</b> permiten trabajar con múltiples observables para <b>combinarlos</b> y <b>crear nuevos</b> flujos de datos de manera flexible. Cada operador tiene un propósito específico dependiendo de cómo deseas combinar los valores de los observables.",

@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { fromEvent, map, Subscription } from 'rxjs';
 import { LogoComponent } from '../../components/logo/logo.component';
 import { SectionComponent } from '../../components/section/section.component';
+import { basics } from '../../info/basic';
 import { combinations } from '../../info/combinations';
 import { conditionals } from '../../info/conditionals';
 import { creations } from '../../info/creations';
@@ -36,6 +37,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public utilityInfo: IInfo = utilitys;
   public errorInfo: IInfo = errors;
   public subjectInfo: IInfo = subjects;
+  public basicInfo: IInfo = basics;
   private subscription = new Subscription();
 
   ngOnInit(): void {

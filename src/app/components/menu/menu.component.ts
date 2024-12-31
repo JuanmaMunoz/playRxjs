@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { basics } from '../../info/basic';
 import { combinations } from '../../info/combinations';
 import { conditionals } from '../../info/conditionals';
 import { creations } from '../../info/creations';
@@ -37,6 +38,7 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
   public infoUtility: IInfo = utilitys;
   public infoError: IInfo = errors;
   public infoSubject: IInfo = subjects;
+  public infoBasic: IInfo = basics;
   private subscription = new Subscription();
   constructor(private menuService: MenuService) {}
   ngAfterViewInit(): void {

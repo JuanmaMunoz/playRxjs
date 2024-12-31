@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { concatMap, fromEvent, map, Observable, of, Subscription, tap } from 'rxjs';
+import { basics } from '../../info/basic';
 import { combinations } from '../../info/combinations';
 import { conditionals } from '../../info/conditionals';
 import { creations } from '../../info/creations';
@@ -52,6 +53,7 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
       utilitys,
       errors,
       subjects,
+      basics,
     ]);
     this.obsResult = fromEvent(document.getElementsByClassName('search__text')!, 'input').pipe(
       concatMap((e: any) =>
