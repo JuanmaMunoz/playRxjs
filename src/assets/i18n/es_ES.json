@@ -1,7 +1,14 @@
 {
   "english": "Inglés",
   "spanish": "Español",
+  "unlock": "Descubre una nueva forma de aprender",
+  "console": "Usamos ejemplos sencillos de las principales funcionalidades de RxJS, los cuales se pueden verificar en tiempo real desde nuestra consola.",
+  "operators": {
+    "title": "Operadores de Rxjs",
+    "description": "Los <b>operadores</b> de RxJS son <b>funciones</b> que permiten trabajar <b>con flujos de datos observables</b> de manera <b>sencilla y eficiente</b>. Son herramientas clave para <b>transformar, filtrar, combinar, y gestionar datos</b> en aplicaciones reactivas."
+  },
   "basicConcepts": {
+    "welcome": "¡Bienvenido a <b>Play RxJS!</b> Aquí encontrarás una <b>documentación amigable</b> y accesible sobre RxJS, diseñada para ayudarte a comprender y aprovechar al máximo esta increíble herramienta para desarrollar <b>código reactivo</b>. Si estás comenzando con esta tecnología, te recomendamos empezar por los <b>conceptos básicos</b> para familiarizarte con los fundamentos. ¡Disfruta explorando y aprendiendo!.",
     "title": "Conceptos básicos",
     "description": "En esta sección, hablaremos de los conceptos básicos de RxJS, como son los observables, observadores y suscripciones. Conceptos que tendremos que comprender previamente antes de adentrarnos en el maravilloso mundo de RxJS.",
     "shortDescription": "En esta sección, hablaremos de los conceptos básicos de RxJS, como son los observables, observadores y suscripciones. Conceptos que tendremos que comprender previamente antes de adentrarnos en el maravilloso mundo de RxJS.",
@@ -455,6 +462,7 @@
     }
   },
   "subjects": {
+    "welcome": "Descubre cómo <b>manejar</b> fácilmente los <b>cambios de estado</b> en los modelos de datos de cualquier aplicación reactiva utilizando los <b>Subjects</b>. Estas herramientas te permiten mantener todos los <b>componentes y servicios</b> suscritos siempre <b>actualizados al mismo tiempo</b>, ¡de forma sencilla y eficiente!.",
     "title": "Subjects",
     "description": "<b>En RxJS, los Subjects son un concepto clave que combina dos roles: el de un observable (algo que emite valores) y el de un observer (algo que recibe valores). Esto significa que puedes usarlos tanto para recibir datos como para emitirlos a otros observadores. Permiten la multidifusión de valores a muchos Observadores. Mientras los <b>Observables simples son de monodifusión</b> (cada Observador suscrito es propietario de una ejecución independiente del Observable), los subjects son de <b>multidifusión</b>.",
     "shortDescription": "En RxJS, los Subjects son un concepto clave que combina dos roles: el de un observable (algo que emite valores) y el de un observer (algo que recibe valores).",

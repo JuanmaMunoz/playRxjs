@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { basics } from '../../info/basic';
 import { combinations } from '../../info/combinations';
@@ -22,7 +23,14 @@ import { SearchComponent } from '../search/search.component';
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule, RouterModule, SearchComponent, LanguageComponent, MenuItemsComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    SearchComponent,
+    LanguageComponent,
+    MenuItemsComponent,
+    TranslateModule,
+  ],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
 })

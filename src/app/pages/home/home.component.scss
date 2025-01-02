@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin-bottom: 1rem;
     padding: 2rem;
     &__text {
       color: var(--clear-color);
@@ -34,13 +35,31 @@
     }
   }
   &__sections {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    margin: 1rem;
-    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 3rem;
+  }
+  &__panel {
+    border-radius: var(--radius);
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
     padding: 1rem;
-    text-align: center;
+    h2 {
+      color: var(--primary-color);
+      font-size: 3rem;
+    }
+    &--secondary {
+      background-color: var(--secondary-color);
+    }
+    &--primary {
+      background-color: var(--primary-color);
+    }
+    &--primary-border {
+      border: 2px solid var(--primary-color);
+      color: var(--clear-color);
+    }
   }
 }
 

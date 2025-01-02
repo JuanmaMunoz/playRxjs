@@ -1,4 +1,8 @@
 <div [routerLink]="info.url" class="section">
-  <h2>{{ info.category + ".title" | translate }}</h2>
-  <p [innerHTML]="info.category + '.shortDescription' | translate"></p>
+  <div class="section__title">
+    <h2>{{ info.category + '.title' | translate }}</h2>
+  </div>
+  <div class="section__body">
+    <p [innerHTML]="info.category + '.shortDescription' | translate"></p>
+  </div>
 </div>

@@ -7,14 +7,14 @@
   --dark2-color: rgba(0, 0, 0, 0.3);
   --primary-background: #fce3f8;
   --radius: 0.5rem;
-  font-family: monospace;
   background: linear-gradient(70deg, var(--dark-color), #2c242e);
+  font-family: monospace;
 }
 
 //ScrollBar
 ::-webkit-scrollbar {
-  width: 0.5rem;
   height: 0.5rem;
+  width: 0.5rem;
 }
 
 /* Track */
@@ -38,12 +38,12 @@
   display: grid;
   grid-template-columns: auto;
   &--2 {
-    grid-template-columns: 50% auto;
     gap: 1rem;
+    grid-template-columns: 50% auto;
   }
   &--3 {
-    grid-template-columns: 33% 33% auto;
     gap: 1rem;
+    grid-template-columns: 33% 33% auto;
   }
 }
 
@@ -53,22 +53,23 @@
 }
 
 a {
-  font-size: 1.2rem;
-  text-decoration: none;
-  font-weight: bold;
   color: var(--primary-color);
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
   &:hover {
     color: var(--secondary-color);
   }
 }
 
 .btn {
-  font-size: 1.3rem;
-  padding: 0.5rem 2.5rem 0.5rem 2.5rem;
-  color: var(--dark-color);
-  border-radius: var(--radius);
   border: 2px solid;
+  border-radius: var(--radius);
+  color: var(--dark-color);
+  cursor: pointer;
+  font-size: 1.3rem;
   font-weight: bold;
+  padding: 0.5rem 2.5rem 0.5rem 2.5rem;
   &:hover {
     opacity: 0.8;
   }
@@ -90,8 +91,8 @@ a {
   .row {
     &--2,
     &--3 {
-      grid-template-columns: auto;
       gap: 0;
+      grid-template-columns: auto;
     }
   }
 }

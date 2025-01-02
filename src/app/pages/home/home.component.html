@@ -5,10 +5,9 @@
     </div>
     <div class="home__front__text">
       <h1>Play RXJS</h1>
-      <h2>Unlock new way to learn</h2>
+      <h2>{{ 'unlock' | translate }}</h2>
       <h6>
-        We use simple examples of the main functionalities of rxjs, which can be checked in real
-        time from the browser console
+        {{ 'console' | translate }}
       </h6>
       <div class="home__front__technologies">
         <img width="70px" [src]="rxjs" alt="rxjs" />
@@ -16,20 +15,31 @@
       </div>
     </div>
   </div>
-  <div class="home__sections">
-    <app-section [info]="basicInfo"></app-section>
-    <app-section [info]="combinationInfo"></app-section>
-    <app-section [info]="conditionalInfo"></app-section>
-    <app-section [info]="creationInfo"></app-section>
-    <app-section [info]="errorInfo"></app-section>
-    <app-section [info]="filteringInfo"></app-section>
-    <app-section [info]="mathematicalInfo"></app-section>
-    <app-section [info]="multicastingInfo"></app-section>
-    <app-section [info]="transformationInfo"></app-section>
-    <app-section [info]="utilityInfo"></app-section>
-    <app-section [info]="subjectInfo"></app-section>
-    <!--<app-section></app-section>
-    <app-section></app-section>
-    <app-section></app-section>-->
+  <div class="home__panel home__panel--secondary">
+    <p [innerHTML]="'basicConcepts.welcome' | translate"></p>
+    <button class="btn btn--primary" (click)="navigate('basicConcepts')">
+      {{ 'basicConcepts.title' | translate }}
+    </button>
+  </div>
+  <div class="home__panel home__panel--primary-border">
+    <h2>{{ 'operators.title' | translate }}</h2>
+    <p [innerHTML]="'operators.description' | translate"></p>
+    <div class="home__sections">
+      <app-section [info]="combinationInfo"></app-section>
+      <app-section [info]="conditionalInfo"></app-section>
+      <app-section [info]="creationInfo"></app-section>
+      <app-section [info]="errorInfo"></app-section>
+      <app-section [info]="filteringInfo"></app-section>
+      <app-section [info]="mathematicalInfo"></app-section>
+      <app-section [info]="multicastingInfo"></app-section>
+      <app-section [info]="transformationInfo"></app-section>
+      <app-section [info]="utilityInfo"></app-section>
+    </div>
+  </div>
+  <div class="home__panel home__panel--secondary">
+    <p [innerHTML]="'subjects.welcome' | translate"></p>
+    <button class="btn btn--primary" (click)="navigate('subjects')">
+      {{ 'subjects.title' | translate }}
+    </button>
   </div>
 </div>

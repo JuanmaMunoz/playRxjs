@@ -1,7 +1,14 @@
 {
   "english": "English",
   "spanish": "Spanish",
+  "unlock": "Unlock new way to learn",
+  "console": "We use simple examples of the main functionalities of rxjs, which can be checked in real time from our console",
+  "operators": {
+    "title": "Rxjs operators",
+    "description": "The <b>operators</b> in RxJS are <b>functions</b> that allow you to work <b>with observable data streams</b> in a <b>simple and efficient</b> way. They are key tools to <b>transform, filter, combine, and manage data</b> in reactive applications."
+  },
   "basicConcepts": {
+    "welcome": "Welcome to <b>Play RxJS!</b> Here you will find a <b>friendly and accessible documentation</b> about RxJS, designed to help you understand and make the most of this amazing tool for developing <b>reactive code</b>. If you're new to this technology, we recommend starting with the <b>basic concepts</b> to get familiar with the fundamentals. Enjoy exploring and learning!.",
     "title": "Basic concepts",
     "description": "In this section, we will talk about the basic concepts of RxJS, such as observables, observers, and subscriptions. These are concepts we need to understand beforehand before diving into the wonderful world of RxJS.",
     "shortDescription": "In this section, we will talk about the basic concepts of RxJS, such as observables, observers, and subscriptions. These are concepts we need to understand beforehand before diving into the wonderful world of RxJS.",
@@ -448,6 +455,7 @@
     }
   },
   "subjects": {
+    "welcome": "Discover how to <b>easily manage</b> the <b>state changes</b> in the data models of any reactive application using <b>Subjects</b>. These tools allow you to keep all <b>components and services</b> always <b>updated simultaneously</b>, in a simple and efficient way!.",
     "title": "Subjects",
     "description": "<b>In RxJS, Subjects are a key concept that combines two roles: that of an observable (something that emits values) and that of an observer (something that receives values). This means you can use them both to receive data and to emit it to other observers. They enable the multicast of values to many observers. While <b>simple Observables are unicast</b> (each subscribed Observer owns an independent execution of the Observable), subjects are <b>multicast</b>.",
     "shortDescription": "In RxJS, Subjects are a key concept that combines two roles: that of an observable (something that emits values) and that of an observer (something that receives values).",

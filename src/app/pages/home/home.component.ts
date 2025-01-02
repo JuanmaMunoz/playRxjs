@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { fromEvent, map, Subscription } from 'rxjs';
 import { LogoComponent } from '../../components/logo/logo.component';
 import { SectionComponent } from '../../components/section/section.component';
@@ -13,12 +14,13 @@ import { subjects } from '../../info/subjects';
 import { transformations } from '../../info/transformations';
 import { utilitys } from '../../info/utilitys';
 import { IInfo } from '../../models/interfaces';
+import { MenuService } from '../../services/menu.service';
 import { mathematicals } from './../../info/mathematicals';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [LogoComponent, SectionComponent],
+  imports: [LogoComponent, SectionComponent, TranslateModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -39,6 +41,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   public subjectInfo: IInfo = subjects;
   public basicInfo: IInfo = basics;
   private subscription = new Subscription();
+
+  constructor(private menuService: MenuService) {}
 
   ngOnInit(): void {
     this.setLogoWidth(window.innerWidth);
@@ -63,5 +67,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     } else {
       this.logoWidth = width / 1.5;
     }
+  }
+
+  public navigate(category: string, id?: string): void {
+    this.menuService.navigate(category, id);
   }
 }

@@ -3,20 +3,21 @@
   border-radius: var(--radius);
   box-shadow: 0 8px 20px var(--dark2-color);
   cursor: pointer;
-  padding: 20px;
+  min-height: 16.5rem;
+  padding: 1rem;
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
+  width: 25rem;
   &:hover {
     border: solid 1px var(--primary-color);
     box-shadow: 0 0 1rem var(--secondary-color);
   }
-  & > h2 {
+  &__title {
     color: var(--primary-color);
-    font-size: 1.5rem;
     margin-bottom: 10px;
   }
-  & > p {
+  &__body {
     color: var(--clear-color); /* Softer color for descriptions */
     font-size: 1rem;
     line-height: 1.5;
