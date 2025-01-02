@@ -18,7 +18,7 @@ import { IntroductionService } from '../../services/introduction.service';
 export class BasicComponent implements OnInit, AfterViewInit {
   public info!: IInfo;
   public subscription = new Subscription();
-
+  public subscription2 = new Subscription();
   constructor(
     private renderer: Renderer2,
     private route: ActivatedRoute,
@@ -33,6 +33,7 @@ export class BasicComponent implements OnInit, AfterViewInit {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    this.subscription2.unsubscribe();
   }
 
   ngAfterViewInit(): void {
@@ -89,28 +90,27 @@ export class BasicComponent implements OnInit, AfterViewInit {
   }
 
   private unsubscribesSeveral(): void {
-    let subscription = new Subscription();
-
-    subscription.add(
+    this.subscription2.add(
       interval(1000).subscribe((n: number) =>
         this.addConsole('unsubscribeSeveral', 'interval 1-> ' + n.toString()),
       ),
     );
 
-    subscription.add(
+    this.subscription2.add(
       interval(500).subscribe((n: number) =>
         this.addConsole('unsubscribeSeveral', 'interval 2-> ' + n.toString()),
       ),
     );
 
     fromEvent(document.getElementById('btn-click-unsubscribe-all')!, 'click').subscribe(() =>
-      subscription.unsubscribe(),
+      this.subscription2.unsubscribe(),
     );
   }
 
   private addConsole(id: string, data: string): void {
     const div = document.createElement('div');
     div.textContent = `${data}`;
-    this.renderer.appendChild(document.getElementById(`console-${id}`), div);
+    if (document.getElementById(`console-${id}`))
+      this.renderer.appendChild(document.getElementById(`console-${id}`), div);
   }
 }

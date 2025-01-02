@@ -1,4 +1,4 @@
-<div [routerLink]="info.url" class="section">
+<div (click)="navigate(info.url)" class="section">
   <div class="section__title">
     <h2>{{ info.category + '.title' | translate }}</h2>
   </div>

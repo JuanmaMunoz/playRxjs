@@ -132,16 +132,17 @@ export class UtilityComponent implements OnInit, AfterViewInit {
     );
   }
 
-  private addConsole(id: string, data: string): void {
-    const div = document.createElement('div');
-    div.textContent = `${data}`;
-    this.renderer.appendChild(document.getElementById(`console-${id}`), div);
-  }
-
   private operatorToArray(): void {
     const obs$ = interval(1000).pipe(take(10), toArray());
     this.subscription.add(
       obs$.subscribe((numbers: number[]) => this.addConsole('toArray', JSON.stringify(numbers))),
     );
+  }
+
+  private addConsole(id: string, data: string): void {
+    const div = document.createElement('div');
+    div.textContent = `${data}`;
+    if (document.getElementById(`console-${id}`))
+      this.renderer.appendChild(document.getElementById(`console-${id}`), div);
   }
 }

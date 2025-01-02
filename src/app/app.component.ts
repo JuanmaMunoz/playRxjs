@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { filter, fromEvent, Subscription } from 'rxjs';
 import { HeaderComponent } from './components/header/header.component';
@@ -15,12 +15,13 @@ import { MenuService } from './services/menu.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit, OnDestroy {
-  public currentUrl = '/';
+export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild('content') content!: ElementRef;
   private subscription = new Subscription();
   constructor(
     private menuService: MenuService,
     private translate: TranslateService,
+    private router: Router,
   ) {}
   ngOnInit(): void {
     const lang = localStorage.getItem('language') || Language.ENGLISH;
@@ -42,6 +43,14 @@ export class AppComponent implements OnInit, OnDestroy {
         .subscribe((e) => {
           this.menuService.openMenu.next(false);
         }),
+    );
+  }
+
+  ngAfterViewInit(): void {
+    this.subscription.add(
+      this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
+        this.content.nativeElement.scrollTop = 0;
+      }),
     );
   }
 

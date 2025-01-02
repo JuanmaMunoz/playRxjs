@@ -79,7 +79,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       fromEvent(document, 'scroll')
         .pipe(map(() => window.scrollY))
         .subscribe((e: number) => {
-          if (e >= 200) {
+          if (e >= 200 && this.router.url !== '/home') {
             this.showPage = 'header__page--show';
             this.opacity = '';
             if (!this.showTitle) {
@@ -107,5 +107,9 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public showHideMenu(): void {
     this.menuService.openMenu.next(!this.menuService.openMenu.getValue());
+  }
+
+  public navigate(category: string, id?: string): void {
+    this.menuService.navigate(category, id);
   }
 }

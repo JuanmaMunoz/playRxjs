@@ -18,7 +18,7 @@ import { TransformationComponent } from './pages/transformation/transformation.c
 import { UtilityComponent } from './pages/utility/utility.component';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'basicConcepts', component: BasicComponent },
   {
     path: 'basicConcepts/:id',
@@ -79,5 +79,5 @@ export const routes: Routes = [
   { path: 'examples3', component: Examples3Component },
   { path: 'examples4', component: Examples4Component },
   { path: 'examples5', component: Examples5Component },
-  { path: '**', redirectTo: '' },
+  { path: '**', redirectTo: 'home' },
 ];

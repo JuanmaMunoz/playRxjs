@@ -198,6 +198,7 @@ export class CombinationComponent implements OnInit, AfterViewInit {
   private addConsole(id: string, data: string): void {
     const div = document.createElement('div');
     div.textContent = `${data}`;
-    this.renderer.appendChild(document.getElementById(`console-${id}`), div);
+    if (document.getElementById(`console-${id}`))
+      this.renderer.appendChild(document.getElementById(`console-${id}`), div);
   }
 }

@@ -61,4 +61,9 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
+
+  public navigate(category: string, id?: string): void {
+    this.menuService.openMenu.next(false);
+    this.menuService.navigate(category, id);
+  }
 }

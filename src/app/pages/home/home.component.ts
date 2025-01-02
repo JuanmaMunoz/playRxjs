@@ -41,12 +41,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   public subjectInfo: IInfo = subjects;
   public basicInfo: IInfo = basics;
   private subscription = new Subscription();
+  public showOperators: boolean = false;
 
   constructor(private menuService: MenuService) {}
 
   ngOnInit(): void {
     this.setLogoWidth(window.innerWidth);
     this.listenResizeWindow();
+    setTimeout(() => (this.showOperators = true), 1);
   }
 
   ngOnDestroy(): void {
