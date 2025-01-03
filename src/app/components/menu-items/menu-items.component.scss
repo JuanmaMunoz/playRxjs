@@ -10,10 +10,18 @@
     font-weight: bold;
     margin-bottom: 0.5rem;
   }
+  &__icons {
+    color: var(--clear-color);
+    cursor: pointer;
+    float: right;
+    font-size: 1.5rem;
+  }
   &__list {
     cursor: pointer;
     display: flex;
     flex-direction: column;
+    line-height: 1.5;
+    margin-top: 0.5rem;
     &--hidden {
       animation: hide 0.2s;
       display: none;

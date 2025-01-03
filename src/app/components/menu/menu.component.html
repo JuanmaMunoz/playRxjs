@@ -10,6 +10,7 @@
   </div>
   <div class="menu__list">
     <app-menu-items [info]="infoBasic"></app-menu-items>
+    <hr />
     <app-menu-items [info]="infoCombination"></app-menu-items>
     <app-menu-items [info]="infoConditional"></app-menu-items>
     <app-menu-items [info]="infocreation"></app-menu-items>
@@ -19,6 +20,13 @@
     <app-menu-items [info]="infoMulticasting"></app-menu-items>
     <app-menu-items [info]="infoTransformation"></app-menu-items>
     <app-menu-items [info]="infoUtility"></app-menu-items>
+    <hr />
     <app-menu-items [info]="infoSubject"></app-menu-items>
+    <hr />
+  </div>
+  <div class="menu__footer" (click)="navigate('/home')">
+    <img height="50px" [src]="rxjs" alt="rxjs" />
+    <app-logo [width]="120" [borderWidth]="2" />
+    <img height="50px" [src]="angular" alt="angular" />
   </div>
 </div>

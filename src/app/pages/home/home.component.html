@@ -10,14 +10,15 @@
         {{ 'console' | translate }}
       </h6>
       <div class="home__front__technologies">
-        <img width="70px" [src]="rxjs" alt="rxjs" />
-        <img width="230px" [src]="angular" alt="angular" />
+        <img width="80px" [src]="rxjs" alt="rxjs" />
+        <img width="80px" [src]="angular" alt="angular" />
       </div>
     </div>
   </div>
-  <div class="home__panel home__panel--secondary">
-    <p [innerHTML]="'basicConcepts.welcome' | translate"></p>
-    <button class="btn btn--primary" (click)="navigate('basicConcepts')">
+  <div class="home__panel home__panel--secondary-border">
+    <h2 [innerHTML]="'basicConcepts.welcome.title' | translate"></h2>
+    <p [innerHTML]="'basicConcepts.welcome.description' | translate"></p>
+    <button class="btn btn--secondary" (click)="navigate('basicConcepts')">
       {{ 'basicConcepts.title' | translate }}
     </button>
   </div>
@@ -38,9 +39,10 @@
       </div>
     }
   </div>
-  <div class="home__panel home__panel--secondary">
+  <div class="home__panel home__panel--secondary-border">
+    <h2>{{ 'subjects.title' | translate }}</h2>
     <p [innerHTML]="'subjects.welcome' | translate"></p>
-    <button class="btn btn--primary" (click)="navigate('subjects')">
+    <button class="btn btn--secondary" (click)="navigate('subjects')">
       {{ 'subjects.title' | translate }}
     </button>
   </div>

@@ -1,13 +1,14 @@
 .introduction {
   margin-bottom: 2rem;
+  padding-top: 2rem;
   > h1 {
-    font-size: 4rem;
     color: var(--primary-color);
+    font-size: 4rem;
     margin: 0rem;
   }
   > p {
-    font-size: 1.5rem;
     color: var(--clear-color);
+    font-size: 1.5rem;
   }
 }
 
@@ -19,5 +20,17 @@
     > p {
       font-size: 1rem;
     }
+  }
+}
+
+@media screen and (max-width: 825px) {
+  .introduction {
+    padding-top: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .introduction {
+    padding-top: 0;
   }
 }

@@ -2,16 +2,16 @@
   display: flex;
   justify-content: center;
   &__container {
-    margin: 10.5rem 2rem 0 2rem;
+    margin: 9rem 2rem 0 2rem;
     max-width: 1600px;
     overflow: hidden;
   }
 }
 
-@media screen and (max-width: 668px) {
+@media screen and (max-width: 992px) {
   .app {
     &__container {
-      margin: 9rem 1rem 0 1rem;
+      margin: 6rem 1rem 0 1rem;
     }
   }
 }

@@ -23,3 +23,10 @@
     line-height: 1.5;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .section {
+    height: auto;
+    width: 18rem;
+  }
+}

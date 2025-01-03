@@ -17,6 +17,7 @@ import { utilitys } from '../../info/utilitys';
 import { IInfo } from '../../models/interfaces';
 import { MenuService } from '../../services/menu.service';
 import { LanguageComponent } from '../language/language.component';
+import { LogoComponent } from '../logo/logo.component';
 import { MenuItemsComponent } from '../menu-items/menu-items.component';
 import { SearchComponent } from '../search/search.component';
 
@@ -30,6 +31,7 @@ import { SearchComponent } from '../search/search.component';
     LanguageComponent,
     MenuItemsComponent,
     TranslateModule,
+    LogoComponent,
   ],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
@@ -48,6 +50,8 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
   public infoSubject: IInfo = subjects;
   public infoBasic: IInfo = basics;
   private subscription = new Subscription();
+  public angular: string = 'assets/images/angular.png';
+  public rxjs: string = 'assets/images/rxjs-logo.png';
   constructor(private menuService: MenuService) {}
   ngAfterViewInit(): void {
     this.subscription.add(

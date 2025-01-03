@@ -60,7 +60,7 @@
   }
 }
 
-@media screen and (max-width: 1350px) {
+@media screen and (max-width: 1530px) {
   .header {
     &__page {
       display: none;
@@ -78,6 +78,8 @@
     justify-content: left;
     padding-left: 0.5rem;
     &__title {
+      margin-left: 1rem;
+      text-align: left;
       &__main {
         font-size: 2rem;
       }
@@ -88,11 +90,15 @@
     &__btn {
       right: 2rem;
     }
+    &__logo {
+      display: none;
+    }
   }
 }
 
 @media screen and (max-width: 825px) {
   .header {
+    min-height: 5rem;
     &__search {
       width: 20rem;
     }
@@ -106,6 +112,17 @@
     }
     &__search {
       display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .header {
+    min-height: 4rem;
+    &__title {
+      &__secondary {
+        display: none;
+      }
     }
   }
 }

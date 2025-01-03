@@ -27,7 +27,7 @@ import { mathematicals } from './../../info/mathematicals';
 export class HomeComponent implements OnInit, OnDestroy {
   public image: string = 'assets/images/rxjs.jpg';
   public angular: string = 'assets/images/angular.png';
-  public rxjs: string = 'assets/images/rxjs-logo.svg';
+  public rxjs: string = 'assets/images/rxjs-logo.png';
   public logoWidth!: number;
   public combinationInfo: IInfo = combinations;
   public conditionalInfo: IInfo = conditionals;

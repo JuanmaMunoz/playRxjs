@@ -33,6 +33,25 @@
     display: none;
     padding: 1rem;
   }
+  &__list {
+    height: 68vh;
+    margin-right: 0.5rem;
+    overflow-y: auto;
+  }
+  &__footer {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+    text-align: center;
+  }
+}
+
+hr {
+  background-color: var(--primary-color) !important;
+  border: none;
+  height: 1px;
 }
 
 .close {
@@ -47,10 +66,22 @@
   }
 }
 
+@media screen and (max-width: 1650px) {
+  .menu {
+    &__list {
+      height: 60vh;
+    }
+  }
+}
+
 @media screen and (max-width: 690px) {
   .menu {
+    &__header {
+      display: none;
+    }
     &__search {
       display: block;
+      margin-top: 1rem;
     }
   }
 }

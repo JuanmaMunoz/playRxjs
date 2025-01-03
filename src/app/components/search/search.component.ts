@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { concatMap, fromEvent, map, Observable, of, Subscription, tap } from 'rxjs';
+import { concatMap, filter, fromEvent, map, Observable, of, Subscription, tap } from 'rxjs';
 import { basics } from '../../info/basic';
 import { combinations } from '../../info/combinations';
 import { conditionals } from '../../info/conditionals';
@@ -30,15 +30,23 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   public obsResult!: Observable<ISearch[]>;
   public search: string = '';
   public visibleResult: boolean = false;
-  private subscrption = new Subscription();
-  constructor(private menuService: MenuService) {}
+  private subscription = new Subscription();
+  constructor(
+    private menuService: MenuService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
-    this.subscrption.add(this.menuService.openMenu.subscribe(() => (this.visibleResult = false)));
+    this.subscription.add(this.menuService.openMenu.subscribe(() => (this.visibleResult = false)));
+    this.subscription.add(
+      this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
+        this.search = '';
+      }),
+    );
   }
 
   ngOnDestroy(): void {
-    this.subscrption.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
   ngAfterViewInit(): void {
@@ -59,7 +67,13 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
       concatMap((e: any) =>
         of(allInfo).pipe(
           map((a: ISearch[]) =>
-            a.filter((i: ISearch) => e.target!.value.length > 1 && i.id.includes(e.target.value)),
+            a
+              .filter(
+                (i: ISearch) =>
+                  e.target!.value.length > 1 &&
+                  i.id.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase()),
+              )
+              .slice(0, 5),
           ),
           tap((e) => (this.visibleResult = true)),
         ),
