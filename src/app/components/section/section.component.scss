@@ -2,8 +2,9 @@
   background: var(--dark-color);
   border-radius: var(--radius);
   box-shadow: 0 8px 20px var(--dark2-color);
+  box-sizing: border-box;
   cursor: pointer;
-  height: 16.5rem;
+  height: 18rem;
   padding: 1rem;
   transition:
     transform 0.3s ease,

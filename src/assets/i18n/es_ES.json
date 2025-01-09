@@ -2,7 +2,13 @@
   "english": "Inglés",
   "spanish": "Español",
   "unlock": "Descubre una nueva forma de aprender",
+  "output": "// Salida: // ordenado en orden descendente",
+  "search": "Buscar...",
   "console": "Usamos ejemplos sencillos de las principales funcionalidades de RxJS, los cuales se pueden verificar en tiempo real desde nuestra consola.",
+  "aboutMe": {
+    "title": "Sobre mí",
+    "description": "<p>He creado este sitio <b>web tutorial</b> con el objetivo de <b>contribuir</b> a la <b>comunidad de desarrolladores</b>, a la cual debo gran parte de mi crecimiento profesional. Mi <b>gratitud</b> hacia quienes han compartido su conocimiento de forma desinteresada es inmensa, y es a ellos a quienes <b>dedico esta documentación</b>.</p><p><b>RxJS</b> es una herramienta <b>excepcional</b> para el desarrollo de código reactivo, aunque su comprensión puede resultar compleja y abrumadora debido a sus conceptos avanzados. Por ello, he procurado que esta guía sea lo más accesible y clara posible, utilizando <b>ejemplos sencillos</b> que permiten observar en tiempo real el comportamiento de los distintos operadores, así como las diferencias entre ellos.</p><p>A menudo, una imagen vale más que mil palabras, y espero que este <b>enfoque visual</b> y práctico haga más fácil el aprendizaje. Espero que disfruten esta documentación.</p>"
+  },
   "operators": {
     "title": "Operadores de Rxjs",
     "description": "Los <b>operadores</b> de RxJS son <b>funciones</b> que permiten trabajar <b>con flujos de datos observables</b> de manera <b>sencilla y eficiente</b>. Son herramientas clave para <b>transformar, filtrar, combinar, y gestionar datos</b> en aplicaciones reactivas."

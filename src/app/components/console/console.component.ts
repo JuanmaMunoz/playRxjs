@@ -1,9 +1,10 @@
 import { Component, Input, Renderer2 } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-console',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './console.component.html',
   styleUrl: './console.component.scss',
 })

@@ -5,7 +5,7 @@
       class="search__text__input"
       type="text"
       [(ngModel)]="search"
-      placeholder="Search..."
+      placeholder="{{ 'search' | translate }}"
       autocomplete="off"
     />
     <i
@@ -22,7 +22,7 @@
         @for (i of result; track $index) {
           <div class="search__result__item">
             <a (click)="navigate(i.url, i.id)"
-              >- {{ i.category + "." + i.id + ".title" | translate }}
+              >- {{ i.category + '.' + i.id + '.title' | translate }}
               <i class="bi bi-rocket-takeoff"></i
             ></a>
           </div>

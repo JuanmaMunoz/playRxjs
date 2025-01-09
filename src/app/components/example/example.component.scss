@@ -1,21 +1,22 @@
 .example {
   background-color: var(--clear-color);
-  color: var(--dark-color);
-  padding: 1.5rem;
-  margin-bottom: 2.5rem;
   border-radius: var(--radius);
+  color: var(--dark-color);
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
+  text-align: justify;
   &__info {
     &__title {
+      border-bottom: 1px solid var(--primary-color);
       font-size: 3rem;
       padding: 0 0.5rem 0.5rem 0;
-      border-bottom: 1px solid var(--primary-color);
       & > span {
         color: var(--primary-color) !important;
       }
     }
     &__description {
-      margin-top: 1rem;
       font-size: 1.3rem;
+      margin-top: 1rem;
     }
   }
   &__code {
@@ -24,9 +25,9 @@
   }
 }
 
-pre[class*="language-"] {
-  padding-top: 0;
+pre[class*='language-'] {
   padding-left: 3.1rem;
+  padding-top: 0;
 }
 
 @media screen and (max-width: 992px) {
@@ -45,7 +46,7 @@ pre[class*="language-"] {
       padding-left: 0;
     }
   }
-  pre[class*="language-"] {
+  pre[class*='language-'] {
     font-size: 1rem;
     line-height: 1;
     padding-left: 2.5rem;
