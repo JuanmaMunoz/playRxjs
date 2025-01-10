@@ -24,15 +24,16 @@
     <app-menu-items [info]="infoSubject"></app-menu-items>
     <hr />
     <ul>
-      <li class="menu__list__item" [routerLink]="['/aboutMe']">
+      <li class="menu__list__item" (click)="navigate('/aboutMe')">
         {{ 'aboutMe.title' | translate }}
       </li>
     </ul>
-    <hr />
   </div>
   <div class="menu__footer" (click)="navigate('/home')">
-    <img height="50px" [src]="rxjs" alt="rxjs" />
-    <app-logo [width]="110" [borderWidth]="2" />
-    <img height="50px" [src]="angular" alt="angular" />
+    <div class="menu__footer__container">
+      <img height="50px" [src]="rxjs" alt="rxjs" />
+      <app-logo [width]="90" [borderWidth]="2" />
+      <img height="50px" [src]="angular" alt="angular" />
+    </div>
   </div>
 </div>
