@@ -45,7 +45,7 @@ export class BasicComponent implements OnInit, AfterViewInit {
   private observables(): void {
     // 1. We define an Observable"
     const observable = new Observable<number>((subscriber) => {
-      console.log('Observable starts emitting values');
+      this.addConsole('observableObserverSubscription', 'Observable starts emitting values');
 
       // Emit some values
       subscriber.next(1);
