@@ -37,6 +37,10 @@
     height: 70vh;
     margin-right: 0.5rem;
     overflow-y: auto;
+    > ul {
+      list-style: none;
+      padding: 0;
+    }
     &__item {
       color: var(--clear-color);
       cursor: pointer;

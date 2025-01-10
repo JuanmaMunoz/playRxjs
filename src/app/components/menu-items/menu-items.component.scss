@@ -22,6 +22,10 @@
     flex-direction: column;
     line-height: 1.5;
     margin-top: 0.5rem;
+    > ul {
+      list-style: none;
+      padding: 0;
+    }
     &--hidden {
       animation: hide 0.2s;
       display: none;

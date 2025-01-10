@@ -6,7 +6,7 @@ export const basics: IInfo = {
   items: [
     {
       id: 'observableObserverSubscription',
-      code: `// 1. We define an Observable"
+      code: `// 1. We define an Observable
 const observable = new Observable<number>((subscriber) => {
   console.log('Observable starts emitting values');
 
@@ -52,15 +52,19 @@ fromEvent(document.getElementById('btn-click-unsubscribe')!, 'click').subscribe(
       id: 'unsubscribeSeveral',
       code: `let subscription = new Subscription();
       
-const createSubscription = () => {
-  subscription = interval(1000).subscribe((n: number) => console.log(n));
-};
+subscription.add(
+  interval(1000).subscribe((n: number) =>
+    console.log('interval 1-> ' + n),
+  ),
+);
 
-fromEvent(document.getElementById('btn-click-subscribe')!, 'click').subscribe(() => {
-  if (!subscription.closed) subscription.unsubscribe();
-  createSubscription();
-});
-fromEvent(document.getElementById('btn-click-unsubscribe')!, 'click').subscribe(() =>
+subscription.add(
+  interval(500).subscribe((n: number) =>
+    console.log('interval 2-> ' + n),
+  ),
+);
+
+fromEvent(document.getElementById('btn-click-unsubscribe-all')!, 'click').subscribe(() =>
   subscription.unsubscribe(),
 );`,
     },

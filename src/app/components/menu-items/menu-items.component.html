@@ -8,10 +8,14 @@
     <i (click)="showHideList()" class="menu-items__icons bi bi-caret-down-fill"></i>
   }
   <div #list class="menu-items__list menu-items__list--hidden">
-    @for (i of info.items; track $index) {
-      <a class="menu-items__list__link" (click)="navigate(info.url, i.id)"
-        >- {{ info.category + '.' + i.id + '.title' | translate }}</a
-      >
-    }
+    <ul>
+      @for (i of info.items; track $index) {
+        <li>
+          <a class="menu-items__list__link" (click)="navigate(info.url, i.id)"
+            >- {{ info.category + '.' + i.id + '.title' | translate }}</a
+          >
+        </li>
+      }
+    </ul>
   </div>
 </div>

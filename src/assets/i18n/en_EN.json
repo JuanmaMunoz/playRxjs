@@ -37,7 +37,7 @@
   "combination": {
     "title": "Combination operators",
     "description": "<b>Combination operators in RxJS</b> allow you to work with multiple observables to <b>combine them</b> and <b>create new</b> data streams flexibly. Each operator has a specific purpose depending on how you want to combine the values from the observables.",
-    "shortDescription": "Combination operators are key tools for managing real-time or asynchronous data streams.",
+    "shortDescription": "Combination operators in RxJS allow you to work with multiple observables to combine them and create new data streams flexibly.",
     "combineLatest": {
       "title": "Operator combineLatest",
       "description": "<p>The <b>combineLatest</b> operator in RxJS is a way to combine multiple observables into a single one, emitting the <b>latest value</b> from each of them along with the <b>sequence of values</b> from the latest observable.</p>"
@@ -234,6 +234,10 @@
       "title": "Operator sampleTime",
       "description": "<p>The <b>sampleTime</b> operator in RxJS is used to <b>take the last value</b> emitted by an observable at <b>fixed time intervals</b>. Each time the specified time period passes, the operator emits the last value produced up to that moment.</p>"
     },
+    "single": {
+      "title": "Operator single",
+      "description": "<p>The <b>single</b> operator in RxJS is used to <b>ensure</b> that an observable emits <b>only one value</b>, and that value <b>must meet a specific condition</b> (if defined). If the observable emits more than one value or none at all, an <b>error will be thrown</b>.</p>"
+    },
     "skip": {
       "title": "Operator skip",
       "description": "<p>The <b>skip</b> operator in RxJS is a tool used to <b>ignore a certain number of initial values</b> emitted by an observable. After 'skipping' these values, it starts passing the subsequent values that are emitted.</p>"
@@ -315,7 +319,7 @@
   },
   "transformation": {
     "title": "Transformation operators",
-    "description": "<b>RxJS transformation operators</b> are tools that let you change (or 'transform') the data that flows through an observable stream. Imagine you have a stream of values, like numbers or objects, and you want to modify, filter, or reshape these values before they reach the final observer.'",
+    "description": "<b>RxJS transformation operators</b> are tools that let you change (or 'transform') the data that flows through an observable stream. Imagine you have a stream of values, like numbers or objects, and you want to modify, filter, or reshape these values before they reach the final observer.",
     "shortDescription": "RxJS transformation operators are tools for modifying the data flowing through an observable.",
     "buffer": {
       "title": "Operator buffer",

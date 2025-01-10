@@ -23,9 +23,11 @@
     <hr />
     <app-menu-items [info]="infoSubject"></app-menu-items>
     <hr />
-    <span class="menu__list__item" [routerLink]="['/aboutMe']">{{
-      'aboutMe.title' | translate
-    }}</span>
+    <ul>
+      <li class="menu__list__item" [routerLink]="['/aboutMe']">
+        {{ 'aboutMe.title' | translate }}
+      </li>
+    </ul>
     <hr />
   </div>
   <div class="menu__footer" (click)="navigate('/home')">

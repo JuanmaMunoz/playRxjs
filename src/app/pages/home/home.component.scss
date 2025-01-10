@@ -7,6 +7,9 @@
     justify-content: center;
     margin-bottom: 2rem;
     padding-top: 0.5rem;
+    &__image {
+      margin-top: 1rem;
+    }
     &__text {
       color: var(--clear-color);
       display: flex;
@@ -99,6 +102,9 @@
     &__front {
       flex-direction: column;
       padding: 1rem 0;
+      &__image {
+        margin-top: 0rem;
+      }
       &__text {
         width: auto;
         & > h1 {

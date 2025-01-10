@@ -1,12 +1,15 @@
 .about-me {
-  border: solid 2px var(--primary-color);
+  border: solid 2px var(--secondary-color);
   border-radius: var(--radius);
   color: var(--clear-color);
   font-size: 1.3rem;
   margin-top: 3rem;
-  max-width: 70rem;
-  padding: 2rem 2rem 1rem 2rem;
-  text-align: justify;
+  padding: 2rem;
+  text-align: center;
+  > h2 {
+    color: var(--secondary-color);
+    font-size: 3rem;
+  }
   &__profile {
     text-align: center;
     > h3 {
@@ -21,10 +24,10 @@
 
 @media screen and (max-width: 400px) {
   .about-me {
-    border: none;
+    //border: none;
     font-size: 1rem;
     margin-top: 0;
-    padding: 0;
+    padding: 1rem;
     &__profile {
       > img {
         width: 15rem;

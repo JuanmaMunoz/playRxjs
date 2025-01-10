@@ -31,13 +31,13 @@
     },
     "unsubscribeSeveral": {
       "title": "Unsubscribe (varios)",
-      "description": "<p>La <b>desubscripción</b> de <b>varios observables al mismo tiempo</b> en RxJS se hace de manera sencilla utilizando una herramienta llamada Subscription. Esta permite agrupar varias subscripciones a través del metodo <b>add</b> y desuscribirse de todas al mismo tiempo.</p><p>Esto es muy útil cuando en cierto momento del ciclo de vida de un componente <b>(ngOnDestroy Angular)</b> quieres eliminar todas las subscripciones.</p>"
+      "description": "<p>La <b>desuscripción</b> de <b>varios observables al mismo tiempo</b> en RxJS se hace de manera sencilla utilizando una herramienta llamada Subscription. Esta permite agrupar varias suscripciones a través del metodo <b>add</b> y desuscribirse de todas al mismo tiempo.</p><p>Esto es muy útil cuando en cierto momento del ciclo de vida de un componente <b>(ngOnDestroy Angular)</b> quieres eliminar todas las suscripciones.</p>"
     }
   },
   "combination": {
     "title": "Operadores de combinación",
     "description": "<b>Los operadores de combinación en RxJS</b> permiten trabajar con múltiples observables para <b>combinarlos</b> y <b>crear nuevos</b> flujos de datos de manera flexible. Cada operador tiene un propósito específico dependiendo de cómo deseas combinar los valores de los observables.",
-    "shortDescription": "Los operadores de combinación son herramientas clave para gestionar flujos de datos en tiempo real o flujos asincrónicos.",
+    "shortDescription": "Los operadores de combinación en RxJS permiten trabajar con múltiples observables para combinarlos y crear nuevos flujos de datos de manera flexible.",
     "combineLatest": {
       "title": "Operador combineLatest",
       "description": "<p>El operador <b>combineLatest</b> en RxJS es una forma de combinar múltiples observables en uno solo, emitiendo el <b>último valor</b> de cada uno de ellos con la <b>secuencia de valores</b> del último observable.</p>"
@@ -308,7 +308,7 @@
     "shortDescription": "Los operadores de multidifusión en RxJS se utilizan para compartir un solo flujo de valores entre múltiples suscriptores, de modo que los valores emitidos por el observable no se repitan para cada suscriptor.",
     "connect": {
       "title": "Operador connect",
-      "description": "<p>El operador <b>connect</b> en RxJS se utiliza para <b>ctivar</b> un observable que está configurado para ser compartido a través de un subject (usualmente con publish() o multicast()). Este operador permite que el observable comience a emitir valores solo después de que se llame a <b>connect()</b>, es decir, controla cuando el observable comienza a emitir valores.</p>"
+      "description": "<p>El operador <b>connect</b> en RxJS se utiliza para <b>activar</b> un observable que está configurado para ser compartido a través de un subject (usualmente con publish() o multicast()). Este operador permite que el observable comience a emitir valores solo después de que se llame a <b>connect()</b>, es decir, controla cuando el observable comienza a emitir valores.</p>"
     },
     "share": {
       "title": "Operador share",
@@ -402,7 +402,7 @@
     },
     "window": {
       "title": "Operador window",
-      "description": "<p>El operador <b>window</b> de RxJS divide un flujo de datos (observable) en <b>sub-observables</b>, llamados <b>'ventanas'</b>. Cada ventana agrupa los elementos emitidos por el flujo original según un criterio definido, y se cierra cuando ocurre un evento determinado.</p><p>En este ejemplo agrupamos números en 'ventanas' de tres</p>"
+      "description": "<p>El operador <b>window</b> de RxJS divide un flujo de datos (observable) en <b>sub-observables</b>, llamados <b>'ventanas'</b>. Cada ventana agrupa los elementos emitidos por el flujo original según un criterio definido, y se cierra cuando ocurre un evento determinado.</p><p>En este ejemplo agrupamos números en 'ventanas' de tres.</p>"
     },
     "windowCount": {
       "title": "Operador windowCount",
@@ -477,7 +477,7 @@
     "shortDescription": "En RxJS, los Subjects son un concepto clave que combina dos roles: el de un observable (algo que emite valores) y el de un observer (algo que recibe valores).",
     "behaviorSubject": {
       "title": "BehaviorSubject",
-      "description": "<p>El <b>BehaviorSubject</b> es un tipo especial de Subject en RxJS que siempre tiene un <b>valor inicial</b> y además <b>recuerda el último valor emitido</b>. Esto significa que cualquier nuevo suscriptor automáticamente recibe el valor más reciente, incluso si se suscribe después de que ese valor haya sido emitido.</p><p>Podemos acceder al contenido de este sin la necesidad de subscribirnos a través del método <b>getValue</b>.<p>En este ejemplo creamos un <b>BehaviorSubject</b> e inmediatamente se propaga su contenido a todas las subcripciones (valor inicial). También mostramos su contenido por consola a través del método <b>getValue</b> y luego modificamos la edad de este a través del método <b>next</b>, el cual <b>propaga el cambio</b> y vemos el <b>nuevo valor en la subscripción</b>.</p>"
+      "description": "<p>El <b>BehaviorSubject</b> es un tipo especial de Subject en RxJS que siempre tiene un <b>valor inicial</b> y además <b>recuerda el último valor emitido</b>. Esto significa que cualquier nuevo suscriptor automáticamente recibe el valor más reciente, incluso si se suscribe después de que ese valor haya sido emitido.</p><p>Podemos acceder al contenido de este sin la necesidad de suscribirnos a través del método <b>getValue</b>.<p>En este ejemplo creamos un <b>BehaviorSubject</b> e inmediatamente se propaga su contenido a todas las suscripciones (valor inicial). También mostramos su contenido por consola a través del método <b>getValue</b> y luego modificamos la edad de este a través del método <b>next</b>, el cual <b>propaga el cambio</b> y vemos el <b>nuevo valor en la suscripción</b>.</p>"
     },
     "replaySubject": {
       "title": "ReplaySubject",
