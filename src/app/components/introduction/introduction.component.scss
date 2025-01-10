@@ -1,26 +1,6 @@
 .introduction {
   margin-bottom: 2rem;
   padding-top: 2rem;
-  > h1 {
-    color: var(--primary-color);
-    font-size: 4rem;
-    margin: 0rem;
-  }
-  > p {
-    color: var(--clear-color);
-    font-size: 1.5rem;
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .introduction {
-    > h1 {
-      font-size: 2rem;
-    }
-    > p {
-      font-size: 1rem;
-    }
-  }
 }
 
 @media screen and (max-width: 825px) {

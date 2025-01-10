@@ -1,0 +1,11 @@
+.panel {
+  border-radius: var(--radius);
+  margin-bottom: 3rem;
+  padding: 1rem 1rem 2rem 1rem;
+  &--secondary {
+    border: 2px solid var(--secondary-color);
+  }
+  &--primary {
+    border: 2px solid var(--primary-color);
+  }
+}

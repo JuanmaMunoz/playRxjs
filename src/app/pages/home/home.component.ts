@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { fromEvent, map, Subscription } from 'rxjs';
 import { LogoComponent } from '../../components/logo/logo.component';
+import { PanelComponent } from '../../components/panel/panel.component';
 import { SectionComponent } from '../../components/section/section.component';
 import { basics } from '../../info/basic';
 import { combinations } from '../../info/combinations';
@@ -13,6 +14,7 @@ import { multicastings } from '../../info/multicastings';
 import { subjects } from '../../info/subjects';
 import { transformations } from '../../info/transformations';
 import { utilitys } from '../../info/utilitys';
+import { ColorPanel } from '../../models/enums';
 import { IInfo } from '../../models/interfaces';
 import { MenuService } from '../../services/menu.service';
 import { mathematicals } from './../../info/mathematicals';
@@ -20,7 +22,7 @@ import { mathematicals } from './../../info/mathematicals';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [LogoComponent, SectionComponent, TranslateModule],
+  imports: [LogoComponent, SectionComponent, TranslateModule, PanelComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
@@ -42,6 +44,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   public basicInfo: IInfo = basics;
   private subscription = new Subscription();
   public showOperators: boolean = false;
+  public colorPanel = ColorPanel;
 
   constructor(private menuService: MenuService) {}
 

@@ -4,7 +4,7 @@
   box-shadow: 0 8px 20px var(--dark2-color);
   box-sizing: border-box;
   cursor: pointer;
-  height: 18rem;
+  height: 17rem;
   padding: 1rem;
   transition:
     transform 0.3s ease,
@@ -19,7 +19,7 @@
     margin-bottom: 10px;
   }
   &__body {
-    color: var(--clear-color); /* Softer color for descriptions */
+    color: var(--clear-color);
     font-size: 1rem;
     line-height: 1.5;
   }

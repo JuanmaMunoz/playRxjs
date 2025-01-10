@@ -1,8 +1,6 @@
 <div (click)="navigate(info.url)" class="section">
   <div class="section__title">
-    <h2>{{ info.category + '.title' | translate }}</h2>
+    <h3>{{ info.category + '.title' | translate }}</h3>
   </div>
-  <div class="section__body">
-    <p [innerHTML]="info.category + '.shortDescription' | translate"></p>
-  </div>
+  <div class="section__body" [innerHTML]="info.category + '.shortDescription' | translate"></div>
 </div>

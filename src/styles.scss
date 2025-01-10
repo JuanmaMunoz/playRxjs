@@ -97,10 +97,41 @@ a {
   }
 }
 
+h1 {
+  font-size: 4rem;
+  margin: 0;
+}
+
 h2 {
-  margin: 1rem;
+  font-size: 3rem;
+  margin: 0;
 }
 
 p {
+  font-size: 1.3rem;
   line-height: 1.5;
+}
+
+.primary-text {
+  color: var(--primary-color);
+}
+
+.secondary-text {
+  color: var(--secondary-color);
+}
+
+.clear-text {
+  color: var(--clear-color);
+}
+
+@media screen and (max-width: 992px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  p {
+    font-size: 1rem;
+  }
 }
