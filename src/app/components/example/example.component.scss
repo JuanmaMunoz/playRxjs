@@ -7,15 +7,11 @@
   &__info {
     &__title {
       border-bottom: 1px solid var(--primary-color);
-      font-size: 3rem;
-      padding: 0 0.5rem 0.5rem 0;
-      & > span {
+      > h2 > span {
         color: var(--primary-color) !important;
       }
     }
     &__description {
-      font-size: 1.3rem;
-      margin-top: 1rem;
       text-align: justify;
     }
   }
@@ -33,14 +29,6 @@ pre[class*='language-'] {
 @media screen and (max-width: 992px) {
   .example {
     font-size: 0.8rem;
-    &__info {
-      &__title {
-        font-size: 2rem;
-      }
-      &__description {
-        font-size: 1rem;
-      }
-    }
     &__code {
       border-left: none;
       padding-left: 0;

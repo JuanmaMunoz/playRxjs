@@ -2,12 +2,9 @@
   <div class="row row--2">
     <div class="col example__info">
       <div class="example__info__title">
-        <span>/*</span> {{ title | translate }} <span>*/</span>
+        <h2><span>/*</span> {{ title | translate }}</h2>
       </div>
-      <div
-        [innerHTML]="description | translate"
-        class="example__info__description"
-      ></div>
+      <div [innerHTML]="description | translate" class="example__info__description"></div>
       <div class="example__info__content">
         <ng-content></ng-content>
       </div>
