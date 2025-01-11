@@ -36,13 +36,12 @@
 
 .row {
   display: grid;
+  gap: 1.5rem;
   grid-template-columns: auto;
   &--2 {
-    gap: 1rem;
     grid-template-columns: 50% auto;
   }
   &--3 {
-    gap: 1rem;
     grid-template-columns: 33% 33% auto;
   }
 }
