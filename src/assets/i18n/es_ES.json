@@ -487,5 +487,18 @@
       "title": "Subject",
       "description": "<p>El <b>Subject</b> es un tipo especial de Subject en RxJS que no requiere de un <b>valor inicial</b> y además <b>recuerda el último valor emitido</b>. Esto significa que cualquier nuevo suscriptor automáticamente recibe el valor más reciente, incluso si se suscribe después de que ese valor haya sido emitido.</p><p>En este ejemplo a través de un evento clic y en función del contenido de la variable user, creamos el usuario o incrementamos su edad y a través de la función <b>next</b> propagamos el cambio.</p>"
     }
+  },
+  "realLife": {
+    "title": "Ejemplos en la vida real",
+    "description": "En esta sección, presentaremos una serie de <b>ejemplos prácticos</b> que podrían encontrarse en situaciones reales y mostraremos cómo abordarlos utilizando los conceptos y técnicas desarrollados en esta documentación de <b>RxJS</b>.",
+    "shortDescription": "En esta sección, presentaremos una serie de ejemplos prácticos que podrían encontrarse en situaciones reales y mostraremos cómo abordarlos utilizando los conceptos y técnicas desarrollados en esta documentación de RxJS.",
+    "filterUsersMap": {
+      "title": "Filtrar datos (map)",
+      "description": "<p>En este ejemplo, explicamos cómo <b>filtrar</b> una lista de usuarios obtenida a través de un servicio <b>HTTP GET</b>. Utilizaremos el operador <b>map</b> de RxJS <b>en combinación</b> con la función <b>filter de los arrays</b> para aplicar el filtrado de manera eficiente.</p>"
+    },
+    "filterUsersMergeMapFilter": {
+      "title": "Filtrar datos (mergeMap, filter)",
+      "description": "<p>En este ejemplo, presentamos una <b>alternativa</b> para filtrar usuarios utilizando los operadores <b>mergeMap y filter</b>. Con el primer operador, transformamos el <b>array de usuarios</b> en <b>emisiones individuales</b>, lo que <b>permite aplicar</b> el operador <b>filter</b>. Posteriormente, utilizamos el operador <b>toArray</b> para recomponer un <b>array</b> con los <b>usuarios filtrados</b>. Desde una perspectiva de eficiencia, considero que el <b>ejemplo anterior es más óptimo</b>; sin embargo, a nivel didáctico, este enfoque resulta muy útil para poner en práctica los conceptos aprendidos en esta documentación.</p>"
+    }
   }
 }

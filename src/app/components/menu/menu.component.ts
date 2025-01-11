@@ -11,6 +11,7 @@ import { errors } from '../../info/errors';
 import { filterings } from '../../info/filterings';
 import { mathematicals } from '../../info/mathematicals';
 import { multicastings } from '../../info/multicastings';
+import { realLife } from '../../info/realLife';
 import { subjects } from '../../info/subjects';
 import { transformations } from '../../info/transformations';
 import { utilitys } from '../../info/utilitys';
@@ -49,6 +50,7 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
   public infoError: IInfo = errors;
   public infoSubject: IInfo = subjects;
   public infoBasic: IInfo = basics;
+  public realLife: IInfo = realLife;
   private subscription = new Subscription();
   public angular: string = 'assets/images/angular.png';
   public rxjs: string = 'assets/images/rxjs-logo.png';

@@ -14,6 +14,7 @@ import { FilteringComponent } from './pages/filtering/filtering.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MathematicalComponent } from './pages/mathematical/mathematical.component';
 import { MulticastingComponent } from './pages/multicasting/multicasting.component';
+import { RealLifeComponent } from './pages/real-life/real-life.component';
 import { SubjectsComponent } from './pages/subjects/subjects.component';
 import { TransformationComponent } from './pages/transformation/transformation.component';
 import { UtilityComponent } from './pages/utility/utility.component';
@@ -78,6 +79,14 @@ export const routes: Routes = [
   {
     path: 'aboutMe',
     component: AboutMeComponent,
+  },
+  {
+    path: 'realLife/examples',
+    component: RealLifeComponent,
+  },
+  {
+    path: 'realLife/examples/:id',
+    component: RealLifeComponent,
   },
   { path: 'examples1', component: Examples1Component },
   { path: 'examples2', component: Examples2Component },

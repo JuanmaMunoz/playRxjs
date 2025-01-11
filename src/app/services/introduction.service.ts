@@ -9,6 +9,7 @@ import { errors } from '../info/errors';
 import { filterings } from '../info/filterings';
 import { mathematicals } from '../info/mathematicals';
 import { multicastings } from '../info/multicastings';
+import { realLife } from '../info/realLife';
 import { subjects } from '../info/subjects';
 import { transformations } from '../info/transformations';
 import { utilitys } from '../info/utilitys';
@@ -34,6 +35,7 @@ export class IntroductionService {
       errors,
       subjects,
       basics,
+      realLife,
     ];
     const { category } = allInfo.filter((e: IInfo) => url.includes(e.url))[0];
     this.info.next(category);

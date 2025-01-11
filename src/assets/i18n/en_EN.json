@@ -484,5 +484,18 @@
       "title": "Subject",
       "description": "<p>The <b>Subject</b> is a special type of Subject in RxJS that does not require an <b>initial value</b> and also <b>remembers the last emitted value</b>. This means that any new subscriber automatically receives the most recent value, even if they subscribe after that value has been emitted.</p><p>In this example, through a click event and based on the content of the variable user, we either create the user or increment their age, and through the <b>next</b> function, we propagate the change.</p>"
     }
+  },
+  "realLife": {
+    "title": "Real-life examples",
+    "description": "In this section, we will present a series of <b>practical examples</b> that might be encountered in real-life situations and demonstrate how to address them using the concepts and techniques outlined in this <b>RxJS</b> documentation.",
+    "shortDescription": "In this section, we will present a series of practical examples that may arise in real-life situations and demonstrate how to address them using the concepts and techniques covered in this RxJS documentation.",
+    "filterUsersMap": {
+      "title": "Filter data (map)",
+      "description": "<p>In this example, we explain how to <b>filter</b> a list of users obtained through an <b>HTTP GET</b> service. We will use the RxJS <b>map</b> operator <b>in combination</b> with the array's <b>filter function</b> to apply filtering efficiently.</p>"
+    },
+    "filterUsersMergeMapFilter": {
+      "title": "Filter data (mergeMap, filter)",
+      "description": "<p>In this example, we present an <b>alternative</b> for filtering users using the <b>mergeMap and filter</b> operators. With the first operator, we transform the <b>array of users</b> into <b>individual emissions</b>, which <b>allows the application</b> of the <b>filter</b> operator. Subsequently, we use the <b>toArray</b> operator to reassemble an <b>array</b> with the <b>filtered users</b>. From an efficiency standpoint, I consider the <b>previous example to be more optimal</b>; however, from a didactic perspective, this approach is very useful for practicing the concepts learned in this documentation.</p>"
+    }
   }
 }

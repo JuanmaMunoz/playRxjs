@@ -1,13 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
+  filter,
   fromEvent,
   interval,
   map,
+  mergeMap,
   Observable,
   take,
   takeUntil,
   takeWhile,
+  toArray,
 } from 'rxjs';
 import { IUser } from '../../models/interfaces';
 import { UserService } from '../../services/user.service';
@@ -45,15 +48,21 @@ export class Examples1Component {
   private filterList(): void {
     this.obsUsers2 = this.userService
       .getUsers()
-      .pipe(
-        map((users) => users.filter((e) => e.salary > 30000 && e.age > 39))
-      );
+      .pipe(map((users) => users.filter((e) => e.salary > 30000 && e.age > 39)));
+  }
+
+  private filterList2(): void {
+    this.obsUsers2 = this.userService.getUsers().pipe(
+      mergeMap((users) => users), // Emit individual users
+      filter((e) => e.salary > 30000 && e.age > 39),
+      toArray(),
+    );
   }
 
   private intervalTakeWhile(): void {
     this.obsInterval1 = interval(1000).pipe(
       takeWhile((e) => e <= 5),
-      map((e) => `step ${e} of interval`)
+      map((e) => `step ${e} of interval`),
     );
   }
 
