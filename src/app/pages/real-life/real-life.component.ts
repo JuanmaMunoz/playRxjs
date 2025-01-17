@@ -1,7 +1,20 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { concatMap, delay, filter, forkJoin, map, mergeMap, of, Subscription, toArray } from 'rxjs';
+import {
+  concatMap,
+  debounceTime,
+  delay,
+  filter,
+  forkJoin,
+  fromEvent,
+  map,
+  mergeMap,
+  of,
+  Subscription,
+  toArray,
+} from 'rxjs';
 import { ExampleComponent } from '../../components/example/example.component';
 import { IntroductionComponent } from '../../components/introduction/introduction.component';
 import { realLife } from '../../info/realLife';
@@ -26,6 +39,7 @@ export class RealLifeComponent implements OnInit, AfterViewInit {
     private route: ActivatedRoute,
     private introductionService: IntroductionService,
     private userService: UserService,
+    private http: HttpClient,
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +57,7 @@ export class RealLifeComponent implements OnInit, AfterViewInit {
     this.filterUsersMergeMapFilter();
     this.mergeUsersHobbiesforkJoinConcatMap();
     this.filterAndmergeUsersHobbies();
+    this.searchApi();
   }
 
   private filterUsersMap(): void {
@@ -107,6 +122,28 @@ export class RealLifeComponent implements OnInit, AfterViewInit {
           })),
         )
         .subscribe((data) => this.addConsole('filterAndmergeUsersHobbies', JSON.stringify(data))),
+    );
+  }
+
+  private searchApi(): void {
+    const searh = (namePokemon: string) => {
+      const url = 'https://pokeapi.co/api/v2/pokemon/' + namePokemon;
+      this.subscription.add(
+        this.http.get(url).subscribe({
+          next: (data: any) => this.addConsole('searchApi', JSON.stringify(data.forms)),
+          error: (e: HttpErrorResponse) => this.addConsole('searchApi', 'Pokémon not found'),
+        }),
+      );
+    };
+
+    const inputText = document.getElementById('search__input') as HTMLInputElement;
+    this.subscription.add(
+      fromEvent(inputText!, 'input')
+        .pipe(
+          debounceTime(1000),
+          filter(() => inputText.value.length >= 2),
+        )
+        .subscribe(() => searh(inputText.value)),
     );
   }
 

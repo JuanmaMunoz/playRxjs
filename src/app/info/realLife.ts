@@ -62,5 +62,24 @@ forkJoin(user$, hobbies$)
   )
   .subscribe((data) => console.log(data))`,
     },
+    {
+      id: 'searchApi',
+      code: `const searh = (namePokemon: string) => {
+const url = 'https://pokeapi.co/api/v2/pokemon/' + namePokemon;
+  this.http.get(url).subscribe({
+    next: (data: any) => console.log(data.forms),
+    error: (e: HttpErrorResponse) => console.log('Pokémon not found'),
+  })
+};
+      
+const inputText = document.getElementById('search__input') as HTMLInputElement;
+
+fromEvent(inputText!, 'input')
+  .pipe(
+    debounceTime(1000),
+    filter(() => inputText.value.length >= 2),
+  )
+  .subscribe(() => searh(inputText.value))`,
+    },
   ],
 };

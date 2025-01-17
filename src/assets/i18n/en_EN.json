@@ -498,12 +498,16 @@
       "description": "<p>In this example, we present an <b>alternative</b> for filtering users using the <b>mergeMap and filter</b> operators. With the first operator, we transform the <b>array of users</b> into <b>individual emissions</b>, which <b>allows the application</b> of the <b>filter</b> operator. Subsequently, we use the <b>toArray</b> operator to reassemble an <b>array</b> with the <b>filtered users</b>. From an efficiency standpoint, I consider the <b>previous example to be more optimal</b>; however, from a didactic perspective, this approach is very useful for practicing the concepts learned in this documentation.</p>"
     },
     "mergeUsersHobbiesforkJoinConcatMap": {
-      "title": "Merge (forkJoin, concatMap)",
+      "title": "Merge (data API)",
       "description": "<p>In this example, the <b>integration</b> of the <b>user</b> list with the <b>hobbies</b> list is performed through the <b>name</b> field. For this purpose, the <b>forkJoin</b> operator is used, which allows <b>combining</b> two observables that will emit their values only when both have <b>completed</b>. Next, the <b>concatMap</b> operator <b>combines</b> the emissions resulting from forkJoin into a <b>new observable</b>, created using the <b>of</b> operator, which structures the data into an object of the type <b>{ users: u, hobbies: h }</b>. Finally, the <b>map</b> operator is used to transform and enrich this data, utilizing the <b>map</b> and <b>find</b> functions of arrays to establish the association and perform the necessary modifications.</p>"
     },
     "filterAndmergeUsersHobbies": {
-      "title": "Filter and merge",
+      "title": "Filter and merge (data API)",
       "description": "<p>In this example, the <b>integration</b> of <b>a user</b> filtered by the <b>name</b> field from the <b>user</b> list with the <b>hobbies</b> list is carried out. Then, using the <b>map</b> operator and the <b>find</b> function, an <b>object</b> is created that contains the <b>data</b> of the <b>user</b> and their respective <b>hobbies</b>.</p>"
+    },
+    "searchApi": {
+      "title": "Search (data API)",
+      "description": "<p>In this example, we will implement <b>search</b> in an <b>API</b> using the <b>input event</b> on a text field (input-text). We will use the <b>debounceTime</b> operator to invoke the search function after the <b>last</b> input event, following a delay of <b>1 second</b>, in order to <b>avoid multiple calls</b> to the API. Additionally, we will use the <b>filter</b> operator to ensure that the search is executed only when the <b>length</b> of the string is <b>greater</b> than <b>2 characters</b>.</p>"
     }
   }
 }
