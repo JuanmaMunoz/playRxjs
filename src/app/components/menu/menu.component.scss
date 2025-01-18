@@ -6,10 +6,10 @@
   position: fixed;
   right: 0px;
   top: 0;
-  width: 25rem;
+  width: 27rem;
   z-index: 9999999;
   &--hidden {
-    animation: hide 0.2s ease;
+    //animation: hide 0.2s ease;
     display: none;
   }
   &--show {
@@ -51,7 +51,7 @@
     }
   }
   &__footer {
-    bottom: 1rem;
+    bottom: 3vh;
     position: absolute;
     width: 100%;
     &__container {
@@ -98,6 +98,17 @@ hr {
     &__search {
       display: block;
       margin-top: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .menu {
+    width: 97vw;
+    &__list {
+      &__item {
+        font-size: 1.2rem;
+      }
     }
   }
 }

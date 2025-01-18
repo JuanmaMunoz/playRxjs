@@ -21,3 +21,13 @@
     }
   }
 }
+
+@media screen and (max-width: 450px) {
+  .real-life {
+    &__search {
+      > input {
+        font-size: 1rem;
+      }
+    }
+  }
+}

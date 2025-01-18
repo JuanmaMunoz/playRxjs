@@ -35,6 +35,22 @@
   }
 }
 
+@media screen and (max-width: 1650px) {
+  .menu-items {
+    &__list {
+      line-height: 1.8;
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .menu-items {
+    &__title {
+      font-size: 1.2rem;
+    }
+  }
+}
+
 @keyframes hide {
   from {
     display: flex;
