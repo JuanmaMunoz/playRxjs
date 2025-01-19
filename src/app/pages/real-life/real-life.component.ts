@@ -127,7 +127,7 @@ export class RealLifeComponent implements OnInit, AfterViewInit {
 
   private searchApi(): void {
     const searh = (namePokemon: string) => {
-      const url = 'https://pokeapi.co/api/v2/pokemon/' + namePokemon;
+      const url = 'https://pokeapi.co/api/v2/pokemon/' + namePokemon.toLocaleLowerCase();
       this.subscription.add(
         this.http.get(url).subscribe({
           next: (data: any) => this.addConsole('searchApi', JSON.stringify(data.forms)),

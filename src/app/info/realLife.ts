@@ -65,7 +65,7 @@ forkJoin(user$, hobbies$)
     {
       id: 'searchApi',
       code: `const searh = (namePokemon: string) => {
-const url = 'https://pokeapi.co/api/v2/pokemon/' + namePokemon;
+const url = 'https://pokeapi.co/api/v2/pokemon/' + namePokemon.toLocaleLowerCase();
   this.http.get(url).subscribe({
     next: (data: any) => console.log(data.forms),
     error: (e: HttpErrorResponse) => console.log('Pokémon not found'),

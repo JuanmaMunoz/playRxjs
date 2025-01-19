@@ -60,7 +60,7 @@ a {
   &:hover {
     color: var(--secondary-color);
   }
-  &:active {
+  &:focus {
     color: var(--primary-color);
   }
 }
