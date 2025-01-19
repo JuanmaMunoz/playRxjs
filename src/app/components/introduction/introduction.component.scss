@@ -1,6 +1,9 @@
 .introduction {
   margin-bottom: 2rem;
   padding-top: 2rem;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 @media screen and (max-width: 992px) {

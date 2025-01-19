@@ -2,6 +2,9 @@
   border-radius: var(--radius);
   margin-bottom: 3rem;
   padding: 1rem 1rem 2rem 1rem;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
   &--secondary {
     border: 2px solid var(--secondary-color);
   }

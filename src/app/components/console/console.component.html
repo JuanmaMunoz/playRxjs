@@ -1,5 +1,5 @@
 <div class="console">
-  <a (click)="clearConsole()" class="console__clear"><i class="bi bi-trash"></i></a>
+  <button (click)="clearConsole()" class="console__clear"><i class="bi bi-trash"></i></button>
   <div class="console__output">{{ 'output' | translate }}</div>
   <div [id]="'console-' + id" class="console__container"></div>
 </div>

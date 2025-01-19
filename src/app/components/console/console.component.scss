@@ -7,11 +7,19 @@
   padding: 0.5rem;
   position: relative;
   &__clear {
+    background-color: var(--dark-color);
+    border: none;
+    color: var(--primary-color);
     cursor: pointer;
     font-size: 1rem;
+    margin: 0;
+    padding: 0;
     position: absolute;
     right: 0.5rem;
     top: 0.5rem;
+    :active {
+      color: var(--secondary-color);
+    }
   }
   &__output {
     color: var(--primary-color);
