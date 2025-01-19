@@ -38,13 +38,14 @@
 @media screen and (max-width: 1650px) {
   .menu-items {
     &__list {
-      line-height: 1.8;
+      line-height: 2;
     }
   }
 }
 
 @media screen and (max-width: 450px) {
   .menu-items {
+    margin: 1.5rem 1rem 1.5rem 1rem;
     &__title {
       font-size: 1.2rem;
     }

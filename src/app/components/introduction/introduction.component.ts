@@ -18,12 +18,22 @@ export class IntroductionComponent implements AfterViewInit, OnDestroy {
   constructor(private route: ActivatedRoute) {}
 
   ngAfterViewInit(): void {
+    const offset = 130;
     this.subscription.add(
       this.route.params.subscribe((params: any) => {
         const { id } = params;
-        document
+        /*document
           .getElementById(`operator-${id}`)
-          ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          ?.scrollIntoView({ behavior: 'smooth', block: 'center' });*/
+        const target = document.getElementById(`operator-${id}`);
+        if (target) {
+          const elementPosition = target!.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - offset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+          });
+        }
       }),
     );
   }

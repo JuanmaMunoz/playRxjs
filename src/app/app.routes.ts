@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { AboutMeComponent } from './pages/about-me/about-me.component';
 import { BasicComponent } from './pages/basic/basic.component';
 import { CombinationComponent } from './pages/combination/combination.component';
 import { ConditionalComponent } from './pages/conditional/conditional.component';
@@ -70,10 +69,6 @@ export const routes: Routes = [
   {
     path: 'subjects/:id',
     component: SubjectsComponent,
-  },
-  {
-    path: 'aboutMe',
-    component: AboutMeComponent,
   },
   {
     path: 'realLife/examples',

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { PanelComponent } from '../../components/panel/panel.component';
 import { ColorPanel } from '../../models/enums';
+import { PanelComponent } from '../panel/panel.component';
 
 @Component({
   selector: 'app-about-me',

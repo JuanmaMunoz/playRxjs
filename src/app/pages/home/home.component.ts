@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { fromEvent, map, Subscription } from 'rxjs';
+import { AboutMeComponent } from '../../components/about-me/about-me.component';
 import { LogoComponent } from '../../components/logo/logo.component';
 import { PanelComponent } from '../../components/panel/panel.component';
 import { SectionComponent } from '../../components/section/section.component';
@@ -22,7 +23,7 @@ import { mathematicals } from './../../info/mathematicals';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [LogoComponent, SectionComponent, TranslateModule, PanelComponent],
+  imports: [LogoComponent, SectionComponent, TranslateModule, PanelComponent, AboutMeComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

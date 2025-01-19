@@ -3,13 +3,7 @@
   padding-top: 2rem;
 }
 
-@media screen and (max-width: 825px) {
-  .introduction {
-    padding-top: 0.5rem;
-  }
-}
-
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 992px) {
   .introduction {
     padding-top: 0;
   }

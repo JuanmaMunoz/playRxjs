@@ -39,14 +39,14 @@
     box-sizing: border-box;
     left: 0px;
     max-height: 30rem;
-    padding: 1rem;
+    padding: 1.5rem 1rem 0.5rem 1rem;
     position: absolute;
     top: 4.5rem;
     width: 100%;
     &__item {
       color: var(--primary-color);
       cursor: pointer;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
     }
   }
 }

@@ -40,7 +40,11 @@
   .home {
     &__front {
       flex-direction: column;
+      margin-bottom: 0;
       padding: 1rem 0;
+      &__image {
+        margin-bottom: 1rem;
+      }
       &__text {
         margin-left: 0;
         width: auto;
@@ -48,22 +52,8 @@
       &__image {
         margin-top: 0rem;
       }
-    }
-  }
-}
-
-@media screen and (max-width: 668px) {
-  .home {
-    &__front {
-      margin-bottom: 1rem;
-      padding-top: 0.1rem;
-      &__text {
-        margin-left: 0;
-        margin-top: 1rem;
-        width: auto;
-      }
-      &__image {
-        margin-top: 0.6rem;
+      &__technologies {
+        margin: 1rem 0 1rem 0;
       }
     }
   }

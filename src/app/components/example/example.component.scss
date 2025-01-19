@@ -7,8 +7,11 @@
   &__info {
     &__title {
       border-bottom: 1px solid var(--primary-color);
-      > h2 > span {
-        color: var(--primary-color) !important;
+      > h2 {
+        font-size: 2.5rem;
+        > span {
+          color: var(--primary-color) !important;
+        }
       }
     }
     &__description {
@@ -28,6 +31,16 @@ pre[class*='language-'] {
 
 @media screen and (max-width: 992px) {
   .example {
+    &__info {
+      &__title {
+        > h2 {
+          font-size: 1.5rem;
+          > span {
+            display: none;
+          }
+        }
+      }
+    }
     font-size: 0.8rem;
     &__code {
       border-left: none;
