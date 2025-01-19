@@ -8,6 +8,9 @@
   padding: 0.5rem;
   position: fixed;
   top: 0;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
   width: 100%;
   z-index: 10000;
   &__container {
@@ -41,9 +44,6 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
     &__main {
       color: var(--primary-color);
       font-size: 2.5rem;

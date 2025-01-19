@@ -20,6 +20,9 @@
     cursor: pointer;
     margin-top: 1rem;
     padding: 1rem;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
     &__main {
       color: var(--primary-color);
       font-size: 2.5rem;
@@ -34,7 +37,7 @@
     padding: 1rem;
   }
   &__list {
-    height: 70vh;
+    height: 80vh;
     margin-right: 0.5rem;
     overflow-y: auto;
     > ul {
@@ -50,7 +53,7 @@
       margin-left: 1rem;
     }
   }
-  &__footer {
+  /*&__footer {
     bottom: 1vh;
     position: absolute;
     width: 100%;
@@ -61,7 +64,7 @@
       justify-content: space-evenly;
       margin-top: 1rem;
     }
-  }
+  }*/
 }
 
 hr {
@@ -82,22 +85,18 @@ hr {
   }
 }
 
-@media screen and (max-width: 1650px) {
-  .menu {
-    &__list {
-      height: 64.5vh;
-    }
-  }
-}
-
 @media screen and (max-width: 690px) {
   .menu {
     &__header {
-      display: none;
+      margin-top: 0;
+      padding-bottom: 0;
     }
     &__search {
       display: block;
-      margin-top: 1rem;
+      padding-bottom: 0;
+    }
+    &__list {
+      height: 72vh;
     }
   }
 }
@@ -106,14 +105,13 @@ hr {
   .menu {
     width: 97vw;
     &__list {
-      height: 65vh;
       &__item {
         font-size: 1.2rem;
       }
     }
-    &__footer {
+    /*&__footer {
       bottom: 4vh;
-    }
+    }*/
   }
 }
 
