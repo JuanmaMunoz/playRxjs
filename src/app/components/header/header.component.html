@@ -1,19 +1,23 @@
 <div class="header">
-  <div class="header__logo">
-    <app-logo [width]="115" [borderWidth]="2" />
-  </div>
-  <div class="header__title">
-    <div class="header__title__main">Play Rxjs</div>
-    <div class="header__title__secondary">Unlock New way to learn</div>
-  </div>
-
-  <div class="header__info">
-    <div class="header__info__operators">
-      <div>//Operators:</div>
-      <div><a [routerLink]="['/routePath']">Creation</a></div>
-      <div><a [routerLink]="['/routePath']">Transformation</a></div>
-      <div><a [routerLink]="['/routePath']">Combination</a></div>
-      <div><a [routerLink]="['/routePath']">Filter</a></div>
+  <div [class]="opacity" class="header__container">
+    @if (introductionService.info | async; as info) {
+      <div [class]="showPage" class="header__page">{{ title | async }}</div>
+    }
+    <div *ngIf="currentUrl !== '/home'" (click)="navigate('/home')" class="header__logo">
+      <app-logo [width]="logoWidth" [borderWidth]="2" />
     </div>
+    <div (click)="navigate('/home')" class="header__title">
+      <div class="header__title__main">Play Rxjs</div>
+      <div class="header__title__secondary">{{ 'unlock' | translate }}</div>
+    </div>
+
+    <div class="header__search">
+      <app-search />
+    </div>
+  </div>
+  <div class="header__btn">
+    <button (click)="showHideMenu()" class="btn btn--primary btn--menu">
+      <i class="btn__menu__icon bi bi-list"></i>
+    </button>
   </div>
 </div>

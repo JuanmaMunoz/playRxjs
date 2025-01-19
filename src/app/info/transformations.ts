@@ -1,113 +1,234 @@
 import { IInfo } from '../models/interfaces';
 
-export const transformations: IInfo[] = [
-  {
-    id: 'map',
-    title: 'Operator map',
-    description:
-      "<p>The map operator in RxJS applies a function to each value emitted by an observable and returns an observable that emits the transformed values.<p><p>In this example, we transform the user's name using the map operator and use the array's map method to update the name of each item within it.</p>",
-    output:
-      "// Output: [{'name':'Jhon de todos los santos','firstName':'Trump','age':40,'job':'Front end developer','salary':30000},{'name':'Patricia de todos los santos','firstName':'Biden','age':36,'job':'Quality Manager','salary':40000},{'name':'Benito de todos los santos','firstName':'Aznar','age':12,'job':'Youtuber','salary':50000}]",
-    code: `this.userService
-    .getUsers()
+export const transformations: IInfo = {
+  url: 'operators/transformation',
+  category: 'transformation',
+  items: [
+    {
+      id: 'buffer',
+      code: `const click$ = fromEvent(document.getElementById('btn-click-buffer')!,'click');
+const triger$ = interval(3000);
+click$.pipe(buffer(triger$))
+      .subscribe((clicks: Event[]) => console.log(clicks.length));`,
+    },
+    {
+      id: 'bufferCount',
+      code: `const click$ = fromEvent(document.getElementById('btn-click-buffer-count')!,'click');
+click$.pipe(bufferCount(5))
+      .subscribe((clicks: Event[]) => console.log('5 clicks'));`,
+    },
+    {
+      id: 'bufferTime',
+      code: `const interval$ = interval(1000);
+interval$.pipe(bufferTime(3000))
+         .subscribe((n: number[]) => console.log(n));`,
+    },
+    {
+      id: 'bufferToogle',
+      code: `const start$ = fromEvent(document.getElementById('btn-click-buffer-toogle-start')!,'click');
+const stop$ = () =>
+    fromEvent(document.getElementById('btn-click-buffer-toogle-stop')!,'click');
+const interval$ = interval(1000);
+interval$.pipe(bufferToggle(start$, stop$))
+         .subscribe((n: number[]) => console.log(n));`,
+    },
+    {
+      id: 'bufferWhen',
+      code: `const interval$ = interval(1000);
+const click$ = fromEvent(document.getElementById('btn-click-buffer-when')!,'click');  
+interval$.pipe(bufferWhen(() => click$))
+         .subscribe((n: number[]) => console.log(n));`,
+    },
+    {
+      id: 'concatMap',
+      code: `fromEvent(document.getElementById('btn-start-cc-map')!, 'click')
     .pipe(
-      map((e: IUser[]) =>
-        e.map((u: IUser) => ({ ...u, name: u.name + ' de todos los santos' }))
+      concatMap((e) =>
+        interval(1000).pipe(map((n: number) => e.target.id + ' ' + n))
       )
     )
+    .subscribe((data: string) => console.log(data))`,
+    },
+    {
+      id: 'exhaustMap',
+      code: `fromEvent(document.getElementById('btn-start-exhaust-map')!, 'click')
+    .pipe(
+      delay(5000),
+      exhaustMap(() => this.userService.getUsers())
+    )
     .subscribe((data: IUser[]) => console.log(data));`,
-  },
+    },
+    {
+      id: 'expand',
+      code: `of(1)
+    .pipe(
+      expand((x) => of(x + 10)),
+      take(5)
+    )
+    .subscribe((x: number) => this.addConsole('expand', x.toString()));`,
+    },
+    {
+      id: 'groupBy',
+      code: `const animals$ = from([
+  { name: 'Rufy', species: 'cat' },
+  { name: 'Benito', species: 'dog' },
+  { name: 'Mini', species: 'cat' },
+  { name: 'Pedro', species: 'dog' },
+]);
+      
+const species$ = animals$.pipe(
+  groupBy(({ species }) => species),
+  mergeMap((species) => species.pipe(toArray()))
+);
+species$.subscribe((species) => console.log(species));`,
+    },
+    {
+      id: 'map',
+      code: `public getUsers(): Observable<IUser[]> {
+    const url = 'assets/data/data2.json';
+    return this.http.get<IUser[]>(url);
+}
 
-  {
-    id: 'mapTo',
-    title: 'Operator mapTo',
-    description:
-      '<p>The mapTo operator in RxJS replaces each value emitted by an observable with a specific value you provide.</p><p>In this example, with the mapTo operator, we replace all values from the observable with the value <b>strawberry</b>.</p>',
-    output: '// Output: strawberry // 3 times',
-    code: `from(['orange', 'lemon', 'melon'])
-      .pipe(mapTo('strawberry'))
-      .subscribe((data: string) => console.log(data));`,
-  },
-
-  {
-    id: 'mergeMap',
-    title: 'Operator mergeMap',
-    description:
-      '<p>The mergeMap operator in RxJS is used to transform the values emitted by an observable into other observables and then <b>"flattens"</b> or combines all those emissions into a single data stream. This is useful when you want to perform multiple asynchronous operations in sequence and combine their results.</p><p>In this example, we merge an observable made up of a list of letters with an observable containing a numeric range from 1 to 2.</p>',
-    output: `// Output:<br>
-    a + 1 = ? <br>
-    a + 2 = ? <br>
-    b + 1 = ? <br>
-    b + 2 = ? <br>
-    c + 1 = ? <br>
-    c + 2 = ? <br>
-  `,
-    code: `from(['a', 'b', 'c'])
-      .pipe(
-        mergeMap((e: string) =>
-          range(1, 2).pipe(map((n: number) => e + ' + ' + n + ' = ?'))
-        )
+this.userService.getUsers()
+    .pipe(
+      map((e: IUser[]) =>
+      e.map((u: IUser) => ({ ...u, name: u.name + ' ****--****' })))
+    )
+    .subscribe((data: IUser[]) => console.log(data));`,
+    },
+    {
+      id: 'mapTo',
+      code: `from(['orange', 'lemon', 'melon'])
+    .pipe(mapTo('strawberry'))
+    .subscribe((data: string) => console.log(data));`,
+    },
+    {
+      id: 'mergeMap',
+      code: `from(['a', 'b', 'c'])
+    .pipe(
+      mergeMap((e: string) =>
+        range(1, 2).pipe(map((n: number) => e + ' + ' + n + ' = ?'))
       )
-      .subscribe((data: string) => console.log(data));`,
-  },
-  {
-    id: 'mergeMapTo',
-    title: 'Operator mergeMapTo',
-    description:
-      '<p>The mergeMapTo operator in RxJS is used to replace each value emitted by an observable with a different observable that you specify, and it then "flattens" all the results into a single output stream.</p><p>In this example, we merge an observable made up of a list of letters with an observable containing a numeric range from 1 to 2. <b>Unlike mergeMap</b>, we don`t take into account the output of the first observable, emitting the <b>same value</b> for each letter.</p>',
-    output: `// Output:<br>
-    the same output + 1 = ? <br>
-    the same output + 2 = ? <br>
-    the same output + 1 = ? <br>
-    the same output + 2 = ? <br>
-    the same output + 1 = ? <br>
-    the same output + 2 = ? <br>
-  `,
-    code: `from(['a', 'b', 'c'])
-      .pipe(
-        mergeMapTo(range(1, 2).pipe(map((n: number) => 'the same output' + ' + ' + n + ' = ?'))))
-      .subscribe((data: string) => console.log(data));`,
-  },
-  {
-    id: 'switchMap',
-    title: 'Operator switchMap',
-    description:
-      '<p>The switchMap operator in RxJS is used to switch from one observable to a new one whenever a new value is emitted by the original observable. When this happens, switchMap <b>cancels (or "unsubscribes" from)</b> the previous observable and only listens to the latest one.</p>In this example, we merge the observable from a button click event with an observable created using an interval. We cancel the resulting observable when the stop button is clicked using the takeUntil operator. Each time we click the start button, we can see in the console how the previous observable is canceled.<p>',
-    output: `//output:<br>
-  btn btn--primary 0 <br>
-  btn btn--primary 1 <br>
-  btn btn--primary 2 //... until we press the stop button
-  `,
-    code: `fromEvent(document.getElementById('btn-start-sw-map')!, 'click')
-      .pipe(
-        switchMap((e) =>
-          interval(1000).pipe(map((n: number) => e.target.className + ' ' + n))
-        ),
-        takeUntil(
-          fromEvent(document.getElementById('btn-stop-sw-map')!, 'click')
-        )
+    )
+    .subscribe((data: string) => console.log(data));`,
+    },
+    {
+      id: 'mergeMapTo',
+      code: `from(['a', 'b', 'c'])
+    .pipe(
+      mergeMapTo(range(1, 2).pipe(map((n: number) => 'the same output' + ' + ' + n + ' = ?')))
+    )
+    .subscribe((data: string) => console.log(data));`,
+    },
+    {
+      id: 'mergeScan',
+      code: `of(1, 10, 20)
+    .pipe(
+      mergeScan((acc: number, value: number) => {
+        return of(acc + value);
+      }, 0), // The accumulator starts at 0.
+    )
+    .subscribe((result: number) => console.log(result))`,
+    },
+    {
+      id: 'pairwise',
+      code: `of(1, 10, 20)
+    .pipe(pairwise())
+    .subscribe((result: number[]) => console.log(result))`,
+    },
+    {
+      id: 'partition',
+      code: `const animals$ = from([
+  { name: 'Rufy', species: 'cat' },
+  { name: 'Benito', species: 'dog' },
+  { name: 'Mini', species: 'cat' },
+  { name: 'Pedro', species: 'dog' },
+  { name: 'Marc', species: 'monkey' },
+]);
+const [cats$, others$] = partition(animals$, ({ species }) => species === 'cat');
+cats$.subscribe((cats) => console.log(cats))`,
+    },
+    {
+      id: 'pluck',
+      code: `const animals$ = from([
+  { name: 'Rufy', species: 'cat' },
+  { name: 'Benito', species: 'dog' },
+  { name: 'Mini', species: 'cat' },
+  { name: 'Pedro', species: 'dog' },
+]);    
+animals$
+  .pipe(pluck('name'))
+  .subscribe((name: string) => console.log(name))`,
+    },
+    {
+      id: 'scan',
+      code: `of(1, 10, 20)
+  .pipe(scan((acc: number, value: number) => acc + value))
+  .subscribe((result: number) => console.log(result))`,
+    },
+    {
+      id: 'switchMap',
+      code: `fromEvent(document.getElementById('btn-start-sw-map')!, 'click')
+    .pipe(
+      switchMap((e) =>
+        interval(1000).pipe(map((n: number) => e.target.id + ' ' + n))
       )
-      .subscribe((data: string) => console.log(data))`,
-  },
-  {
-    id: 'concatMap',
-    title: 'Operator concatMap',
-    description:
-      '<p>The concatMap operator in RxJS is used to queue up observables one after another, ensuring they run in sequence. When concatMap receives a value, it maps that value to a new observable (like a network request or a timer) and waits for it to complete before moving to the next one.<p><p>In this example, we merge the observable from a button click event with the observable created using an interval. We cancel the resulting observable when we click the stop button using the takeUntil operator. Each time we click the start button, we can see in the console how the observables are concatenated in an orderly manner, respecting their sequence.</p>',
-    output: `//output:<br>
-  btn btn--primary 0 <br>
-  btn btn--primary 1 <br>
-  btn btn--primary 2 //... until we press the stop button
-  `,
-    code: `fromEvent(document.getElementById('btn-start-sw-map')!, 'click')
-      .pipe(
-        concatMap((e) =>
-          interval(1000).pipe(map((n: number) => e.target.className + ' ' + n))
-        ),
-        takeUntil(
-          fromEvent(document.getElementById('btn-stop-sw-map')!, 'click')
-        )
-      )
-      .subscribe((data: string) => console.log(data))`,
-  },
-];
+    )
+    .subscribe((data: string) => console.log(data))`,
+    },
+    {
+      id: 'window',
+      code: `const source$ = interval(1000);
+const closingNotifier$ = interval(3000);
+source$
+    .pipe(
+      window(closingNotifier$),
+      mergeMap((window$) => window$.pipe(toArray())),
+    )
+    .subscribe((data: number[]) => console.log(data))`,
+    },
+    {
+      id: 'windowCount',
+      code: `const source$ = of(1, 2, 3, 4, 5, 6);
+source$
+    .pipe(
+      windowCount(3, 2), // Windows of 3 elements, starting every 2 values
+      mergeMap((window$) => window$.pipe(toArray())),
+    )
+    .subscribe((data: number[]) => console.log(data))`,
+    },
+    {
+      id: 'windowTime',
+      code: `const source$ = interval(1000);
+source$
+    .pipe(
+      windowTime(3000),
+      mergeMap((window$) => window$.pipe(toArray())),
+    )
+    .subscribe((data: number[]) => console.log(data))`,
+    },
+    {
+      id: 'windowToogle',
+      code: `const source$ = interval(1000);
+const openings$ = interval(5000);
+const closings = () => interval(3000);
+this.subscription.add(
+  source$
+    .pipe(
+      windowToggle(openings$, closings),
+      mergeMap((window$) => window$.pipe(toArray())),
+    )
+    .subscribe((data: number[]) => console.log(data))`,
+    },
+    {
+      id: 'windowWhen',
+      code: `const source$ = interval(1000);
+source$
+    .pipe(
+      windowWhen(() => interval(3000)),
+      mergeMap((window$) => window$.pipe(toArray())),
+    )
+    .subscribe((data: number[]) => console.log(data))`,
+    },
+  ],
+};

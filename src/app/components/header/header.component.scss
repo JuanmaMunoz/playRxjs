@@ -1,43 +1,160 @@
 .header {
   background: linear-gradient(70deg, var(--dark-color), #2c242e);
-  position: fixed;
+  box-shadow: 0 0.1rem 0.5rem var(--dark2-color);
+  display: flex;
+  justify-content: center;
   left: 0;
+  min-height: 6rem;
+  padding: 0.5rem;
+  position: fixed;
   top: 0;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
   width: 100%;
   z-index: 10000;
-  display: flex;
-  height: 9.5rem;
+  &__container {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    &--opacity {
+      animation: opacity 1s;
+    }
+  }
+  &__page {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    font-weight: bold;
+
+    &--hidden {
+      animation: hidden 1s;
+      display: none;
+    }
+    &--show {
+      animation: show 1s;
+      display: flex;
+    }
+  }
   &__logo {
-    margin-top: 1rem;
-    margin-left: 30%;
+    cursor: pointer;
   }
   &__title {
-    margin-top: 3rem;
-    margin-left: 1rem;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
+    text-align: center;
     &__main {
-      font-size: 2.5rem;
       color: var(--primary-color);
+      font-size: 2.5rem;
     }
     &__secondary {
-      font-size: 1.2rem;
       color: var(--secondary-color);
+      font-size: 1.2rem;
     }
   }
-  &__info {
-    margin-top: 1rem;
-    margin-left: 1rem;
-    color: var(--secondary-color);
-    font-weight: bold;
-    font-size: 1.2rem;
-    &__operators {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      & > div {
-        margin-left: 1rem;
+  &__search {
+    width: 30rem;
+  }
+
+  &__btn {
+    position: absolute;
+    right: 1.5rem;
+    top: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 1530px) {
+  .header {
+    &__page {
+      display: none;
+    }
+    &__container {
+      &--opacity {
+        animation: none;
       }
     }
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .header {
+    justify-content: left;
+    min-height: 4rem;
+    padding-left: 0.5rem;
+    &__title {
+      margin-left: 1rem;
+      text-align: left;
+      &__main {
+        font-size: 2rem;
+      }
+      &__secondary {
+        font-size: 1rem;
+      }
+    }
+    &__btn {
+      right: 2rem;
+    }
+    &__logo {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 825px) {
+  .header {
+    &__search {
+      width: 20rem;
+    }
+  }
+}
+
+@media screen and (max-width: 690px) {
+  .header {
+    &__container {
+      gap: 1rem;
+    }
+    &__search {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .header {
+    &__title {
+      &__secondary {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+@keyframes show {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    display: flex;
+    opacity: 1;
+  }
+}
+
+@keyframes hidden {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    display: none;
+    opacity: 1;
+  }
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0.2;
+  }
+  to {
+    opacity: 1;
   }
 }

@@ -1,9 +1,10 @@
 import { Component, Input, Renderer2 } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-console',
   standalone: true,
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './console.component.html',
   styleUrl: './console.component.scss',
 })
@@ -13,7 +14,6 @@ export class ConsoleComponent {
   constructor(private render: Renderer2) {}
 
   public clearConsole(): void {
-    console.log('console-' + this.id);
     const container = document.getElementById('console-' + this.id);
     this.render.setProperty(container, 'innerHTML', '');
   }

@@ -1,0 +1,33 @@
+<div [class]="modeMenu" class="search">
+  <div class="search__text">
+    <input
+      [class]="modeMenu"
+      class="search__text__input"
+      type="text"
+      [(ngModel)]="search"
+      placeholder="{{ 'search' | translate }}"
+      autocomplete="off"
+    />
+    <i
+      *ngIf="search"
+      (click)="clearText()"
+      class="search__text__clean bi bi-x-circle"
+      [class]="modeMenu"
+    ></i>
+  </div>
+
+  @if (obsResult | async; as result) {
+    @if (result.length > 0 && visibleResult) {
+      <div class="search__result">
+        @for (i of result; track $index) {
+          <div class="search__result__item">
+            <a (click)="navigate(i.url, i.id)"
+              >- {{ i.category + '.' + i.id + '.title' | translate }}
+              <i class="bi bi-rocket-takeoff"></i
+            ></a>
+          </div>
+        }
+      </div>
+    }
+  }
+</div>

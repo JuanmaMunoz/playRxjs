@@ -1,0 +1,86 @@
+<div class="transformations">
+  <app-introduction [info]="info"></app-introduction>
+  @for (i of info.items; track $index) {
+    @switch (i.id) {
+      @case ("buffer") {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="transformations__buttons">
+            <button id="btn-click-buffer" class="btn btn--primary">
+              Count clicks
+            </button>
+          </div>
+        </app-example>
+      }
+
+      @case ("bufferCount") {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="transformations__buttons">
+            <button id="btn-click-buffer-count" class="btn btn--primary">
+              Make 5 clicks
+            </button>
+          </div>
+        </app-example>
+      }
+
+      @case ("bufferToogle") {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="transformations__buttons">
+            <button id="btn-click-buffer-toogle-start" class="btn btn--primary">
+              Start
+            </button>
+            <button
+              id="btn-click-buffer-toogle-stop"
+              class="btn btn--secondary"
+            >
+              Stop
+            </button>
+          </div>
+        </app-example>
+      }
+
+      @case ("bufferWhen") {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="transformations__buttons">
+            <button id="btn-click-buffer-when" class="btn btn--primary">
+              Make click
+            </button>
+          </div>
+        </app-example>
+      }
+
+      @case ("concatMap") {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="transformations__buttons">
+            <button id="btn-start-cc-map" class="btn btn--primary">
+              Make several clicks
+            </button>
+          </div>
+        </app-example>
+      }
+
+      @case ("exhaustMap") {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="transformations__buttons">
+            <button id="btn-start-exhaust-map" class="btn btn--primary">
+              Make several clicks
+            </button>
+          </div>
+        </app-example>
+      }
+
+      @case ("switchMap") {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="transformations__buttons">
+            <button id="btn-start-sw-map" class="btn btn--primary">
+              Make several clicks
+            </button>
+          </div>
+        </app-example>
+      }
+
+      @default {
+        <app-example [infoItem]="i" [category]="info.category"></app-example>
+      }
+    }
+  }
+</div>

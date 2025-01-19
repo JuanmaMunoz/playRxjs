@@ -1,51 +1,56 @@
 .example {
   background-color: var(--clear-color);
-  color: var(--dark-color);
-  padding: 1.5rem;
-  margin-bottom: 2.5rem;
   border-radius: var(--radius);
+  color: var(--dark-color);
+  margin-bottom: 2.5rem;
+  padding: 1.5rem;
   &__info {
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
     &__title {
-      font-size: 3rem;
-      padding: 0 0.5rem 0.5rem 0;
       border-bottom: 1px solid var(--primary-color);
-      & > span {
-        color: var(--primary-color) !important;
+      > h2 {
+        font-size: 2.5rem;
+        > span {
+          color: var(--primary-color) !important;
+        }
       }
     }
     &__description {
-      margin-top: 1rem;
-      font-size: 1.3rem;
+      text-align: justify;
     }
   }
   &__code {
     border-left: 1px solid var(--primary-color);
-    padding-left: 1rem;
+    padding-left: 1.5rem;
   }
 }
 
-pre[class*="language-"] {
-  padding-top: 0;
+pre[class*='language-'] {
   padding-left: 3.1rem;
+  padding-top: 0;
 }
 
 @media screen and (max-width: 992px) {
   .example {
-    font-size: 0.8rem;
     &__info {
       &__title {
-        font-size: 2rem;
-      }
-      &__description {
-        font-size: 1rem;
+        > h2 {
+          font-size: 1.5rem;
+          > span {
+            display: none;
+          }
+        }
       }
     }
+    font-size: 0.8rem;
     &__code {
       border-left: none;
       padding-left: 0;
     }
   }
-  pre[class*="language-"] {
+  pre[class*='language-'] {
     font-size: 1rem;
     line-height: 1;
     padding-left: 2.5rem;

@@ -1,0 +1,33 @@
+.real-life {
+  &__search {
+    text-align: center;
+    width: 100%;
+    > input {
+      background-color: var(--dark-color);
+      border: 2px solid var(--primary-color);
+      border-radius: 3rem;
+      box-sizing: border-box;
+      color: var(--clear-color);
+      font-size: 1.2rem;
+      font-weight: bold;
+      height: 3.5rem;
+      padding: 0 3rem 0 1rem;
+      transition: border-color 0.3s ease;
+      width: 80%;
+      &:focus {
+        box-shadow: 0 0 1rem var(--secondary-color);
+        outline: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .real-life {
+    &__search {
+      > input {
+        font-size: 1rem;
+      }
+    }
+  }
+}

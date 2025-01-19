@@ -1,0 +1,30 @@
+.section {
+  background: var(--dark-color);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 20px var(--dark2-color);
+  box-sizing: border-box;
+  cursor: pointer;
+  height: 14rem;
+  padding: 1rem;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+  width: 25rem;
+  &:hover {
+    border: solid 1px var(--primary-color);
+    box-shadow: 0 0 1rem var(--secondary-color);
+  }
+  > p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .section {
+    height: auto;
+    width: 78vw;
+  }
+}

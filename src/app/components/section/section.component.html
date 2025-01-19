@@ -1,1 +1,4 @@
-<p>section works!</p>
+<div (click)="navigate(info.url)" class="section">
+  <h3 class="primary-text">{{ info.category + '.title' | translate }}</h3>
+  <p class="clear-text" [innerHTML]="info.category + '.shortDescription' | translate"></p>
+</div>

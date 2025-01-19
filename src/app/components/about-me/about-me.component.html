@@ -1,0 +1,16 @@
+<div class="about-me clear-text">
+  <app-panel [title]="'aboutMe.title'" [color]="colorPanel.PRIMARY">
+    <div class="about-me__profile">
+      <img [src]="photo" alt="Front End Architect" />
+      <h3>Juan Manuel Muñoz González</h3>
+      <a href="https://www.linkedin.com/in/juan-manuel-muñoz-gonzález" target="_blank"
+        ><i class="bi bi-linkedin"></i> Front End Architect</a
+      >
+      /
+      <a href="https://juanmamunoz.github.io/resume/" target="_blank"
+        ><i class="bi bi-file-person"></i> CV</a
+      >
+    </div>
+    <div [innerHTML]="'aboutMe.description' | translate" class="about-me__description"></div>
+  </app-panel>
+</div>

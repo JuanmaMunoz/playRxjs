@@ -1,12 +1,35 @@
-<ul>
-  <li>
-    <a [routerLink]="'/transformation/part/1'"
-      >Operadores de transformación parte 1</a
-    >
-  </li>
-  <li><a [routerLink]="'/examples1'">Examples part 1</a></li>
-  <li><a [routerLink]="'/examples2'">Examples part 2</a></li>
-  <li><a [routerLink]="'/examples3'">Examples part 3</a></li>
-  <li><a [routerLink]="'/examples4'">Examples part 4</a></li>
-  <li><a [routerLink]="'/examples5'">Examples part 5</a></li>
-</ul>
+<div #menu class="menu menu--show">
+  <div class="close"><i class="bi bi-x-circle-fill"></i></div>
+  <app-language></app-language>
+  <div class="menu__header" (click)="navigate('/home')">
+    <div class="menu__header__main">Play Rxjs</div>
+    <div class="menu__header__secondary">{{ 'unlock' | translate }}</div>
+  </div>
+  <div class="menu__search">
+    <app-search [modeMenu]="'menu'"></app-search>
+  </div>
+  <div class="menu__list">
+    <app-menu-items [info]="infoBasic"></app-menu-items>
+    <hr />
+    <app-menu-items [info]="infoCombination"></app-menu-items>
+    <app-menu-items [info]="infoConditional"></app-menu-items>
+    <app-menu-items [info]="infocreation"></app-menu-items>
+    <app-menu-items [info]="infoError"></app-menu-items>
+    <app-menu-items [info]="infoFiltering"></app-menu-items>
+    <app-menu-items [info]="infoMathematical"></app-menu-items>
+    <app-menu-items [info]="infoMulticasting"></app-menu-items>
+    <app-menu-items [info]="infoTransformation"></app-menu-items>
+    <app-menu-items [info]="infoUtility"></app-menu-items>
+    <hr />
+    <app-menu-items [info]="infoSubject"></app-menu-items>
+    <hr />
+    <app-menu-items [info]="realLife"></app-menu-items>
+  </div>
+  <!--<div class="menu__footer" (click)="navigate('/home')">
+    <div class="menu__footer__container">
+      <img height="50px" [src]="rxjs" alt="rxjs" />
+      <app-logo [width]="90" [borderWidth]="2" />
+      <img height="50px" [src]="angular" alt="angular" />
+    </div>
+  </div>-->
+</div>

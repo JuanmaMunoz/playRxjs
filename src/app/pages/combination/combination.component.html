@@ -1,0 +1,6 @@
+<div class="combination">
+  <app-introduction [info]="info"></app-introduction>
+  @for (i of info.items; track $index) {
+    <app-example [infoItem]="i" [category]="info.category"></app-example>
+  }
+</div>

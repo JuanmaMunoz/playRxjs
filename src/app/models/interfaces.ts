@@ -8,11 +8,20 @@ export interface IUser {
 }
 
 export interface IInfo {
+  url: string;
+  category: string;
+  items: IInfoItem[];
+}
+
+export interface ISearch {
+  url: string;
+  category: string;
   id: string;
-  title: string;
-  description: string;
+}
+
+export interface IInfoItem {
+  id: string;
   code: string;
-  output: string;
 }
 
 export interface IHobby {

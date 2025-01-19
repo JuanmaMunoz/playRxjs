@@ -1,20 +1,50 @@
 <div class="home">
   <div class="home__front">
     <div class="home__front__image">
-      <app-logo [width]="350" />
+      <app-logo [width]="logoWidth" />
     </div>
     <div class="home__front__text">
-      <h1>Play with RXJS</h1>
-      <h2>An easy way to learn</h2>
-      <h6>
-        We use simple examples of the main functionalities of rxjs, which can be
-        checked in real time from the browser console
-      </h6>
+      <h1 class="primary-text">Play RXJS</h1>
+      <h2 class="secondary-text">{{ 'unlock' | translate }}</h2>
+      <h5>
+        {{ 'console' | translate }}
+      </h5>
       <div class="home__front__technologies">
-        <img width="230px" [src]="angular" alt="angular" />
-        <img width="70px" [src]="rxjs" alt="rxjs" />
+        <img width="80px" [src]="rxjs" alt="rxjs" />
+        <img width="80px" [src]="angular" alt="angular" />
       </div>
     </div>
   </div>
-  <div class="home__sections"></div>
+
+  <app-panel [title]="'basicConcepts.welcome.title'" [color]="colorPanel.SECONDARY">
+    <p class="clear-text" [innerHTML]="'basicConcepts.welcome.description' | translate"></p>
+    <button class="btn btn--secondary" (click)="navigate('basicConcepts')">
+      {{ 'basicConcepts.title' | translate }}
+    </button>
+  </app-panel>
+
+  <app-panel [title]="'operators.title'" [color]="colorPanel.PRIMARY">
+    <p class="clear-text" [innerHTML]="'operators.description' | translate"></p>
+    @if (showOperators) {
+      <div class="home__sections">
+        <app-section [info]="combinationInfo"></app-section>
+        <app-section [info]="conditionalInfo"></app-section>
+        <app-section [info]="creationInfo"></app-section>
+        <app-section [info]="errorInfo"></app-section>
+        <app-section [info]="filteringInfo"></app-section>
+        <app-section [info]="mathematicalInfo"></app-section>
+        <app-section [info]="multicastingInfo"></app-section>
+        <app-section [info]="transformationInfo"></app-section>
+        <app-section [info]="utilityInfo"></app-section>
+      </div>
+    }
+  </app-panel>
+
+  <app-panel [title]="'subjects.title'" [color]="colorPanel.SECONDARY">
+    <p class="clear-text" [innerHTML]="'subjects.welcome' | translate"></p>
+    <button class="btn btn--secondary" (click)="navigate('subjects')">
+      {{ 'subjects.title' | translate }}
+    </button>
+  </app-panel>
+  <app-about-me></app-about-me>
 </div>

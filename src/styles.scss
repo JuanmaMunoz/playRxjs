@@ -4,16 +4,17 @@
   --secondary-color: #a3feff;
   --clear-color: #f5f2f0;
   --dark-color: #2f2630;
+  --dark2-color: rgba(0, 0, 0, 0.3);
   --primary-background: #fce3f8;
   --radius: 0.5rem;
-  font-family: monospace;
   background: linear-gradient(70deg, var(--dark-color), #2c242e);
+  font-family: monospace;
 }
 
 //ScrollBar
 ::-webkit-scrollbar {
-  width: 0.5rem;
   height: 0.5rem;
+  width: 0.5rem;
 }
 
 /* Track */
@@ -35,14 +36,13 @@
 
 .row {
   display: grid;
+  gap: 1.5rem;
   grid-template-columns: auto;
   &--2 {
     grid-template-columns: 50% auto;
-    gap: 1rem;
   }
   &--3 {
     grid-template-columns: 33% 33% auto;
-    gap: 1rem;
   }
 }
 
@@ -52,25 +52,27 @@
 }
 
 a {
-  font-size: 1.2rem;
-  text-decoration: none;
-  font-weight: bold;
   color: var(--primary-color);
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  touch-action: manipulation;
   &:hover {
     color: var(--secondary-color);
+  }
+  &:focus {
+    color: var(--primary-color);
   }
 }
 
 .btn {
-  font-size: 1.3rem;
-  padding: 0.5rem 2.5rem 0.5rem 2.5rem;
-  color: var(--dark-color);
-  border-radius: var(--radius);
   border: 2px solid;
+  border-radius: var(--radius);
+  color: var(--dark-color);
+  cursor: pointer;
+  font-size: 1.3rem;
   font-weight: bold;
-  &:hover {
-    opacity: 0.8;
-  }
+  padding: 0.5rem 2.5rem 0.5rem 2.5rem;
   &:active {
     opacity: 0.5;
   }
@@ -80,14 +82,71 @@ a {
   &--secondary {
     background-color: var(--secondary-color);
   }
+  &--menu {
+    padding: 0.8rem !important;
+  }
 }
 
 @media screen and (max-width: 992px) {
   .row {
     &--2,
     &--3 {
-      grid-template-columns: auto;
       gap: 0;
+      grid-template-columns: auto;
     }
+  }
+}
+
+h1 {
+  font-size: 4rem;
+  margin: 0;
+}
+
+h2 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+p {
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+.primary-text {
+  color: var(--primary-color);
+}
+
+.secondary-text {
+  color: var(--secondary-color);
+}
+
+.clear-text {
+  color: var(--clear-color);
+}
+
+@media screen and (max-width: 992px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 1.2rem;
+  }
+  p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .btn {
+    font-size: 1rem;
+    padding: 0.5rem;
   }
 }

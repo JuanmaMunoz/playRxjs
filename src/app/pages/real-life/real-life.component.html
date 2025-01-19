@@ -1,0 +1,17 @@
+<div class="real-life">
+  <app-introduction [info]="info"></app-introduction>
+  @for (i of info.items; track $index) {
+    @switch (i.id) {
+      @case ('searchApi') {
+        <app-example [infoItem]="i" [category]="info.category">
+          <div class="real-life__search">
+            <input id="search__input" type="text" placeholder="Enter the name of a Pokémon" />
+          </div>
+        </app-example>
+      }
+      @default {
+        <app-example [infoItem]="i" [category]="info.category"></app-example>
+      }
+    }
+  }
+</div>
