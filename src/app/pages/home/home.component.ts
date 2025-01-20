@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { fromEvent, map, Subscription } from 'rxjs';
 import { AboutMeComponent } from '../../components/about-me/about-me.component';
@@ -27,7 +27,7 @@ import { mathematicals } from './../../info/mathematicals';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   public image: string = 'assets/images/rxjs.jpg';
   public angular: string = 'assets/images/angular.png';
   public rxjs: string = 'assets/images/rxjs-logo.png';
@@ -46,6 +46,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
   public showOperators: boolean = false;
   public colorPanel = ColorPanel;
+  public timeScroll = 60000;
+  public hightScroll = 0;
 
   constructor(private menuService: MenuService) {}
 
@@ -56,7 +58,42 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.setScrollHome(this.hightScroll);
     this.subscription.unsubscribe();
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => this.setPositionScrollHome(), 1);
+  }
+
+  listenScroll(): void {
+    this.subscription.add(
+      fromEvent(window, 'scroll')
+        .pipe(map(() => window.scrollY))
+        .subscribe((data: number) => (this.hightScroll = data)),
+    );
+  }
+
+  private setScrollHome(height: number): void {
+    let scrollHome: { date: number; heightScroll: number } = {
+      date: new Date().getTime(),
+      heightScroll: height,
+    };
+    localStorage.setItem('scrollHomePlayRxjs', JSON.stringify(scrollHome));
+  }
+
+  private setPositionScrollHome(): void {
+    if (localStorage.getItem('scrollHomePlayRxjs')) {
+      const scrollHome: { date: number; heightScroll: number } = JSON.parse(
+        localStorage.getItem('scrollHomePlayRxjs')!,
+      );
+      if (scrollHome.date + this.timeScroll >= new Date().getTime()) {
+        window.scrollTo({
+          top: scrollHome.heightScroll,
+        });
+      }
+    }
+    this.listenScroll();
   }
 
   private listenResizeWindow(): void {

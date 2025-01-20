@@ -23,6 +23,7 @@
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
+    width: max-content;
     &__main {
       color: var(--primary-color);
       font-size: 2.5rem;
@@ -88,8 +89,8 @@ hr {
 @media screen and (max-width: 690px) {
   .menu {
     &__header {
-      margin-top: 0;
-      padding-bottom: 0;
+      margin-top: 1rem;
+      padding: 0 0 0 1rem;
     }
     &__search {
       display: block;
