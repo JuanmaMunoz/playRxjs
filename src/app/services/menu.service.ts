@@ -11,6 +11,7 @@ export class MenuService {
 
   public navigate(category: string, id?: string): void {
     const url = id ? `/${category}/${id}` : `/${category}`;
+    if (url.includes('home')) localStorage.removeItem('scrollHomePlayRxjs');
     if (url === this.router.url) {
       this.router.navigate([`/${category}/`]);
     }
