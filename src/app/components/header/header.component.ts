@@ -64,7 +64,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
       fromEvent(document, 'scroll')
         .pipe(map(() => window.scrollY))
         .subscribe((e: number) => {
-          if (e >= 200 && this.router.url !== '/home') {
+          if (e >= 140 && this.router.url !== '/home') {
             this.showPage = 'header__page--show';
             this.opacity = '';
             if (!this.showTitle) {

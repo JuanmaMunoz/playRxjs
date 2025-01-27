@@ -11,7 +11,7 @@
     -ms-user-select: none; /* IE 10 and IE 11  */
     user-select: none; /* Standard syntax */
     &__image {
-      margin-top: 1rem;
+      margin: 1rem 0 0 1rem;
     }
     &__text {
       color: var(--clear-color);
@@ -46,14 +46,11 @@
       margin-bottom: 0;
       padding: 1rem 0;
       &__image {
-        margin-bottom: 1rem;
+        margin: 0rem 0 1rem 0;
       }
       &__text {
         margin-left: 0;
         width: auto;
-      }
-      &__image {
-        margin-top: 0rem;
       }
       &__technologies {
         margin: 1rem 0 1rem 0;
