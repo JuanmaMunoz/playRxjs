@@ -7,13 +7,11 @@ export const creations: IInfo = {
     {
       id: 'ajax',
       code: `const obs$ = ajax('https://jsonplaceholder.typicode.com/posts');
-this.subscription.add(
-  obs$.subscribe({
-    next: (response) => console.log('response-> ' + response),
-    error: (err) => console.log('error-> ' + err),
-    complete: () => console.log('complete ****'),
-  }),
-);
+obs$.subscribe({
+  next: (response) => console.log('response-> ' + response),
+  error: (err) => console.log('error-> ' + err),
+  complete: () => console.log('complete ****'),
+});
 `,
     },
     {
@@ -32,8 +30,8 @@ setTimeout(() => {
       id: 'from',
       code: `const obs1$ = from('hello');
 const obs2$ = from([1, 2, 3]);
-this.subscription.add(obs1$.subscribe((data) => console.log(data));
-this.subscription.add(obs2$.subscribe((data) => console.log(data));`,
+obs1$.subscribe((data) => console.log(data));
+obs2$.subscribe((data) => console.log(data));`,
     },
     {
       id: 'fromEvent',
@@ -71,8 +69,8 @@ obs$.subscribe((data:number) => console.log(data));
       id: 'of',
       code: `const obs1$ = from('hello');
 const obs2$ = from([1, 2, 3]);
-this.subscription.add(obs1$.subscribe((data) => console.log(data));
-this.subscription.add(obs2$.subscribe((data) => console.log(data));`,
+obs1$.subscribe((data) => console.log(data));
+obs2$.subscribe((data) => console.log(data));`,
     },
     {
       id: 'range',

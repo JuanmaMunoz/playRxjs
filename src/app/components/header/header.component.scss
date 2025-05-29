@@ -18,23 +18,11 @@
     display: flex;
     flex-direction: row;
     gap: 2rem;
-    &--opacity {
-      animation: opacity 1s;
-    }
   }
   &__page {
     color: var(--primary-color);
     font-size: 2.5rem;
     font-weight: bold;
-
-    &--hidden {
-      animation: hidden 1s;
-      display: none;
-    }
-    &--show {
-      animation: show 1s;
-      display: flex;
-    }
   }
   &__logo {
     cursor: pointer;
@@ -50,7 +38,7 @@
     }
     &__secondary {
       color: var(--secondary-color);
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
   }
   &__search {

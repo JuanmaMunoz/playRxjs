@@ -1,14 +1,8 @@
 <div class="header">
   <div [class]="opacity" class="header__container">
-    @if (introductionService.info | async; as info) {
-      <div [class]="showPage" class="header__page">{{ title | async }}</div>
-    }
-    <div *ngIf="currentUrl !== '/home'" (click)="navigate('/home')" class="header__logo">
-      <app-logo [width]="logoWidth" [borderWidth]="2" />
-    </div>
     <div (click)="navigate('/home')" class="header__title">
       <div class="header__title__main">Play RxJS</div>
-      <div class="header__title__secondary">{{ 'unlock' | translate }}</div>
+      <div class="header__title__secondary">{{ title | async }}</div>
     </div>
 
     <div class="header__search">
