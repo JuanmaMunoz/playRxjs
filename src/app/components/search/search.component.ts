@@ -93,8 +93,8 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public navigate(category: string, id: string): void {
     this.search = id;
-    this.visibleResult = false;
     this.menuService.navigate(category, id);
+    this.visibleResult = false;
   }
 
   public clearText(): void {
