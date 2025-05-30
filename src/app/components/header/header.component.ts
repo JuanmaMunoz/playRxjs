@@ -73,7 +73,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private showHidePage(): void {
     this.subscription.add(
-      fromEvent(document, 'scroll')
+      fromEvent(window, 'scroll')
         .pipe(map(() => window.scrollY))
         .subscribe((e: number) => {
           if (this.router.url !== '/home')
