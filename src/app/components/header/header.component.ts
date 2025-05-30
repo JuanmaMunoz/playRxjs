@@ -2,7 +2,18 @@ import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { filter, fromEvent, interval, map, scan, Subscription, take } from 'rxjs';
+import {
+  delay,
+  filter,
+  fromEvent,
+  interval,
+  map,
+  of,
+  scan,
+  Subscription,
+  switchMap,
+  take,
+} from 'rxjs';
 import { IntroductionService } from '../../services/introduction.service';
 import { MenuService } from '../../services/menu.service';
 import { SearchComponent } from '../search/search.component';
@@ -84,10 +95,15 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private setTitle(title: string): void {
-    this.title = interval(25).pipe(
-      take(title.length),
-      map((index) => title[index]),
-      scan((state, c) => state + c),
+    this.title = of(title).pipe(
+      switchMap((t) =>
+        interval(25).pipe(
+          delay(200),
+          take(t.length),
+          map((index) => t[index]),
+          scan((acc, char) => acc + char, ''),
+        ),
+      ),
     );
   }
 
