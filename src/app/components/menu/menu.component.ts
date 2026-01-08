@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnDestroy, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -18,22 +18,12 @@ import { utilitys } from '../../info/utilitys';
 import { IInfo } from '../../models/interfaces';
 import { MenuService } from '../../services/menu.service';
 import { LanguageComponent } from '../language/language.component';
-import { LogoComponent } from '../logo/logo.component';
 import { MenuItemsComponent } from '../menu-items/menu-items.component';
-import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    SearchComponent,
-    LanguageComponent,
-    MenuItemsComponent,
-    TranslateModule,
-    LogoComponent,
-  ],
+  imports: [CommonModule, RouterModule, LanguageComponent, MenuItemsComponent, TranslateModule],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
 })
@@ -52,12 +42,13 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
   public infoBasic: IInfo = basics;
   public realLife: IInfo = realLife;
   private subscription = new Subscription();
-  public angular: string = 'assets/images/angular.png';
-  public rxjs: string = 'assets/images/rxjs-logo.png';
-  constructor(private menuService: MenuService) {}
+  public angular = 'assets/images/angular.png';
+  public rxjs = 'assets/images/rxjs-logo.png';
+  private menuService = inject(MenuService);
+
   ngAfterViewInit(): void {
     this.subscription.add(
-      this.menuService.openMenu.subscribe((open: boolean) => {
+      this.menuService.openMenu.subscribe(() => {
         this.menu.nativeElement.classList.toggle('menu--show');
         this.menu.nativeElement.classList.toggle('menu--hidden');
       }),

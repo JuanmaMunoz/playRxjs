@@ -32,6 +32,11 @@
       animation: show 0.2s;
       display: flex;
     }
+    &__link {
+      color: var(--primary-color);
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
   }
 }
 

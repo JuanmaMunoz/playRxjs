@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, inject, Input, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -15,12 +15,12 @@ import { IInfo } from '../../models/interfaces';
 export class IntroductionComponent implements AfterViewInit, OnDestroy {
   @Input() info!: IInfo;
   private subscription = new Subscription();
-  constructor(private route: ActivatedRoute) {}
+  private route = inject(ActivatedRoute);
 
   ngAfterViewInit(): void {
     const offset = 130;
     this.subscription.add(
-      this.route.params.subscribe((params: any) => {
+      this.route.params.subscribe((params) => {
         const { id } = params;
         /*document
           .getElementById(`operator-${id}`)

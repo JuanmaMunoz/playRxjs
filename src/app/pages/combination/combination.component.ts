@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
   combineLatest,
@@ -31,15 +31,13 @@ import { IntroductionService } from '../../services/introduction.service';
   templateUrl: './combination.component.html',
   styleUrl: './combination.component.scss',
 })
-export class CombinationComponent implements OnInit, AfterViewInit {
+export class CombinationComponent implements OnInit, AfterViewInit, OnDestroy {
   public info!: IInfo;
   public subscription = new Subscription();
 
-  constructor(
-    private renderer: Renderer2,
-    private route: ActivatedRoute,
-    private introductionService: IntroductionService,
-  ) {}
+  private renderer = inject(Renderer2);
+  private route = inject(ActivatedRoute);
+  private introductionService = inject(IntroductionService);
 
   ngOnInit(): void {
     this.info = combinations;

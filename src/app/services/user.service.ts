@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IHobby, IUser } from '../models/interfaces';
 
@@ -7,7 +7,7 @@ import { IHobby, IUser } from '../models/interfaces';
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   public getUsers(): Observable<IUser[]> {
     const url = 'assets/data/data2.json';

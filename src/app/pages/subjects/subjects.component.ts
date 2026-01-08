@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
   BehaviorSubject,
@@ -23,15 +23,13 @@ import { IntroductionService } from '../../services/introduction.service';
   templateUrl: './subjects.component.html',
   styleUrl: './subjects.component.scss',
 })
-export class SubjectsComponent implements OnInit, AfterViewInit {
+export class SubjectsComponent implements OnInit, AfterViewInit, OnDestroy {
   public info!: IInfo;
   public subscription = new Subscription();
 
-  constructor(
-    private renderer: Renderer2,
-    private route: ActivatedRoute,
-    private introductionService: IntroductionService,
-  ) {}
+  private renderer = inject(Renderer2);
+  private route = inject(ActivatedRoute);
+  private introductionService = inject(IntroductionService);
 
   ngOnInit(): void {
     this.info = subjects;
@@ -50,7 +48,7 @@ export class SubjectsComponent implements OnInit, AfterViewInit {
   }
 
   private operatorBehaviorSubject(): void {
-    const user$: BehaviorSubject<{ name: string; age: number }> = new BehaviorSubject({
+    const user$ = new BehaviorSubject<{ name: string; age: number }>({
       name: 'Jhon',
       age: 40,
     });
@@ -83,7 +81,7 @@ export class SubjectsComponent implements OnInit, AfterViewInit {
 
   private operatorsubject(): void {
     let user: { name: string; age: number } | null = null;
-    const user$: Subject<{ name: string; age: number }> = new Subject();
+    const user$ = new Subject<{ name: string; age: number }>();
 
     const click$ = fromEvent(document.getElementById('btn-click-subject')!, 'click');
     this.subscription.add(

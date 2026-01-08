@@ -1,18 +1,32 @@
 <div class="menu-items">
-  <span class="menu-items__title" (click)="navigate(info.url)"
+  <span class="menu-items__title" (click)="navigate(info.url)" role="button" tabindex="0"
     >{{ info.category + '.title' | translate }}
   </span>
   @if (show) {
-    <i (click)="showHideList()" class="menu-items__icons bi bi-caret-up-fill"></i>
+    <i
+      (click)="showHideList()"
+      class="menu-items__icons bi bi-caret-up-fill"
+      role="button"
+      tabindex="1"
+    ></i>
   } @else {
-    <i (click)="showHideList()" class="menu-items__icons bi bi-caret-down-fill"></i>
+    <i
+      (click)="showHideList()"
+      class="menu-items__icons bi bi-caret-down-fill"
+      role="button"
+      tabindex="1"
+    ></i>
   }
   <div #list class="menu-items__list menu-items__list--hidden">
     <ul>
       @for (i of info.items; track $index) {
         <li>
-          <a class="menu-items__list__link" (click)="navigate(info.url, i.id)"
-            >- {{ info.category + '.' + i.id + '.title' | translate }}</a
+          <span
+            class="menu-items__list__link"
+            (click)="navigate(info.url, i.id)"
+            role="button"
+            tabindex="0"
+            >- {{ info.category + '.' + i.id + '.title' | translate }}</span
           >
         </li>
       }

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { fromEvent, map, Subscription } from 'rxjs';
 import { AboutMeComponent } from '../../components/about-me/about-me.component';
@@ -28,9 +28,9 @@ import { mathematicals } from './../../info/mathematicals';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
-  public image: string = 'assets/images/rxjs.jpg';
-  public angular: string = 'assets/images/angular.png';
-  public rxjs: string = 'assets/images/rxjs-logo.png';
+  public image = 'assets/images/rxjs.jpg';
+  public angular = 'assets/images/angular.png';
+  public rxjs = 'assets/images/rxjs-logo.png';
   public logoWidth!: number;
   public combinationInfo: IInfo = combinations;
   public conditionalInfo: IInfo = conditionals;
@@ -44,12 +44,12 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   public subjectInfo: IInfo = subjects;
   public basicInfo: IInfo = basics;
   private subscription = new Subscription();
-  public showOperators: boolean = false;
+  public showOperators = false;
   public colorPanel = ColorPanel;
   public timeScroll = 60000;
   public hightScroll = 0;
 
-  constructor(private menuService: MenuService) {}
+  private menuService = inject(MenuService);
 
   ngOnInit(): void {
     this.setLogoWidth(window.innerWidth);
@@ -75,7 +75,7 @@ export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   private setScrollHome(height: number): void {
-    let scrollHome: { date: number; heightScroll: number } = {
+    const scrollHome: { date: number; heightScroll: number } = {
       date: new Date().getTime(),
       heightScroll: height,
     };

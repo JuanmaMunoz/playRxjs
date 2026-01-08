@@ -1,5 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  inject,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { filter, fromEvent, Subscription } from 'rxjs';
@@ -18,11 +26,10 @@ import { MenuService } from './services/menu.service';
 export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('content') content!: ElementRef;
   private subscription = new Subscription();
-  constructor(
-    private menuService: MenuService,
-    private translate: TranslateService,
-    private router: Router,
-  ) {}
+  private menuService = inject(MenuService);
+  private translate = inject(TranslateService);
+  private router = inject(Router);
+
   ngOnInit(): void {
     const lang = localStorage.getItem('language') || Language.ENGLISH;
     this.translate.use(lang);
@@ -36,11 +43,12 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
       fromEvent(document, 'click')
         .pipe(
           filter(
-            (e: any) =>
-              !e.target.classList.value.includes('menu') && this.menuService.openMenu.getValue(),
+            (e) =>
+              !(e.target as HTMLButtonElement).classList.value.includes('menu') &&
+              this.menuService.openMenu.getValue(),
           ),
         )
-        .subscribe((e) => {
+        .subscribe(() => {
           this.menuService.openMenu.next(false);
         }),
     );

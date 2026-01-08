@@ -8,7 +8,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './logo.component.scss',
 })
 export class LogoComponent {
-  @Input() width: number = 350;
-  @Input() borderWidth: number = 5;
-  public image: string = 'assets/images/rxjs.jpg';
+  @Input() width = 350;
+  @Input() borderWidth = 5;
+  public image = 'assets/images/rxjs.jpg';
 }

@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
   defer,
@@ -29,15 +29,13 @@ import { IntroductionService } from '../../services/introduction.service';
   templateUrl: './creation.component.html',
   styleUrl: './creation.component.scss',
 })
-export class CreationComponent implements OnInit, AfterViewInit {
+export class CreationComponent implements OnInit, AfterViewInit, OnDestroy {
   public info!: IInfo;
   public subscription = new Subscription();
 
-  constructor(
-    private renderer: Renderer2,
-    private route: ActivatedRoute,
-    private introductionService: IntroductionService,
-  ) {}
+  private renderer = inject(Renderer2);
+  private route = inject(ActivatedRoute);
+  private introductionService = inject(IntroductionService);
 
   ngOnInit(): void {
     this.info = creations;
@@ -146,7 +144,7 @@ export class CreationComponent implements OnInit, AfterViewInit {
     const error$ = throwError({ error: { status: 500, message: 'Server error' } });
     this.subscription.add(
       error$.subscribe({
-        next: () => {},
+        //next: () => {},
         error: (e: HttpErrorResponse) => this.addConsole('throwError', JSON.stringify(e)),
       }),
     );

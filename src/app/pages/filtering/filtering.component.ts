@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
   audit,
@@ -45,15 +45,13 @@ import { IntroductionService } from '../../services/introduction.service';
   templateUrl: './filtering.component.html',
   styleUrl: './filtering.component.scss',
 })
-export class FilteringComponent implements OnInit, AfterViewInit {
+export class FilteringComponent implements OnInit, AfterViewInit, OnDestroy {
   public info!: IInfo;
   public subscription = new Subscription();
 
-  constructor(
-    private renderer: Renderer2,
-    private route: ActivatedRoute,
-    private introductionService: IntroductionService,
-  ) {}
+  private renderer = inject(Renderer2);
+  private route = inject(ActivatedRoute);
+  private introductionService = inject(IntroductionService);
 
   ngOnInit(): void {
     this.info = filterings;
@@ -207,7 +205,7 @@ export class FilteringComponent implements OnInit, AfterViewInit {
 
     this.subscription.add(
       users$.subscribe({
-        next: (e: number) => this.addConsole('ignoreElements', 'success'), // It never runs.
+        next: () => this.addConsole('ignoreElements', 'success'), // It never runs.
         error: () => this.addConsole('ignoreElements', 'error'), // It passes errors
         complete: () => this.addConsole('ignoreElements', 'complete'), // It passes the completion signal
       }),
