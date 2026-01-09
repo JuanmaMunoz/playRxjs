@@ -2,7 +2,6 @@ import {
   animate,
   AnimationMetadata,
   AnimationTriggerMetadata,
-  keyframes,
   style,
   transition,
   trigger,
@@ -39,27 +38,30 @@ export const showApp = (duration = 500): AnimationTriggerMetadata => {
 
 export const spin = (duration = 2000): AnimationTriggerMetadata => {
   const definitions: AnimationMetadata[] = [
-    transition('a <=> b', [
-      animate(
-        `${duration}ms linear`,
-        keyframes([
+    transition(
+      'a <=> b',
+      [
+        animate(
+          `${duration}ms linear`,
           style({
-            borderColor:
-              'var(--secondary-color) var(--secondary-color) var(--primary-color) var(--primary-color)',
-            boxShadow: '0 0 1rem var(--secondary-color)',
-            filter: 'opacity(0.1)',
-            offset: 0,
+            // 🔁 cambio de color del borde (como antes)
+            borderColor: '{{borderA}} {{borderA}} {{borderB}} {{borderB}}',
+
+            // ✨ chispa aleatoria
+            boxShadow: '{{spark}}',
+            filter: 'opacity({{opacity}})',
           }),
-          style({
-            borderColor:
-              'var(--primary-color) var(--primary-color) var(--secondary-color) var(--secondary-color)',
-            boxShadow: '0 0 0.5rem var(--primary-color)',
-            filter: 'opacity(1)',
-            offset: 1,
-          }),
-        ]),
-      ),
-    ]),
+        ),
+      ],
+      {
+        params: {
+          borderA: 'var(--secondary-color)',
+          borderB: 'var(--primary-color)',
+          spark: '0 0 0.5rem var(--primary-color)',
+          opacity: 0.4,
+        },
+      },
+    ),
   ];
 
   return trigger('spin', definitions);

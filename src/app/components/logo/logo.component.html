@@ -1,8 +1,11 @@
 @if (showLogo) {
   <div [@show] class="logo">
     <img
-      [@spin]="state"
-      (@spin.done)="toggle()"
+      [@spin]="{
+        value: state,
+        params: params
+      }"
+      (@spin.done)="next()"
       [src]="image"
       alt="rxjs"
       [style.width.px]="width"
