@@ -8,18 +8,21 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { NavigationEnd, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router, RouterModule } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import { filter, fromEvent, Subscription } from 'rxjs';
 import { HeaderComponent } from './components/header/header.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 import { Language } from './models/enums';
 import { MenuService } from './services/menu.service';
+import { showApp } from './utils/animations';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, MenuComponent, HeaderComponent, RouterModule],
+  imports: [CommonModule, MenuComponent, HeaderComponent, RouterModule, SpinnerComponent],
+  animations: [showApp(500)],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -29,6 +32,7 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
   private menuService = inject(MenuService);
   private translate = inject(TranslateService);
   private router = inject(Router);
+  private route = inject(ActivatedRoute);
 
   ngOnInit(): void {
     const lang = localStorage.getItem('language') || Language.ENGLISH;
@@ -56,9 +60,22 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngAfterViewInit(): void {
     this.subscription.add(
-      this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
-        this.content.nativeElement.scrollTop = 0;
-      }),
+      this.router.events
+        .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
+        .subscribe((event: NavigationEnd) => {
+          setTimeout(() => {
+            window.scrollTo({ top: 0 });
+            const id = event.urlAfterRedirects.split('/').pop();
+            const target = document.getElementById(`operator-${id}`);
+            if (target) {
+              const offset = 130;
+              const offsetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
+              window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            } else {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }, 200);
+        }),
     );
   }
 

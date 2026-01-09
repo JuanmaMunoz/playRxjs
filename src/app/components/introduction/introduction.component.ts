@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, inject, Input, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
 import { IInfo } from '../../models/interfaces';
 
 @Component({
@@ -12,33 +10,6 @@ import { IInfo } from '../../models/interfaces';
   templateUrl: './introduction.component.html',
   styleUrl: './introduction.component.scss',
 })
-export class IntroductionComponent implements AfterViewInit, OnDestroy {
+export class IntroductionComponent {
   @Input() info!: IInfo;
-  private subscription = new Subscription();
-  private route = inject(ActivatedRoute);
-
-  ngAfterViewInit(): void {
-    const offset = 130;
-    this.subscription.add(
-      this.route.params.subscribe((params) => {
-        const { id } = params;
-        /*document
-          .getElementById(`operator-${id}`)
-          ?.scrollIntoView({ behavior: 'smooth', block: 'center' });*/
-        const target = document.getElementById(`operator-${id}`);
-        if (target) {
-          const elementPosition = target!.getBoundingClientRect().top + window.pageYOffset;
-          const offsetPosition = elementPosition - offset;
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth',
-          });
-        }
-      }),
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
 }

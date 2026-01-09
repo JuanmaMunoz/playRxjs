@@ -19,11 +19,19 @@ import { IInfo } from '../../models/interfaces';
 import { MenuService } from '../../services/menu.service';
 import { LanguageComponent } from '../language/language.component';
 import { MenuItemsComponent } from '../menu-items/menu-items.component';
+import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'app-menu',
   standalone: true,
-  imports: [CommonModule, RouterModule, LanguageComponent, MenuItemsComponent, TranslateModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    LanguageComponent,
+    MenuItemsComponent,
+    TranslateModule,
+    SearchComponent,
+  ],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
 })

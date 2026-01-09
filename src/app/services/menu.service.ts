@@ -14,7 +14,8 @@ export class MenuService {
     if (url.includes('home')) localStorage.removeItem('scrollHomePlayRxjs');
     if (url === this.router.url) {
       this.router.navigate([`/${category}/`]);
+    } else {
+      window.setTimeout(() => this.router.navigate([url]), 10);
     }
-    window.setTimeout(() => this.router.navigate([url]), 10);
   }
 }

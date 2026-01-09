@@ -5,6 +5,7 @@ import { AboutMeComponent } from '../../components/about-me/about-me.component';
 import { LogoComponent } from '../../components/logo/logo.component';
 import { PanelComponent } from '../../components/panel/panel.component';
 import { SectionComponent } from '../../components/section/section.component';
+import { SpinnerComponent } from '../../components/spinner/spinner.component';
 import { basics } from '../../info/basic';
 import { combinations } from '../../info/combinations';
 import { conditionals } from '../../info/conditionals';
@@ -23,7 +24,14 @@ import { mathematicals } from './../../info/mathematicals';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [LogoComponent, SectionComponent, TranslateModule, PanelComponent, AboutMeComponent],
+  imports: [
+    LogoComponent,
+    SectionComponent,
+    TranslateModule,
+    PanelComponent,
+    AboutMeComponent,
+    SpinnerComponent,
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
