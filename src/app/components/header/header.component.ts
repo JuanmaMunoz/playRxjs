@@ -44,7 +44,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
         .subscribe((event: NavigationEnd) => {
           const currentUrl = event.urlAfterRedirects;
-          console.log(currentUrl);
           if (currentUrl === '/home') {
             this.setTitle(this.translate.instant('unlock'));
             this.showUnlock = true;

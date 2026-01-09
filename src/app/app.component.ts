@@ -64,15 +64,13 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
         .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
         .subscribe((event: NavigationEnd) => {
           setTimeout(() => {
-            window.scrollTo({ top: 0 });
+            this.resetScroll(event.urlAfterRedirects);
             const id = event.urlAfterRedirects.split('/').pop();
             const target = document.getElementById(`operator-${id}`);
             if (target) {
               const offset = 130;
               const offsetPosition = target.getBoundingClientRect().top + window.scrollY - offset;
               window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-            } else {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
             }
           }, 200);
         }),
@@ -81,5 +79,9 @@ export class AppComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  private resetScroll(url: string): void {
+    if (!url.includes('home')) window.scrollTo({ top: 0 });
   }
 }
