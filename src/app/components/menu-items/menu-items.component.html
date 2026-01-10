@@ -17,7 +17,7 @@
       tabindex="1"
     ></i>
   }
-  <div #list class="menu-items__list menu-items__list--hidden">
+  <div [@fadeToggle]="show ? 'visible' : 'hidden'" class="menu-items__list">
     <ul>
       @for (i of info.items; track $index) {
         <li>

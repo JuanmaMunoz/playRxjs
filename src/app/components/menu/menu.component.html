@@ -1,4 +1,4 @@
-<div #menu class="menu menu--show">
+<div [@slideToggle]="menuOpen ? 'open' : 'closed'" class="menu">
   <div class="close"><i class="bi bi-x-circle-fill"></i></div>
   <app-language></app-language>
   <div class="menu__header" (click)="navigate('/home')" role="button" tabindex="0">

@@ -2,6 +2,7 @@ import {
   animate,
   AnimationMetadata,
   AnimationTriggerMetadata,
+  state,
   style,
   transition,
   trigger,
@@ -44,10 +45,7 @@ export const spin = (duration = 2000): AnimationTriggerMetadata => {
         animate(
           `${duration}ms linear`,
           style({
-            // 🔁 cambio de color del borde (como antes)
             borderColor: '{{borderA}} {{borderA}} {{borderB}} {{borderB}}',
-
-            // ✨ chispa aleatoria
             boxShadow: '{{spark}}',
             filter: 'opacity({{opacity}})',
           }),
@@ -65,4 +63,62 @@ export const spin = (duration = 2000): AnimationTriggerMetadata => {
   ];
 
   return trigger('spin', definitions);
+};
+
+export const slideToggle = (duration = 300): AnimationTriggerMetadata => {
+  const definitions: AnimationMetadata[] = [
+    state(
+      'open',
+      style({
+        opacity: 1,
+        visibility: 'visible',
+        pointerEvents: 'auto',
+        transform: 'translateX(0)',
+      }),
+    ),
+
+    state(
+      'closed',
+      style({
+        opacity: 0,
+        visibility: 'hidden',
+        pointerEvents: 'none',
+        transform: 'translateX(1rem)',
+      }),
+    ),
+
+    transition('closed => open', [animate(`${duration}ms ease-out`)]),
+
+    transition('open => closed', [animate(`${duration}ms ease-in`)]),
+  ];
+
+  return trigger('slideToggle', definitions);
+};
+
+export const fadeToggle = (duration = 200): AnimationTriggerMetadata => {
+  const definitions: AnimationMetadata[] = [
+    state(
+      'visible',
+      style({
+        opacity: 1,
+        visibility: 'visible',
+        pointerEvents: 'auto',
+        display: 'flex',
+      }),
+    ),
+    state(
+      'hidden',
+      style({
+        opacity: 0,
+        visibility: 'hidden',
+        pointerEvents: 'none',
+        display: 'none',
+      }),
+    ),
+
+    transition('hidden => visible', [style({ opacity: 0.5 }), animate(`${duration}ms ease-out`)]),
+
+    transition('visible => hidden', [animate(`${duration / 2}ms ease-in`)]),
+  ];
+  return trigger('fadeToggle', definitions);
 };
