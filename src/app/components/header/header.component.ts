@@ -113,6 +113,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public navigate(category: string, id?: string): void {
+    window.scrollTo({ top: 0 });
     this.menuService.navigate(category, id);
   }
 }

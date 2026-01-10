@@ -70,6 +70,7 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
 
   public navigate(category: string, id?: string): void {
     this.menuService.openMenu.next(false);
+    window.scrollTo({ top: 0 });
     this.menuService.navigate(category, id);
   }
 }
