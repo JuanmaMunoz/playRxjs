@@ -6,7 +6,7 @@ export const subjects: IInfo = {
   items: [
     {
       id: 'behaviorSubject',
-      code: `const user$: BehaviorSubject<{ name: string; age: number }> = new BehaviorSubject({
+      code: `const user$ = new BehaviorSubject<{ name: string; age: number }>({
   name: 'Jhon',
   age: 40,
 });
@@ -32,7 +32,7 @@ setTimeout(() => {
     {
       id: 'subject',
       code: `let user: { name: string; age: number } | null = null;
-const user$: Subject<{ name: string; age: number }> = new Subject();
+const user$ = new Subject<{ name: string; age: number }>();
 
 const click$ = fromEvent(document.getElementById('btn-click-subject')!, 'click');
 click$.subscribe(() => {

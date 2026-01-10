@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
   buffer,
@@ -50,17 +50,14 @@ import { UserService } from '../../services/user.service';
   templateUrl: './transformation.component.html',
   styleUrl: './transformation.component.scss',
 })
-export class TransformationComponent implements OnInit, AfterViewInit {
+export class TransformationComponent implements OnInit, AfterViewInit, OnDestroy {
   public info!: IInfo;
   public subscription = new Subscription();
 
-  constructor(
-    private userService: UserService,
-    private renderer: Renderer2,
-    private route: ActivatedRoute,
-    private introductionService: IntroductionService,
-  ) {}
-
+  private userService = inject(UserService);
+  private renderer = inject(Renderer2);
+  private route = inject(ActivatedRoute);
+  private introductionService = inject(IntroductionService);
   ngOnInit(): void {
     this.info = transformations;
     const url = '/' + this.route.snapshot.url.map((segment) => segment.path).join('/');
@@ -111,9 +108,7 @@ export class TransformationComponent implements OnInit, AfterViewInit {
   private operatorBufferCount(): void {
     const click$ = fromEvent(document.getElementById('btn-click-buffer-count')!, 'click');
     this.subscription.add(
-      click$
-        .pipe(bufferCount(5))
-        .subscribe((clicks: Event[]) => this.addConsole('bufferCount', '5 clicks')),
+      click$.pipe(bufferCount(5)).subscribe(() => this.addConsole('bufferCount', '5 clicks')),
     );
   }
 
@@ -151,7 +146,11 @@ export class TransformationComponent implements OnInit, AfterViewInit {
   private operatorConcatMap(): void {
     this.subscription.add(
       fromEvent(document.getElementById('btn-start-cc-map')!, 'click')
-        .pipe(concatMap((e: any) => interval(1000).pipe(map((n: number) => e.target.id + ' ' + n))))
+        .pipe(
+          concatMap((e) =>
+            interval(1000).pipe(map((n: number) => (e.target as HTMLButtonElement).id + ' ' + n)),
+          ),
+        )
         .subscribe((data: string) => this.addConsole('concatMap', data)),
     );
   }
@@ -221,7 +220,7 @@ export class TransformationComponent implements OnInit, AfterViewInit {
       { name: 'Pedro', species: 'dog' },
       { name: 'Marc', species: 'monkey' },
     ]);
-    const [cats$, others$] = partition(animals$, ({ species }) => species === 'cat');
+    const [cats$] = partition(animals$, ({ species }) => species === 'cat');
     this.subscription.add(
       cats$.subscribe((cats) => this.addConsole('partition', JSON.stringify(cats))),
     );
@@ -294,7 +293,11 @@ export class TransformationComponent implements OnInit, AfterViewInit {
   private operatorSwitchMap(): void {
     this.subscription.add(
       fromEvent(document.getElementById('btn-start-sw-map')!, 'click')
-        .pipe(switchMap((e: any) => interval(1000).pipe(map((n: number) => e.target.id + ' ' + n))))
+        .pipe(
+          switchMap((e) =>
+            interval(1000).pipe(map((n: number) => (e.target as HTMLButtonElement).id + ' ' + n)),
+          ),
+        )
         .subscribe((data: string) => this.addConsole('switchMap', data)),
     );
   }

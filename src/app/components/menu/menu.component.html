@@ -1,8 +1,8 @@
-<div #menu class="menu menu--show">
+<div [@slideToggle]="menuOpen ? 'open' : 'closed'" class="menu">
   <div class="close"><i class="bi bi-x-circle-fill"></i></div>
   <app-language></app-language>
-  <div class="menu__header" (click)="navigate('/home')">
-    <div class="menu__header__main">Play Rxjs</div>
+  <div class="menu__header" (click)="navigate('/home')" role="button" tabindex="0">
+    <div class="menu__header__main">Play RxJS</div>
     <div class="menu__header__secondary">{{ 'unlock' | translate }}</div>
   </div>
   <div class="menu__search">

@@ -1,56 +1,69 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { filter, fromEvent, interval, map, scan, Subscription, take } from 'rxjs';
+import {
+  delay,
+  filter,
+  fromEvent,
+  interval,
+  map,
+  Observable,
+  of,
+  scan,
+  Subscription,
+  switchMap,
+  take,
+} from 'rxjs';
 import { IntroductionService } from '../../services/introduction.service';
 import { MenuService } from '../../services/menu.service';
-import { LogoComponent } from '../logo/logo.component';
 import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [LogoComponent, CommonModule, RouterModule, SearchComponent, TranslateModule],
+  imports: [CommonModule, RouterModule, SearchComponent, TranslateModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   private subscription = new Subscription();
-  public showPage: string = 'header__page--hidden';
-  public opacity: string = '';
-  public title!: any;
-  public showTitle: boolean = false;
-  public currentUrl: string = '/';
-  public logoWidth: number = 110;
-  constructor(
-    private menuService: MenuService,
-    private router: Router,
-    public introductionService: IntroductionService,
-    private translate: TranslateService,
-  ) {}
+  public showPage = 'header__page--hidden';
+  public opacity = '';
+  public title!: Observable<string>;
+  public showUnlock = true;
+  public logoWidth = 110;
+  private menuService = inject(MenuService);
+  private router = inject(Router);
+  public introductionService = inject(IntroductionService);
+  private translate = inject(TranslateService);
 
   ngOnInit(): void {
     this.subscription.add(
       this.router.events
         .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
         .subscribe((event: NavigationEnd) => {
-          this.currentUrl = event.urlAfterRedirects;
+          const currentUrl = event.urlAfterRedirects;
+          if (currentUrl === '/home') {
+            this.setTitle(this.translate.instant('unlock'));
+            this.showUnlock = true;
+          }
         }),
     );
 
     this.subscription.add(
-      this.introductionService.info.subscribe((title: string) => {
-        this.setTitle(this.translate.instant(this.introductionService.info.getValue() + '.title'));
+      this.translate.onLangChange.subscribe(() => {
+        if (this.showUnlock) {
+          this.setTitle(this.translate.instant('unlock'));
+        } else {
+          this.setTitle(
+            this.translate.instant(this.introductionService.info.getValue() + '.title'),
+          );
+        }
       }),
     );
-
-    this.subscription.add(
-      this.translate.onLangChange.subscribe(() =>
-        this.setTitle(this.translate.instant(this.introductionService.info.getValue() + '.title')),
-      ),
-    );
   }
+
   ngAfterViewInit(): void {
     this.showHidePage();
   }
@@ -61,32 +74,37 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private showHidePage(): void {
     this.subscription.add(
-      fromEvent(document, 'scroll')
-        .pipe(map(() => window.scrollY))
+      fromEvent(window, 'scroll')
+        .pipe(map(() => document.scrollingElement?.scrollTop || 0))
         .subscribe((e: number) => {
-          if (e >= 200 && this.router.url !== '/home') {
-            this.showPage = 'header__page--show';
-            this.opacity = '';
-            if (!this.showTitle) {
-              this.setTitle(
-                this.translate.instant(this.introductionService.info.getValue() + '.title'),
-              );
+          if (this.router.url !== '/home')
+            if (e >= 110) {
+              if (this.showUnlock) {
+                this.setTitle(
+                  this.translate.instant(this.introductionService.info.getValue() + '.title'),
+                );
+                this.showUnlock = false;
+              }
+            } else {
+              if (!this.showUnlock) {
+                this.setTitle(this.translate.instant('unlock'));
+                this.showUnlock = true;
+              }
             }
-            this.showTitle = true;
-          } else {
-            this.showTitle = false;
-            this.showPage = 'header__page--hidden';
-            this.opacity = 'header__container--opacity';
-          }
         }),
     );
   }
 
   private setTitle(title: string): void {
-    this.title = interval(25).pipe(
-      take(title.length),
-      map((index) => title[index]),
-      scan((state, c) => state + c),
+    this.title = of(title).pipe(
+      switchMap((t) =>
+        interval(25).pipe(
+          delay(200),
+          take(t.length),
+          map((index) => t[index]),
+          scan((acc, char) => acc + char, ''),
+        ),
+      ),
     );
   }
 
@@ -95,6 +113,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public navigate(category: string, id?: string): void {
+    window.scrollTo({ top: 0 });
     this.menuService.navigate(category, id);
   }
 }

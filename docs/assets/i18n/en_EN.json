@@ -1,16 +1,16 @@
 {
   "english": "English",
   "spanish": "Spanish",
-  "unlock": "Unlock new way to learn",
+  "unlock": "Unlock a new way to learn",
   "output": "// Output: // sorted in descending order",
   "search": "Search...",
-  "console": "We use simple examples of the main functionalities of rxjs, which can be checked in real time from our console",
+  "console": "We use simple examples of the main functionalities of RxJS, which can be checked in real time from our console",
   "aboutMe": {
     "title": "About me",
     "description": "<p>I have created this <b>web tutorial</b> with the goal of <b>contributing</b> to the <b>developer community</b>, to which I owe much of my professional growth. My <b>gratitude</b> to those who have selflessly shared their knowledge is immense, and it is to them that I <b>dedicate this documentation</b>.</p><p><b>RxJS</b> is an <b>exceptional</b> tool for developing reactive code, although its understanding can be complex and overwhelming due to its advanced concepts. For this reason, I have aimed to make this guide as accessible and clear as possible, using <b>simple examples</b> that allow observing in real-time the behavior of the different operators, as well as the differences between them.</p><p>Often, a picture is worth a thousand words, and I hope this <b>visual approach</b> and practical perspective make learning easier. I hope you enjoy this documentation.</p>"
   },
   "operators": {
-    "title": "Rxjs operators",
+    "title": "RxJS operators",
     "description": "The <b>operators</b> in RxJS are <b>functions</b> that allow you to work <b>with observable data streams</b> in a <b>simple and efficient</b> way. They are key tools to <b>transform, filter, combine, and manage data</b> in reactive applications."
   },
   "basicConcepts": {
@@ -27,7 +27,7 @@
     },
     "unsubscribe": {
       "title": "Unsubscribe",
-      "description": "<p>In RxJS, <b>unsubscribe</b> is a method used to <b>stop a subscription</b> to an observable. Basically, it tells the observable that you no longer want to receive values emitted by it.</p><p>If you don't use <b>unsubscribe</b> when you no longer need the data, the observable will keep running in the background, which can consume unnecessary resources and cause memory leaks.</p><p><b>In the examples on this website, we don't show the code used to unsubscribe from observables to make the sections easier to read. However, internally, all observables are unsubscribed.</b></p><p>In this example, through <b>click</b> events, we create or remove the subscription. We use the <b>closed</b> property to check that the subscription is not open before creating another one.</p>"
+      "description": "<p>In RxJS, <b>unsubscribe</b> is a method used to <b>stop a subscription</b> to an observable. Basically, it tells the observable that you no longer want to receive values emitted by it.</p><p>If you don't use <b>unsubscribe</b> when you no longer need the data, the observable if it's long-lived <b>(fromEvent, interval, timer, webSocket, Subjects...)</b>, will continue running in the background, which can unnecessarily consume resources and lead to memory leaks.</p><p><b>In the examples on this website, we do not show the code used to unsubscribe from observables, in order to make the sections easier to read. However, internally, all observables that require it are unsubscribed from.</b></p><p>In this example, through <b>click</b> events, we create or remove the subscription. We use the <b>closed</b> property to check that the subscription is not still open before creating a new one.</p>"
     },
     "unsubscribeSeveral": {
       "title": "Unsubscribe (multiple)",
@@ -420,7 +420,7 @@
   },
   "utility": {
     "title": "Utility operators",
-    "description": "<b>The <b>utility operators in RxJS</b> are tools that <b>help control and manage data streams</b> (Observables) more efficiently, <b>without directly transforming</b> the values passing through them. They are like <b>'helpers'</b> for common tasks, such as debugging, subscription, or flow manipulation.</b>",
+    "description": "<p>The <b>utility operators in RxJS</b> are tools that <b>help control and manage data streams</b> (Observables) more efficiently, <b>without directly transforming</b> the values passing through them. They are like <b>'helpers'</b> for common tasks, such as debugging, subscription, or flow manipulation.</p>",
     "shortDescription": "Utility operators in RxJS are tools that help control and manage data streams (Observables) more efficiently, without directly transforming the values that pass through them.",
     "delay": {
       "title": "delay",
@@ -470,7 +470,7 @@
   "subjects": {
     "welcome": "Discover how to <b>easily manage</b> the <b>state changes</b> in the data models of any reactive application using <b>Subjects</b>. These tools allow you to keep all <b>components and services</b> always <b>updated simultaneously</b>, in a simple and efficient way!.",
     "title": "Subjects",
-    "description": "<b>In RxJS, Subjects are a key concept that combines two roles: that of an observable (something that emits values) and that of an observer (something that receives values). This means you can use them both to receive data and to emit it to other observers. They enable the multicast of values to many observers. While <b>simple Observables are unicast</b> (each subscribed Observer owns an independent execution of the Observable), subjects are <b>multicast</b>.",
+    "description": "<p>In RxJS, <b>Subjects</b> are a key concept that <b>combines two roles</b>: that of an <b>observable</b> (something that emits values) and that of an <b>observer</b> (something that receives values). This means you can use them both to receive data and to emit it to other observers. They enable the multicast of values to many observers. While <b>simple Observables are unicast</b> (each subscribed Observer owns an independent execution of the Observable), subjects are <b>multicast</b>.</p>",
     "shortDescription": "In RxJS, Subjects are a key concept that combines two roles: that of an observable (something that emits values) and that of an observer (something that receives values).",
     "behaviorSubject": {
       "title": "BehaviorSubject",

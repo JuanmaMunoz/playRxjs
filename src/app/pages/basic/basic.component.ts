@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { fromEvent, interval, Observable, Subscription } from 'rxjs';
 import { ExampleComponent } from '../../components/example/example.component';
@@ -15,15 +15,13 @@ import { IntroductionService } from '../../services/introduction.service';
   templateUrl: './basic.component.html',
   styleUrl: './basic.component.scss',
 })
-export class BasicComponent implements OnInit, AfterViewInit {
+export class BasicComponent implements OnInit, AfterViewInit, OnDestroy {
   public info!: IInfo;
   public subscription = new Subscription();
   public subscription2 = new Subscription();
-  constructor(
-    private renderer: Renderer2,
-    private route: ActivatedRoute,
-    private introductionService: IntroductionService,
-  ) {}
+  private renderer = inject(Renderer2);
+  private route = inject(ActivatedRoute);
+  private introductionService = inject(IntroductionService);
 
   ngOnInit(): void {
     this.info = basics;
@@ -60,7 +58,7 @@ export class BasicComponent implements OnInit, AfterViewInit {
     const observer = {
       next: (value: number) =>
         this.addConsole('observableObserverSubscription', 'Value -> ' + value), // Handles the emitted values
-      error: (err: any) => console.log('Error:', err), // Handles the error
+      error: (err: unknown) => console.log('Error:', err), // Handles the error
       complete: () => this.addConsole('observableObserverSubscription', 'Complete!'), // Handles the completion (No Error)
     };
 
@@ -72,7 +70,7 @@ export class BasicComponent implements OnInit, AfterViewInit {
   }
 
   private unsubscribes(): void {
-    let subscription = new Subscription();
+    const subscription = new Subscription();
 
     const createSubscription = () => {
       this.subscription = interval(1000).subscribe((n: number) =>

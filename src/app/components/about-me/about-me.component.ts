@@ -11,6 +11,6 @@ import { PanelComponent } from '../panel/panel.component';
   styleUrl: './about-me.component.scss',
 })
 export class AboutMeComponent {
-  public photo: string = 'assets/images/photo.jpg';
+  public photo = 'assets/images/photo.jpg';
   public colorPanel = ColorPanel;
 }

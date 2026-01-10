@@ -10,7 +10,7 @@
     "description": "<p>He creado este sitio <b>web tutorial</b> con el objetivo de <b>contribuir</b> a la <b>comunidad de desarrolladores</b>, a la cual debo gran parte de mi crecimiento profesional. Mi <b>gratitud</b> hacia quienes han compartido su conocimiento de forma desinteresada es inmensa, y es a ellos a quienes <b>dedico esta documentación</b>.</p><p><b>RxJS</b> es una herramienta <b>excepcional</b> para el desarrollo de código reactivo, aunque su comprensión puede resultar compleja y abrumadora debido a sus conceptos avanzados. Por ello, he procurado que esta guía sea lo más accesible y clara posible, utilizando <b>ejemplos sencillos</b> que permiten observar en tiempo real el comportamiento de los distintos operadores, así como las diferencias entre ellos.</p><p>A menudo, una imagen vale más que mil palabras, y espero que este <b>enfoque visual</b> y práctico haga más fácil el aprendizaje. Espero que disfruten esta documentación.</p>"
   },
   "operators": {
-    "title": "Operadores de Rxjs",
+    "title": "Operadores de RxJS",
     "description": "Los <b>operadores</b> de RxJS son <b>funciones</b> que permiten trabajar <b>con flujos de datos observables</b> de manera <b>sencilla y eficiente</b>. Son herramientas clave para <b>transformar, filtrar, combinar, y gestionar datos</b> en aplicaciones reactivas."
   },
   "basicConcepts": {
@@ -27,7 +27,7 @@
     },
     "unsubscribe": {
       "title": "Unsubscribe",
-      "description": "<p>En RxJS, <b>unsubscribe</b> es un método que se utiliza para <b>detener una suscripción</b> a un observable. Básicamente, sirve para decirle al observable que ya no quieres recibir más valores emitidos por él.</p><p>Si no usas <b>unsubscribe</b> cuando ya no necesitas los datos, el observable seguirá funcionando en segundo plano, lo que puede consumir recursos innecesariamente y provocar fugas de memoria</p><p><b>En los ejemplos de esta web no mostramos el código utilizado para desuscribirnos de los observables, con el fin de hacer más sencilla la lectura de los apartados. Sin embargo, internamente, todos los observables son desuscritos</b>.</p><p>En este ejemplo a través de los eventos <b>clic</b>, creamos o eliminamos la suscripción. Usamos al propiedad <b>closed</b> para comprobar que la suscripción no esté abierta antes de crear otra.</p>"
+      "description": "<p>En RxJS, <b>unsubscribe</b> es un método que se utiliza para <b>detener una suscripción</b> a un observable. Básicamente, sirve para decirle al observable que ya no quieres recibir más valores emitidos por él.</p><p>Si no usas <b>unsubscribe</b> cuando ya no necesitas los datos, el observable, si es de larga duración <b>(fromEvent, interval, timer, webSocket, Subjects...)</b>, seguirá funcionando en segundo plano, lo que puede consumir recursos innecesariamente y provocar fugas de memoria.</p><p><b>En los ejemplos de esta web no mostramos el código utilizado para desuscribirnos de los observables, con el fin de hacer más sencilla la lectura de los apartados. Sin embargo, internamente, todos los observables que lo necesitan, son desuscritos</b>.</p><p>En este ejemplo a través de los eventos <b>clic</b>, creamos o eliminamos la suscripción. Usamos al propiedad <b>closed</b> para comprobar que la suscripción no esté abierta antes de crear otra.</p>"
     },
     "unsubscribeSeveral": {
       "title": "Unsubscribe (varios)",
@@ -423,7 +423,7 @@
   },
   "utility": {
     "title": "Operadores de utilidad",
-    "description": "<b>Los <b>operadores de utilidad en RxJS</b> son herramientas que <b>ayudan a controlar y manejar flujos de datos</b> (Observables) de manera más eficiente, <b>sin transformar</b> directamente los valores que pasan por ellos. Son como <b>'ayudantes'</b> para tareas comunes, como depuración, suscripción, o manipulación del flujo.",
+    "description": "<p>Los <b>operadores de utilidad en RxJS</b> son herramientas que <b>ayudan a controlar y manejar flujos de datos</b> (Observables) de manera más eficiente, <b>sin transformar</b> directamente los valores que pasan por ellos. Son como <b>'ayudantes'</b> para tareas comunes, como depuración, suscripción, o manipulación del flujo.</p>",
     "shortDescription": "Los operadores de utilidad en RxJS son herramientas que ayudan a controlar y manejar flujos de datos (Observables) de manera más eficiente, sin transformar directamente los valores que pasan por ellos.",
     "delay": {
       "title": "delay",
@@ -473,7 +473,7 @@
   "subjects": {
     "welcome": "Descubre cómo <b>manejar</b> fácilmente los <b>cambios de estado</b> en los modelos de datos de cualquier aplicación reactiva utilizando los <b>Subjects</b>. Estas herramientas te permiten mantener todos los <b>componentes y servicios</b> suscritos siempre <b>actualizados al mismo tiempo</b>, ¡de forma sencilla y eficiente!.",
     "title": "Subjects",
-    "description": "<b>En RxJS, los Subjects son un concepto clave que combina dos roles: el de un observable (algo que emite valores) y el de un observer (algo que recibe valores). Esto significa que puedes usarlos tanto para recibir datos como para emitirlos a otros observadores. Permiten la multidifusión de valores a muchos Observadores. Mientras los <b>Observables simples son de monodifusión</b> (cada Observador suscrito es propietario de una ejecución independiente del Observable), los subjects son de <b>multidifusión</b>.",
+    "description": "<p>En RxJS, los <b>Subjects</b> son un concepto clave que <b>combina dos roles</b>: el de un <b>observable</b> (algo que emite valores) y el de un <b>observer</b> (algo que recibe valores). Esto significa que puedes usarlos tanto para recibir datos como para emitirlos a otros observadores. Permiten la multidifusión de valores a muchos Observadores. Mientras los <b>Observables simples son de monodifusión</b> (cada Observador suscrito es propietario de una ejecución independiente del Observable), los subjects son de <b>multidifusión</b>.</p>",
     "shortDescription": "En RxJS, los Subjects son un concepto clave que combina dos roles: el de un observable (algo que emite valores) y el de un observer (algo que recibe valores).",
     "behaviorSubject": {
       "title": "BehaviorSubject",

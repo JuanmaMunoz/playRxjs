@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { basics } from '../info/basic';
 import { combinations } from '../info/combinations';
@@ -19,8 +18,7 @@ import { IInfo } from '../models/interfaces';
   providedIn: 'root',
 })
 export class IntroductionService {
-  constructor(private route: ActivatedRoute) {}
-  public info: BehaviorSubject<string> = new BehaviorSubject('');
+  public info = new BehaviorSubject<string>('');
 
   setIntroduction(url: string): void {
     const allInfo: IInfo[] = [

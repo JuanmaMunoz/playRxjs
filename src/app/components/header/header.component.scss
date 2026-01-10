@@ -18,23 +18,11 @@
     display: flex;
     flex-direction: row;
     gap: 2rem;
-    &--opacity {
-      animation: opacity 1s;
-    }
   }
   &__page {
     color: var(--primary-color);
     font-size: 2.5rem;
     font-weight: bold;
-
-    &--hidden {
-      animation: hidden 1s;
-      display: none;
-    }
-    &--show {
-      animation: show 1s;
-      display: flex;
-    }
   }
   &__logo {
     cursor: pointer;
@@ -50,7 +38,7 @@
     }
     &__secondary {
       color: var(--secondary-color);
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
   }
   &__search {
@@ -61,19 +49,6 @@
     position: absolute;
     right: 1.5rem;
     top: 0.5rem;
-  }
-}
-
-@media screen and (max-width: 1530px) {
-  .header {
-    &__page {
-      display: none;
-    }
-    &__container {
-      &--opacity {
-        animation: none;
-      }
-    }
   }
 }
 
@@ -127,34 +102,5 @@
         font-size: 0.9rem;
       }
     }
-  }
-}
-
-@keyframes show {
-  from {
-    opacity: 0.5;
-  }
-  to {
-    display: flex;
-    opacity: 1;
-  }
-}
-
-@keyframes hidden {
-  from {
-    opacity: 0.5;
-  }
-  to {
-    display: none;
-    opacity: 1;
-  }
-}
-
-@keyframes opacity {
-  from {
-    opacity: 0.2;
-  }
-  to {
-    opacity: 1;
   }
 }

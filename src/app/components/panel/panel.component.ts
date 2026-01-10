@@ -11,5 +11,5 @@ import { ColorPanel } from './../../models/enums';
 })
 export class PanelComponent {
   @Input() color: ColorPanel = ColorPanel.PRIMARY;
-  @Input() title: string = '';
+  @Input() title = '';
 }

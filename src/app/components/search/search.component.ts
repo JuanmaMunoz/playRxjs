@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -26,15 +26,13 @@ import { MenuService } from '../../services/menu.service';
   styleUrl: './search.component.scss',
 })
 export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
-  @Input() modeMenu: string = '';
+  @Input() modeMenu = '';
   public obsResult!: Observable<ISearch[]>;
-  public search: string = '';
-  public visibleResult: boolean = false;
+  public search = '';
+  public visibleResult = false;
   private subscription = new Subscription();
-  constructor(
-    private menuService: MenuService,
-    private router: Router,
-  ) {}
+  private menuService = inject(MenuService);
+  private router = inject(Router);
 
   ngOnInit(): void {
     this.subscription.add(this.menuService.openMenu.subscribe(() => (this.visibleResult = false)));
@@ -64,25 +62,27 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
       basics,
     ]);
     this.obsResult = fromEvent(document.getElementsByClassName('search__text')!, 'input').pipe(
-      concatMap((e: any) =>
+      concatMap((e) =>
         of(allInfo).pipe(
           map((a: ISearch[]) =>
             a
               .filter(
                 (i: ISearch) =>
-                  e.target!.value.length > 1 &&
-                  i.id.toLocaleLowerCase().includes(e.target.value.toLocaleLowerCase()),
+                  (e.target! as HTMLButtonElement).value.length > 1 &&
+                  i.id
+                    .toLocaleLowerCase()
+                    .includes((e.target! as HTMLButtonElement).value.toLocaleLowerCase()),
               )
               .slice(0, 5),
           ),
-          tap((e) => (this.visibleResult = true)),
+          tap(() => (this.visibleResult = true)),
         ),
       ),
     );
   }
 
   private setSearchList(info: IInfo[]): ISearch[] {
-    let searchList: ISearch[] = [];
+    const searchList: ISearch[] = [];
     info.forEach((e: IInfo) => {
       e.items.forEach((i: IInfoItem) =>
         searchList.push({ id: i.id, category: e.category, url: e.url }),
@@ -93,8 +93,8 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public navigate(category: string, id: string): void {
     this.search = id;
-    this.visibleResult = false;
     this.menuService.navigate(category, id);
+    this.visibleResult = false;
   }
 
   public clearText(): void {

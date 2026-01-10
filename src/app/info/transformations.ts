@@ -145,7 +145,7 @@ this.userService.getUsers()
   { name: 'Pedro', species: 'dog' },
   { name: 'Marc', species: 'monkey' },
 ]);
-const [cats$, others$] = partition(animals$, ({ species }) => species === 'cat');
+const [cats$] = partition(animals$, ({ species }) => species === 'cat');
 cats$.subscribe((cats) => console.log(cats))`,
     },
     {
