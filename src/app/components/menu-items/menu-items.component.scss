@@ -3,6 +3,7 @@
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+  z-index: -1000;
   &__title {
     color: var(--clear-color);
     cursor: pointer;
@@ -11,7 +12,6 @@
   }
   &__icons {
     color: var(--clear-color);
-    cursor: pointer;
     float: right;
     font-size: 1.5rem;
   }
@@ -47,4 +47,13 @@
       font-size: 1.2rem;
     }
   }
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }

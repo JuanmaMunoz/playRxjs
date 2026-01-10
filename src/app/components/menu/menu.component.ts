@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, inject, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnDestroy, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
@@ -17,7 +17,6 @@ import { transformations } from '../../info/transformations';
 import { utilitys } from '../../info/utilitys';
 import { IInfo } from '../../models/interfaces';
 import { MenuService } from '../../services/menu.service';
-import { slideToggle } from '../../utils/animations';
 import { LanguageComponent } from '../language/language.component';
 import { MenuItemsComponent } from '../menu-items/menu-items.component';
 import { SearchComponent } from '../search/search.component';
@@ -33,11 +32,11 @@ import { SearchComponent } from '../search/search.component';
     TranslateModule,
     SearchComponent,
   ],
-  animations: [slideToggle(400)],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss',
 })
 export class MenuComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('menu') menu!: ElementRef;
   public infoCombination: IInfo = combinations;
   public infoConditional: IInfo = conditionals;
   public infoMathematical: IInfo = mathematicals;
@@ -54,12 +53,12 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
   public angular = 'assets/images/angular.png';
   public rxjs = 'assets/images/rxjs-logo.png';
   private menuService = inject(MenuService);
-  public menuOpen = false;
 
   ngAfterViewInit(): void {
     this.subscription.add(
-      this.menuService.openMenu.subscribe((open: boolean) => {
-        this.menuOpen = open;
+      this.menuService.openMenu.subscribe(() => {
+        this.menu.nativeElement.classList.toggle('menu--show');
+        this.menu.nativeElement.classList.toggle('menu--hidden');
       }),
     );
   }

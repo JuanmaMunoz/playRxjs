@@ -65,36 +65,6 @@ export const spin = (duration = 2000): AnimationTriggerMetadata => {
   return trigger('spin', definitions);
 };
 
-export const slideToggle = (duration = 300): AnimationTriggerMetadata => {
-  const definitions: AnimationMetadata[] = [
-    state(
-      'open',
-      style({
-        opacity: 1,
-        visibility: 'visible',
-        pointerEvents: 'auto',
-        transform: 'translateX(0)',
-      }),
-    ),
-
-    state(
-      'closed',
-      style({
-        opacity: 0,
-        visibility: 'hidden',
-        pointerEvents: 'none',
-        transform: 'translateX(1rem)',
-      }),
-    ),
-
-    transition('closed => open', [animate(`${duration}ms ease-out`)]),
-
-    transition('open => closed', [animate(`${duration}ms ease-in`)]),
-  ];
-
-  return trigger('slideToggle', definitions);
-};
-
 export const fadeToggle = (duration = 200): AnimationTriggerMetadata => {
   const definitions: AnimationMetadata[] = [
     state(
