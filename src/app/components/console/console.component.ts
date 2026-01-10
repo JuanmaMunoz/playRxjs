@@ -1,4 +1,4 @@
-import { Component, Input, Renderer2 } from '@angular/core';
+import { Component, inject, Input, Renderer2 } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -11,7 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
 export class ConsoleComponent {
   @Input() id!: string;
 
-  constructor(private render: Renderer2) {}
+  private render = inject(Renderer2);
 
   public clearConsole(): void {
     const container = document.getElementById('console-' + this.id);

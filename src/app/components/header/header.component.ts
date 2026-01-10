@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import {
@@ -8,6 +8,7 @@ import {
   fromEvent,
   interval,
   map,
+  Observable,
   of,
   scan,
   Subscription,
@@ -27,17 +28,15 @@ import { SearchComponent } from '../search/search.component';
 })
 export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   private subscription = new Subscription();
-  public showPage: string = 'header__page--hidden';
-  public opacity: string = '';
-  public title!: any;
-  public showUnlock: boolean = true;
-  public logoWidth: number = 110;
-  constructor(
-    private menuService: MenuService,
-    private router: Router,
-    public introductionService: IntroductionService,
-    private translate: TranslateService,
-  ) {}
+  public showPage = 'header__page--hidden';
+  public opacity = '';
+  public title!: Observable<string>;
+  public showUnlock = true;
+  public logoWidth = 110;
+  private menuService = inject(MenuService);
+  private router = inject(Router);
+  public introductionService = inject(IntroductionService);
+  private translate = inject(TranslateService);
 
   ngOnInit(): void {
     this.subscription.add(
@@ -45,7 +44,6 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
         .subscribe((event: NavigationEnd) => {
           const currentUrl = event.urlAfterRedirects;
-          console.log(currentUrl);
           if (currentUrl === '/home') {
             this.setTitle(this.translate.instant('unlock'));
             this.showUnlock = true;
@@ -53,14 +51,17 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
         }),
     );
 
-    this.subscription.add;
-    this.translate.onLangChange.subscribe(() => {
-      if (this.showUnlock) {
-        this.setTitle(this.translate.instant('unlock'));
-      } else {
-        this.setTitle(this.translate.instant(this.introductionService.info.getValue() + '.title'));
-      }
-    });
+    this.subscription.add(
+      this.translate.onLangChange.subscribe(() => {
+        if (this.showUnlock) {
+          this.setTitle(this.translate.instant('unlock'));
+        } else {
+          this.setTitle(
+            this.translate.instant(this.introductionService.info.getValue() + '.title'),
+          );
+        }
+      }),
+    );
   }
 
   ngAfterViewInit(): void {
@@ -112,6 +113,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   public navigate(category: string, id?: string): void {
+    window.scrollTo({ top: 0 });
     this.menuService.navigate(category, id);
   }
 }

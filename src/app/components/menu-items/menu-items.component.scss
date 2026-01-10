@@ -24,13 +24,10 @@
       list-style: none;
       padding: 0;
     }
-    &--hidden {
-      animation: hide 0.2s;
-      display: none;
-    }
-    &--show {
-      animation: show 0.2s;
-      display: flex;
+    &__link {
+      color: var(--primary-color);
+      font-size: 1.25rem;
+      font-weight: 600;
     }
   }
 }
@@ -49,26 +46,5 @@
     &__title {
       font-size: 1.2rem;
     }
-  }
-}
-
-@keyframes hide {
-  from {
-    display: flex;
-    opacity: 0.5;
-  }
-  to {
-    display: none;
-    opacity: 0;
-  }
-}
-
-@keyframes show {
-  from {
-    opacity: 0.5;
-  }
-  to {
-    display: flex;
-    opacity: 1;
   }
 }

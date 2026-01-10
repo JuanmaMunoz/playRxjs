@@ -1,27 +1,39 @@
 # PlayRxjs
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+Welcome to Play RxJS! Here you will find a friendly and accessible documentation about RxJS, designed to help you understand and make the most of this amazing tool for developing reactive code. If you're new to this technology, we recommend starting with the basic concepts to get familiar with the fundamentals. Enjoy exploring and learning!.
+
+## 🛠️ Tech Stack
+
+- Angular 17.3
+- RxJS 7.8
+- SCSS
+
+## Install dependecies
+
+```bash
+npm install
+```
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To start a local development server, run:
 
-## Code scaffolding
+```bash
+ng serve
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Build
+## Building
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+To build the project run:
 
-## Running unit tests
+```bash
+ng build
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+This will compile your project and store the build artifacts in the `docs/` directory. By default, the production build optimizes your application for performance and speed.
 
-## Running end-to-end tests
+## Author
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Juan Manuel Muñoz González

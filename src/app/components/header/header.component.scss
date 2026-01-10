@@ -52,19 +52,6 @@
   }
 }
 
-@media screen and (max-width: 1530px) {
-  .header {
-    &__page {
-      display: none;
-    }
-    &__container {
-      &--opacity {
-        animation: none;
-      }
-    }
-  }
-}
-
 @media screen and (max-width: 992px) {
   .header {
     justify-content: left;
@@ -115,34 +102,5 @@
         font-size: 0.9rem;
       }
     }
-  }
-}
-
-@keyframes show {
-  from {
-    opacity: 0.5;
-  }
-  to {
-    display: flex;
-    opacity: 1;
-  }
-}
-
-@keyframes hidden {
-  from {
-    opacity: 0.5;
-  }
-  to {
-    display: none;
-    opacity: 1;
-  }
-}
-
-@keyframes opacity {
-  from {
-    opacity: 0.2;
-  }
-  to {
-    opacity: 1;
   }
 }

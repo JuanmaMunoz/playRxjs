@@ -1,8 +1,15 @@
-<div class="logo">
-  <img
-    [src]="image"
-    alt="rxjs"
-    [style.width.px]="width"
-    [style.borderWidth.px]="borderWidth"
-  />
-</div>
+@if (showLogo) {
+  <div [@show] class="logo">
+    <img
+      [@spin]="{
+        value: state,
+        params: params
+      }"
+      (@spin.done)="next()"
+      [src]="image"
+      alt="rxjs"
+      [style.width.px]="width"
+      [style.borderWidth.px]="borderWidth"
+    />
+  </div>
+}

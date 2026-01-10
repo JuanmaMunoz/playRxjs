@@ -2,7 +2,9 @@ import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { IInfoItem } from '../../models/interfaces';
 import { ConsoleComponent } from '../console/console.component';
-declare var Prism: any;
+declare const Prism: {
+  highlightAll: () => void;
+};
 @Component({
   selector: 'app-example',
   standalone: true,

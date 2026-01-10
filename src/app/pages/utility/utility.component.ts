@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
+import { AfterViewInit, Component, inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
   delay,
@@ -32,15 +32,13 @@ import { IntroductionService } from '../../services/introduction.service';
   templateUrl: './utility.component.html',
   styleUrl: './utility.component.scss',
 })
-export class UtilityComponent implements OnInit, AfterViewInit {
+export class UtilityComponent implements OnInit, AfterViewInit, OnDestroy {
   public info!: IInfo;
   public subscription = new Subscription();
 
-  constructor(
-    private renderer: Renderer2,
-    private route: ActivatedRoute,
-    private introductionService: IntroductionService,
-  ) {}
+  private renderer = inject(Renderer2);
+  private route = inject(ActivatedRoute);
+  private introductionService = inject(IntroductionService);
 
   ngOnInit(): void {
     this.info = utilitys;

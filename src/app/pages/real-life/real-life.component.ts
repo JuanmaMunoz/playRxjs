@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { AfterViewInit, Component, OnInit, Renderer2 } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { AfterViewInit, Component, inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import {
   concatMap,
@@ -30,17 +30,15 @@ import { IHobby } from './../../models/interfaces';
   templateUrl: './real-life.component.html',
   styleUrl: './real-life.component.scss',
 })
-export class RealLifeComponent implements OnInit, AfterViewInit {
+export class RealLifeComponent implements OnInit, AfterViewInit, OnDestroy {
   public info!: IInfo;
   public subscription = new Subscription();
 
-  constructor(
-    private renderer: Renderer2,
-    private route: ActivatedRoute,
-    private introductionService: IntroductionService,
-    private userService: UserService,
-    private http: HttpClient,
-  ) {}
+  private renderer = inject(Renderer2);
+  private route = inject(ActivatedRoute);
+  private introductionService = inject(IntroductionService);
+  private userService = inject(UserService);
+  private http = inject(HttpClient);
 
   ngOnInit(): void {
     this.info = realLife;
@@ -130,8 +128,8 @@ export class RealLifeComponent implements OnInit, AfterViewInit {
       const url = 'https://pokeapi.co/api/v2/pokemon/' + namePokemon.toLocaleLowerCase();
       this.subscription.add(
         this.http.get(url).subscribe({
-          next: (data: any) => this.addConsole('searchApi', JSON.stringify(data.forms)),
-          error: (e: HttpErrorResponse) => this.addConsole('searchApi', 'Pokémon not found'),
+          next: (data) => this.addConsole('searchApi', JSON.stringify(data as { forms: unknown })),
+          error: () => this.addConsole('searchApi', 'Pokémon not found'),
         }),
       );
     };

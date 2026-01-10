@@ -1,12 +1,14 @@
 {
   "name": "play-rxjs",
-  "version": "0.0.0",
+  "version": "2.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --configuration production --base-href https://juanmamunoz.github.io/playRxjs/",
+    "prebuild": "ng lint",
+    "build": "ng build --configuration production --base-href https://juanmamunoz.github.io/playRxjs/ && xcopy docs\\browser docs /E /H /Y && rmdir /S /Q docs\\browser",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -18,9 +20,9 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
-    "bootstrap-icons": "^1.11.3",
     "@ngx-translate/core": "14.0.0",
     "@ngx-translate/http-loader": "7.0.0",
+    "bootstrap-icons": "^1.11.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
@@ -30,6 +32,8 @@
     "@angular/cli": "^17.3.8",
     "@angular/compiler-cli": "^17.3.0",
     "@types/jasmine": "~5.1.0",
+    "angular-eslint": "21.0.1",
+    "eslint": "^9.39.1",
     "jasmine-core": "~5.1.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",
@@ -38,6 +42,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "npm": "^10.9.0",
     "prettier": "3.1",
-    "typescript": "~5.4.2"
+    "typescript": "~5.4.2",
+    "typescript-eslint": "8.46.4"
   }
 }

@@ -1,4 +1,4 @@
-<div (click)="navigate(info.url)" class="section">
+<div (click)="navigate(info.url)" class="section" role="button" tabindex="0">
   <h3 class="primary-text">{{ info.category + '.title' | translate }}</h3>
   <p class="clear-text" [innerHTML]="info.category + '.shortDescription' | translate"></p>
 </div>
