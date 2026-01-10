@@ -1,9 +1,9 @@
 <div class="header">
   <div [class]="opacity" class="header__container">
-    <div (click)="navigate('/home')" class="header__title" role="button" tabindex="0">
+    <button (click)="navigate('/home')" class="header__title">
       <div class="header__title__main">Play RxJS</div>
       <div class="header__title__secondary">{{ title | async }}</div>
-    </div>
+    </button>
 
     <div class="header__search">
       <app-search />

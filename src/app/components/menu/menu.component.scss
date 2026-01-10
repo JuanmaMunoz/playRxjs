@@ -7,7 +7,7 @@
   right: 0px;
   top: 0;
   width: 27rem;
-  z-index: 9999999;
+  z-index: 10001;
   &--hidden {
     //animation: hide 0.2s ease;
     display: none;
@@ -36,6 +36,7 @@
   &__search {
     display: none;
     padding: 1rem;
+    z-index: 99999999;
   }
   &__list {
     height: 80vh;
@@ -138,4 +139,14 @@ hr {
     display: block;
     right: 0rem;
   }
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: left;
 }
