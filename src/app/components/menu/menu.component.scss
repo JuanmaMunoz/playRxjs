@@ -7,9 +7,19 @@
   right: 0px;
   top: 0;
   width: 27rem;
-  z-index: 9999999;
+  z-index: 10001;
+  &--hidden {
+    animation: hide 0.2s ease;
+    display: none;
+  }
+  &--show {
+    animation: show 0.2s ease;
+    display: block;
+  }
   &__header {
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
     margin-top: 1rem;
     padding: 1rem;
     -webkit-user-select: none; /* Safari */
@@ -33,6 +43,7 @@
     height: 80vh;
     margin-right: 0.5rem;
     overflow-y: auto;
+    position: relative;
     > ul {
       list-style: none;
       padding: 0;
@@ -46,18 +57,6 @@
       margin-left: 1rem;
     }
   }
-  /*&__footer {
-    bottom: 1vh;
-    position: absolute;
-    width: 100%;
-    &__container {
-      align-items: center;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-evenly;
-      margin-top: 1rem;
-    }
-  }*/
 }
 
 hr {
@@ -102,8 +101,28 @@ hr {
         font-size: 1.2rem;
       }
     }
-    /*&__footer {
-      bottom: 4vh;
-    }*/
+  }
+}
+
+@keyframes hide {
+  from {
+    display: block;
+    opacity: 0.5;
+    right: -15rem;
+  }
+  to {
+    display: none;
+    right: -30rem;
+  }
+}
+
+@keyframes show {
+  from {
+    opacity: 0.5;
+    right: -15rem;
+  }
+  to {
+    display: block;
+    right: 0rem;
   }
 }

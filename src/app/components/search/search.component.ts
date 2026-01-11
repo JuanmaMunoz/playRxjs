@@ -16,7 +16,6 @@ import { subjects } from '../../info/subjects';
 import { transformations } from '../../info/transformations';
 import { utilitys } from '../../info/utilitys';
 import { IInfo, IInfoItem, ISearch } from '../../models/interfaces';
-import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'app-search',
@@ -31,11 +30,9 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
   public search = '';
   public visibleResult = false;
   private subscription = new Subscription();
-  private menuService = inject(MenuService);
   private router = inject(Router);
 
   ngOnInit(): void {
-    this.subscription.add(this.menuService.openMenu.subscribe(() => (this.visibleResult = false)));
     this.subscription.add(
       this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
         this.search = '';
@@ -79,6 +76,18 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
         ),
       ),
     );
+
+    this.subscription.add(
+      fromEvent<MouseEvent>(window, 'click').subscribe((event: MouseEvent) => {
+        const target = event.target as HTMLElement;
+        if (
+          target!.classList.contains('search__result__item') ||
+          target!.classList.contains('bi-rocket-takeoff')
+        ) {
+          this.visibleResult = false;
+        }
+      }),
+    );
   }
 
   private setSearchList(info: IInfo[]): ISearch[] {
@@ -89,12 +98,6 @@ export class SearchComponent implements OnInit, AfterViewInit, OnDestroy {
       );
     });
     return searchList;
-  }
-
-  public navigate(category: string, id: string): void {
-    this.search = id;
-    this.menuService.navigate(category, id);
-    this.visibleResult = false;
   }
 
   public clearText(): void {

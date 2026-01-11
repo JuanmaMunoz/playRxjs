@@ -6,6 +6,7 @@ import { conditionals } from '../info/conditionals';
 import { creations } from '../info/creations';
 import { errors } from '../info/errors';
 import { filterings } from '../info/filterings';
+import { home } from '../info/home';
 import { mathematicals } from '../info/mathematicals';
 import { multicastings } from '../info/multicastings';
 import { realLife } from '../info/realLife';
@@ -34,6 +35,7 @@ export class IntroductionService {
       subjects,
       basics,
       realLife,
+      home,
     ];
     const { category } = allInfo.filter((e: IInfo) => url.includes(e.url))[0];
     this.info.next(category);

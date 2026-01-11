@@ -9,13 +9,9 @@
       autocomplete="off"
     />
     @if (search) {
-      <i
-        (click)="clearText()"
-        role="button"
-        tabindex="0"
-        class="search__text__clean bi bi-x-circle"
-        [class]="modeMenu"
-      ></i>
+      <i (click)="clearText()" [class]="modeMenu" role="button" tabindex="0">
+        <span class="search__text__clean bi bi-x-circle"></span>
+      </i>
     }
   </div>
 
@@ -23,12 +19,9 @@
     @if (result.length > 0 && visibleResult) {
       <div class="search__result">
         @for (i of result; track $index) {
-          <div class="search__result__item">
-            <span (click)="navigate(i.url, i.id)" role="button" tabindex="0"
-              >- {{ i.category + '.' + i.id + '.title' | translate }}
-              <i class="bi bi-rocket-takeoff"></i
-            ></span>
-          </div>
+          <a class="search__result__item" [routerLink]="[i.url, i.id]">
+            - {{ i.category + '.' + i.id + '.title' | translate }}
+          </a>
         }
       </div>
     }

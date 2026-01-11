@@ -1,10 +1,12 @@
 {
   "english": "English",
   "spanish": "Spanish",
-  "unlock": "Unlock a new way to learn",
   "output": "// Output: // sorted in descending order",
   "search": "Search...",
   "console": "We use simple examples of the main functionalities of RxJS, which can be checked in real time from our console",
+  "home": {
+    "title": "Unlock a new way to learn"
+  },
   "aboutMe": {
     "title": "About me",
     "description": "<p>I have created this <b>web tutorial</b> with the goal of <b>contributing</b> to the <b>developer community</b>, to which I owe much of my professional growth. My <b>gratitude</b> to those who have selflessly shared their knowledge is immense, and it is to them that I <b>dedicate this documentation</b>.</p><p><b>RxJS</b> is an <b>exceptional</b> tool for developing reactive code, although its understanding can be complex and overwhelming due to its advanced concepts. For this reason, I have aimed to make this guide as accessible and clear as possible, using <b>simple examples</b> that allow observing in real-time the behavior of the different operators, as well as the differences between them.</p><p>Often, a picture is worth a thousand words, and I hope this <b>visual approach</b> and practical perspective make learning easier. I hope you enjoy this documentation.</p>"

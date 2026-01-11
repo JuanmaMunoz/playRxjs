@@ -1,7 +1,7 @@
 <div class="menu-items">
-  <span class="menu-items__title" (click)="navigate(info.url)" role="button" tabindex="0"
-    >{{ info.category + '.title' | translate }}
-  </span>
+  <a class="menu-items__title" [routerLink]="info.url">
+    {{ info.category + '.title' | translate }}
+  </a>
   @if (show) {
     <i
       (click)="showHideList()"
@@ -21,13 +21,9 @@
     <ul>
       @for (i of info.items; track $index) {
         <li>
-          <span
-            class="menu-items__list__link"
-            (click)="navigate(info.url, i.id)"
-            role="button"
-            tabindex="0"
-            >- {{ info.category + '.' + i.id + '.title' | translate }}</span
-          >
+          <a class="menu-items__list__link" [routerLink]="[info.url, i.id]">
+            - {{ info.category + '.' + i.id + '.title' | translate }}
+          </a>
         </li>
       }
     </ul>

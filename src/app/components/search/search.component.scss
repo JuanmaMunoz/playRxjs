@@ -37,18 +37,20 @@
     border-radius: var(--radius);
     box-shadow: 0 0 1rem var(--secondary-color);
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     left: 0px;
     max-height: 30rem;
-    padding: 1.5rem 1rem 0.5rem 1rem;
+    padding: 1rem;
     position: absolute;
     top: 4.5rem;
     width: 100%;
+    z-index: 10002;
     &__item {
-      color: var(--primary-color);
-      cursor: pointer;
+      color: var(--primary-color) !important;
       font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 1.25rem;
+      font-weight: bold;
     }
   }
 }

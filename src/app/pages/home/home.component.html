@@ -5,7 +5,7 @@
     </div>
     <div class="home__front__text">
       <h1 class="primary-text">Play RxJS</h1>
-      <h2 class="secondary-text">{{ 'unlock' | translate }}</h2>
+      <h2 class="secondary-text">{{ 'home.title' | translate }}</h2>
       <h5>
         {{ 'console' | translate }}
       </h5>
@@ -18,7 +18,7 @@
 
   <app-panel [title]="'basicConcepts.welcome.title'" [color]="colorPanel.SECONDARY">
     <p class="clear-text" [innerHTML]="'basicConcepts.welcome.description' | translate"></p>
-    <button class="btn btn--secondary" (click)="navigate('basicConcepts')">
+    <button class="btn btn--secondary" [routerLink]="'/basicConcepts'">
       {{ 'basicConcepts.title' | translate }}
     </button>
   </app-panel>
@@ -47,7 +47,7 @@
   @defer (on viewport) {
     <app-panel [title]="'subjects.title'" [color]="colorPanel.SECONDARY">
       <p class="clear-text" [innerHTML]="'subjects.welcome' | translate"></p>
-      <button class="btn btn--secondary" (click)="navigate('subjects')">
+      <button class="btn btn--secondary" [routerLink]="'/subjects'">
         {{ 'subjects.title' | translate }}
       </button>
     </app-panel>

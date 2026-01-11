@@ -1,16 +1,16 @@
 <div class="header">
   <div [class]="opacity" class="header__container">
-    <div (click)="navigate('/home')" class="header__title" role="button" tabindex="0">
-      <div class="header__title__main">Play RxJS</div>
-      <div class="header__title__secondary">{{ title | async }}</div>
-    </div>
+    <a routerLink="'/home'" class="header__title">
+      <span class="header__title__main">Play RxJS</span>
+      <span class="header__title__secondary">{{ title | async }}</span>
+    </a>
 
     <div class="header__search">
       <app-search />
     </div>
   </div>
   <div class="header__btn">
-    <button (click)="showHideMenu()" class="btn btn--primary btn--menu">
+    <button class="btn btn--primary btn--menu">
       <i class="btn__menu__icon bi bi-list"></i>
     </button>
   </div>
