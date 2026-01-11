@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { IInfo } from '../../models/interfaces';
-import { MenuService } from '../../services/menu.service';
 import { fadeToggle } from '../../utils/animations';
 
 @Component({
@@ -17,14 +16,8 @@ import { fadeToggle } from '../../utils/animations';
 export class MenuItemsComponent {
   @Input() info!: IInfo;
   public show = false;
-  private menuService = inject(MenuService);
 
   public showHideList(): void {
     this.show = !this.show;
-  }
-
-  public navigate(category: string, id?: string): void {
-    this.menuService.openMenu.next(false);
-    this.menuService.navigate(category, id);
   }
 }

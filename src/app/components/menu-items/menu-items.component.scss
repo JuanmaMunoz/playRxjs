@@ -18,7 +18,7 @@
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    line-height: 1.5;
+    line-height: 2;
     > ul {
       list-style: none;
       padding: 0;
@@ -29,30 +29,4 @@
       font-weight: 600;
     }
   }
-}
-
-@media screen and (max-width: 1650px) {
-  .menu-items {
-    &__list {
-      line-height: 2;
-    }
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .menu-items {
-    margin: 1.5rem 1rem 1.5rem 1rem;
-    &__title {
-      font-size: 1.2rem;
-    }
-  }
-}
-
-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
 }

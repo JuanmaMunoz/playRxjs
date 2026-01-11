@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import {
   buffer,
   bufferCount,
@@ -40,7 +39,6 @@ import { ExampleComponent } from '../../components/example/example.component';
 import { IntroductionComponent } from '../../components/introduction/introduction.component';
 import { transformations } from '../../info/transformations';
 import { IInfo, IUser } from '../../models/interfaces';
-import { IntroductionService } from '../../services/introduction.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -56,12 +54,9 @@ export class TransformationComponent implements OnInit, AfterViewInit, OnDestroy
 
   private userService = inject(UserService);
   private renderer = inject(Renderer2);
-  private route = inject(ActivatedRoute);
-  private introductionService = inject(IntroductionService);
+
   ngOnInit(): void {
     this.info = transformations;
-    const url = '/' + this.route.snapshot.url.map((segment) => segment.path).join('/');
-    this.introductionService.setIntroduction(url);
   }
 
   ngOnDestroy(): void {

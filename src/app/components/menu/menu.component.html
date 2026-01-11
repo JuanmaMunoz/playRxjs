@@ -1,10 +1,10 @@
-<div #menu class="menu menu--show">
+<div #menu class="menu menu--hidden">
   <div class="close"><i class="bi bi-x-circle-fill"></i></div>
   <app-language></app-language>
-  <button class="menu__header" (click)="navigate('/home')">
-    <div class="menu__header__main">Play RxJS</div>
-    <div class="menu__header__secondary">{{ 'unlock' | translate }}</div>
-  </button>
+  <a class="menu__header" [routerLink]="'/home'">
+    <span class="menu__header__main">Play RxJS</span>
+    <span class="menu__header__secondary">{{ 'home.title' | translate }}</span>
+  </a>
   <div class="menu__search">
     <app-search [modeMenu]="'menu'"></app-search>
   </div>

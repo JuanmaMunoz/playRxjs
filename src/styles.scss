@@ -13,25 +13,20 @@
 
 //ScrollBar
 ::-webkit-scrollbar {
-  height: 0.5rem;
-  width: 0.5rem;
+  height: 0.3rem;
+  width: 0.3rem;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--primary-background);
   border-radius: 10px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #ccc;
+  background: var(--primary-color);
   border-radius: 10px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #b3b2b2;
 }
 
 .row {

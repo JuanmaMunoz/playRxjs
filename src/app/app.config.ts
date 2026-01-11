@@ -1,5 +1,5 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter, withHashLocation } from '@angular/router';
+import { provideRouter, withHashLocation, withInMemoryScrolling } from '@angular/router';
 
 import { HttpClient, provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -13,7 +13,13 @@ export function createTranslateLoader(http: HttpClient) {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes, withHashLocation()),
+    provideRouter(
+      routes,
+      withHashLocation(),
+      withInMemoryScrolling({
+        scrollPositionRestoration: 'top',
+      }),
+    ),
     provideHttpClient(),
     provideAnimations(),
     importProvidersFrom(

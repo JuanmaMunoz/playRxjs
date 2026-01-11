@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { AfterViewInit, Component, inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import {
   delay,
   delayWhen,
@@ -23,7 +22,6 @@ import { ExampleComponent } from '../../components/example/example.component';
 import { IntroductionComponent } from '../../components/introduction/introduction.component';
 import { utilitys } from '../../info/utilitys';
 import { IInfo } from '../../models/interfaces';
-import { IntroductionService } from '../../services/introduction.service';
 
 @Component({
   selector: 'app-utility',
@@ -37,13 +35,9 @@ export class UtilityComponent implements OnInit, AfterViewInit, OnDestroy {
   public subscription = new Subscription();
 
   private renderer = inject(Renderer2);
-  private route = inject(ActivatedRoute);
-  private introductionService = inject(IntroductionService);
 
   ngOnInit(): void {
     this.info = utilitys;
-    const url = '/' + this.route.snapshot.url.map((segment) => segment.path).join('/');
-    this.introductionService.setIntroduction(url);
   }
 
   ngOnDestroy(): void {

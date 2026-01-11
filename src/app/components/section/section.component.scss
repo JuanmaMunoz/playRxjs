@@ -4,6 +4,7 @@
   box-shadow: 0 8px 20px var(--dark2-color);
   box-sizing: border-box;
   cursor: pointer;
+  display: block;
   height: 14rem;
   padding: 1rem;
   transition:
@@ -27,13 +28,4 @@
     height: auto;
     width: 78vw;
   }
-}
-
-button {
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
 }

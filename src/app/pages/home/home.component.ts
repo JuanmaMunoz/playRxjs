@@ -1,4 +1,5 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { fromEvent, map, Subscription } from 'rxjs';
 import { AboutMeComponent } from '../../components/about-me/about-me.component';
@@ -18,7 +19,6 @@ import { transformations } from '../../info/transformations';
 import { utilitys } from '../../info/utilitys';
 import { ColorPanel } from '../../models/enums';
 import { IInfo } from '../../models/interfaces';
-import { MenuService } from '../../services/menu.service';
 import { mathematicals } from './../../info/mathematicals';
 
 @Component({
@@ -31,6 +31,7 @@ import { mathematicals } from './../../info/mathematicals';
     PanelComponent,
     AboutMeComponent,
     SpinnerComponent,
+    RouterLink,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -54,8 +55,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
   public showOperators = false;
   public colorPanel = ColorPanel;
-
-  private menuService = inject(MenuService);
 
   ngOnInit(): void {
     this.setLogoWidth(window.innerWidth);
@@ -81,9 +80,5 @@ export class HomeComponent implements OnInit, OnDestroy {
     } else {
       this.logoWidth = width / 1.5;
     }
-  }
-
-  public navigate(category: string, id?: string): void {
-    this.menuService.navigate(category, id);
   }
 }

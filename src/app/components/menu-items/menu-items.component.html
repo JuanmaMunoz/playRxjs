@@ -1,7 +1,7 @@
 <div class="menu-items">
-  <button class="menu-items__title" (click)="navigate(info.url)">
+  <a class="menu-items__title" [routerLink]="info.url">
     {{ info.category + '.title' | translate }}
-  </button>
+  </a>
   @if (show) {
     <i
       (click)="showHideList()"
@@ -21,9 +21,9 @@
     <ul>
       @for (i of info.items; track $index) {
         <li>
-          <button class="menu-items__list__link" (click)="navigate(info.url, i.id)">
+          <a class="menu-items__list__link" [routerLink]="[info.url, i.id]">
             - {{ info.category + '.' + i.id + '.title' | translate }}
-          </button>
+          </a>
         </li>
       }
     </ul>

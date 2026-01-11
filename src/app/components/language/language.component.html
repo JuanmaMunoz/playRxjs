@@ -7,9 +7,10 @@
       type="radio"
       name="language-{{ id }}"
       id="english-{{ id }}"
+      class="language__check"
     />
-    <label class="form-check-label" for="english-{{ id }}">
-      {{ "english" | translate }}
+    <label class="form-check-label" class="language__label" for="english-{{ id }}">
+      {{ 'english' | translate }}
     </label>
   </div>
   <div class="language__item">
@@ -20,9 +21,10 @@
       type="radio"
       name="language-{{ id }}"
       id="spanish-{{ id }}"
+      class="language__label"
     />
-    <label class="form-check-label" for="spanish-{{ id }}">
-      {{ "spanish" | translate }}
+    <label class="form-check-label" class="language__label" for="spanish-{{ id }}">
+      {{ 'spanish' | translate }}
     </label>
   </div>
 </div>

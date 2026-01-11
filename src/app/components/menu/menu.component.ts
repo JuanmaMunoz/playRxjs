@@ -1,8 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, inject, OnDestroy, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
+import { fromEvent, Subscription } from 'rxjs';
 import { basics } from '../../info/basic';
 import { combinations } from '../../info/combinations';
 import { conditionals } from '../../info/conditionals';
@@ -16,7 +16,6 @@ import { subjects } from '../../info/subjects';
 import { transformations } from '../../info/transformations';
 import { utilitys } from '../../info/utilitys';
 import { IInfo } from '../../models/interfaces';
-import { MenuService } from '../../services/menu.service';
 import { LanguageComponent } from '../language/language.component';
 import { MenuItemsComponent } from '../menu-items/menu-items.component';
 import { SearchComponent } from '../search/search.component';
@@ -52,24 +51,34 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
   private subscription = new Subscription();
   public angular = 'assets/images/angular.png';
   public rxjs = 'assets/images/rxjs-logo.png';
-  private menuService = inject(MenuService);
 
   ngAfterViewInit(): void {
     this.subscription.add(
-      this.menuService.openMenu.subscribe(() => {
-        this.menu.nativeElement.classList.toggle('menu--show');
-        this.menu.nativeElement.classList.toggle('menu--hidden');
+      fromEvent<MouseEvent>(window, 'click').subscribe((event: MouseEvent) => {
+        const target = event.target as HTMLElement;
+        if (
+          target!.classList.contains('bi-x-circle-fill') ||
+          target!.classList.contains('btn--menu') ||
+          target!.classList.contains('btn__menu__icon') ||
+          target!.classList.contains('bi-list') ||
+          target!.classList.contains('menu-items__title') ||
+          target!.classList.contains('menu-items__list__link') ||
+          target!.classList.contains('menu__header__main') ||
+          target!.classList.contains('menu__header__secondary') ||
+          target!.classList.contains('language__label') ||
+          target!.classList.contains('language__check')
+        ) {
+          this.menu.nativeElement.classList.toggle('menu--show');
+          this.menu.nativeElement.classList.toggle('menu--hidden');
+        } else if (target!.classList.contains('search__result__item')) {
+          this.menu.nativeElement.classList.remove('menu--show');
+          this.menu.nativeElement.classList.add('menu--hidden');
+        }
       }),
     );
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
-  }
-
-  public navigate(category: string, id?: string): void {
-    this.menuService.openMenu.next(false);
-    window.scrollTo({ top: 0 });
-    this.menuService.navigate(category, id);
   }
 }
