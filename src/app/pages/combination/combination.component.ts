@@ -86,7 +86,6 @@ export class CombinationComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscription.add(
       obsAll$
         .pipe(
-          map((obs) => obs), // We transform the values into observables
           concatAll(), // Concatenates the values of the emitted observables
         )
         .subscribe((data) => this.addConsole('concatAll', JSON.stringify(data))),
@@ -133,7 +132,6 @@ export class CombinationComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscription.add(
       obsAll$
         .pipe(
-          map((obs) => obs), // We transform the values into observables
           mergeAll(), // Concatenates the values of the emitted observables
         )
         .subscribe((data) => this.addConsole('mergeAll', JSON.stringify(data))),
@@ -166,7 +164,6 @@ export class CombinationComponent implements OnInit, AfterViewInit, OnDestroy {
     this.subscription.add(
       obsAll$
         .pipe(
-          map((obs) => obs), // We transform the values into observables
           switchAll(), // Concatenates the values of the emitted observables
         )
         .subscribe((data) => this.addConsole('switchAll', JSON.stringify(data))),

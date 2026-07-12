@@ -64,7 +64,6 @@ const obs3$ = of(3, 4, 5);
 const obsAll$ = of(obs1$, obs2$, obs3$);
 obsAll$
   .pipe(
-    map((obs) => obs), // We transform the values into observables
     concatAll(), // Concatenates the values of the emitted observables
   )
   .subscribe((data) => console.log(data))`},{id:"exhaust",code:`const obs1$ = of(1, 2);
@@ -87,7 +86,6 @@ const obs3$ = of(3, 4, 5);
 const obsAll$ = of(obs1$, obs2$, obs3$);
 obsAll$
   .pipe(
-    map((obs) => obs), // We transform the values into observables
     mergeAll(), // Concatenates the values of the emitted observables
   )
   .subscribe((data) => console.log(data))`},{id:"race",code:`const obs1$ = of(1, 2).pipe(delay(2000));
@@ -102,7 +100,6 @@ const obs3$ = of(3, 4, 5);
 const obsAll$ = of(obs1$, obs2$, obs3$);
 obsAll$
   .pipe(
-    map((obs) => obs), // We transform the values into observables
     switchAll(), // Concatenates the values of the emitted observables
   )
   .subscribe((data) => console.log(data))`},{id:"withLatestFrom",code:`const obs1$ = of(1, 2);
