@@ -3,6 +3,8 @@
   "spanish": "Español",
   "output": "// Salida: // ordenado en orden descendente",
   "search": "Buscar...",
+  "openMenu": "Abrir el menú de navegación",
+  "clearConsole": "Limpiar la salida de la consola",
   "console": "Usamos ejemplos sencillos de las principales funcionalidades de RxJS, los cuales se pueden verificar en tiempo real desde nuestra consola.",
   "home": {
     "title": "Descubre una nueva forma de aprender"

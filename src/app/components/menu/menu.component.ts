@@ -49,8 +49,8 @@ export class MenuComponent implements AfterViewInit, OnDestroy {
   public infoBasic: IInfo = basics;
   public realLife: IInfo = realLife;
   private subscription = new Subscription();
-  public angular = 'assets/images/angular.png';
-  public rxjs = 'assets/images/rxjs-logo.png';
+  public angular = 'assets/images/angular.webp';
+  public rxjs = 'assets/images/rxjs-logo.webp';
 
   ngAfterViewInit(): void {
     this.subscription.add(

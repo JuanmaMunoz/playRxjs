@@ -1,5 +1,5 @@
-<div #menu class="menu menu--hidden">
-  <div class="close"><i class="bi bi-x-circle-fill"></i></div>
+<nav #menu class="menu menu--hidden" [attr.aria-label]="'openMenu' | translate">
+  <div class="close"><i class="bi bi-x-circle-fill" aria-hidden="true"></i></div>
   <app-language></app-language>
   <a class="menu__header" [routerLink]="'/home'">
     <span class="menu__header__main">Play RxJS</span>
@@ -32,4 +32,4 @@
       <img height="50px" [src]="angular" alt="angular" />
     </div>
   </div>-->
-</div>
+</nav>

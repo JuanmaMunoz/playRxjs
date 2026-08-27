@@ -12,7 +12,7 @@ import { show, spin } from '../../utils/animations';
 export class LogoComponent implements AfterViewInit {
   @Input() width = 350;
   @Input() borderWidth = 5;
-  public image = 'assets/images/rxjs.jpg';
+  public image = 'assets/images/rxjs.webp';
   public showLogo = false;
   public state: 'a' | 'b' = 'a';
   params = this.randomParams();

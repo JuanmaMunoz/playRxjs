@@ -37,9 +37,9 @@ import { mathematicals } from './../../info/mathematicals';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  public image = 'assets/images/rxjs.jpg';
-  public angular = 'assets/images/angular.png';
-  public rxjs = 'assets/images/rxjs-logo.png';
+  public image = 'assets/images/rxjs.webp';
+  public angular = 'assets/images/angular.webp';
+  public rxjs = 'assets/images/rxjs-logo.webp';
   public logoWidth!: number;
   public combinationInfo: IInfo = combinations;
   public conditionalInfo: IInfo = conditionals;

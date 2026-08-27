@@ -1,4 +1,4 @@
-<div class="header">
+<header class="header">
   <div [class]="opacity" class="header__container">
     <a routerLink="'/home'" class="header__title">
       <span class="header__title__main">Play RxJS</span>
@@ -10,8 +10,12 @@
     </div>
   </div>
   <div class="header__btn">
-    <button class="btn btn--primary btn--menu">
-      <i class="btn__menu__icon bi bi-list"></i>
+    <button
+      type="button"
+      class="btn btn--primary btn--menu"
+      [attr.aria-label]="'openMenu' | translate"
+    >
+      <i class="btn__menu__icon bi bi-list" aria-hidden="true"></i>
     </button>
   </div>
-</div>
+</header>
